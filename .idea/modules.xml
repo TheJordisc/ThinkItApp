@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ThinkItApp.iml" filepath="$PROJECT_DIR$/ThinkItApp.iml" />
       <module fileurl="file://J:\DAM\ANDROID\AndroidStudioProjects\ThinkItApp\.idea\ThinkItApp.iml" filepath="J:\DAM\ANDROID\AndroidStudioProjects\ThinkItApp\.idea\ThinkItApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ThinkItApp.iml" filepath="$PROJECT_DIR$/ThinkItApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
