@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Think It App</string>
+    <string name="cd_button">Botón de jugar</string>
+    <string name="cd_logo">Logo</string>
 </resources>

@@ -10,9 +10,7 @@
     <VideoView
         android:id="@+id/bg_video"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-
-        />
+        android:layout_height="match_parent"/>
 
     <ImageView
         android:id="@+id/imageView"
@@ -24,7 +22,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@drawable/logo"
+        android:contentDescription="@string/cd_logo"/>
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -36,6 +35,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/bg_video"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@android:drawable/ic_media_play" />
+        app:srcCompat="@android:drawable/ic_media_play"
+        android:contentDescription="@string/cd_button"/>
 
 </android.support.constraint.ConstraintLayout>
