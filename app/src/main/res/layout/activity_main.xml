@@ -13,7 +13,7 @@
         android:layout_height="match_parent"/>
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/logo_image"
         android:layout_width="342dp"
         android:layout_height="120dp"
         android:layout_marginEnd="8dp"
@@ -25,17 +25,55 @@
         app:srcCompat="@drawable/logo"
         android:contentDescription="@string/cd_logo"/>
 
-    <ImageButton
-        android:id="@+id/imageButton"
+    <ImageView
+        android:id="@+id/play_button_image"
         android:layout_width="180dp"
         android:layout_height="180dp"
-        android:layout_marginBottom="96dp"
+        android:layout_marginBottom="136dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/cd_button"
         app:layout_constraintBottom_toBottomOf="@+id/bg_video"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@android:drawable/ic_media_play"
-        android:contentDescription="@string/cd_button"/>
+        app:layout_constraintTop_toBottomOf="@+id/logo_image"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/play_button_state" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/volume_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/volume_fab_state"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/language_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginStart="16dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_language_white_24dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/help_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:clickable="true"
+        app:layout_constraintBottom_toBottomOf="@+id/bg_video"
+        app:layout_constraintEnd_toStartOf="@+id/volume_fab"
+        app:layout_constraintStart_toEndOf="@+id/language_fab"
+        app:srcCompat="@drawable/ic_help_outline_white_24dp" />
 
 </android.support.constraint.ConstraintLayout>
