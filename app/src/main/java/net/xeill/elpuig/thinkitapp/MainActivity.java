@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         Intent playIntent = new Intent(MainActivity.this,MathsActivity.class);
+                        musicPlayer.stop();
                         finish();
                         startActivity(playIntent);
                         overridePendingTransition(0, 0);
