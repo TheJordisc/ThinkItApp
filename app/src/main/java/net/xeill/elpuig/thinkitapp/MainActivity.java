@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.media.AudioAttributes;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,11 +19,14 @@ public class MainActivity extends AppCompatActivity {
     MediaPlayer playSoundPlayer;
     MediaController.MediaPlayerControl videoPlayer;
     MediaController mediaController;
+    Handler mSplashHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        mSplashHandler = new Handler();
 
         musicPlayer = MediaPlayer.create(this,  R.raw.theme);
         musicPlayer.start();
@@ -49,6 +53,18 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 playButton.setActivated(true);
                 playSoundPlayer.start();
+
+                mSplashHandler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent playIntent = new Intent(MainActivity.this,MathsActivity.class);
+                        finish();
+                        startActivity(playIntent);
+                        overridePendingTransition(0, 0);
+                    }
+                }, 1000L);
+
+
             }
         });
 
