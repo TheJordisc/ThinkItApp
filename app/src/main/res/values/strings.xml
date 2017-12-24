@@ -3,4 +3,7 @@
     <string name="hello">Hello World!</string>
     <string name="cd_button">Play button</string>
     <string name="cd_logo" translatable="false">Logo</string>
+    <string name="exit_sure">Are you sure do you want to exit?</string>
+    <string name="exit_yes">Yes</string>
+    <string name="exit_back">Go back</string>
 </resources>

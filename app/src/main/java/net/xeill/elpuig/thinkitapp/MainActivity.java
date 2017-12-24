@@ -1,5 +1,7 @@
 package net.xeill.elpuig.thinkitapp;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.media.AudioAttributes;
 import android.media.MediaPlayer;
@@ -101,6 +103,27 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent helpIntent = new Intent(MainActivity.this,HelpActivity.class);
                 startActivity(helpIntent);
+            }
+        });
+
+        final FloatingActionButton closeFAB = findViewById(R.id.close_fab);
+        closeFAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new AlertDialog.Builder(MainActivity.this)
+                        .setMessage(R.string.exit_sure)
+                        .setPositiveButton(R.string.exit_yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                finish();
+                                System.exit(0);
+                            }
+                        })
+                        .setNegativeButton(R.string.exit_back, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // NOTHING
+                            }
+                        })
+                        .create().show();
             }
         });
 
