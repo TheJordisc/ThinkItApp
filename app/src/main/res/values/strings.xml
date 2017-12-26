@@ -6,4 +6,8 @@
     <string name="exit_sure">Are you sure do you want to exit?</string>
     <string name="exit_yes">Yes</string>
     <string name="exit_back">Go back</string>
+    <string name="ca_flag">Català</string>
+    <string name="es_flag">Español</string>
+    <string name="it_flag">Italiano</string>
+    <string name="uk_flag">English</string>
 </resources>
