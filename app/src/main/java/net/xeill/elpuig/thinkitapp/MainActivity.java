@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     MediaPlayer musicPlayer;
     MediaPlayer playSoundPlayer;
+    VideoView bgVideo;
     MediaController.MediaPlayerControl videoPlayer;
     MediaController mediaController;
     Handler mSplashHandler;
@@ -35,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         musicPlayer.setLooping(true); // Set looping
         musicPlayer.setVolume(0.5f,0.5f);
 
-        VideoView bgVideo = findViewById(R.id.bg_video);
+        bgVideo = findViewById(R.id.bg_video);
         bgVideo.setVideoURI(Uri.parse("android.resource://net.xeill.elpuig.thinkitapp/" + R.raw.background));
         bgVideo.start();
 
@@ -130,11 +131,26 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
-        musicPlayer.stop();
-        musicPlayer.release();
-        //videoPlayer.stop();
-        //videoPlayer.release();
+    protected void onPause() {
+        super.onPause();
+        if(musicPlayer!=null && musicPlayer.isPlaying()){
+            musicPlayer.pause();
+        }
+
+        if(bgVideo!=null && bgVideo.isPlaying()){
+            bgVideo.pause();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(musicPlayer!=null && !musicPlayer.isPlaying()){
+            musicPlayer.start();
+        }
+
+        if(bgVideo!=null && !bgVideo.isPlaying()){
+            bgVideo.start();
+        }
     }
 }

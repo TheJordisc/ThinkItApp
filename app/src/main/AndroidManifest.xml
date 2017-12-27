@@ -16,11 +16,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MathsActivity"></activity>
+        <activity android:name=".MathsActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
+
+        <activity android:name=".HelpActivity" />
+        <activity android:name=".LanguageActivity"></activity>
     </application>
 
 </manifest>

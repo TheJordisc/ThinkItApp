@@ -18,4 +18,22 @@ public class MathsActivity extends AppCompatActivity {
         musicPlayer=MediaPlayer.create(this,R.raw.bensound_jazzyfrenchy);
         musicPlayer.start();
     }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        if(musicPlayer!=null && musicPlayer.isPlaying()){
+            musicPlayer.pause();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if(musicPlayer!=null && !musicPlayer.isPlaying()){
+            musicPlayer.start();
+        }
+    }
 }

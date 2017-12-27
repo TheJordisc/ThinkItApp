@@ -1,9 +1,12 @@
 package net.xeill.elpuig.thinkitapp;
 
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
-public class LanguageActivity {
-    public void onCreate(Bundle savedInstanceState) {
+public class LanguageActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language);
     }
