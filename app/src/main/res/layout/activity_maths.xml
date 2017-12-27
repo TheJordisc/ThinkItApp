@@ -9,6 +9,7 @@
 
 
     <LinearLayout
+        android:id="@+id/linearLayout3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="88dp"
@@ -104,5 +105,68 @@
             android:fontFamily="@font/bubblegum_sans"
             android:textSize="20sp" />
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/oper1_op1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:fontFamily="@font/bubblegum_sans"
+        android:textSize="40sp"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="182dp" />
+
+    <TextView
+        android:id="@+id/oper1_opType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:fontFamily="@font/bubblegum_sans"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="@+id/oper1_op1"
+        app:layout_constraintStart_toEndOf="@+id/oper1_op1"
+        app:layout_constraintTop_toTopOf="@+id/oper1_op1" />
+
+    <TextView
+        android:id="@+id/oper1_op2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:fontFamily="@font/bubblegum_sans"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="@+id/oper1_opType"
+        app:layout_constraintStart_toEndOf="@+id/oper1_opType"
+        app:layout_constraintTop_toTopOf="@+id/oper1_opType" />
+
+    <TextView
+        android:id="@+id/oper1_equals"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/bubblegum_sans"
+        android:text="="
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="60sp"
+        app:layout_constraintBottom_toBottomOf="@+id/oper1_op2"
+        app:layout_constraintStart_toEndOf="@+id/oper1_op2"
+        app:layout_constraintTop_toTopOf="@+id/oper1_op2" />
+
+    <TextView
+        android:id="@+id/oper1_res"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:fontFamily="@font/bubblegum_sans"
+        android:textSize="40sp"
+        app:layout_constraintBottom_toBottomOf="@+id/oper1_equals"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/oper1_equals"
+        app:layout_constraintTop_toTopOf="@+id/oper1_equals"
+        app:layout_constraintVertical_bias="0.538" />
 
 </android.support.constraint.ConstraintLayout>
