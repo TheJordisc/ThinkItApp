@@ -15,6 +15,7 @@ import java.util.List;
 
 public class MathsActivity extends AppCompatActivity {
     MediaPlayer musicPlayer;
+    int correctAnswers=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,6 +26,13 @@ public class MathsActivity extends AppCompatActivity {
         //TODO: Añadir créditos bensound.com en help/about
         musicPlayer=MediaPlayer.create(this,R.raw.bensound_jazzyfrenchy);
         musicPlayer.start();
+
+        loadOperation();
+    }
+
+    private void loadOperation() {
+        TextView correctText = findViewById(R.id.correctAnswers);
+        correctText.setText(correctAnswers+"");
 
         //Probando números fáciles
         int range = (100 - 1) + 1;
@@ -44,22 +52,15 @@ public class MathsActivity extends AppCompatActivity {
         answerButtons.add((Button) findViewById(R.id.answer7));
         answerButtons.add((Button) findViewById(R.id.answer8));
 
+        //Clear buttons
+        for (Button b : answerButtons) {
+            b.setText("");
+        }
+
         int correctButtonIndex = (int) (Math.random() * 8);
         answerButtons.get(correctButtonIndex).setText(op1.getRes() + "");
 
         //Margen +-10
-/*
-        for (Button b : answerButtons) {
-            if (b.getText()!="") {
-                b.setBackgroundColor(Color.GREEN);
-            }
-            if (b.getText()=="") {
-                int answerRange = (op1.getRes()+10 - op1.getRes()-10) + 1;
-                b.setText(((int)(Math.random() * answerRange) + op1.getRes()-10) + "");
-            }
-        }
-*/
-
         for (int i = 0; i < answerButtons.size(); i++) {
             if (answerButtons.get(i).getText()=="") {
                 int answerRange = ((op1.getRes()+10) - (op1.getRes()-10)) + 1;
@@ -86,8 +87,10 @@ public class MathsActivity extends AppCompatActivity {
         answerButtons.get(correctButtonIndex).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                view.setBackground(null);
-                view.setBackgroundColor(Color.GREEN);
+                correctAnswers++;
+                //TODO: El listener se queda incluso en otras iteraciones. La primera vez va bien,
+                // luego se van acumulando listeners y al final todas son correctas.
+                loadOperation();
             }
         });
     }
