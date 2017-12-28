@@ -1,10 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="8dp">
+    android:padding="8dp"
+    tools:context="net.xeill.elpuig.thinkitapp.LanguageActivity">
 
     <ImageView
         android:layout_width="match_parent"
@@ -104,6 +106,5 @@
             android:layout_row="4"
             android:layout_gravity="center"
             android:text="@string/uk_flag" />
-
     </GridLayout>
 </LinearLayout>

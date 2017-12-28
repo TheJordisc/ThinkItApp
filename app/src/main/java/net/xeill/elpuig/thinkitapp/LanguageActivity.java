@@ -1,15 +1,14 @@
 package net.xeill.elpuig.thinkitapp;
 
 import android.content.Intent;
-import android.os.LocaleList;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
-import android.widget.ImageView;
+
 
 public class LanguageActivity extends AppCompatActivity {
-//TODO: play sound + setLocale
+    //TODO: play sound + setLocale
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,8 +49,8 @@ public class LanguageActivity extends AppCompatActivity {
             }
         });
     }
-        public void menuIntent(){
-            Intent menuIntent = new Intent(LanguageActivity.this,MainActivity.class);
-            startActivity(menuIntent);
+    public void menuIntent(){
+        Intent menuIntent = new Intent(LanguageActivity.this,MainActivity.class);
+        startActivity(menuIntent);
     }
 }
