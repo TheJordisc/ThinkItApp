@@ -25,7 +25,7 @@
         android:orientation="horizontal" >
 
         <ImageButton
-            android:id="@+id/imageButton1"
+            android:id="@+id/catButton1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
@@ -45,7 +45,7 @@
             android:text="@string/ca_flag" />
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/esButton2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
@@ -65,7 +65,7 @@
             android:text="@string/es_flag" />
 
         <ImageButton
-            android:id="@+id/imageButton3"
+            android:id="@+id/itButton3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
@@ -85,7 +85,7 @@
             android:text="@string/it_flag" />
 
         <ImageButton
-            android:id="@+id/imageButton4"
+            android:id="@+id/ukButton4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
