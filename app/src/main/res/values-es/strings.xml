@@ -3,4 +3,8 @@
     <string name="app_name">Think It App</string>
     <string name="cd_button">Botón de jugar</string>
     <string name="cd_logo">Logo</string>
+    <string name="next">¡Siguiente!</string>
+    <string name="exit_sure">¿Seguro que quieres salir?</string>
+    <string name="exit_yes">Sí</string>
+    <string name="exit_back">Volver</string>
 </resources>

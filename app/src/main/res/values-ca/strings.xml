@@ -3,4 +3,5 @@
     <string name="app_name">Think It App</string>
     <string name="cd_button">Botó per a jugar</string>
     <string name="cd_logo" translatable="false">Logo</string>
+    <string name="next">Següent!</string>
 </resources>

@@ -3,12 +3,14 @@ package net.xeill.elpuig.thinkitapp;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +18,7 @@ import java.util.List;
 public class MathsActivity extends AppCompatActivity {
     MediaPlayer musicPlayer;
     int correctAnswers=0;
+    VideoView bgVideo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,7 +28,19 @@ public class MathsActivity extends AppCompatActivity {
 
         //TODO: Añadir créditos bensound.com en help/about
         musicPlayer=MediaPlayer.create(this,R.raw.bensound_jazzyfrenchy);
+        musicPlayer.setLooping(true);
         musicPlayer.start();
+
+        bgVideo = findViewById(R.id.bg_video);
+        bgVideo.setVideoURI(Uri.parse("android.resource://net.xeill.elpuig.thinkitapp/" + R.raw.bg_maths));
+        bgVideo.start();
+
+        bgVideo.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                mp.setLooping(true);
+            }
+        });
 
         loadOperation();
     }

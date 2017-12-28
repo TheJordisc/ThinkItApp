@@ -4,9 +4,160 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="8dp"
+    android:padding="0dp"
     tools:context="net.xeill.elpuig.thinkitapp.MathsActivity">
 
+    <VideoView
+        android:id="@+id/bg_video"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="332dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="120dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/oper1_op1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/square_back"
+            android:fontFamily="@font/bubblegum_sans"
+            android:gravity="center_vertical"
+            android:textAlignment="center"
+            android:textSize="40sp"
+            tools:text="100" />
+
+        <TextView
+            android:id="@+id/oper1_opType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/bubblegum_sans"
+            android:gravity="center_vertical"
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="60sp"
+            tools:text="+" />
+
+        <TextView
+            android:id="@+id/oper1_op2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/square_back"
+            android:fontFamily="@font/bubblegum_sans"
+            android:gravity="center_vertical"
+            android:textAlignment="center"
+            android:textSize="40sp"
+            tools:text="100" />
+
+        <TextView
+            android:id="@+id/oper1_equals"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/bubblegum_sans"
+            android:text="="
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="60sp" />
+
+        <TextView
+            android:id="@+id/oper1_res"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/square_back"
+            android:fontFamily="@font/bubblegum_sans"
+            android:gravity="center_vertical"
+            android:textAlignment="center"
+            android:textSize="40sp"
+            tools:text="100" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="217dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView">
+
+        <TextView
+            android:id="@+id/oper2_op1"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/square_back"
+            android:fontFamily="@font/bubblegum_sans"
+            android:gravity="center_vertical"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            tools:text="100" />
+
+        <TextView
+            android:id="@+id/oper2_opType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/bubblegum_sans"
+            android:gravity="center_vertical"
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="40sp"
+            tools:text="+" />
+
+        <TextView
+            android:id="@+id/oper2_op2"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/square_back"
+            android:fontFamily="@font/bubblegum_sans"
+            android:gravity="center_vertical"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            tools:text="100" />
+
+        <TextView
+            android:id="@+id/oper2_equals"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:fontFamily="@font/bubblegum_sans"
+            android:text="="
+            android:textAlignment="center"
+            android:textColor="@android:color/holo_red_dark"
+            android:textSize="40sp" />
+
+        <TextView
+            android:id="@+id/oper2_res"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/square_back"
+            android:fontFamily="@font/bubblegum_sans"
+            android:gravity="center_vertical"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            tools:text="100" />
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -15,11 +166,14 @@
         android:layout_marginBottom="88dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+        app:layout_constraintVertical_bias="1.0">
 
         <Button
             android:id="@+id/answer1"
@@ -107,76 +261,30 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/oper1_op1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:fontFamily="@font/bubblegum_sans"
-        android:textSize="40sp"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="182dp" />
-
-    <TextView
-        android:id="@+id/oper1_opType"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:fontFamily="@font/bubblegum_sans"
-        android:textColor="@android:color/holo_red_dark"
-        android:textSize="60sp"
-        app:layout_constraintBottom_toBottomOf="@+id/oper1_op1"
-        app:layout_constraintStart_toEndOf="@+id/oper1_op1"
-        app:layout_constraintTop_toTopOf="@+id/oper1_op1" />
-
-    <TextView
-        android:id="@+id/oper1_op2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/bubblegum_sans"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toBottomOf="@+id/oper1_opType"
-        app:layout_constraintStart_toEndOf="@+id/oper1_opType"
-        app:layout_constraintTop_toTopOf="@+id/oper1_opType" />
-
-    <TextView
-        android:id="@+id/oper1_equals"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:fontFamily="@font/bubblegum_sans"
-        android:text="="
-        android:textColor="@android:color/holo_red_dark"
-        android:textSize="60sp"
-        app:layout_constraintBottom_toBottomOf="@+id/oper1_op2"
-        app:layout_constraintStart_toEndOf="@+id/oper1_op2"
-        app:layout_constraintTop_toTopOf="@+id/oper1_op2" />
-
-    <TextView
-        android:id="@+id/oper1_res"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:fontFamily="@font/bubblegum_sans"
-        android:textSize="40sp"
-        app:layout_constraintBottom_toBottomOf="@+id/oper1_equals"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/oper1_equals"
-        app:layout_constraintTop_toTopOf="@+id/oper1_equals"
-        app:layout_constraintVertical_bias="0.538" />
-
-    <TextView
         android:id="@+id/correctAnswers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
-        android:layout_marginEnd="16dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="8dp"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="2" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:textAllCaps="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/bubblegum_sans"
+        android:text="@string/next"
+        android:textColor="@android:color/holo_orange_dark"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        tools:text="NEXT!" />
 
 </android.support.constraint.ConstraintLayout>
