@@ -1,5 +1,6 @@
 package net.xeill.elpuig.thinkitapp;
 
+import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
@@ -19,6 +20,8 @@ public class MathsActivity extends AppCompatActivity {
     MediaPlayer musicPlayer;
     int correctAnswers=0;
     VideoView bgVideo;
+    ColorStateList defColor=ColorStateList.valueOf(Color.GRAY);
+    float defSize=40;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +49,12 @@ public class MathsActivity extends AppCompatActivity {
     }
 
     private void loadOperation() {
+        if (correctAnswers==0) {
+            defColor = ((TextView)findViewById(R.id.oper1_op1)).getTextColors();
+            defSize = ((TextView)findViewById(R.id.oper1_op1)).getTextSize() / getResources().getDisplayMetrics().scaledDensity;
+            //getTextSize returns px -> This converts to sp
+        }
+
         TextView correctText = findViewById(R.id.correctAnswers);
         correctText.setText(correctAnswers+"");
 
@@ -65,19 +74,23 @@ public class MathsActivity extends AppCompatActivity {
             op1.setOp1((int)(Math.random() * range) + 1);
 
             //Calcular operando 2
-            if(op1.getOpTypeStr().equals("/") || op1.getOpTypeStr().equals("*")) {
+            if(op1.getOpTypeStr().equals("÷") || op1.getOpTypeStr().equals("*")) {
                 range = (10 - 1) + 1;
             }
 
             int newOp2 = (int)(Math.random() * range) + 1;
-            while (op1.getOpTypeStr().equals("/") && op1.getOp1()%newOp2 !=0) {
+            while (op1.getOpTypeStr().equals("÷") && op1.getOp1()%newOp2 !=0) {
                 newOp2 = (int)(Math.random() * range) + 1;
             }
             op1.setOp2(newOp2);
-        } while ((op1.getOpTypeStr().equals("/") && op1.getOp1()/op1.getOp2() < 0) ||(op1.getOpTypeStr().equals("-") && op1.getOp1()-op1.getOp2() < 0));
+        } while ((op1.getOpTypeStr().equals("÷") && op1.getOp1()/op1.getOp2() < 0) ||(op1.getOpTypeStr().equals("-") && op1.getOp1()-op1.getOp2() < 0));
 
         //Guardar resultado
         op1.calculate();
+
+//        if ( (op1.getOp2()>10 && op1.getOpTypeStr().equals("÷")) || (op1.getOp2()>10 && op1.getOpTypeStr().equals("*")) ) {
+//            System.out.println("hola");
+//        }
 
         //Calcular campo escondido
         int hiddenField = (int)(Math.random() * ((2 - 0) + 1)) + 0;
@@ -94,23 +107,51 @@ public class MathsActivity extends AppCompatActivity {
         switch (hiddenField) {
             case 0:
                 op1Op1TV.setText("?");
+                op1Op1TV.setTextSize(60);
+                op1Op1TV.setTextColor(Color.RED);
+
                 op1Op2TV.setText(op1.getOp2()+"");
+                op1Op2TV.setTextColor(defColor);
+                op1Op2TV.setTextSize(defSize);
+
                 op1ResTV.setText(op1.getRes()+"");
+                op1ResTV.setTextColor(defColor);
+                op1ResTV.setTextSize(defSize);
                 break;
             case 1:
                 op1Op1TV.setText(op1.getOp1()+"");
+                op1Op1TV.setTextColor(defColor);
+                op1Op1TV.setTextSize(defSize);
+
+
                 op1Op2TV.setText("?");
+                op1Op2TV.setTextSize(60);
+                op1Op2TV.setTextColor(Color.RED);
+
                 op1ResTV.setText(op1.getRes()+"");
+                op1ResTV.setTextColor(defColor);
+                op1ResTV.setTextSize(defSize);
+
                 break;
             case 2:
                 op1Op1TV.setText(op1.getOp1()+"");
+                op1Op1TV.setTextColor(defColor);
+                op1Op1TV.setTextSize(defSize);
+
+
                 op1Op2TV.setText(op1.getOp2()+"");
+                op1Op2TV.setTextColor(defColor);
+                op1Op2TV.setTextSize(defSize);
+
+
                 op1ResTV.setText("?");
+                op1ResTV.setTextSize(60);
+                op1ResTV.setTextColor(Color.RED);
                 break;
         }
 
         //Rellenar teclado
-        List<Button> answerButtons = new ArrayList<>();
+        final List<Button> answerButtons = new ArrayList<>();
         answerButtons.add((Button) findViewById(R.id.answer1));
         answerButtons.add((Button) findViewById(R.id.answer2));
         answerButtons.add((Button) findViewById(R.id.answer3));
@@ -125,7 +166,7 @@ public class MathsActivity extends AppCompatActivity {
             b.setText("");
         }
 
-        int correctButtonIndex = (int) (Math.random() * 8);
+        final int correctButtonIndex = (int) (Math.random() * 8);
 
         switch (hiddenField) {
             case 0:
@@ -146,21 +187,27 @@ public class MathsActivity extends AppCompatActivity {
                 switch (hiddenField) {
                     case 0:
                         answerRange = ((op1.getOp1()+10) - (op1.getOp1()-10)) + 1;
+                        answerButtons.get(i).setText(((int)(Math.random() * answerRange) + op1.getOp1()-10) + "");
+                        while (answerButtons.get(i).getText().equals(answerButtons.get(correctButtonIndex).getText())) {
+                            answerButtons.get(i).setText(((int)(Math.random() * answerRange) + op1.getOp1()-10) + "");
+                        }
                         break;
                     case 1:
                         answerRange = ((op1.getOp2()+10) - (op1.getOp2()-10)) + 1;
+                        answerButtons.get(i).setText(((int)(Math.random() * answerRange) + op1.getOp2()-10) + "");
+                        while (answerButtons.get(i).getText().equals(answerButtons.get(correctButtonIndex).getText())) {
+                            answerButtons.get(i).setText(((int)(Math.random() * answerRange) + op1.getOp2()-10) + "");
+                        }
                         break;
                     case 2:
                         answerRange = ((op1.getRes()+10) - (op1.getRes()-10)) + 1;
+                        answerButtons.get(i).setText(((int)(Math.random() * answerRange) + op1.getRes()-10) + "");
+                        while (answerButtons.get(i).getText().equals(answerButtons.get(correctButtonIndex).getText())) {
+                            answerButtons.get(i).setText(((int)(Math.random() * answerRange) + op1.getRes()-10) + "");
+                        }
                         break;
                 }
-
-                answerButtons.get(i).setText(((int)(Math.random() * answerRange) + op1.getRes()-10) + "");
-                //Pa que no se repita
                 //TODO: Se repiten a veces con las divisiones
-                while (answerButtons.get(i).getText().equals(op1.getRes())) {
-                    answerButtons.get(i).setText(((int)(Math.random() * answerRange) + op1.getRes()-10) + "");
-                }
             }
         }
 
@@ -170,9 +217,12 @@ public class MathsActivity extends AppCompatActivity {
                 correctAnswers++;
                 //TODO: El listener se queda incluso en otras iteraciones. La primera vez va bien,
                 // luego se van acumulando listeners y al final todas son correctas.
+                answerButtons.get(correctButtonIndex).setOnClickListener(null);
                 loadOperation();
             }
         });
+
+        System.out.println("hola");;
 
 
         //VERSIÓN INICIAL

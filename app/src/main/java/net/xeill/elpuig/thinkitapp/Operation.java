@@ -49,9 +49,9 @@ public class Operation {
             case SUBST:
                 return "-";
             case MUL:
-                return "x";
+                return "*";
             case DIV:
-                return "/";
+                return "÷";
             default:
                 return " ";
         }
