@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.MediaController;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 public class MainActivity extends AppCompatActivity {
@@ -87,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        final FloatingActionButton languageFAB = findViewById(R.id.language_fab);
+        FloatingActionButton languageFAB = findViewById(R.id.language_fab);
         languageFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,8 +97,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        final FloatingActionButton helpFAB = findViewById(R.id.help_fab);
-        languageFAB.setOnClickListener(new View.OnClickListener() {
+        FloatingActionButton helpFAB = findViewById(R.id.help_fab);
+        helpFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Intent helpIntent = new Intent(MainActivity.this,HelpActivity.class);
@@ -105,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        final FloatingActionButton closeFAB = findViewById(R.id.close_fab);
+        FloatingActionButton closeFAB = findViewById(R.id.close_fab);
         closeFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
