@@ -1,9 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="net.xeill.elpuig.thinkitapp.HelpActivity">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/GridLayout1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:columnCount="2"
+    android:rowCount="3"
+    android:padding="10dp"
+    android:layout_gravity="top|center"
+    android:orientation="horizontal">
 
-</android.support.constraint.ConstraintLayout>
+    <ImageButton
+        android:id="@+id/logoButton"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?android:selectableItemBackground"
+        android:padding="10dp"
+        android:layout_column="0"
+        android:layout_row="1"
+        android:layout_gravity="start|top"
+        app:srcCompat="@drawable/logo_small"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/logoText"
+        android:layout_width="176dp"
+        android:layout_height="match_parent"
+        android:layout_column="0"
+        android:layout_gravity="top|center"
+        android:layout_row="2"
+        android:text="@string/developersinfo" />
+
+    <ImageButton
+        android:id="@+id/switchLogo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="?android:selectableItemBackground"
+        android:padding="10dp"
+        android:layout_column="1"
+        android:layout_row="1"
+        android:layout_gravity="start|top"
+        app:srcCompat="@drawable/switch_logo_small"
+        tools:ignore="ContentDescription" />
+    <TextView
+        android:id="@+id/switchText"
+        android:layout_height="match_parent"
+        android:layout_width="176dp"
+        android:layout_column="1"
+        android:layout_row="2"
+        android:layout_gravity="top|center"
+        android:text="@string/switchinfo" />
+</GridLayout>
+
