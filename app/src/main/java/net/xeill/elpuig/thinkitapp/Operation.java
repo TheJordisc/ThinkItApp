@@ -13,6 +13,7 @@ public class Operation {
     private int op2;
     private OpType opType;
     private int res;
+    private int hiddenField;
 
     public Operation(int op1, int op2) {
         this.op1 = op1;
@@ -49,7 +50,7 @@ public class Operation {
             case SUBST:
                 return "-";
             case MUL:
-                return "*";
+                return "x";
             case DIV:
                 return "÷";
             default:
@@ -85,5 +86,13 @@ public class Operation {
                 break;
         }
         return this.res;
+    }
+
+    public int getHiddenField() {
+        return hiddenField;
+    }
+
+    public void setHiddenField(int hiddenField) {
+        this.hiddenField = hiddenField;
     }
 }
