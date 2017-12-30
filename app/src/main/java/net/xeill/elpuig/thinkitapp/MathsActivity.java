@@ -91,7 +91,7 @@ public class MathsActivity extends AppCompatActivity {
         switch (op1.getHiddenField()) {
             case 0:
                 op1Op1TV.setText("?");
-                op1Op1TV.setTextSize(40);
+                op1Op1TV.setTextSize(60);
                 op1Op1TV.setTextColor(Color.RED);
 
                 op1Op2TV.setText(op1.getOp2()+"");
@@ -109,7 +109,7 @@ public class MathsActivity extends AppCompatActivity {
 
 
                 op1Op2TV.setText("?");
-                op1Op2TV.setTextSize(40);
+                op1Op2TV.setTextSize(60);
                 op1Op2TV.setTextColor(Color.RED);
 
                 op1ResTV.setText(op1.getRes()+"");
@@ -129,7 +129,7 @@ public class MathsActivity extends AppCompatActivity {
 
 
                 op1ResTV.setText("?");
-                op1ResTV.setTextSize(40);
+                op1ResTV.setTextSize(60);
                 op1ResTV.setTextColor(Color.RED);
                 break;
         }
