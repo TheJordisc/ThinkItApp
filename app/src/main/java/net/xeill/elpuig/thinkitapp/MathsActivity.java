@@ -6,8 +6,11 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Handler;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.AppCompatButton;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
@@ -18,9 +21,11 @@ import android.widget.VideoView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MathsActivity extends AppCompatActivity {
+public class MathsActivity extends AppCompatActivity implements View.OnClickListener {
     MediaPlayer musicPlayer;
     int correctAnswers=0;
+    List<AppCompatButton> answerButtons;
+    int correctButtonIndex;
     boolean firstTime = true;
     VideoView bgVideo;
     ColorStateList defColor = ColorStateList.valueOf(Color.GRAY);
@@ -38,6 +43,7 @@ public class MathsActivity extends AppCompatActivity {
         //TODO: Añadir créditos bensound.com en help/about
         musicPlayer=MediaPlayer.create(this,R.raw.bensound_jazzyfrenchy);
         musicPlayer.setLooping(true);
+        musicPlayer.setVolume(0.8f,0.8f);
         musicPlayer.start();
 
         bgVideo = findViewById(R.id.bg_video);
@@ -180,22 +186,22 @@ public class MathsActivity extends AppCompatActivity {
         }
 
         //Rellenar teclado
-        final List<Button> answerButtons = new ArrayList<>();
-        answerButtons.add((Button) findViewById(R.id.answer1));
-        answerButtons.add((Button) findViewById(R.id.answer2));
-        answerButtons.add((Button) findViewById(R.id.answer3));
-        answerButtons.add((Button) findViewById(R.id.answer4));
-        answerButtons.add((Button) findViewById(R.id.answer5));
-        answerButtons.add((Button) findViewById(R.id.answer6));
-        answerButtons.add((Button) findViewById(R.id.answer7));
-        answerButtons.add((Button) findViewById(R.id.answer8));
+        answerButtons = new ArrayList<>();
+        answerButtons.add((AppCompatButton) findViewById(R.id.answer1));
+        answerButtons.add((AppCompatButton) findViewById(R.id.answer2));
+        answerButtons.add((AppCompatButton) findViewById(R.id.answer3));
+        answerButtons.add((AppCompatButton) findViewById(R.id.answer4));
+        answerButtons.add((AppCompatButton) findViewById(R.id.answer5));
+        answerButtons.add((AppCompatButton) findViewById(R.id.answer6));
+        answerButtons.add((AppCompatButton) findViewById(R.id.answer7));
+        answerButtons.add((AppCompatButton) findViewById(R.id.answer8));
 
         //Clear buttons
-        for (Button b : answerButtons) {
+        for (AppCompatButton b : answerButtons) {
             b.setText("");
         }
 
-        final int correctButtonIndex = (int) (Math.random() * 8);
+        correctButtonIndex = (int) (Math.random() * 8);
 
         switch (op1.getHiddenField()) {
             case 0:
@@ -242,21 +248,9 @@ public class MathsActivity extends AppCompatActivity {
             }
         }
 
-        answerButtons.get(correctButtonIndex).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                correctAnswers++;
-                //TODO: El listener se queda incluso en otras iteraciones. La primera vez va bien,
-                // luego se van acumulando listeners y al final todas son correctas.
-                answerButtons.get(correctButtonIndex).setOnClickListener(null);
-                firstTime=false;
-                AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(MathsActivity.this,R.animator.op2_movement);
-                LinearLayout op2Layout = findViewById(R.id.op2_layout);
-                set.setTarget(op2Layout);
-                set.start();
-                loadOperation();
-            }
-        });
+        for (AppCompatButton b : answerButtons) {
+            b.setOnClickListener(this);
+        }
     }
 
     public Operation calculateOperation() {
@@ -309,6 +303,51 @@ public class MathsActivity extends AppCompatActivity {
 
         if(musicPlayer!=null && !musicPlayer.isPlaying()){
             musicPlayer.start();
+        }
+    }
+
+    @Override
+    public void onClick(final View view) {
+        if (answerButtons.indexOf(view) == correctButtonIndex) {
+            correctAnswers++;
+            //TODO: El listener se queda incluso en otras iteraciones. La primera vez va bien,
+            // luego se van acumulando listeners y al final todas son correctas.
+            view.setOnClickListener(null);
+            firstTime=false;
+
+            //Triquiñuelas para API <21
+            final ColorStateList defButtonColor = ViewCompat.getBackgroundTintList(view);
+            ViewCompat.setBackgroundTintList(view,ColorStateList.valueOf(Color.GREEN));
+
+            MediaPlayer.create(MathsActivity.this,R.raw.correct).start();
+
+            AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(MathsActivity.this,R.animator.op2_movement);
+            LinearLayout op2Layout = findViewById(R.id.op2_layout);
+            set.setTarget(op2Layout);
+            set.start();
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    ViewCompat.setBackgroundTintList(view,defButtonColor);
+                    loadOperation();
+                }
+            }, 1500L);
+        } else {
+            view.setOnClickListener(null);
+            firstTime=false;
+
+            final ColorStateList defButtonColor = ViewCompat.getBackgroundTintList(view);
+            ViewCompat.setBackgroundTintList(view,ColorStateList.valueOf(Color.RED));
+
+            MediaPlayer.create(MathsActivity.this,R.raw.incorrect).start();
+
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    ViewCompat.setBackgroundTintList(view,defButtonColor);
+                    loadOperation();
+                }
+            }, 1500L);
         }
     }
 }
