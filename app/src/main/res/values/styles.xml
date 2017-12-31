@@ -12,12 +12,4 @@
         <item name="backgroundTint">@android:color/holo_orange_light</item>
     </style>
 
-    <style name="KeyboardButtonCorrect" parent="Base.TextAppearance.AppCompat.Button">
-        <item name="backgroundTint">@android:color/holo_green_dark</item>
-    </style>
-
-    <style name="KeyboardButtonIncorrect" parent="Base.TextAppearance.AppCompat.Button">
-        <item name="backgroundTint">@android:color/holo_red_dark</item>
-    </style>
-
 </resources>
