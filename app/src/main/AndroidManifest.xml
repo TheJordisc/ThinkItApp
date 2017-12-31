@@ -9,16 +9,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MathsActivity" />
-        <activity android:name=".LanguageActivity" />
-        <activity android:name=".HelpActivity" />
+        <activity android:name=".MathsActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".LanguageActivity"
+            android:screenOrientation="portrait" />
+        <activity android:name=".HelpActivity"
+            android:screenOrientation="portrait" />
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
