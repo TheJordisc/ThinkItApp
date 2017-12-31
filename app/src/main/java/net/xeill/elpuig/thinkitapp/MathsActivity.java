@@ -308,6 +308,9 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(final View view) {
+        for (AppCompatButton b : answerButtons) {
+            b.setEnabled(false);
+        }
         if (answerButtons.indexOf(view) == correctButtonIndex) {
             correctAnswers++;
             //TODO: El listener se queda incluso en otras iteraciones. La primera vez va bien,
@@ -328,6 +331,9 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
+                    for (AppCompatButton b : answerButtons) {
+                        b.setEnabled(true);
+                    }
                     ViewCompat.setBackgroundTintList(view,defButtonColor);
                     loadOperation();
                 }
@@ -344,6 +350,9 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
+                    for (AppCompatButton b : answerButtons) {
+                        b.setEnabled(true);
+                    }
                     ViewCompat.setBackgroundTintList(view,defButtonColor);
                     loadOperation();
                 }
