@@ -2,11 +2,16 @@ package net.xeill.elpuig.thinkitapp;
 
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Handler;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.Snackbar;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -14,8 +19,10 @@ import android.support.v7.widget.AppCompatButton;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import java.util.ArrayList;
@@ -33,6 +40,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     float defOp2Size = 24;
     Operation op1=null;
     Operation op2=null;
+    int mLives=3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +62,29 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onPrepared(MediaPlayer mp) {
                 mp.setLooping(true);
+            }
+        });
+
+        final FloatingActionButton homeFAB = findViewById(R.id.fab_home);
+
+        homeFAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                new AlertDialog.Builder(MathsActivity.this)
+                        .setMessage(R.string.home_sure)
+                        .setPositiveButton(R.string.exit_yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                Intent homeIntent = new Intent(MathsActivity.this,MainActivity.class);
+                                startActivity(homeIntent);
+                                MathsActivity.this.finish();
+                            }
+                        })
+                        .setNegativeButton(R.string.home_resume, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                // NOTHING
+                            }
+                        })
+                        .create().show();
             }
         });
 
@@ -313,8 +344,6 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         }
         if (answerButtons.indexOf(view) == correctButtonIndex) {
             correctAnswers++;
-            //TODO: El listener se queda incluso en otras iteraciones. La primera vez va bien,
-            // luego se van acumulando listeners y al final todas son correctas.
             view.setOnClickListener(null);
             firstTime=false;
 
@@ -346,17 +375,39 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             ViewCompat.setBackgroundTintList(view,ColorStateList.valueOf(Color.RED));
 
             MediaPlayer.create(MathsActivity.this,R.raw.incorrect).start();
-
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    for (AppCompatButton b : answerButtons) {
-                        b.setEnabled(true);
+            mLives--;
+            if (mLives>=0) {
+                //Quitar vida
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        switch (mLives) {
+                            case 2:
+                                findViewById(R.id.life3).setVisibility(View.GONE);
+                                break;
+                            case 1:
+                                findViewById(R.id.life2).setVisibility(View.GONE);
+                                break;
+                            case 0:
+                                findViewById(R.id.life1).setVisibility(View.GONE);
+                                findViewById(R.id.no_lives).setVisibility(View.VISIBLE);
+                        }
                     }
-                    ViewCompat.setBackgroundTintList(view,defButtonColor);
-                    loadOperation();
-                }
-            }, 1500L);
+                }, 500L);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        for (AppCompatButton b : answerButtons) {
+                            b.setEnabled(true);
+                        }
+                        ViewCompat.setBackgroundTintList(view,defButtonColor);
+                        loadOperation();
+                    }
+                }, 1500L);
+            } else {
+                Toast.makeText(this, "GAME OVER", Toast.LENGTH_SHORT).show();
+            }
         }
     }
 }

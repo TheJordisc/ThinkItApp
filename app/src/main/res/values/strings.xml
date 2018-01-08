@@ -13,4 +13,7 @@
     <string name="next">Next!</string>
     <string name="developersinfo">Developed by two students of Puig Castellar:\n-Jordi Solà\n-Alejandro Berdún</string>
     <string name="switchinfo">App developed for Erasmus Switch Project</string>
+    <string name="home_sure">Are you sure do you want to go the main menu? All progress will be lost.</string>
+    <string name="home_resume">Resume game</string>
+    <string name="no_lives">No lives!</string>
 </resources>
