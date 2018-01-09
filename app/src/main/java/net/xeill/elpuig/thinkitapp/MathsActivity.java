@@ -9,6 +9,7 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -41,6 +42,8 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     Operation op1=null;
     Operation op2=null;
     int mLives=3;
+    TextView mTimer;
+    CountDownTimer mCountdownTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +91,8 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             }
         });
 
+        mTimer=findViewById(R.id.timer);
+
         loadOperation();
     }
 
@@ -112,10 +117,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             op2 = calculateOperation();
         }
 
-        TextView correctText = findViewById(R.id.correctAnswers);
-        correctText.setText(correctAnswers+"");
-
-
+        mTimer.setTextColor(Color.WHITE);
 
         //Poner símbolo de operación
         TextView op1OpType = findViewById(R.id.oper1_opType);
@@ -282,6 +284,56 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         for (AppCompatButton b : answerButtons) {
             b.setOnClickListener(this);
         }
+
+        mCountdownTimer = new CountDownTimer(10000, 1000) {
+
+            public void onTick(long millisUntilFinished) {
+                mTimer.setText("00:" + String.format("%02d",millisUntilFinished/1000) + "");
+                if (millisUntilFinished / 1000 == 5 && mTimer.getCurrentTextColor() != Color.RED) {
+                    mTimer.setTextColor(Color.RED);
+                }
+            }
+
+            public void onFinish() {
+                firstTime=false;
+                Toast.makeText(MathsActivity.this, "TIME UP!", Toast.LENGTH_SHORT).show();
+                for (AppCompatButton b : answerButtons) {
+                    b.setEnabled(false);
+                }
+                mLives--;
+                if (mLives>=0) {
+                    //Quitar vida
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            switch (mLives) {
+                                case 2:
+                                    findViewById(R.id.life3).setVisibility(View.GONE);
+                                    break;
+                                case 1:
+                                    findViewById(R.id.life2).setVisibility(View.GONE);
+                                    break;
+                                case 0:
+                                    findViewById(R.id.life1).setVisibility(View.GONE);
+                                    findViewById(R.id.no_lives).setVisibility(View.VISIBLE);
+                            }
+                        }
+                    }, 500L);
+
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            for (AppCompatButton b : answerButtons) {
+                                b.setEnabled(true);
+                            }
+                            loadOperation();
+                        }
+                    }, 1500L);
+                } else {
+                    Toast.makeText(MathsActivity.this, "GAME OVER", Toast.LENGTH_SHORT).show();
+                }
+            }
+        }.start();
     }
 
     public Operation calculateOperation() {
@@ -343,6 +395,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             b.setEnabled(false);
         }
         if (answerButtons.indexOf(view) == correctButtonIndex) {
+            mCountdownTimer.cancel();
             correctAnswers++;
             view.setOnClickListener(null);
             firstTime=false;
@@ -368,6 +421,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                 }
             }, 1500L);
         } else {
+            mCountdownTimer.cancel();
             view.setOnClickListener(null);
             firstTime=false;
 
@@ -375,6 +429,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             ViewCompat.setBackgroundTintList(view,ColorStateList.valueOf(Color.RED));
 
             MediaPlayer.create(MathsActivity.this,R.raw.incorrect).start();
+
             mLives--;
             if (mLives>=0) {
                 //Quitar vida

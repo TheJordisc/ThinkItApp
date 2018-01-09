@@ -13,7 +13,7 @@
         android:background="@color/colorPrimary">
 
         <TextView
-            android:id="@+id/correctAnswers"
+            android:id="@+id/timer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -25,7 +25,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.25"
-            tools:text="2" />
+            tools:text="00:10" />
 
         <TextView
             android:id="@+id/no_lives"
