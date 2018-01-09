@@ -401,9 +401,11 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(final View view) {
+        //TODO: STOP COUNTDOWN ONPAUSE ONSTOP
         if (mCountdownPlayer != null) {
             mCountdownPlayer.stop();
             mCountdownPlayer.release();
+            mCountdownPlayer=null;
         }
 
         for (AppCompatButton b : answerButtons) {
