@@ -5,9 +5,7 @@ import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ImageButton;
-import android.widget.Spinner;
 
 public class LanguageActivity extends AppCompatActivity {
     MediaPlayer playSoundPlayer;
@@ -55,5 +53,13 @@ public class LanguageActivity extends AppCompatActivity {
         Intent menuIntent = new Intent(LanguageActivity.this,MainActivity.class);
         playSoundPlayer.start();
         startActivity(menuIntent);
+        LanguageActivity.this.finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        Intent mainIntent = new Intent(LanguageActivity.this,MainActivity.class);
+        startActivity(mainIntent);
+        LanguageActivity.this.finish();
     }
 }

@@ -3,17 +3,15 @@ package net.xeill.elpuig.thinkitapp;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.media.AudioAttributes;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.MediaController;
-import android.widget.Toast;
 import android.widget.VideoView;
 
 public class MainActivity extends AppCompatActivity {
@@ -94,6 +92,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent languageIntent = new Intent(MainActivity.this,LanguageActivity.class);
                 startActivity(languageIntent);
+                MainActivity.this.finish();
             }
         });
 
@@ -114,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
                         .setMessage(R.string.exit_sure)
                         .setPositiveButton(R.string.exit_yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                finish();
+                                MainActivity.this.finish();
                                 System.exit(0);
                             }
                         })
