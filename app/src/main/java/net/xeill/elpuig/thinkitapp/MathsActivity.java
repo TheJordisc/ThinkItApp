@@ -44,6 +44,8 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     int mLives=3;
     TextView mTimer;
     CountDownTimer mCountdownTimer;
+    MediaPlayer mCountdownPlayer;
+    boolean mCountdownPlayed = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +99,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void loadOperation() {
+        mCountdownPlayed=false;
         TextView op1Op1TV = findViewById(R.id.oper1_op1);
         TextView op1Op2TV = findViewById(R.id.oper1_op2);
         TextView op1ResTV = findViewById(R.id.oper1_res);
@@ -291,6 +294,12 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                 mTimer.setText("00:" + String.format("%02d",(millisUntilFinished/1000)+1));
                 if (millisUntilFinished / 1000 == 4 && mTimer.getCurrentTextColor() != Color.RED) {
                     mTimer.setTextColor(Color.RED);
+
+                    if (!mCountdownPlayed) {
+                        mCountdownPlayer = MediaPlayer.create(MathsActivity.this,R.raw.countdown);
+                        mCountdownPlayer.start();
+                        mCountdownPlayed = true;
+                    }
                 }
             }
 
@@ -392,6 +401,11 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(final View view) {
+        if (mCountdownPlayer != null) {
+            mCountdownPlayer.stop();
+            mCountdownPlayer.release();
+        }
+
         for (AppCompatButton b : answerButtons) {
             b.setEnabled(false);
         }
