@@ -285,17 +285,18 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             b.setOnClickListener(this);
         }
 
-        mCountdownTimer = new CountDownTimer(10000, 1000) {
+        mCountdownTimer = new CountDownTimer(10000, 500) {
 
             public void onTick(long millisUntilFinished) {
-                mTimer.setText("00:" + String.format("%02d",millisUntilFinished/1000) + "");
-                if (millisUntilFinished / 1000 == 5 && mTimer.getCurrentTextColor() != Color.RED) {
+                mTimer.setText("00:" + String.format("%02d",(millisUntilFinished/1000)+1));
+                if (millisUntilFinished / 1000 == 4 && mTimer.getCurrentTextColor() != Color.RED) {
                     mTimer.setTextColor(Color.RED);
                 }
             }
 
             public void onFinish() {
                 firstTime=false;
+                mTimer.setText("00:00");
                 Toast.makeText(MathsActivity.this, "TIME UP!", Toast.LENGTH_SHORT).show();
                 for (AppCompatButton b : answerButtons) {
                     b.setEnabled(false);
