@@ -32,7 +32,8 @@
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
 
-        <activity android:name=".ScoreActivity"></activity>
+        <activity android:name=".ScoreActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>
