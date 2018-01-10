@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
     android:background="#f4f4f4" >
 
@@ -19,49 +19,46 @@
 
         <ImageButton
             android:id="@+id/logoButton"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
-            android:padding="10dp"
             android:layout_column="0"
-            android:layout_row="1"
-            android:layout_gravity="start|top"
+            android:layout_row="0"
+            android:layout_gravity="center"
             app:srcCompat="@drawable/logo_small"
             tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/logoText"
-            android:layout_width="176dp"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_column="0"
-            android:layout_gravity="top|start"
-            android:layout_row="2"
+            android:layout_gravity="center"
+            android:layout_row="1"
             android:text="@string/developersinfo" />
 
         <ImageButton
             android:id="@+id/switchLogo"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_gravity="center"
+            android:layout_row="3"
             android:background="?android:selectableItemBackground"
             android:padding="10dp"
-            android:layout_column="1"
-            android:layout_row="1"
-            android:layout_gravity="start|top"
             app:srcCompat="@drawable/switch_logo_small"
             tools:ignore="ContentDescription" />
         <TextView
             android:id="@+id/switchText"
-            android:layout_height="match_parent"
-            android:layout_width="130dp"
-            android:layout_column="1"
-            android:layout_row="2"
-            android:layout_gravity="top|start"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:layout_column="0"
+            android:layout_row="4"
+            android:layout_gravity="center"
             android:text="@string/switchinfo" />
     </GridLayout>
-
     <ExpandableListView
         android:id="@+id/lvExp"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"/>
-
 </LinearLayout>

@@ -6,7 +6,6 @@
     android:padding="8dp"
     android:background="#FFFFFF">
 
-
     <TextView
         android:id="@+id/lblListHeader"
         android:layout_width="fill_parent"
