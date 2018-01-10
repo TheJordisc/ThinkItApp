@@ -494,6 +494,8 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
             mScoreText.setText(mScore+"");
 
+            ViewCompat.setBackgroundTintList(answerButtons.get(correctButtonIndex),ColorStateList.valueOf(Color.GREEN));
+
             final ColorStateList defButtonColor = ViewCompat.getBackgroundTintList(view);
             ViewCompat.setBackgroundTintList(view,ColorStateList.valueOf(Color.RED));
 
@@ -526,6 +528,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                             b.setEnabled(true);
                         }
                         ViewCompat.setBackgroundTintList(view,defButtonColor);
+                        ViewCompat.setBackgroundTintList(answerButtons.get(correctButtonIndex),defButtonColor);
                         loadOperation();
                     }
                 }, 1500L);
