@@ -5,4 +5,5 @@
     <string name="home_sure">Are you sure do you want to go the main menu? All progress will be lost.</string>
     <string name="home_resume">Resume game</string>
     <string name="no_lives">No lives!</string>
+    <string name="score">Score</string>
 </resources>

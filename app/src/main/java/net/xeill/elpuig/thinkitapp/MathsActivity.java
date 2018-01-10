@@ -7,6 +7,8 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.CountDownTimer;
@@ -37,6 +39,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     boolean firstTime = true;
     VideoView bgVideo;
     ColorStateList defColor = ColorStateList.valueOf(Color.GRAY);
+    Drawable defTimerColor;
     float defOp1Size = 40;
     float defOp2Size = 24;
     Operation op1=null;
@@ -46,6 +49,12 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     CountDownTimer mCountdownTimer;
     MediaPlayer mCountdownPlayer;
     boolean mCountdownPlayed = false;
+    int mScore=0;
+    TextView mScoreText;
+    int mAccumulateMillis=0;
+    int mTimeLeft=0;
+
+    boolean mPaused;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -93,6 +102,8 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             }
         });
 
+        mScoreText = findViewById(R.id.score);
+        mScoreText.setText(mScore+"");
         mTimer=findViewById(R.id.timer);
 
         loadOperation();
@@ -109,6 +120,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         TextView op2ResTV = findViewById(R.id.oper2_res);
 
         if (firstTime) {
+            defTimerColor=mTimer.getBackground();
             defColor = op1Op1TV.getTextColors();
             defOp1Size = op1Op1TV.getTextSize() / getResources().getDisplayMetrics().scaledDensity;
             defOp2Size = op2Op1TV.getTextSize() / getResources().getDisplayMetrics().scaledDensity;
@@ -120,7 +132,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             op2 = calculateOperation();
         }
 
-        mTimer.setTextColor(Color.WHITE);
+        mTimer.setBackground(defTimerColor);
 
         //Poner símbolo de operación
         TextView op1OpType = findViewById(R.id.oper1_opType);
@@ -288,12 +300,13 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             b.setOnClickListener(this);
         }
 
-        mCountdownTimer = new CountDownTimer(10000, 500) {
+        mCountdownTimer = new CountDownTimer(10000+mAccumulateMillis, 500) {
 
             public void onTick(long millisUntilFinished) {
+                mTimeLeft=(int)millisUntilFinished/1000;
                 mTimer.setText("00:" + String.format("%02d",(millisUntilFinished/1000)+1));
                 if (millisUntilFinished / 1000 == 4 && mTimer.getCurrentTextColor() != Color.RED) {
-                    mTimer.setTextColor(Color.RED);
+                    mTimer.setBackgroundColor(Color.RED);
 
                     if (!mCountdownPlayed) {
                         mCountdownPlayer = MediaPlayer.create(MathsActivity.this,R.raw.countdown);
@@ -306,6 +319,12 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             public void onFinish() {
                 firstTime=false;
                 mTimer.setText("00:00");
+                if (mScore-50>0) {
+                    mScore-=50;
+                } else {
+                    mScore=0;
+                }
+                mScoreText.setText(mScore+"");
                 Toast.makeText(MathsActivity.this, "TIME UP!", Toast.LENGTH_SHORT).show();
                 for (AppCompatButton b : answerButtons) {
                     b.setEnabled(false);
@@ -388,6 +407,13 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         if(musicPlayer!=null && musicPlayer.isPlaying()){
             musicPlayer.pause();
         }
+
+        mCountdownTimer.cancel();
+        mPaused=true;
+
+        if (mCountdownPlayer != null && mCountdownPlayer.isPlaying()) {
+            mCountdownPlayer.pause();
+        }
     }
 
     @Override
@@ -396,6 +422,16 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
         if(musicPlayer!=null && !musicPlayer.isPlaying()){
             musicPlayer.start();
+        }
+
+        if(mCountdownPlayer!=null && !mCountdownPlayer.isPlaying()){
+            mCountdownPlayer.start();
+        }
+
+        if (mPaused) {
+            //TODO: Recuperar estado de countdown, inciar como tal (como?)
+            mCountdownTimer.start();
+            mPaused=false;
         }
     }
 
@@ -411,9 +447,17 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         for (AppCompatButton b : answerButtons) {
             b.setEnabled(false);
         }
+
+        //ACIERTA
         if (answerButtons.indexOf(view) == correctButtonIndex) {
             mCountdownTimer.cancel();
             correctAnswers++;
+            mScore+=100;
+            mScore+=mTimeLeft*10;
+            mScoreText.setText(mScore+"");
+
+            mAccumulateMillis=(mTimeLeft*1000)+1000;
+
             view.setOnClickListener(null);
             firstTime=false;
 
@@ -437,10 +481,18 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                     loadOperation();
                 }
             }, 1500L);
-        } else {
+        } else { //FALLA
             mCountdownTimer.cancel();
             view.setOnClickListener(null);
             firstTime=false;
+
+            if (mScore-50>0) {
+                mScore-=50;
+            } else {
+                mScore=0;
+            }
+
+            mScoreText.setText(mScore+"");
 
             final ColorStateList defButtonColor = ViewCompat.getBackgroundTintList(view);
             ViewCompat.setBackgroundTintList(view,ColorStateList.valueOf(Color.RED));

@@ -10,4 +10,5 @@
     <string name="home_sure">¿Seguro que quieres volver al menú principal? Perderás todo el progreso.</string>
     <string name="home_resume">Reanudar juego</string>
     <string name="no_lives">¡Sin vidas!</string>
+    <string name="score">Puntuación</string>
 </resources>
