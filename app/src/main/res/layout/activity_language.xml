@@ -30,6 +30,8 @@
             android:id="@+id/catButton1"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
             android:background="?android:selectableItemBackground"
             android:padding="10dp"
             android:layout_column="0"
@@ -48,9 +50,11 @@
 
         <ImageButton
             android:id="@+id/esButton2"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
             android:padding="10dp"
             android:layout_column="1"
             android:layout_row="0"
@@ -68,9 +72,11 @@
 
         <ImageButton
             android:id="@+id/itButton3"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
             android:padding="10dp"
             android:layout_column="0"
             android:layout_row="2"
@@ -88,9 +94,11 @@
 
         <ImageButton
             android:id="@+id/ukButton4"
-            android:layout_width="wrap_content"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
+            android:scaleType="fitXY"
+            android:adjustViewBounds="true"
             android:padding="10dp"
             android:layout_column="1"
             android:layout_row="2"
