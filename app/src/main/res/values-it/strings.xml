@@ -2,8 +2,9 @@
 <resources>
     <string name="app_name">Think It App</string>
     <string name="cd_logo">Logo</string>
-    <string name="home_sure">Are you sure do you want to go the main menu? All progress will be lost.</string>
+    <string name="home_sure">If you exit, all progress will be lost.</string>
     <string name="home_resume">Resume game</string>
     <string name="no_lives">No lives!</string>
     <string name="score">Score</string>
+    <string name="exit_menu">Go to main manu</string>
 </resources>

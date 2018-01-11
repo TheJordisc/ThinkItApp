@@ -7,8 +7,9 @@
     <string name="exit_sure">¿Seguro que quieres salir?</string>
     <string name="exit_yes">Sí</string>
     <string name="exit_back">Volver</string>
-    <string name="home_sure">¿Seguro que quieres volver al menú principal? Perderás todo el progreso.</string>
+    <string name="home_sure">Si sales, perderás todo el progreso.</string>
     <string name="home_resume">Reanudar juego</string>
     <string name="no_lives">¡Sin vidas!</string>
     <string name="score">Puntuación</string>
+    <string name="exit_menu">Ir al menú principal</string>
 </resources>

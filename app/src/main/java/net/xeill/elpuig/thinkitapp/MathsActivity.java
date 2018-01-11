@@ -86,7 +86,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             public void onClick(View view) {
                 new AlertDialog.Builder(MathsActivity.this)
                         .setMessage(R.string.home_sure)
-                        .setPositiveButton(R.string.exit_yes, new DialogInterface.OnClickListener() {
+                        .setPositiveButton(R.string.exit_menu, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 Intent homeIntent = new Intent(MathsActivity.this,MainActivity.class);
                                 startActivity(homeIntent);
