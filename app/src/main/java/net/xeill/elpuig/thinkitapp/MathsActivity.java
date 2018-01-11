@@ -309,7 +309,11 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
 
         if (mMillisLeft>10000) {
-            mInitialMillis = mBonusTime + mMillisLeft;
+            if (mBonusTime + mMillisLeft > 59000) {
+                mInitialMillis = 59000;
+            } else {
+                mInitialMillis = mBonusTime + mMillisLeft;
+            }
         } else {
             if (mAnswerWasCorrect) {
                 mInitialMillis=10000+mMillisLeft;
