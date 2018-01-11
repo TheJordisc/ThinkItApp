@@ -51,6 +51,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     boolean mCountdownPlayed = false;
     int mScore=0;
     TextView mScoreText;
+    TextView mAddedScoreText;
     int mAccumulateMillis=0;
     int mTimeLeft=0;
 
@@ -104,6 +105,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
         mScoreText = findViewById(R.id.score);
         mScoreText.setText(mScore+"");
+        mAddedScoreText = findViewById(R.id.added_score);
         mTimer=findViewById(R.id.timer);
 
         loadOperation();
@@ -263,6 +265,9 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                 break;
         }
 
+        //TODO: REMOVE ON RELEASE. FOR DEBUG ONLY
+        ViewCompat.setBackgroundTintList(answerButtons.get(correctButtonIndex),ColorStateList.valueOf(Color.GREEN));
+
         //Margen +-10
         for (int i = 0; i < answerButtons.size(); i++) {
             if (answerButtons.get(i).getText()=="") {
@@ -321,8 +326,13 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                 mTimer.setText("00:00");
                 if (mScore-50>0) {
                     mScore-=50;
+                    mAddedScoreText.setText("-50");
+                    mAddedScoreText.setVisibility(View.VISIBLE);
                 } else {
+                    int prevScore = mScore;
                     mScore=0;
+                    mAddedScoreText.setText("-" + prevScore);
+                    mAddedScoreText.setVisibility(View.VISIBLE);
                 }
                 mScoreText.setText(mScore+"");
                 Toast.makeText(MathsActivity.this, "TIME UP!", Toast.LENGTH_SHORT).show();
@@ -352,6 +362,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                     new Handler().postDelayed(new Runnable() {
                         @Override
                         public void run() {
+                            mAddedScoreText.setVisibility(View.GONE);
                             for (AppCompatButton b : answerButtons) {
                                 b.setEnabled(true);
                             }
@@ -452,9 +463,13 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         if (answerButtons.indexOf(view) == correctButtonIndex) {
             mCountdownTimer.cancel();
             correctAnswers++;
+
             mScore+=100;
-            mScore+=mTimeLeft*10;
+            mScore+=mTimeLeft*10+10;
             mScoreText.setText(mScore+"");
+
+            mAddedScoreText.setText("+100" + " +" + (mTimeLeft*10+10));
+            mAddedScoreText.setVisibility(View.VISIBLE);
 
             mAccumulateMillis=(mTimeLeft*1000)+1000;
 
@@ -474,10 +489,13 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
+                    mAddedScoreText.setVisibility(View.GONE);
                     for (AppCompatButton b : answerButtons) {
                         b.setEnabled(true);
                     }
-                    ViewCompat.setBackgroundTintList(view,defButtonColor);
+                    //TODO: CHANGE ON RELEASE. FOR DEBUG ONLY
+                    ViewCompat.setBackgroundTintList(view,ColorStateList.valueOf(Color.YELLOW));
+                    //ViewCompat.setBackgroundTintList(view,defButtonColor);
                     loadOperation();
                 }
             }, 1500L);
@@ -488,8 +506,13 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
             if (mScore-50>0) {
                 mScore-=50;
+                mAddedScoreText.setText("-50");
+                mAddedScoreText.setVisibility(View.VISIBLE);
             } else {
+                int prevScore = mScore;
                 mScore=0;
+                mAddedScoreText.setText("-" + prevScore);
+                mAddedScoreText.setVisibility(View.VISIBLE);
             }
 
             mScoreText.setText(mScore+"");
@@ -524,6 +547,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        mAddedScoreText.setVisibility(View.GONE);
                         for (AppCompatButton b : answerButtons) {
                             b.setEnabled(true);
                         }
