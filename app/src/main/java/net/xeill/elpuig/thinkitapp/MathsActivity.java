@@ -49,7 +49,9 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     TextView mScoreText;
     TextView mAddedScoreText;
     TextView mAddedTimeText;
-    long mAccumulateMillis=0;
+    long mBonusTime=0;
+    boolean mHasBonus=true;
+    long mInitialMillis=0;
     long mMillisLeft =0;
 
     boolean mPaused;
@@ -303,22 +305,28 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             b.setOnClickListener(this);
         }
 
-        long millisInFuture;
+        mHasBonus=true;
 
         if (mMillisLeft>10000) {
-            millisInFuture=mMillisLeft;
+            mInitialMillis=mBonusTime+mMillisLeft;
         } else {
-            millisInFuture=10000+mMillisLeft;
+            mInitialMillis=10000+mMillisLeft;
         }
 
-        mCountdownTimer = new CountDownTimer(millisInFuture, 500) {
+        mCountdownTimer = new CountDownTimer(mInitialMillis, 500) {
 
             public void onTick(long millisUntilFinished) {
                 mMillisLeft = millisUntilFinished;
                 mTimer.setText("00:" + String.format("%02d",(millisUntilFinished/1000)+1));
+
+                if (millisUntilFinished <= mInitialMillis-10000) {
+                    mHasBonus=false;
+                }
+
                 if (millisUntilFinished / 1000 == 4 && mTimer.getCurrentTextColor() != Color.RED) {
                     mTimer.setBackgroundColor(Color.RED);
 
+                    //Sonido countdown
                     if (!mCountdownPlayed) {
                         mCountdownPlayer = MediaPlayer.create(MathsActivity.this,R.raw.countdown);
                         mCountdownPlayer.start();
@@ -335,10 +343,9 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                     mAddedScoreText.setText("-50");
                     mAddedScoreText.setVisibility(View.VISIBLE);
                 } else {
-                    int prevScore = mScore;
-                    mScore=0;
-                    mAddedScoreText.setText("-" + prevScore);
+                    mAddedScoreText.setText("-" + mScore);
                     mAddedScoreText.setVisibility(View.VISIBLE);
+                    mScore=0;
                 }
                 mScoreText.setText(mScore+"");
                 Toast.makeText(MathsActivity.this, "TIME UP!", Toast.LENGTH_SHORT).show();
@@ -477,8 +484,13 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             mAddedScoreText.setText("+100" + " +" + ((mMillisLeft/1000)*10+10));
             mAddedScoreText.setVisibility(View.VISIBLE);
 
-            mAddedTimeText.setText(((mMillisLeft/1000) +1)+"");
-            mAddedTimeText.setVisibility(View.VISIBLE);
+            if (mHasBonus) {
+                mBonusTime=10000-(mInitialMillis-mMillisLeft);
+                mAddedTimeText.setText("+00:" + String.format("%02d",((int) mBonusTime/1000 +1)));
+                mAddedTimeText.setVisibility(View.VISIBLE);
+            } else {
+                mBonusTime=0;
+            }
 
             view.setOnClickListener(null);
             firstTime=false;
@@ -497,7 +509,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                 @Override
                 public void run() {
                     mAddedScoreText.setVisibility(View.GONE);
-                    mAddedTimeText.setVisibility(View.VISIBLE);
+                    mAddedTimeText.setVisibility(View.GONE);
                     for (AppCompatButton b : answerButtons) {
                         b.setEnabled(true);
                     }
@@ -517,10 +529,9 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                 mAddedScoreText.setText("-50");
                 mAddedScoreText.setVisibility(View.VISIBLE);
             } else {
-                int prevScore = mScore;
-                mScore=0;
-                mAddedScoreText.setText("-" + prevScore);
+                mAddedScoreText.setText("-" + mScore);
                 mAddedScoreText.setVisibility(View.VISIBLE);
+                mScore=0;
             }
 
             mScoreText.setText(mScore+"");
@@ -533,7 +544,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             MediaPlayer.create(MathsActivity.this,R.raw.incorrect).start();
 
             mLives--;
-            if (mLives>=0) {
+            if (mLives>0) {
                 //Quitar vida
                 new Handler().postDelayed(new Runnable() {
                     @Override
@@ -545,9 +556,12 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                             case 1:
                                 findViewById(R.id.life2).setVisibility(View.GONE);
                                 break;
-                            case 0:
-                                findViewById(R.id.life1).setVisibility(View.GONE);
-                                findViewById(R.id.no_lives).setVisibility(View.VISIBLE);
+
+                            //This was for "life 0" state
+//                            case 0:
+//                                findViewById(R.id.life1).setVisibility(View.GONE);
+//                                findViewById(R.id.no_lives).setVisibility(View.VISIBLE);
+
                         }
                     }
                 }, 500L);
@@ -565,7 +579,16 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                     }
                 }, 1500L);
             } else {
-                Toast.makeText(this, "GAME OVER", Toast.LENGTH_SHORT).show();
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        findViewById(R.id.life1).setVisibility(View.GONE);
+                        findViewById(R.id.added_time).setVisibility(View.GONE);
+                        findViewById(R.id.added_score).setVisibility(View.GONE);
+                        Toast.makeText(MathsActivity.this, "GAME OVER", Toast.LENGTH_SHORT).show();
+                    }
+                }, 1500L);
+
             }
         }
     }
