@@ -7,22 +7,18 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
-import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -52,8 +48,9 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     int mScore=0;
     TextView mScoreText;
     TextView mAddedScoreText;
-    int mAccumulateMillis=0;
-    int mTimeLeft=0;
+    TextView mAddedTimeText;
+    long mAccumulateMillis=0;
+    long mMillisLeft =0;
 
     boolean mPaused;
 
@@ -106,6 +103,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         mScoreText = findViewById(R.id.score);
         mScoreText.setText(mScore+"");
         mAddedScoreText = findViewById(R.id.added_score);
+        mAddedTimeText = findViewById(R.id.added_time);
         mTimer=findViewById(R.id.timer);
 
         loadOperation();
@@ -305,10 +303,18 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             b.setOnClickListener(this);
         }
 
-        mCountdownTimer = new CountDownTimer(10000+mAccumulateMillis, 500) {
+        long millisInFuture;
+
+        if (mMillisLeft>10000) {
+            millisInFuture=mMillisLeft;
+        } else {
+            millisInFuture=10000+mMillisLeft;
+        }
+
+        mCountdownTimer = new CountDownTimer(millisInFuture, 500) {
 
             public void onTick(long millisUntilFinished) {
-                mTimeLeft=(int)millisUntilFinished/1000;
+                mMillisLeft = millisUntilFinished;
                 mTimer.setText("00:" + String.format("%02d",(millisUntilFinished/1000)+1));
                 if (millisUntilFinished / 1000 == 4 && mTimer.getCurrentTextColor() != Color.RED) {
                     mTimer.setBackgroundColor(Color.RED);
@@ -465,13 +471,14 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             correctAnswers++;
 
             mScore+=100;
-            mScore+=mTimeLeft*10+10;
+            mScore+= (mMillisLeft/1000)*10+10;
             mScoreText.setText(mScore+"");
 
-            mAddedScoreText.setText("+100" + " +" + (mTimeLeft*10+10));
+            mAddedScoreText.setText("+100" + " +" + ((mMillisLeft/1000)*10+10));
             mAddedScoreText.setVisibility(View.VISIBLE);
 
-            mAccumulateMillis=(mTimeLeft*1000)+1000;
+            mAddedTimeText.setText(((mMillisLeft/1000) +1)+"");
+            mAddedTimeText.setVisibility(View.VISIBLE);
 
             view.setOnClickListener(null);
             firstTime=false;
@@ -490,6 +497,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                 @Override
                 public void run() {
                     mAddedScoreText.setVisibility(View.GONE);
+                    mAddedTimeText.setVisibility(View.VISIBLE);
                     for (AppCompatButton b : answerButtons) {
                         b.setEnabled(true);
                     }
