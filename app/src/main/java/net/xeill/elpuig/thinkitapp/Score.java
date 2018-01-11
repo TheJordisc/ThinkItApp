@@ -4,7 +4,7 @@ public class Score {
     private String user;
     private int score;
     private int level;
-    private int successes;
+    private int correctAnswers;
     private int mistakes;
 
     public String getUser() {
@@ -31,14 +31,6 @@ public class Score {
         this.level = level;
     }
 
-    public int getSuccesses() {
-        return successes;
-    }
-
-    public void setSuccesses(int successes) {
-        this.successes = successes;
-    }
-
     public int getMistakes() {
         return mistakes;
     }
@@ -46,4 +38,13 @@ public class Score {
     public void setMistakes(int mistakes) {
         this.mistakes = mistakes;
     }
+
+    public int getCorrectAnswers() {
+        return correctAnswers;
+    }
+
+    public void setCorrectAnswers(int correctAnswers) {
+        this.correctAnswers = correctAnswers;
+    }
+
 }
