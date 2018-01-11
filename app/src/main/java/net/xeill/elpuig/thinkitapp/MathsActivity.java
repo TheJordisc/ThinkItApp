@@ -66,7 +66,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         //TODO: Añadir créditos bensound.com en help/about
         musicPlayer=MediaPlayer.create(this,R.raw.bensound_jazzyfrenchy);
         musicPlayer.setLooping(true);
-        musicPlayer.setVolume(0.8f,0.8f);
+        musicPlayer.setVolume(0.7f,0.7f);
         musicPlayer.start();
 
         bgVideo = findViewById(R.id.bg_video);
@@ -365,6 +365,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                 }
                 mLives--;
                 if (mLives>=0) {
+                    //TODO: Modularizar?
                     //Quitar vida
                     new Handler().postDelayed(new Runnable() {
                         @Override
@@ -376,9 +377,9 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                                 case 1:
                                     findViewById(R.id.life2).setVisibility(View.GONE);
                                     break;
-                                case 0:
-                                    findViewById(R.id.life1).setVisibility(View.GONE);
-                                    findViewById(R.id.no_lives).setVisibility(View.VISIBLE);
+                                //case 0:
+                                    //findViewById(R.id.life1).setVisibility(View.GONE);
+                                    //findViewById(R.id.no_lives).setVisibility(View.VISIBLE);
                             }
                         }
                     }, 500L);
@@ -394,6 +395,9 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                         }
                     }, 1500L);
                 } else {
+                    findViewById(R.id.life1).setVisibility(View.GONE);
+                    findViewById(R.id.added_time).setVisibility(View.GONE);
+                    findViewById(R.id.added_score).setVisibility(View.GONE);
                     Toast.makeText(MathsActivity.this, "GAME OVER", Toast.LENGTH_SHORT).show();
                 }
             }
