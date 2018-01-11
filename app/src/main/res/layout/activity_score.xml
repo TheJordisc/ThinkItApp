@@ -1,106 +1,120 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="8dp">
-    <TextView
-        android:id="@+id/scoreTitle"
+    android:background="@android:color/black"
+    android:padding="20dp"
+    tools:context="net.xeill.elpuig.thinkitapp.ScoreActivity">
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#6666FF"
+        android:columnCount="4"
+        android:padding="10dp"
+        android:rowCount="4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/Pos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_gravity="center"
+            android:layout_row="1"
+            android:text="Posición"
+            android:textColor="@android:color/white" />
+        <TextView
+            android:id="@+id/Pos1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="0"
+            android:layout_gravity="center"
+            android:layout_row="2"
+            android:text="1"
+            android:textColor="@android:color/white" />
+    </GridLayout>
+
+    <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:text="Puntuaciones" />
-    <ScrollView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
-        <GridLayout
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#4444FF"
+        android:columnCount="4"
+        android:padding="10dp"
+        android:rowCount="4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/Name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_column="1"
             android:layout_gravity="center"
-            android:layout_margin="10dp"
-            android:columnCount="3"
-            android:orientation="horizontal"
-            android:rowCount="10">
-            <TextView
-                android:id="@+id/score1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="0"
-                android:layout_gravity="start"
-                android:layout_row="0"
-                android:text="1" />
-            <TextView
-                android:id="@+id/score2"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="0"
-                android:layout_gravity="start"
-                android:layout_row="1"
-                android:text="2" />
-            <TextView
-                android:id="@+id/score3"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="0"
-                android:layout_gravity="start"
-                android:layout_row="2"
-                android:text="3" />
-            <TextView
-                android:id="@+id/score4"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="0"
-                android:layout_gravity="start"
-                android:layout_row="3"
-                android:text="4" />
-            <TextView
-                android:id="@+id/score5"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="0"
-                android:layout_gravity="start"
-                android:layout_row="4"
-                android:text="5" />
-            <TextView
-                android:id="@+id/score6"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="0"
-                android:layout_gravity="start"
-                android:layout_row="5"
-                android:text="6" />
-            <TextView
-                android:id="@+id/score7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="0"
-                android:layout_gravity="start"
-                android:layout_row="6"
-                android:text="7" />
-            <TextView
-                android:id="@+id/score8"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="0"
-                android:layout_gravity="start"
-                android:layout_row="7"
-                android:text="8" />
-            <TextView
-                android:id="@+id/score9"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="0"
-                android:layout_gravity="start"
-                android:layout_row="8"
-                android:text="9" />
-            <TextView
-                android:id="@+id/score10"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_column="0"
-                android:layout_gravity="start"
-                android:layout_row="9"
-                android:text="10" />
-        </GridLayout>
-    </ScrollView>
-</LinearLayout>
+            android:layout_row="1"
+            android:text="Nombre"
+            android:textColor="@android:color/white"
+            tools:layout_editor_absoluteX="480dp"
+            tools:layout_editor_absoluteY="8dp" />
+        <TextView
+            android:id="@+id/Name1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="1"
+            android:layout_gravity="center"
+            android:layout_row="2"
+            android:text="Alejandro Berdún"
+            android:textColor="@android:color/white"
+            tools:layout_editor_absoluteX="480dp"
+            tools:layout_editor_absoluteY="8dp" />
+    </GridLayout>
+
+    <GridLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#0000FF"
+        android:columnCount="4"
+        android:padding="10dp"
+        android:rowCount="4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/Playerscore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:layout_gravity="center"
+            android:layout_row="1"
+            android:text="Puntuación"
+            android:textColor="@android:color/white"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="82dp" />
+        <TextView
+            android:id="@+id/Playerscore1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_column="2"
+            android:layout_gravity="center"
+            android:layout_row="2"
+            android:text="57567656"
+            android:textColor="@android:color/white"
+            tools:layout_editor_absoluteX="16dp"
+            tools:layout_editor_absoluteY="82dp" />
+    </GridLayout>
+</android.support.constraint.ConstraintLayout>
