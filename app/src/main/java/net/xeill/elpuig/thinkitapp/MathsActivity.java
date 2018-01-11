@@ -364,7 +364,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                     b.setEnabled(false);
                 }
                 mLives--;
-                if (mLives>=0) {
+                if (mLives>0) {
                     //TODO: Modularizar?
                     //Quitar vida
                     new Handler().postDelayed(new Runnable() {
