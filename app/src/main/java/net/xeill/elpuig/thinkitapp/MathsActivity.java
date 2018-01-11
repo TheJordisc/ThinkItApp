@@ -53,6 +53,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     boolean mHasBonus=true;
     long mInitialMillis=0;
     long mMillisLeft =0;
+    boolean mAnswerWasCorrect=false;
 
     boolean mPaused;
 
@@ -305,13 +306,19 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             b.setOnClickListener(this);
         }
 
-        mHasBonus=true;
+
 
         if (mMillisLeft>10000) {
-            mInitialMillis=mBonusTime+mMillisLeft;
+            mInitialMillis = mBonusTime + mMillisLeft;
         } else {
-            mInitialMillis=10000+mMillisLeft;
+            if (mAnswerWasCorrect) {
+                mInitialMillis=10000+mMillisLeft;
+            } else {
+                mInitialMillis=10000;
+            }
         }
+
+        mHasBonus=true;
 
         mCountdownTimer = new CountDownTimer(mInitialMillis, 500) {
 
@@ -461,6 +468,8 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(final View view) {
+        mCountdownTimer.cancel();
+
         //TODO: STOP COUNTDOWN ONPAUSE ONSTOP
         if (mCountdownPlayer != null) {
             mCountdownPlayer.stop();
@@ -474,8 +483,8 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
         //ACIERTA
         if (answerButtons.indexOf(view) == correctButtonIndex) {
-            mCountdownTimer.cancel();
             correctAnswers++;
+            mAnswerWasCorrect=true;
 
             mScore+=100;
             mScore+= (mMillisLeft/1000)*10+10;
@@ -520,9 +529,11 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                 }
             }, 1500L);
         } else { //FALLA
-            mCountdownTimer.cancel();
+            mAnswerWasCorrect=false;
             view.setOnClickListener(null);
             firstTime=false;
+            mHasBonus=false;
+            mBonusTime=0;
 
             if (mScore-50>0) {
                 mScore-=50;
