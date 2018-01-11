@@ -19,6 +19,8 @@ import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.view.View;
 import android.view.Window;
+import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -54,6 +56,8 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     long mInitialMillis=0;
     long mMillisLeft =0;
     boolean mAnswerWasCorrect=false;
+    ImageButton mLifeline5050;
+    ImageButton mLifelinePassover;
 
     boolean mPaused;
 
@@ -110,6 +114,68 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         mTimer=findViewById(R.id.timer);
 
         loadOperation();
+
+        //COMODINES
+        mLifelinePassover=findViewById(R.id.lifeline_passover);
+        mLifeline5050=findViewById(R.id.lifeline_50_50);
+        mLifelinePassover.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                view.setEnabled(false);
+                ViewCompat.setBackgroundTintList(view,ColorStateList.valueOf(Color.GRAY));
+
+                mCountdownTimer.cancel();
+
+                //TODO: STOP COUNTDOWN ONPAUSE ONSTOP
+                if (mCountdownPlayer != null) {
+                    mCountdownPlayer.stop();
+                    mCountdownPlayer.release();
+                    mCountdownPlayer=null;
+                }
+
+                for (AppCompatButton b : answerButtons) {
+                    b.setEnabled(false);
+                }
+
+                correctAnswer();
+            }
+        });
+
+        mLifeline5050.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                view.setEnabled(false);
+                ViewCompat.setBackgroundTintList(view,ColorStateList.valueOf(Color.GRAY));
+                MediaPlayer lifelinePlayer = MediaPlayer.create(MathsActivity.this,R.raw.lifeline);
+                lifelinePlayer.start();
+
+                List<Integer> toHide = new ArrayList<>();
+                for (int i = 0; i < answerButtons.size()/2; i++) {
+                    int hiddenButtonIndex = ((int)(Math.random() * (((answerButtons.size()-1) - 0) + 1)) + 0);
+                    boolean alreadyHidden;
+
+                    do {
+                        alreadyHidden = false;
+                        for (Integer j : toHide) {
+                            if (j.equals(hiddenButtonIndex)) {
+                                alreadyHidden=true;
+                                break;
+                            }
+                        }
+
+                        hiddenButtonIndex = ((int)(Math.random() * (((answerButtons.size()-1) - 0) + 1)) + 0);
+                    } while (hiddenButtonIndex == correctButtonIndex || alreadyHidden);
+
+
+                    toHide.add(hiddenButtonIndex);
+                }
+
+                for (int i : toHide) {
+                    answerButtons.get(i).setText("");
+                    answerButtons.get(i).setEnabled(false);
+                }
+            }
+        });
     }
 
     private void loadOperation() {
@@ -398,6 +464,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                     findViewById(R.id.life1).setVisibility(View.GONE);
                     findViewById(R.id.added_time).setVisibility(View.GONE);
                     findViewById(R.id.added_score).setVisibility(View.GONE);
+
                     Toast.makeText(MathsActivity.this, "GAME OVER", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -491,51 +558,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
         //ACIERTA
         if (answerButtons.indexOf(view) == correctButtonIndex) {
-            correctAnswers++;
-            mAnswerWasCorrect=true;
-
-            mScore+=100;
-            mScore+= (mMillisLeft/1000)*10+10;
-            mScoreText.setText(mScore+"");
-
-            mAddedScoreText.setText("+100" + " +" + ((mMillisLeft/1000)*10+10));
-            mAddedScoreText.setVisibility(View.VISIBLE);
-
-            if (mHasBonus) {
-                mBonusTime=10000-(mInitialMillis-mMillisLeft);
-                mAddedTimeText.setText("+00:" + String.format("%02d",((int) mBonusTime/1000 +1)));
-                mAddedTimeText.setVisibility(View.VISIBLE);
-            } else {
-                mBonusTime=0;
-            }
-
-            view.setOnClickListener(null);
-            firstTime=false;
-
-            //Triquiñuelas para API <21
-            final ColorStateList defButtonColor = ViewCompat.getBackgroundTintList(view);
-            ViewCompat.setBackgroundTintList(view,ColorStateList.valueOf(Color.GREEN));
-
-            MediaPlayer.create(MathsActivity.this,R.raw.correct).start();
-
-            AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(MathsActivity.this,R.animator.op2_movement);
-            LinearLayout op2Layout = findViewById(R.id.op2_layout);
-            set.setTarget(op2Layout);
-            set.start();
-            new Handler().postDelayed(new Runnable() {
-                @Override
-                public void run() {
-                    mAddedScoreText.setVisibility(View.GONE);
-                    mAddedTimeText.setVisibility(View.GONE);
-                    for (AppCompatButton b : answerButtons) {
-                        b.setEnabled(true);
-                    }
-                    //TODO: CHANGE ON RELEASE. FOR DEBUG ONLY
-                    ViewCompat.setBackgroundTintList(view,ColorStateList.valueOf(Color.YELLOW));
-                    //ViewCompat.setBackgroundTintList(view,defButtonColor);
-                    loadOperation();
-                }
-            }, 1500L);
+            correctAnswer();
         } else { //FALLA
             mAnswerWasCorrect=false;
             view.setOnClickListener(null);
@@ -610,5 +633,52 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
             }
         }
+    }
+
+    private void correctAnswer() {
+        correctAnswers++;
+        mAnswerWasCorrect=true;
+
+        mScore+=100;
+        mScore+= (mMillisLeft/1000)*10+10;
+        mScoreText.setText(mScore+"");
+
+        mAddedScoreText.setText("+100" + " +" + ((mMillisLeft/1000)*10+10));
+        mAddedScoreText.setVisibility(View.VISIBLE);
+
+        if (mHasBonus) {
+            mBonusTime=10000-(mInitialMillis-mMillisLeft);
+            mAddedTimeText.setText("+00:" + String.format("%02d",((int) mBonusTime/1000 +1)));
+            mAddedTimeText.setVisibility(View.VISIBLE);
+        } else {
+            mBonusTime=0;
+        }
+
+        answerButtons.get(correctButtonIndex).setOnClickListener(null);
+        firstTime=false;
+
+        //Triquiñuelas para API <21
+        final ColorStateList defButtonColor = ViewCompat.getBackgroundTintList(answerButtons.get(correctButtonIndex));
+        ViewCompat.setBackgroundTintList(answerButtons.get(correctButtonIndex),ColorStateList.valueOf(Color.GREEN));
+
+        MediaPlayer.create(MathsActivity.this,R.raw.correct).start();
+
+        AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(MathsActivity.this,R.animator.op2_movement);
+        LinearLayout op2Layout = findViewById(R.id.op2_layout);
+        set.setTarget(op2Layout);
+        set.start();
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mAddedScoreText.setVisibility(View.GONE);
+                mAddedTimeText.setVisibility(View.GONE);
+                for (AppCompatButton b : answerButtons) {
+                    b.setEnabled(true);
+                }
+                //TODO: CHANGE ON RELEASE. FOR DEBUG ONLY
+                ViewCompat.setBackgroundTintList(answerButtons.get(correctButtonIndex),defButtonColor);
+                loadOperation();
+            }
+        }, 1500L);
     }
 }

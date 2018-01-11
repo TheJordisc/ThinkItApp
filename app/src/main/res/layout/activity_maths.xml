@@ -333,6 +333,36 @@
             android:orientation="vertical"
             app:layout_constraintGuide_begin="20dp" />
 
+        <LinearLayout
+            android:id="@+id/lifeline_drawer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:layout_marginEnd="8dp"
+            android:orientation="vertical"
+            app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <ImageButton
+                android:id="@+id/lifeline_50_50"
+                android:elevation="2dp"
+                android:backgroundTint="@android:color/holo_blue_dark"
+                android:layout_width="50dp"
+                android:src="@drawable/lifeline_50"
+                android:layout_height="50dp"
+                android:scaleType="centerCrop"/>
+
+            <ImageButton
+                android:id="@+id/lifeline_passover"
+                android:elevation="2dp"
+                android:backgroundTint="@android:color/holo_blue_dark"
+                android:layout_width="50dp"
+                android:src="@drawable/ic_skip_next_white_48dp"
+                android:layout_height="50dp"
+                android:scaleType="centerCrop" />
+
+        </LinearLayout>
+
     </android.support.constraint.ConstraintLayout>
 
     <android.support.constraint.ConstraintLayout
