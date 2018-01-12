@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".view.MainActivity"
             android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -19,13 +19,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MathsActivity"
+            android:name=".view.MathsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".LanguageActivity"
+            android:name=".view.LanguageActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".HelpActivity"
+            android:name=".view.HelpActivity"
             android:screenOrientation="portrait" />
 
         <meta-data
@@ -33,9 +33,9 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity
-            android:name=".ScoreActivity"
+            android:name=".view.ScoreActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".ResultActivity"></activity>
+        <activity android:name=".view.ResultActivity"></activity>
     </application>
 
 </manifest>

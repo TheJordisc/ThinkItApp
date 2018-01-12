@@ -1,4 +1,4 @@
-package net.xeill.elpuig.thinkitapp;
+package net.xeill.elpuig.thinkitapp.view;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
@@ -7,6 +7,8 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
+
+import net.xeill.elpuig.thinkitapp.R;
 
 public class LanguageActivity extends AppCompatActivity {
     MediaPlayer playSoundPlayer;

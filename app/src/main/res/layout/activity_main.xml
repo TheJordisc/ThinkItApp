@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="net.xeill.elpuig.thinkitapp.MainActivity">
+    tools:context="net.xeill.elpuig.thinkitapp.view.MainActivity">
 
     <VideoView
         android:id="@+id/bg_video"

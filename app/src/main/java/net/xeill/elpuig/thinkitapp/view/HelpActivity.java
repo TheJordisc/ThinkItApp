@@ -1,4 +1,4 @@
-package net.xeill.elpuig.thinkitapp;
+package net.xeill.elpuig.thinkitapp.view;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -8,6 +8,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.ImageButton;
+
+import net.xeill.elpuig.thinkitapp.view.adapter.ExpandableListAdapter;
+import net.xeill.elpuig.thinkitapp.R;
 
 import java.util.ArrayList;
 import java.util.HashMap;

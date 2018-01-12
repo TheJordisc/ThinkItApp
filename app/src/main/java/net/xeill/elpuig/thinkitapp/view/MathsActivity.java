@@ -1,4 +1,4 @@
-package net.xeill.elpuig.thinkitapp;
+package net.xeill.elpuig.thinkitapp.view;
 
 import android.animation.AnimatorInflater;
 import android.animation.AnimatorSet;
@@ -19,12 +19,14 @@ import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.view.View;
 import android.view.Window;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
+
+import net.xeill.elpuig.thinkitapp.model.Operation;
+import net.xeill.elpuig.thinkitapp.R;
 
 import java.util.ArrayList;
 import java.util.List;

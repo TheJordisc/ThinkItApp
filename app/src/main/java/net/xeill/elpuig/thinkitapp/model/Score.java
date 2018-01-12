@@ -1,4 +1,4 @@
-package net.xeill.elpuig.thinkitapp;
+package net.xeill.elpuig.thinkitapp.model;
 
 public class Score {
     private String user;

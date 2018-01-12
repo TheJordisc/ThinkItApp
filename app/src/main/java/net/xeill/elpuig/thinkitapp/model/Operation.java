@@ -1,4 +1,4 @@
-package net.xeill.elpuig.thinkitapp;
+package net.xeill.elpuig.thinkitapp.model;
 
 /**
  * Created by jsola on 27/12/2017.

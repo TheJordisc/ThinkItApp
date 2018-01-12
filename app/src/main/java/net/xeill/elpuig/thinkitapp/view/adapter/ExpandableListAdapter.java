@@ -1,4 +1,4 @@
-package net.xeill.elpuig.thinkitapp;
+package net.xeill.elpuig.thinkitapp.view.adapter;
 
 import java.util.HashMap;
 import java.util.List;
@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseExpandableListAdapter;
 import android.widget.TextView;
+
+import net.xeill.elpuig.thinkitapp.R;
 
 public class ExpandableListAdapter extends BaseExpandableListAdapter {
 

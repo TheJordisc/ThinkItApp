@@ -1,4 +1,4 @@
-package net.xeill.elpuig.thinkitapp;
+package net.xeill.elpuig.thinkitapp.view;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -13,6 +13,8 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.VideoView;
+
+import net.xeill.elpuig.thinkitapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
