@@ -9,4 +9,6 @@
     <string name="no_lives">No lives!</string>
     <string name="score">Score</string>
     <string name="exit_menu">Go to main manu</string>
+    <string name="game_over">Game over</string>
+    <string name="hint_enter_name">Enter your name</string>
 </resources>

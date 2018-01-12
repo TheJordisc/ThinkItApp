@@ -50,18 +50,22 @@
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/volume_fab_state" />
+        style="@style/MainMenuFAB"
+        app:srcCompat="@drawable/volume_fab_state"
+        android:focusable="true" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/language_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
+        style="@style/MainMenuFAB"
         android:layout_marginStart="16dp"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_language_white_24dp" />
+        app:srcCompat="@drawable/ic_language_white_24dp"
+        android:focusable="true" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/help_fab"
@@ -70,11 +74,13 @@
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        style="@style/MainMenuFAB"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="@+id/bg_video"
         app:layout_constraintEnd_toStartOf="@+id/volume_fab"
         app:layout_constraintStart_toEndOf="@+id/language_fab"
-        app:srcCompat="@drawable/ic_help_outline_white_24dp" />
+        app:srcCompat="@drawable/ic_help_outline_white_24dp"
+        android:focusable="true" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/score_fab"

@@ -12,59 +12,73 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_margin="8dp"
+        android:layout_marginBottom="8dp"
         android:clickable="true"
         app:fabSize="mini"
+        app:layout_constraintBottom_toTopOf="@+id/game_over"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_home_white_36dp" />
+        app:srcCompat="@drawable/ic_home_white_36dp"
+        android:focusable="true" />
 
     <TextView
+        android:id="@+id/game_over"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="36dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="68dp"
-        android:text="GAME OVER"
+        android:text="@string/game_over"
+        android:textAllCaps="true"
         android:textSize="40sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/final_score"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        tools:text="GAME OVER" />
 
     <TextView
+        android:id="@+id/final_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="164dp"
         android:gravity="center|top"
-        android:text="Puntuación final"
+        android:text="@string/final_score"
         android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="@+id/score"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
+        android:id="@+id/score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="204dp"
-        android:text="389473432"
+        android:layout_marginTop="200dp"
         android:textSize="45sp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/name_edit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.253"
+        tools:text="389473432" />
 
     <EditText
+        android:id="@+id/name_edit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="284dp"
-        android:hint="Introduce tu nombre aquí"
+        android:layout_marginTop="364dp"
+        android:hint="@string/hint_enter_name"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

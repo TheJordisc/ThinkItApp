@@ -12,4 +12,8 @@
         <item name="backgroundTint">@android:color/holo_orange_light</item>
     </style>
 
+    <style name="MainMenuFAB" parent="Widget.Design.FloatingActionButton">
+        <item name="backgroundTint">@android:color/holo_blue_dark</item>
+    </style>
+
 </resources>

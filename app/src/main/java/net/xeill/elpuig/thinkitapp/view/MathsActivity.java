@@ -17,6 +17,7 @@ import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
+import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
@@ -687,6 +688,10 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         ViewCompat.setBackgroundTintList(mLifelinePassover,ColorStateList.valueOf(Color.GRAY));
 
         Toast.makeText(MathsActivity.this, "GAME OVER", Toast.LENGTH_SHORT).show();
-        //TODO: Replace by intent
+
+        Intent resultIntent = new Intent(MathsActivity.this, ResultActivity.class);
+        resultIntent.putExtra("score",mScore);
+        startActivity(resultIntent);
+        MathsActivity.this.finish();
     }
 }

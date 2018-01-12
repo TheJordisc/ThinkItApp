@@ -12,4 +12,6 @@
     <string name="no_lives">¡Sin vidas!</string>
     <string name="score">Puntuación</string>
     <string name="exit_menu">Ir al menú principal</string>
+    <string name="game_over">Game over</string>
+    <string name="hint_enter_name">Enter your name</string>
 </resources>
