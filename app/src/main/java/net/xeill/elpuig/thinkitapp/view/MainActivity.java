@@ -18,6 +18,8 @@ import net.xeill.elpuig.thinkitapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    //TODO: Silenciar TODA la aplicacion, no solo la main
     MediaPlayer musicPlayer;
     MediaPlayer playSoundPlayer;
     VideoView bgVideo;

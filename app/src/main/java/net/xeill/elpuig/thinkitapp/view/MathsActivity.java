@@ -336,7 +336,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         }
 
         //TODO: REMOVE ON RELEASE. FOR DEBUG ONLY
-        ViewCompat.setBackgroundTintList(answerButtons.get(correctButtonIndex),ColorStateList.valueOf(Color.GREEN));
+        //ViewCompat.setBackgroundTintList(answerButtons.get(correctButtonIndex),ColorStateList.valueOf(Color.GREEN));
 
         //Margen +-10
         for (int i = 0; i < answerButtons.size(); i++) {
