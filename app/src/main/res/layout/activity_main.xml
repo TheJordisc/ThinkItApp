@@ -77,6 +77,19 @@
         app:srcCompat="@drawable/ic_help_outline_white_24dp" />
 
     <android.support.design.widget.FloatingActionButton
+        android:id="@+id/score_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:clickable="true"
+        app:backgroundTint="@color/colorPrimaryDark"
+        app:fabSize="mini"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_format_list_numbered_white_24dp" />
+
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/close_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

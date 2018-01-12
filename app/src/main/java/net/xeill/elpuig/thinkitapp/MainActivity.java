@@ -125,7 +125,14 @@ public class MainActivity extends AppCompatActivity {
                         .create().show();
             }
         });
-
+        FloatingActionButton scoreFAB = findViewById(R.id.score_fab);
+        scoreFAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent scoreIntent = new Intent(MainActivity.this,ScoreActivity.class);
+                startActivity(scoreIntent);
+            }
+        });
     }
 
     @Override
