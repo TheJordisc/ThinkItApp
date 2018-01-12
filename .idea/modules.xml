@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ThinkItApp.iml" filepath="$PROJECT_DIR$/ThinkItApp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Thinkitapp.iml" filepath="$PROJECT_DIR$/Thinkitapp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

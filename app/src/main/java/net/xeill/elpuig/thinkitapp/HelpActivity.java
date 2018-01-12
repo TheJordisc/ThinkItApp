@@ -2,6 +2,7 @@ package net.xeill.elpuig.thinkitapp;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,6 +24,17 @@ public class HelpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
+
+        final FloatingActionButton homeFAB = findViewById(R.id.fab_home);
+
+        homeFAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent homeIntent = new Intent(HelpActivity.this,MainActivity.class);
+                startActivity(homeIntent);
+                HelpActivity.this.finish();
+            }
+        });
 
         final ImageButton logoButton = findViewById(R.id.logoButton);
         logoButton.setOnClickListener(new View.OnClickListener() {

@@ -3,6 +3,7 @@ package net.xeill.elpuig.thinkitapp;
 import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
@@ -16,6 +17,17 @@ public class LanguageActivity extends AppCompatActivity {
         setContentView(R.layout.activity_language);
         playSoundPlayer = MediaPlayer.create(this,R.raw.play);
         playSoundPlayer.setVolume(1f,1f);
+
+        final FloatingActionButton homeFAB = findViewById(R.id.fab_home);
+
+        homeFAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent homeIntent = new Intent(LanguageActivity.this,MainActivity.class);
+                startActivity(homeIntent);
+                LanguageActivity.this.finish();
+            }
+        });
 
         final ImageButton cat_flag = findViewById(R.id.catButton1);
         cat_flag.setOnClickListener(new View.OnClickListener() {

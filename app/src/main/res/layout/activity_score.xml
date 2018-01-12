@@ -1,20 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:background="@android:color/black"
-    android:padding="20dp"
-    tools:context="net.xeill.elpuig.thinkitapp.ScoreActivity">
+    xmlns:tools="http://schemas.android.com/tools">
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="8dp"
+            android:clickable="true"
+            app:fabSize="mini"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_home_white_36dp" />
 
     <GridLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="80dp"
         android:background="#6666FF"
         android:columnCount="4"
         android:padding="10dp"
@@ -48,7 +61,7 @@
         android:layout_gravity="center"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="80dp"
         android:background="#4444FF"
         android:columnCount="4"
         android:padding="10dp"
@@ -75,7 +88,7 @@
             android:layout_column="1"
             android:layout_gravity="center"
             android:layout_row="2"
-            android:text="Alejandro Berdún"
+            android:text="Alejandro"
             android:textColor="@android:color/white"
             tools:layout_editor_absoluteX="480dp"
             tools:layout_editor_absoluteY="8dp" />
@@ -86,7 +99,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="right"
         android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="80dp"
         android:background="#0000FF"
         android:columnCount="4"
         android:padding="10dp"
@@ -117,4 +130,5 @@
             tools:layout_editor_absoluteX="16dp"
             tools:layout_editor_absoluteY="82dp" />
     </GridLayout>
-</android.support.constraint.ConstraintLayout>
+    </android.support.constraint.ConstraintLayout>
+</LinearLayout>

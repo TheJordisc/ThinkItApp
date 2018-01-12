@@ -7,11 +7,24 @@
     android:orientation="vertical"
     android:padding="8dp"
     tools:context="net.xeill.elpuig.thinkitapp.LanguageActivity">
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:clickable="true"
+        app:fabSize="mini"
+        android:layout_gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_home_white_36dp" />
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="100dp"
-        android:layout_margin="20dp"
+        android:layout_margin="15dp"
         app:srcCompat="@drawable/logo"
         tools:ignore="ContentDescription" />
 
