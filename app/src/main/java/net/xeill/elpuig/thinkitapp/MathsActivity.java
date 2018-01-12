@@ -461,11 +461,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                         }
                     }, 1500L);
                 } else {
-                    findViewById(R.id.life1).setVisibility(View.GONE);
-                    findViewById(R.id.added_time).setVisibility(View.GONE);
-                    findViewById(R.id.added_score).setVisibility(View.GONE);
-
-                    Toast.makeText(MathsActivity.this, "GAME OVER", Toast.LENGTH_SHORT).show();
+                    gameOver();
                 }
             }
         }.start();
@@ -624,10 +620,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        findViewById(R.id.life1).setVisibility(View.GONE);
-                        findViewById(R.id.added_time).setVisibility(View.GONE);
-                        findViewById(R.id.added_score).setVisibility(View.GONE);
-                        Toast.makeText(MathsActivity.this, "GAME OVER", Toast.LENGTH_SHORT).show();
+                        gameOver();
                     }
                 }, 1500L);
 
@@ -680,5 +673,18 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                 loadOperation();
             }
         }, 1500L);
+    }
+
+    private void gameOver() {
+        findViewById(R.id.life1).setVisibility(View.GONE);
+        mAddedTimeText.setVisibility(View.GONE);
+        mAddedScoreText.setVisibility(View.GONE);
+        mLifeline5050.setEnabled(false);
+        ViewCompat.setBackgroundTintList(mLifeline5050,ColorStateList.valueOf(Color.GRAY));
+        mLifelinePassover.setEnabled(false);
+        ViewCompat.setBackgroundTintList(mLifelinePassover,ColorStateList.valueOf(Color.GRAY));
+
+        Toast.makeText(MathsActivity.this, "GAME OVER", Toast.LENGTH_SHORT).show();
+        //TODO: Replace by intent
     }
 }
