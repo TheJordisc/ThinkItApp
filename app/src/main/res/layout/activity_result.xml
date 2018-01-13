@@ -10,17 +10,15 @@
         android:id="@+id/fab_home"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="8dp"
-        android:layout_marginBottom="8dp"
+        android:layout_gravity="right"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
         android:clickable="true"
+        app:backgroundTint="@android:color/holo_red_dark"
         app:fabSize="mini"
-        app:layout_constraintBottom_toTopOf="@+id/game_over"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_home_white_36dp"
-        android:focusable="true" />
+        app:srcCompat="@drawable/ic_close_white_24dp" />
 
     <TextView
         android:id="@+id/game_over"
