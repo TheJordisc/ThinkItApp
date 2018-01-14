@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ScoreActivity extends AppCompatActivity {
+
     List<Score> scoreList = new ArrayList<>();
 
     @Override
@@ -23,12 +24,6 @@ public class ScoreActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
 
-        for(int i = 0; i<15; i++){
-            Score score = new Score();
-            score.setUser("ASD");
-            score.setScore(999);
-            scoreList.add(score);
-        }
 
         RecyclerView recyclerView = findViewById(R.id.score_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

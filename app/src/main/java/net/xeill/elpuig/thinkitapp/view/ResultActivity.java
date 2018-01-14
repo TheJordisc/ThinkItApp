@@ -5,13 +5,19 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import net.xeill.elpuig.thinkitapp.R;
+import net.xeill.elpuig.thinkitapp.model.Score;
 
 public class ResultActivity extends AppCompatActivity {
     int mScore;
     TextView mScoreTextView;
+    EditText name_edit;
+    Boolean buttonFlag = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +32,8 @@ public class ResultActivity extends AppCompatActivity {
 
         mScoreTextView.setText(mScore+"");
 
+        name_edit = findViewById(R.id.name_edit);
+
         final FloatingActionButton homeFAB = findViewById(R.id.fab_home);
 
         homeFAB.setOnClickListener(new View.OnClickListener() {
@@ -34,6 +42,40 @@ public class ResultActivity extends AppCompatActivity {
                 Intent homeIntent = new Intent(ResultActivity.this,MainActivity.class);
                 startActivity(homeIntent);
                 ResultActivity.this.finish();
+            }
+        });
+
+        final Button saveScore = findViewById(R.id.save_score);
+
+        saveScore.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (name_edit.getText().length() ==0 ){
+                    String s = "Introduce un nombre";
+                    Toast t = Toast.makeText(ResultActivity.this, s, Toast.LENGTH_LONG);
+                    t.show();
+                } else if (name_edit.getText().length()>10){
+                    String s = "Introduce un nombre más corto";
+                    Toast t = Toast.makeText(ResultActivity.this, s, Toast.LENGTH_LONG);
+                    t.show();
+                } else if (!buttonFlag){
+                    Score score = new Score();
+                    score.setUser(""+ name_edit.getText());
+                    score.setScore(mScore);
+                    ScoreActivity scoreActivity = new ScoreActivity();
+                    scoreActivity.scoreList.add(score);
+                    buttonFlag=true;
+                    String s = "Puntuación guardada";
+                    Toast t = Toast.makeText(ResultActivity.this, s, Toast.LENGTH_LONG);
+                    t.show();
+                }else{
+                    String s = "Ya se ha guardado la puntuación anteriormente";
+                    Toast t = Toast.makeText(ResultActivity.this, s, Toast.LENGTH_LONG);
+                    t.show();
+
+                }
+
+
             }
         });
     }
