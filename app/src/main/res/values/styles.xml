@@ -16,4 +16,8 @@
         <item name="backgroundTint">@android:color/holo_blue_dark</item>
     </style>
 
+    <style name="lifelineButton" parent="Base.TextAppearance.AppCompat.Button">
+        <item name="backgroundTint">@android:color/holo_blue_dark</item>
+    </style>
+
 </resources>

@@ -17,7 +17,6 @@ import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
@@ -54,6 +53,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     TextView mScoreText;
     TextView mAddedScoreText;
     TextView mAddedTimeText;
+    TextView mLevelText;
     long mBonusTime=0;
     boolean mHasBonus=true;
     long mInitialMillis=0;
@@ -61,6 +61,13 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     boolean mAnswerWasCorrect=false;
     ImageButton mLifeline5050;
     ImageButton mLifelinePassover;
+    //TODO: FOR DEBUG ONLY
+    //int level=5;
+    int level = 0;
+    int scalableLevelsStartValueOp1 = 50;
+    int scalableLevelsStartValueOp2 = 50;
+    int scalableLevelsStartValueOp1Bis = 40; //Bis is for multiplications and divisions
+    int scalableLevelsStartValueOp2Bis = 20;
 
     boolean mPaused;
 
@@ -110,11 +117,28 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             }
         });
 
+        answerButtons = new ArrayList<>();
+        answerButtons.add((AppCompatButton) findViewById(R.id.answer1));
+        answerButtons.add((AppCompatButton) findViewById(R.id.answer2));
+        answerButtons.add((AppCompatButton) findViewById(R.id.answer3));
+        answerButtons.add((AppCompatButton) findViewById(R.id.answer4));
+        answerButtons.add((AppCompatButton) findViewById(R.id.answer5));
+        answerButtons.add((AppCompatButton) findViewById(R.id.answer6));
+        answerButtons.add((AppCompatButton) findViewById(R.id.answer7));
+        answerButtons.add((AppCompatButton) findViewById(R.id.answer8));
+
+        for (AppCompatButton b : answerButtons) {
+            b.setVisibility(View.GONE);
+        }
+
         mScoreText = findViewById(R.id.score);
         mScoreText.setText(mScore+"");
         mAddedScoreText = findViewById(R.id.added_score);
         mAddedTimeText = findViewById(R.id.added_time);
         mTimer=findViewById(R.id.timer);
+
+        mLevelText = findViewById(R.id.level);
+        mLevelText.setText(getString(R.string.level) + " " + level);
 
         loadOperation();
 
@@ -202,6 +226,11 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         } else {
             op1 = op2;
             op2 = calculateOperation();
+        }
+
+        if (correctAnswers%10==0) {
+            level++;
+            mLevelText.setText(getString(R.string.level) + " " + level);
         }
 
         mTimer.setBackground(defTimerColor);
@@ -306,22 +335,37 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         }
 
         //Rellenar teclado
-        answerButtons = new ArrayList<>();
-        answerButtons.add((AppCompatButton) findViewById(R.id.answer1));
-        answerButtons.add((AppCompatButton) findViewById(R.id.answer2));
-        answerButtons.add((AppCompatButton) findViewById(R.id.answer3));
-        answerButtons.add((AppCompatButton) findViewById(R.id.answer4));
-        answerButtons.add((AppCompatButton) findViewById(R.id.answer5));
-        answerButtons.add((AppCompatButton) findViewById(R.id.answer6));
-        answerButtons.add((AppCompatButton) findViewById(R.id.answer7));
-        answerButtons.add((AppCompatButton) findViewById(R.id.answer8));
 
         //Clear buttons
         for (AppCompatButton b : answerButtons) {
             b.setText("");
         }
 
-        correctButtonIndex = (int) (Math.random() * 8);
+        int maxButtons;
+
+        switch (level) {
+            case 1:
+                maxButtons=4;
+                answerButtons.get(0).setVisibility(View.VISIBLE);
+                answerButtons.get(1).setVisibility(View.VISIBLE);
+                answerButtons.get(2).setVisibility(View.VISIBLE);
+                answerButtons.get(3).setVisibility(View.VISIBLE);
+                break;
+            case 2:
+                answerButtons.get(4).setVisibility(View.VISIBLE);
+                answerButtons.get(5).setVisibility(View.VISIBLE);
+                maxButtons=6;
+                break;
+            case 3 :
+                answerButtons.get(6).setVisibility(View.VISIBLE);
+                answerButtons.get(7).setVisibility(View.VISIBLE);
+                maxButtons=8;
+                break;
+            default:
+                maxButtons=8;
+        }
+
+        correctButtonIndex = (int) (Math.random() * maxButtons);
 
         switch (op1.getHiddenField()) {
             case 0:
@@ -471,30 +515,106 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     }
 
     public Operation calculateOperation() {
-        Operation op1;
+        Operation op1 = new Operation();;
+        int op1Range=1, op2Range=1, newOp2=1;
 
         do {
-            //Operación vacía
-            op1 = new Operation();
-
             //Seleccionar operación
             op1.setOpType(Operation.OpType.values()[(int) (Math.random() * 4)]);
 
-            //Calcular operando 1
-            int range = (100 - 1) + 1;
-            op1.setOp1((int)(Math.random() * range) + 1);
+            //Calcular operandos
+            switch (level+1) {
+                case 1:
+                    if (op1.getOpTypeStr().equals("÷")) {
+                        op1Range = (10 - 1) + 1;
+                    } else {
+                        op1Range = (5 - 1) + 1;
+                    }
 
-            //Calcular operando 2
-            if(op1.getOpTypeStr().equals("÷") || op1.getOpTypeStr().equals("x")) {
-                range = (10 - 1) + 1;
+
+                    if (op1.getOpTypeStr().equals("÷")) {
+                        op2Range = (10 - 1) + 1;
+                    } else {
+                        op2Range = (5 - 1) + 1;
+                    }
+
+                    break;
+                case 2:
+                    op1Range = (10 - 1) + 1;
+
+                    op2Range = (10 - 1) + 1;
+
+                    break;
+                case 3:
+                    op1Range = (20 - 1) + 1;
+
+                    if (op1.getOpTypeStr().equals("x") || op1.getOpTypeStr().equals("÷")) {
+                        op2Range = (10 - 1) + 1;
+                    } else {
+                        op2Range = (20 - 1) + 1;
+                    }
+
+                    break;
+                case 4:
+                    if (op1.getOpTypeStr().equals("x") || op1.getOpTypeStr().equals("÷")) {
+                        op1Range = (30 - 1) + 1;
+                    } else {
+                        op1Range = (40 - 1) + 1;
+                    }
+
+
+                    if (op1.getOpTypeStr().equals("x") || op1.getOpTypeStr().equals("÷")) {
+                        op2Range = (10 - 1) + 1;
+                    } else {
+                        op2Range = (40 - 1) + 1;
+                    }
+
+                    break;
+                case 5:
+                    if (op1.getOpTypeStr().equals("x") || op1.getOpTypeStr().equals("÷")) {
+                        op1Range = (40 - 1) + 1;
+                    } else {
+                        op1Range = (50 - 1) + 1;
+                    }
+
+
+                    if (op1.getOpTypeStr().equals("x") || op1.getOpTypeStr().equals("÷")) {
+                        op2Range = (20 - 1) + 1;
+                    } else {
+                        op2Range = (50 - 1) + 1;
+                    }
+
+                    break;
+                default:
+                    if (op1.getOpTypeStr().equals("x") || op1.getOpTypeStr().equals("÷")) {
+                        op1Range = (scalableLevelsStartValueOp1Bis - 1) + 1;
+                        scalableLevelsStartValueOp1Bis+=10;
+                    } else {
+                        op1Range = (scalableLevelsStartValueOp1 - 1) + 1;
+                        scalableLevelsStartValueOp1+=10;
+                    }
+
+
+                    if (op1.getOpTypeStr().equals("x") || op1.getOpTypeStr().equals("÷")) {
+                        op2Range = (scalableLevelsStartValueOp2Bis - 1) + 1;
+                        scalableLevelsStartValueOp2Bis+=5;
+                    } else {
+                        op2Range = (scalableLevelsStartValueOp2+10 - 1) + 1;
+                        scalableLevelsStartValueOp2+=10;
+                    }
+
+                    break;
             }
 
-            int newOp2 = (int)(Math.random() * range) + 1;
+            op1.setOp1((int)(Math.random() * op1Range) + 1);
+
+            newOp2 = (int)(Math.random() * op2Range) + 1;
             while (op1.getOpTypeStr().equals("÷") && op1.getOp1()%newOp2 !=0) {
-                newOp2 = (int)(Math.random() * range) + 1;
+                newOp2 = (int)(Math.random() * op2Range) + 1;
             }
             op1.setOp2(newOp2);
-        } while ((op1.getOpTypeStr().equals("÷") && op1.getOp1()/op1.getOp2() < 0) ||(op1.getOpTypeStr().equals("-") && op1.getOp1()-op1.getOp2() < 0));
+
+        } while ((op1.getOpTypeStr().equals("÷") && (op1.getOp1()/op1.getOp2()) <= 0) || (op1.getOpTypeStr().equals("-") && op1.getOp1()-op1.getOp2() < 0));
 
         //Guardar resultado
         op1.calculate();
