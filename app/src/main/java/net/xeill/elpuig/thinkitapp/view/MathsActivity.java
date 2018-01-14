@@ -59,11 +59,12 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     long mInitialMillis=0;
     long mMillisLeft =0;
     boolean mAnswerWasCorrect=false;
+    boolean isFirstAnswer=true;
     ImageButton mLifeline5050;
     ImageButton mLifelinePassover;
     //TODO: FOR DEBUG ONLY
     //int level=5;
-    int level = 0;
+    int level = 1;
     int scalableLevelsStartValueOp1 = 50;
     int scalableLevelsStartValueOp2 = 50;
     int scalableLevelsStartValueOp1Bis = 40; //Bis is for multiplications and divisions
@@ -228,7 +229,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             op2 = calculateOperation();
         }
 
-        if (correctAnswers%10==0) {
+        if (correctAnswers%10==0 && !isFirstAnswer) {
             level++;
             mLevelText.setText(getString(R.string.level) + " " + level);
         }
@@ -523,7 +524,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             op1.setOpType(Operation.OpType.values()[(int) (Math.random() * 4)]);
 
             //Calcular operandos
-            switch (level+1) {
+            switch (level) {
                 case 1:
                     if (op1.getOpTypeStr().equals("÷")) {
                         op1Range = (10 - 1) + 1;
@@ -752,6 +753,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void correctAnswer() {
+        isFirstAnswer=false;
         correctAnswers++;
         mAnswerWasCorrect=true;
 
