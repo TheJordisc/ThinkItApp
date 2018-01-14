@@ -1,5 +1,8 @@
 package net.xeill.elpuig.thinkitapp.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Score {
     private String user;
     private int score;
@@ -46,5 +49,4 @@ public class Score {
     public void setCorrectAnswers(int correctAnswers) {
         this.correctAnswers = correctAnswers;
     }
-
 }
