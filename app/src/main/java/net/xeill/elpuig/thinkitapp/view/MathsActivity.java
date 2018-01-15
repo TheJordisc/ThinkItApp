@@ -413,10 +413,31 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                     max=answer+10;
                 }
                 answerRange = (max - min) + 1;
-                answerButtons.get(i).setText(((int)(Math.random() * answerRange) + min) + "");
-                while (answerButtons.get(i).getText().toString().equals(answerButtons.get(correctButtonIndex).getText().toString())) {
-                    answerButtons.get(i).setText(((int)(Math.random() * answerRange) + min) + "");
-                }
+
+                String option;
+                boolean found;
+                do {
+                    option = ((int)(Math.random() * answerRange) + min) + "";
+
+                    found = false;
+
+                    for (int j = 0; j < i; j++) {
+                        if (answerButtons.get(j).getText().toString().equals(option)) {
+                            found=true;
+                            break;
+                        }
+                    }
+                } while (found || option.equals(answerButtons.get(correctButtonIndex).getText().toString()));
+
+                answerButtons.get(i).setText(option);
+
+//                while (answerButtons.get(i).getText().toString().equals(answerButtons.get(correctButtonIndex).getText().toString())) {
+//                    answerButtons.get(i).setText(((int)(Math.random() * answerRange) + min) + "");
+//                }
+
+
+
+
 
                 //TODO: Se repiten a veces con las divisiones
             }
@@ -767,7 +788,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         mScore+= (mMillisLeft/1000)*10+10;
         mScoreText.setText(mScore+"");
 
-        mAddedScoreText.setText("+100" + " +" + ((mMillisLeft/1000)*10+10));
+        mAddedScoreText.setText("+100\n" + " +" + ((mMillisLeft/1000)*10+10));
         mAddedScoreText.setVisibility(View.VISIBLE);
 
         if (mHasBonus) {
