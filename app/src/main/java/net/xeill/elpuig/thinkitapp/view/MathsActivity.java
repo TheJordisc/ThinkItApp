@@ -17,6 +17,7 @@ import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
+import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
@@ -35,6 +36,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     MediaPlayer musicPlayer;
     int correctAnswers=0;
     List<AppCompatButton> answerButtons;
+    int mEnabledButtons=4;
     int correctButtonIndex;
     boolean firstTime = true;
     VideoView bgVideo;
@@ -45,7 +47,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     Operation op1=null;
     Operation op2=null;
     int mLives=3;
-    TextView mTimer;
+    AppCompatTextView mTimer;
     CountDownTimer mCountdownTimer;
     MediaPlayer mCountdownPlayer;
     boolean mCountdownPlayed = false;
@@ -178,20 +180,19 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                 lifelinePlayer.start();
 
                 List<Integer> toHide = new ArrayList<>();
-                for (int i = 0; i < answerButtons.size()/2; i++) {
-                    int hiddenButtonIndex = ((int)(Math.random() * (((answerButtons.size()-1) - 0) + 1)) + 0);
+                for (int i = 0; i < mEnabledButtons/2; i++) {
+                    int hiddenButtonIndex;
                     boolean alreadyHidden;
 
                     do {
+                        hiddenButtonIndex = ((int)(Math.random() * (((mEnabledButtons-1) - 0) + 1)) + 0);
                         alreadyHidden = false;
                         for (Integer j : toHide) {
-                            if (j.equals(hiddenButtonIndex)) {
+                            if (j == hiddenButtonIndex) {
                                 alreadyHidden=true;
                                 break;
                             }
                         }
-
-                        hiddenButtonIndex = ((int)(Math.random() * (((answerButtons.size()-1) - 0) + 1)) + 0);
                     } while (hiddenButtonIndex == correctButtonIndex || alreadyHidden);
 
 
@@ -231,10 +232,14 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
         if (correctAnswers%10==0 && !isFirstAnswer) {
             level++;
+            if (level == 2 || level == 3) {
+                mEnabledButtons+=2;
+            }
+
             mLevelText.setText(getString(R.string.level) + " " + level);
         }
 
-        mTimer.setBackground(defTimerColor);
+        mTimer.setBackgroundDrawable(defTimerColor);
 
         //Poner símbolo de operación
         TextView op1OpType = findViewById(R.id.oper1_opType);
