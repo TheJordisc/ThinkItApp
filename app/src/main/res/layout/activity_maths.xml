@@ -476,7 +476,7 @@
             app:srcCompat="@drawable/ic_home_white_36dp" />
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/score_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -498,8 +498,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
+        android:textAlignment="viewEnd"
         android:layout_marginTop="60dp"
-        android:text="TextView"
+        android:text=" "
         android:textColor="@android:color/black"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
