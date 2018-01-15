@@ -17,7 +17,8 @@ import java.util.List;
 
 public class ScoreActivity extends AppCompatActivity {
 
-    List<Score> scoreList = new ArrayList<>();
+    static List<Score> scoreList = new ArrayList<>();
+    static ScoreRecyclerAdapter scoreRecyclerAdapter = new ScoreRecyclerAdapter(scoreList);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +29,10 @@ public class ScoreActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.score_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-        ScoreRecyclerAdapter scoreRecyclerAdapter = new ScoreRecyclerAdapter(scoreList);
+
         recyclerView.setAdapter(scoreRecyclerAdapter);
 
-        scoreRecyclerAdapter.notifyDataSetChanged();
+//        scoreRecyclerAdapter.notifyDataSetChanged();
 
         final FloatingActionButton homeFAB = findViewById(R.id.fab_home);
         homeFAB.setOnClickListener(new View.OnClickListener() {

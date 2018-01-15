@@ -28,9 +28,9 @@ public class ScoreRecyclerAdapter extends RecyclerView.Adapter<ScoreRecyclerAdap
     @Override
     public void onBindViewHolder(ScoreViewHolder holder, int position) {
         //AQUI
-      //  holder.position.setText(position+1);
+        holder.position.setText(position+1 +"");
         holder.name.setText(scoreList.get(position).getUser());
-        //holder.score.setText(scoreList.get(position).getScore());
+        holder.score.setText(scoreList.get(position).getScore() + "");
 
     }
 
@@ -51,10 +51,5 @@ public class ScoreRecyclerAdapter extends RecyclerView.Adapter<ScoreRecyclerAdap
                 name = itemView.findViewById(R.id.score_name);
                 score = itemView.findViewById(R.id.final_score);
             }
-    }
-
-    @Override
-    public void onAttachedToRecyclerView(RecyclerView recyclerView) {
-        super.onAttachedToRecyclerView(recyclerView);
     }
 }

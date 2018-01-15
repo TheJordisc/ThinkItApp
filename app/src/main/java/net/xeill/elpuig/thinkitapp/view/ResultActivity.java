@@ -26,6 +26,7 @@ public class ResultActivity extends AppCompatActivity {
 
         //TODO: Que el editText no sea multiline y limitar caracteres?
         //TODO: Si está vacío, diálogo -> volver o no guardar
+        //TODO: On back pressed: dialog toHome
         mScore = getIntent().getIntExtra("score",0);
 
         mScoreTextView = findViewById(R.id.score);
@@ -62,8 +63,8 @@ public class ResultActivity extends AppCompatActivity {
                     Score score = new Score();
                     score.setUser(""+ name_edit.getText());
                     score.setScore(mScore);
-                    ScoreActivity scoreActivity = new ScoreActivity();
-                    scoreActivity.scoreList.add(score);
+                    ScoreActivity.scoreList.add(score);
+                    ScoreActivity.scoreRecyclerAdapter.notifyDataSetChanged();
                     buttonFlag=true;
                     String s = "Puntuación guardada";
                     Toast t = Toast.makeText(ResultActivity.this, s, Toast.LENGTH_LONG);
