@@ -387,31 +387,37 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         for (int i = 0; i < answerButtons.size(); i++) {
             if (answerButtons.get(i).getText()=="") {
                 int answerRange=0;
+                int answer = 0;
 
                 //TODO: Siguen saliendo repetidos
                 switch (op1.getHiddenField()) {
                     case 0:
-                        answerRange = ((op1.getOp1()+10) - (op1.getOp1()-10)) + 1;
-                        answerButtons.get(i).setText(((int)(Math.random() * answerRange) + op1.getOp1()-10) + "");
-                        while (answerButtons.get(i).getText().equals(answerButtons.get(correctButtonIndex).getText())) {
-                            answerButtons.get(i).setText(((int)(Math.random() * answerRange) + op1.getOp1()-10) + "");
-                        }
+                        answer=op1.getOp1();
                         break;
                     case 1:
-                        answerRange = ((op1.getOp2()+10) - (op1.getOp2()-10)) + 1;
-                        answerButtons.get(i).setText(((int)(Math.random() * answerRange) + op1.getOp2()-10) + "");
-                        while (answerButtons.get(i).getText().equals(answerButtons.get(correctButtonIndex).getText())) {
-                            answerButtons.get(i).setText(((int)(Math.random() * answerRange) + op1.getOp2()-10) + "");
-                        }
+                        answer=op1.getOp2();
                         break;
                     case 2:
-                        answerRange = ((op1.getRes()+10) - (op1.getRes()-10)) + 1;
-                        answerButtons.get(i).setText(((int)(Math.random() * answerRange) + op1.getRes()-10) + "");
-                        while (answerButtons.get(i).getText().equals(answerButtons.get(correctButtonIndex).getText())) {
-                            answerButtons.get(i).setText(((int)(Math.random() * answerRange) + op1.getRes()-10) + "");
-                        }
+                        answer=op1.getRes();
                         break;
                 }
+
+                int min = 0;
+                int max = 0;
+
+                if (answer <= 10) {
+                    min=1;
+                    max=answer+10+(10-answer);
+                } else {
+                    min=answer-10;
+                    max=answer+10;
+                }
+                answerRange = (max - min) + 1;
+                answerButtons.get(i).setText(((int)(Math.random() * answerRange) + min) + "");
+                while (answerButtons.get(i).getText().toString().equals(answerButtons.get(correctButtonIndex).getText().toString())) {
+                    answerButtons.get(i).setText(((int)(Math.random() * answerRange) + min) + "");
+                }
+
                 //TODO: Se repiten a veces con las divisiones
             }
         }
