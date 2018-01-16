@@ -78,6 +78,8 @@
         android:layout_marginTop="400dp"
         android:hint="@string/hint_enter_name"
         android:textAlignment="center"
+        android:maxLines="1"
+        android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

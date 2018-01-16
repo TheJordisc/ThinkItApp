@@ -30,8 +30,8 @@
         <activity
             android:name=".view.ScoreActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".view.ResultActivity" />
-        <activity android:name=".view.MathsTutorialActivity"></activity>
+        <activity android:name=".view.ResultActivity"
+            android:screenOrientation="portrait"/>
     </application>
 
 </manifest>

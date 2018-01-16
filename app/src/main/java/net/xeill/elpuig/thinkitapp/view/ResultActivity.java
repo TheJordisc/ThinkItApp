@@ -64,6 +64,7 @@ public class ResultActivity extends AppCompatActivity {
                     score.setUser("" + name_edit.getText());
                     score.setScore(mScore);
                     ScoreActivity.scoreList.add(score);
+                    //ordenar
                     ScoreActivity.scoreRecyclerAdapter.notifyDataSetChanged();
                     buttonFlag = true;
                     String s = "Puntuación guardada";
