@@ -75,7 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="364dp"
+        android:layout_marginTop="400dp"
         android:hint="@string/hint_enter_name"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,17 +83,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/save_score"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="460dp"
-        android:text="Guardar puntuación"
+        android:layout_gravity="right"
+        android:layout_marginEnd="92dp"
+        android:layout_marginTop="8dp"
+        android:clickable="true"
+        app:backgroundTint="@android:color/black"
+        app:fabSize="mini"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintTop_toBottomOf="@+id/score"
+        app:srcCompat="@drawable/ic_save_white_24dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/restart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="right"
+        android:layout_marginStart="92dp"
+        android:layout_marginTop="8dp"
+        android:clickable="true"
+        app:backgroundTint="@color/colorPrimary"
+        app:fabSize="mini"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/score"
+        app:srcCompat="@drawable/ic_refresh_white_24dp" />
 
 </android.support.constraint.ConstraintLayout>
