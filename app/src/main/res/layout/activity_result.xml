@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="net.xeill.elpuig.thinkitapp.view.ResultActivity">
-
+<android.support.constraint.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_home"
         android:layout_width="wrap_content"
@@ -14,6 +16,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:clickable="true"
+
         app:backgroundTint="@android:color/holo_red_dark"
         app:fabSize="mini"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,11 +78,13 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="400dp"
+        android:layout_marginTop="320dp"
         android:hint="@string/hint_enter_name"
         android:textAlignment="center"
         android:maxLines="1"
-        android:inputType="text"
+        android:lines="1"
+        android:maxLength="10"
+        android:singleLine="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -90,27 +95,31 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:layout_marginEnd="92dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginEnd="76dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="416dp"
         android:clickable="true"
-        app:backgroundTint="@android:color/black"
+        app:backgroundTint="@android:color/holo_green_light"
         app:fabSize="mini"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/score"
-        app:srcCompat="@drawable/ic_save_white_24dp" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/restart"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_done_white_24dp" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/restart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:layout_marginStart="92dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="76dp"
+        android:layout_marginTop="416dp"
         android:clickable="true"
         app:backgroundTint="@color/colorPrimary"
         app:fabSize="mini"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/score"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_refresh_white_24dp" />
 
 </android.support.constraint.ConstraintLayout>
+    </ScrollView>

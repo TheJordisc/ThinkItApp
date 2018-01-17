@@ -55,10 +55,6 @@ public class ResultActivity extends AppCompatActivity {
                     String s = "Introduce un nombre";
                     Toast t = Toast.makeText(ResultActivity.this, s, Toast.LENGTH_LONG);
                     t.show();
-                } else if (name_edit.getText().length() > 10) {
-                    String s = "Introduce un nombre más corto";
-                    Toast t = Toast.makeText(ResultActivity.this, s, Toast.LENGTH_LONG);
-                    t.show();
                 } else if (!buttonFlag) {
                     Score score = new Score();
                     score.setUser("" + name_edit.getText());
