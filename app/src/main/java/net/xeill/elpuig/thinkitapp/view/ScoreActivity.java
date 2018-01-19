@@ -14,9 +14,10 @@ import net.xeill.elpuig.thinkitapp.view.adapter.ScoreRecyclerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeMap;
 
 public class ScoreActivity extends AppCompatActivity {
-
+    int i, j;
     static List<Score> scoreList = new ArrayList<>();
     static ScoreRecyclerAdapter scoreRecyclerAdapter = new ScoreRecyclerAdapter(scoreList);
 
@@ -32,7 +33,6 @@ public class ScoreActivity extends AppCompatActivity {
 
         recyclerView.setAdapter(scoreRecyclerAdapter);
 
-//        scoreRecyclerAdapter.notifyDataSetChanged();
 
         final FloatingActionButton homeFAB = findViewById(R.id.fab_home);
         homeFAB.setOnClickListener(new View.OnClickListener() {
@@ -43,5 +43,6 @@ public class ScoreActivity extends AppCompatActivity {
                 ScoreActivity.this.finish();
             }
         });
+
     }
 }

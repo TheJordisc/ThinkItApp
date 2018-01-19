@@ -17,16 +17,11 @@ public class ResultActivity extends AppCompatActivity {
     int mScore;
     TextView mScoreTextView;
     EditText name_edit;
-    Boolean buttonFlag = false;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
-        //TODO: Que el editText no sea multiline y limitar caracteres?
-        //TODO: Si está vacío, diálogo -> volver o no guardar
-        //TODO: On back pressed: dialog toHome
         mScore = getIntent().getIntExtra("score", 0);
 
         mScoreTextView = findViewById(R.id.score);
@@ -55,22 +50,15 @@ public class ResultActivity extends AppCompatActivity {
                     String s = "Introduce un nombre";
                     Toast t = Toast.makeText(ResultActivity.this, s, Toast.LENGTH_LONG);
                     t.show();
-                } else if (!buttonFlag) {
+                } else{
                     Score score = new Score();
                     score.setUser("" + name_edit.getText());
                     score.setScore(mScore);
                     ScoreActivity.scoreList.add(score);
                     //ordenar
                     ScoreActivity.scoreRecyclerAdapter.notifyDataSetChanged();
-                    buttonFlag = true;
-                    String s = "Puntuación guardada";
-                    Toast t = Toast.makeText(ResultActivity.this, s, Toast.LENGTH_LONG);
-                    t.show();
-                } else {
-                    String s = "Ya se ha guardado la puntuación anteriormente";
-                    Toast t = Toast.makeText(ResultActivity.this, s, Toast.LENGTH_LONG);
-                    t.show();
-
+                    Intent scoreIntent = new Intent(ResultActivity.this,ScoreActivity.class);
+                    startActivity(scoreIntent);
                 }
             }
         });
