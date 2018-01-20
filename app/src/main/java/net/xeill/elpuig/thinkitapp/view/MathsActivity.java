@@ -59,11 +59,24 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
     boolean mCountdownPlayed = false;
     int mScore=0;
+
+    TextView op1OpType;
+    TextView op2OpType;
+
+    TextView op1Op1TV;
+    TextView op1Op2TV;
+    TextView op1ResTV;
+
+    TextView op2Op1TV;
+    TextView op2Op2TV;
+    TextView op2ResTV;
+
     TextView mScoreText;
     TextView mAddedScoreText;
     TextView mAddedTimeText;
     TextView mLevelText;
     TextView mLastLife;
+    TextView mLevelUp;
 
     long mBonusTime=0;
     boolean mHasBonus=true;
@@ -159,6 +172,18 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         mLevelText.setText(getString(R.string.level) + " " + level);
 
         mLastLife = findViewById(R.id.last_life);
+        mLevelUp = findViewById(R.id.level_up);
+
+        op1Op1TV = findViewById(R.id.oper1_op1);
+        op1Op2TV = findViewById(R.id.oper1_op2);
+        op1ResTV = findViewById(R.id.oper1_res);
+
+        op2Op1TV = findViewById(R.id.oper2_op1);
+        op2Op2TV = findViewById(R.id.oper2_op2);
+        op2ResTV = findViewById(R.id.oper2_res);
+
+        op1OpType = findViewById(R.id.oper1_opType);
+        op2OpType = findViewById(R.id.oper2_opType);
 
         loadOperation();
 
@@ -301,14 +326,8 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void loadOperation() {
+        long delay = 0L;
         mCountdownPlayed=false;
-        TextView op1Op1TV = findViewById(R.id.oper1_op1);
-        TextView op1Op2TV = findViewById(R.id.oper1_op2);
-        TextView op1ResTV = findViewById(R.id.oper1_res);
-
-        TextView op2Op1TV = findViewById(R.id.oper2_op1);
-        TextView op2Op2TV = findViewById(R.id.oper2_op2);
-        TextView op2ResTV = findViewById(R.id.oper2_res);
 
         for (AppCompatButton b : answerButtons) {
             ViewCompat.setBackgroundTintList(b,defButtonColor);
@@ -329,270 +348,284 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
         if (correctAnswers%10==0 && !isFirstAnswer) {
             level++;
+            delay=2000L;
+
             if (level == 2 || level == 3) {
                 mEnabledButtons+=2;
             }
 
             mLevelText.setText(getString(R.string.level) + " " + level);
+
+            mLevelUp.setVisibility(View.VISIBLE);
+            mLevelUp.setText(getString(R.string.level) + " " + level);
+            MediaPlayer.create(MathsActivity.this,R.raw.levelup).start();
         }
 
-        mTimer.setBackgroundDrawable(defTimerColor);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mLevelUp.setVisibility(View.GONE);
+                mTimer.setBackgroundDrawable(defTimerColor);
 
-        //Poner símbolo de operación
-        TextView op1OpType = findViewById(R.id.oper1_opType);
-        op1OpType.setText(op1.getOpTypeStr());
+                //Poner símbolo de operación
 
-        TextView op2OpType = findViewById(R.id.oper2_opType);
-        op2OpType.setText(op2.getOpTypeStr());
+                op1OpType.setText(op1.getOpTypeStr());
+                op2OpType.setText(op2.getOpTypeStr());
 
-        //Poner campos según toque
-        switch (op1.getHiddenField()) {
-            case 0:
-                op1Op1TV.setText("?");
-                op1Op1TV.setTextSize(60);
-                op1Op1TV.setTextColor(Color.RED);
-
-                op1Op2TV.setText(op1.getOp2()+"");
-                op1Op2TV.setTextColor(defColor);
-                op1Op2TV.setTextSize(defOp1Size);
-
-                op1ResTV.setText(op1.getRes()+"");
-                op1ResTV.setTextColor(defColor);
-                op1ResTV.setTextSize(defOp1Size);
-                break;
-            case 1:
-                op1Op1TV.setText(op1.getOp1()+"");
-                op1Op1TV.setTextColor(defColor);
-                op1Op1TV.setTextSize(defOp1Size);
-
-
-                op1Op2TV.setText("?");
-                op1Op2TV.setTextSize(60);
-                op1Op2TV.setTextColor(Color.RED);
-
-                op1ResTV.setText(op1.getRes()+"");
-                op1ResTV.setTextColor(defColor);
-                op1ResTV.setTextSize(defOp1Size);
-
-                break;
-            case 2:
-                op1Op1TV.setText(op1.getOp1()+"");
-                op1Op1TV.setTextColor(defColor);
-                op1Op1TV.setTextSize(defOp1Size);
-
-
-                op1Op2TV.setText(op1.getOp2()+"");
-                op1Op2TV.setTextColor(defColor);
-                op1Op2TV.setTextSize(defOp1Size);
-
-
-                op1ResTV.setText("?");
-                op1ResTV.setTextSize(60);
-                op1ResTV.setTextColor(Color.RED);
-                break;
-        }
-
-        switch (op2.getHiddenField()) {
-            case 0:
-                op2Op1TV.setText("?");
-                op2Op1TV.setTextSize(40);
-                op2Op1TV.setTextColor(Color.RED);
-
-                op2Op2TV.setText(op2.getOp2()+"");
-                op2Op2TV.setTextColor(defColor);
-                op2Op2TV.setTextSize(defOp2Size);
-
-                op2ResTV.setText(op2.getRes()+"");
-                op2ResTV.setTextColor(defColor);
-                op2ResTV.setTextSize(defOp2Size);
-                break;
-            case 1:
-                op2Op1TV.setText(op2.getOp1()+"");
-                op2Op1TV.setTextColor(defColor);
-                op2Op1TV.setTextSize(defOp2Size);
-
-                op2Op2TV.setText("?");
-                op2Op2TV.setTextSize(40);
-                op2Op2TV.setTextColor(Color.RED);
-
-                op2ResTV.setText(op2.getRes()+"");
-                op2ResTV.setTextColor(defColor);
-                op2ResTV.setTextSize(defOp2Size);
-
-                break;
-            case 2:
-                op2Op1TV.setText(op2.getOp1()+"");
-                op2Op1TV.setTextColor(defColor);
-                op2Op1TV.setTextSize(defOp2Size);
-
-
-                op2Op2TV.setText(op2.getOp2()+"");
-                op2Op2TV.setTextColor(defColor);
-                op2Op2TV.setTextSize(defOp2Size);
-
-
-                op2ResTV.setText("?");
-                op2ResTV.setTextSize(40);
-                op2ResTV.setTextColor(Color.RED);
-                break;
-        }
-
-        //Rellenar teclado
-
-        //Clear buttons
-        for (AppCompatButton b : answerButtons) {
-            b.setText("");
-        }
-
-        int maxButtons;
-
-        switch (level) {
-            case 1:
-                maxButtons=4;
-                answerButtons.get(0).setVisibility(View.VISIBLE);
-                answerButtons.get(1).setVisibility(View.VISIBLE);
-                answerButtons.get(2).setVisibility(View.VISIBLE);
-                answerButtons.get(3).setVisibility(View.VISIBLE);
-                break;
-            case 2:
-                answerButtons.get(4).setVisibility(View.VISIBLE);
-                answerButtons.get(5).setVisibility(View.VISIBLE);
-                maxButtons=6;
-                break;
-            case 3 :
-                answerButtons.get(6).setVisibility(View.VISIBLE);
-                answerButtons.get(7).setVisibility(View.VISIBLE);
-                maxButtons=8;
-                break;
-            default:
-                maxButtons=8;
-        }
-
-        correctButtonIndex = (int) (Math.random() * maxButtons);
-
-        switch (op1.getHiddenField()) {
-            case 0:
-                answerButtons.get(correctButtonIndex).setText(op1.getOp1() + "");
-                break;
-            case 1:
-                answerButtons.get(correctButtonIndex).setText(op1.getOp2() + "");
-                break;
-            case 2:
-                answerButtons.get(correctButtonIndex).setText(op1.getRes() + "");
-                break;
-        }
-
-        //TODO: REMOVE ON RELEASE. FOR DEBUG ONLY
-        //ViewCompat.setBackgroundTintList(answerButtons.get(correctButtonIndex),ColorStateList.valueOf(Color.GREEN));
-
-        for (int i = 0; i < answerButtons.size(); i++) {
-            if (answerButtons.get(i).getText()=="") {
-                int answerRange=0;
-                int answer = 0;
-
-                //TODO: Siguen saliendo repetidos
+                //Poner campos según toque
                 switch (op1.getHiddenField()) {
                     case 0:
-                        answer=op1.getOp1();
+                        op1Op1TV.setText("?");
+                        op1Op1TV.setTextSize(60);
+                        op1Op1TV.setTextColor(Color.RED);
+
+                        op1Op2TV.setText(op1.getOp2()+"");
+                        op1Op2TV.setTextColor(defColor);
+                        op1Op2TV.setTextSize(defOp1Size);
+
+                        op1ResTV.setText(op1.getRes()+"");
+                        op1ResTV.setTextColor(defColor);
+                        op1ResTV.setTextSize(defOp1Size);
                         break;
                     case 1:
-                        answer=op1.getOp2();
+                        op1Op1TV.setText(op1.getOp1()+"");
+                        op1Op1TV.setTextColor(defColor);
+                        op1Op1TV.setTextSize(defOp1Size);
+
+
+                        op1Op2TV.setText("?");
+                        op1Op2TV.setTextSize(60);
+                        op1Op2TV.setTextColor(Color.RED);
+
+                        op1ResTV.setText(op1.getRes()+"");
+                        op1ResTV.setTextColor(defColor);
+                        op1ResTV.setTextSize(defOp1Size);
+
                         break;
                     case 2:
-                        answer=op1.getRes();
+                        op1Op1TV.setText(op1.getOp1()+"");
+                        op1Op1TV.setTextColor(defColor);
+                        op1Op1TV.setTextSize(defOp1Size);
+
+
+                        op1Op2TV.setText(op1.getOp2()+"");
+                        op1Op2TV.setTextColor(defColor);
+                        op1Op2TV.setTextSize(defOp1Size);
+
+
+                        op1ResTV.setText("?");
+                        op1ResTV.setTextSize(60);
+                        op1ResTV.setTextColor(Color.RED);
                         break;
                 }
 
-                int min = 0;
-                int max = 0;
+                switch (op2.getHiddenField()) {
+                    case 0:
+                        op2Op1TV.setText("?");
+                        op2Op1TV.setTextSize(40);
+                        op2Op1TV.setTextColor(Color.RED);
 
-                if (answer <= 10) {
-                    min=1;
-                    max=answer+10+(10-answer);
-                } else {
-                    min=answer-10;
-                    max=answer+10;
+                        op2Op2TV.setText(op2.getOp2()+"");
+                        op2Op2TV.setTextColor(defColor);
+                        op2Op2TV.setTextSize(defOp2Size);
+
+                        op2ResTV.setText(op2.getRes()+"");
+                        op2ResTV.setTextColor(defColor);
+                        op2ResTV.setTextSize(defOp2Size);
+                        break;
+                    case 1:
+                        op2Op1TV.setText(op2.getOp1()+"");
+                        op2Op1TV.setTextColor(defColor);
+                        op2Op1TV.setTextSize(defOp2Size);
+
+                        op2Op2TV.setText("?");
+                        op2Op2TV.setTextSize(40);
+                        op2Op2TV.setTextColor(Color.RED);
+
+                        op2ResTV.setText(op2.getRes()+"");
+                        op2ResTV.setTextColor(defColor);
+                        op2ResTV.setTextSize(defOp2Size);
+
+                        break;
+                    case 2:
+                        op2Op1TV.setText(op2.getOp1()+"");
+                        op2Op1TV.setTextColor(defColor);
+                        op2Op1TV.setTextSize(defOp2Size);
+
+
+                        op2Op2TV.setText(op2.getOp2()+"");
+                        op2Op2TV.setTextColor(defColor);
+                        op2Op2TV.setTextSize(defOp2Size);
+
+
+                        op2ResTV.setText("?");
+                        op2ResTV.setTextSize(40);
+                        op2ResTV.setTextColor(Color.RED);
+                        break;
                 }
-                answerRange = (max - min) + 1;
 
-                String option;
-                boolean found;
-                do {
-                    option = ((int)(Math.random() * answerRange) + min) + "";
+                //Rellenar teclado
 
-                    found = false;
+                //Clear buttons
+                for (AppCompatButton b : answerButtons) {
+                    b.setText("");
+                }
 
-                    for (int j = 0; j < i; j++) {
-                        if (answerButtons.get(j).getText().toString().equals(option)) {
-                            found=true;
-                            break;
+                int maxButtons;
+
+                switch (level) {
+                    case 1:
+                        maxButtons=4;
+                        answerButtons.get(0).setVisibility(View.VISIBLE);
+                        answerButtons.get(1).setVisibility(View.VISIBLE);
+                        answerButtons.get(2).setVisibility(View.VISIBLE);
+                        answerButtons.get(3).setVisibility(View.VISIBLE);
+                        break;
+                    case 2:
+                        answerButtons.get(4).setVisibility(View.VISIBLE);
+                        answerButtons.get(5).setVisibility(View.VISIBLE);
+                        maxButtons=6;
+                        break;
+                    case 3 :
+                        answerButtons.get(6).setVisibility(View.VISIBLE);
+                        answerButtons.get(7).setVisibility(View.VISIBLE);
+                        maxButtons=8;
+                        break;
+                    default:
+                        maxButtons=8;
+                }
+
+                correctButtonIndex = (int) (Math.random() * maxButtons);
+
+                switch (op1.getHiddenField()) {
+                    case 0:
+                        answerButtons.get(correctButtonIndex).setText(op1.getOp1() + "");
+                        break;
+                    case 1:
+                        answerButtons.get(correctButtonIndex).setText(op1.getOp2() + "");
+                        break;
+                    case 2:
+                        answerButtons.get(correctButtonIndex).setText(op1.getRes() + "");
+                        break;
+                }
+
+                //TODO: REMOVE ON RELEASE. FOR DEBUG ONLY
+                //ViewCompat.setBackgroundTintList(answerButtons.get(correctButtonIndex),ColorStateList.valueOf(Color.GREEN));
+
+                for (int i = 0; i < answerButtons.size(); i++) {
+                    if (answerButtons.get(i).getText()=="") {
+                        int answerRange=0;
+                        int answer = 0;
+
+                        //TODO: Siguen saliendo repetidos
+                        switch (op1.getHiddenField()) {
+                            case 0:
+                                answer=op1.getOp1();
+                                break;
+                            case 1:
+                                answer=op1.getOp2();
+                                break;
+                            case 2:
+                                answer=op1.getRes();
+                                break;
+                        }
+
+                        int min = 0;
+                        int max = 0;
+
+                        if (answer <= 10) {
+                            min=1;
+                            max=answer+10+(10-answer);
+                        } else {
+                            min=answer-10;
+                            max=answer+10;
+                        }
+                        answerRange = (max - min) + 1;
+
+                        String option;
+                        boolean found;
+                        do {
+                            option = ((int)(Math.random() * answerRange) + min) + "";
+
+                            found = false;
+
+                            for (int j = 0; j < i; j++) {
+                                if (answerButtons.get(j).getText().toString().equals(option)) {
+                                    found=true;
+                                    break;
+                                }
+                            }
+                        } while (found || option.equals(answerButtons.get(correctButtonIndex).getText().toString()));
+
+                        answerButtons.get(i).setText(option);
+                    }
+                }
+
+                for (AppCompatButton b : answerButtons) {
+                    b.setOnClickListener(MathsActivity.this);
+                }
+
+                if (mMillisLeft>10000) {
+                    if (mBonusTime + mMillisLeft > 59000) {
+                        mInitialMillis = 59000;
+                    } else {
+                        mInitialMillis = mBonusTime + mMillisLeft;
+                    }
+                } else {
+                    if (mAnswerWasCorrect) {
+                        mInitialMillis=10000+mMillisLeft;
+                    } else {
+                        mInitialMillis=10000;
+                    }
+                }
+
+                mHasBonus=true;
+
+                mCountdownTimer = new CountDownTimer(mInitialMillis, 500) {
+
+                    public void onTick(long millisUntilFinished) {
+                        mMillisLeft = millisUntilFinished;
+                        mTimer.setText("00:" + String.format("%02d",(millisUntilFinished/1000)+1));
+
+                        if (millisUntilFinished <= mInitialMillis-10000) {
+                            mHasBonus=false;
+                        }
+
+                        if (millisUntilFinished / 1000 == 4 && mTimer.getCurrentTextColor() != Color.RED) {
+                            mTimer.setBackgroundColor(Color.RED);
+
+                            //Sonido countdown
+                            if (!mCountdownPlayed && !mPaused) {
+                                mCountdownPlayer = MediaPlayer.create(MathsActivity.this,R.raw.countdown);
+                                mCountdownPlayer.start();
+                                mCountdownPlayed = true;
+                            }
                         }
                     }
-                } while (found || option.equals(answerButtons.get(correctButtonIndex).getText().toString()));
 
-                answerButtons.get(i).setText(option);
-            }
-        }
+                    public void onFinish() {
+                        mTimer.setText("00:00");
 
-        for (AppCompatButton b : answerButtons) {
-            b.setOnClickListener(this);
-        }
+                        if (!mPaused) {
+                            Toast.makeText(MathsActivity.this, "TIME UP!", Toast.LENGTH_SHORT).show();
 
-        if (mMillisLeft>10000) {
-            if (mBonusTime + mMillisLeft > 59000) {
-                mInitialMillis = 59000;
-            } else {
-                mInitialMillis = mBonusTime + mMillisLeft;
-            }
-        } else {
-            if (mAnswerWasCorrect) {
-                mInitialMillis=10000+mMillisLeft;
-            } else {
-                mInitialMillis=10000;
-            }
-        }
+                            for (AppCompatButton b : answerButtons) {
+                                b.setEnabled(false);
+                            }
 
-        mHasBonus=true;
+                            incorrectAnswerOrTimeOut();
+                        } else {
+                            mTimeoutOnPause = true;
+                        }
 
-        mCountdownTimer = new CountDownTimer(mInitialMillis, 500) {
-
-            public void onTick(long millisUntilFinished) {
-                mMillisLeft = millisUntilFinished;
-                mTimer.setText("00:" + String.format("%02d",(millisUntilFinished/1000)+1));
-
-                if (millisUntilFinished <= mInitialMillis-10000) {
-                    mHasBonus=false;
-                }
-
-                if (millisUntilFinished / 1000 == 4 && mTimer.getCurrentTextColor() != Color.RED) {
-                    mTimer.setBackgroundColor(Color.RED);
-
-                    //Sonido countdown
-                    if (!mCountdownPlayed && !mPaused) {
-                        mCountdownPlayer = MediaPlayer.create(MathsActivity.this,R.raw.countdown);
-                        mCountdownPlayer.start();
-                        mCountdownPlayed = true;
                     }
-                }
+                }.start();
             }
+        },delay);
 
-            public void onFinish() {
-                mTimer.setText("00:00");
 
-                if (!mPaused) {
-                    Toast.makeText(MathsActivity.this, "TIME UP!", Toast.LENGTH_SHORT).show();
 
-                    for (AppCompatButton b : answerButtons) {
-                        b.setEnabled(false);
-                    }
 
-                    incorrectAnswerOrTimeOut();
-                } else {
-                    mTimeoutOnPause = true;
-                }
-
-            }
-        }.start();
     }
 
     public Operation calculateOperation() {
