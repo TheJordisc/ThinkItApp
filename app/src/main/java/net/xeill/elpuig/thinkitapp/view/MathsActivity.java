@@ -63,6 +63,8 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     TextView mAddedScoreText;
     TextView mAddedTimeText;
     TextView mLevelText;
+    TextView mLastLife;
+
     long mBonusTime=0;
     boolean mHasBonus=true;
     long mInitialMillis=0;
@@ -155,6 +157,8 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
         mLevelText = findViewById(R.id.level);
         mLevelText.setText(getString(R.string.level) + " " + level);
+
+        mLastLife = findViewById(R.id.last_life);
 
         loadOperation();
 
@@ -731,6 +735,10 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                         break;
                     case 1:
                         findViewById(R.id.life2).setVisibility(View.GONE);
+
+                        mLastLife.setVisibility(View.VISIBLE);
+                        MediaPlayer.create(MathsActivity.this,R.raw.lastlife).start();
+
                         break;
                     case 0:
                         findViewById(R.id.life1).setVisibility(View.GONE);
@@ -739,17 +747,26 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             }
         }, 500L);
 
+        long delay;
+
+        if (mLives == 1) {
+            delay=2500L;
+        } else {
+            delay=1500L;
+        }
+
         if (mLives > 0) {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
+                    mLastLife.setVisibility(View.GONE);
                     mAddedScoreText.setVisibility(View.GONE);
                     for (AppCompatButton b : answerButtons) {
                         b.setEnabled(true);
                     }
                     loadOperation();
                 }
-            }, 1500L);
+            }, delay);
         } else {
             gameOver();
         }

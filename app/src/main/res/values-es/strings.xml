@@ -13,10 +13,11 @@
     <string name="score">Puntuación</string>
     <string name="exit_menu">Ir al menú principal</string>
     <string name="game_over">Game over</string>
-    <string name="hint_enter_name">Enter your name</string>
+    <string name="hint_enter_name">Introduce tu nombre</string>
     <string name="level">Nivel</string>
     <string name="tutorial_yes">Yes</string>
     <string name="tutorial_no">No</string>
-    <string name="tutorial_msg">It seems like it\'s the first time you play. Do you want to try a tutorial?</string>
-    <string name="dialog_timeout_on_pause">Time ran out while the game was paused. This is a race, so time won\'t stop not even then!</string>
+    <string name="tutorial_msg">Parece que es la primera vez que juegas. ¿Quieres probar el tutorial?</string>
+    <string name="dialog_timeout_on_pause">El tiempo se ha acabado mientras el juego estaba en pausa. Esto es una carrera, ¡el tiempo nunca para!</string>
+    <string name="lastlife">¡Última vida!</string>
 </resources>

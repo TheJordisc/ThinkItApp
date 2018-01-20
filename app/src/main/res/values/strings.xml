@@ -26,4 +26,5 @@
     <string name="tutorial_no">No</string>
     <string name="tutorial_msg">It seems like it\'s the first time you play. Do you want to try a tutorial?</string>
     <string name="dialog_timeout_on_pause">Time ran out while the game was paused. This is a race, so time won\'t stop not even then!</string>
+    <string name="lastlife">Last life!</string>
 </resources>

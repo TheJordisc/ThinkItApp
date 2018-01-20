@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="net.xeill.elpuig.thinkitapp.view.MathsActivity"
-     android:layout_height="match_parent" android:layout_width="match_parent">
-
+    tools:context="net.xeill.elpuig.thinkitapp.view.MathsActivity">
 
 
     <android.support.constraint.ConstraintLayout
@@ -202,7 +201,6 @@
         </LinearLayout>
 
         <LinearLayout
-            android:animateLayoutChanges="true"
             android:id="@+id/linearLayout3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -210,6 +208,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:animateLayoutChanges="true"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -257,12 +256,12 @@
         </LinearLayout>
 
         <LinearLayout
-            android:animateLayoutChanges="true"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
+            android:animateLayoutChanges="true"
             android:orientation="horizontal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -349,17 +348,17 @@
                 android:id="@+id/lifeline_50_50"
                 style="@style/lifelineButton"
                 android:layout_width="50dp"
-                android:src="@drawable/lifeline_50"
                 android:layout_height="50dp"
-                android:scaleType="centerCrop"/>
+                android:scaleType="centerCrop"
+                android:src="@drawable/lifeline_50" />
 
             <android.support.v7.widget.AppCompatImageButton
                 android:id="@+id/lifeline_passover"
                 style="@style/lifelineButton"
                 android:layout_width="50dp"
-                android:src="@drawable/ic_skip_next_white_48dp"
                 android:layout_height="50dp"
-                android:scaleType="centerCrop" />
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_skip_next_white_48dp" />
 
         </LinearLayout>
 
@@ -382,9 +381,9 @@
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/constraintLayout"
-        android:animateLayoutChanges="true"
         android:layout_width="match_parent"
         android:layout_height="60dp"
+        android:animateLayoutChanges="true"
         android:background="@color/colorPrimary">
 
         <TextView
@@ -498,14 +497,45 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="16dp"
-        android:textAlignment="viewEnd"
         android:layout_marginTop="60dp"
         android:text=" "
+        android:textAlignment="viewEnd"
         android:textColor="@android:color/black"
         android:visibility="gone"
         app:layout_constraintEnd_toEndOf="@+id/constraintLayout"
         app:layout_constraintTop_toTopOf="@+id/constraintLayout"
         tools:text="+150"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/last_life"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/holo_red_dark"
+        android:fontFamily="@font/boogaloo"
+        android:gravity="center"
+        android:shadowColor="#000000"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="1"
+        android:text="@string/lastlife"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textSize="60sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.382"
+        tools:text="LAST LIFE!"
         tools:visibility="visible" />
 </android.support.constraint.ConstraintLayout>
 
