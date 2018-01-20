@@ -229,7 +229,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         }
 
         if(bgVideo!=null && bgVideo.isPlaying()){
-            bgVideo.pause();
+            bgVideo.stopPlayback();
         }
 
         //mCountdownTimer.cancel();
@@ -249,7 +249,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         }
 
         if(bgVideo!=null && !bgVideo.isPlaying()){
-            bgVideo.resume();
+            bgVideo.start();
         }
 
         //TODO: Recuperar estado de countdown, inciar como tal (como?)
