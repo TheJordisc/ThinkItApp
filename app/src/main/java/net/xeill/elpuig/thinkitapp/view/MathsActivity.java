@@ -86,6 +86,9 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     boolean mAnswerWasCorrect=false;
     boolean isFirstAnswer=true;
 
+    boolean mLifeline5050Used = false;
+    boolean mLifelinePassoverUsed = false;
+
     ImageButton mLifeline5050;
     ImageButton mLifelinePassover;
 
@@ -310,6 +313,9 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             b.setEnabled(false);
         }
 
+        mLifeline5050.setEnabled(false);
+        mLifelinePassover.setEnabled(false);
+
         //ACIERTA
         if (answerButtons.indexOf(view) == correctButtonIndex) {
             correctAnswer();
@@ -317,7 +323,6 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             ViewCompat.setBackgroundTintList(view,ColorStateList.valueOf(Color.RED));
             view.setOnClickListener(null);
 
-            mAnswerWasCorrect=false;
             mHasBonus=false;
             mBonusTime=0;
 
@@ -346,7 +351,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             op2 = calculateOperation();
         }
 
-        if (correctAnswers%10==0 && !isFirstAnswer) {
+        if (correctAnswers%10==0 && !isFirstAnswer && mAnswerWasCorrect) {
             level++;
             delay=2000L;
 
@@ -366,6 +371,18 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             public void run() {
                 mLevelUp.setVisibility(View.GONE);
                 mTimer.setBackgroundDrawable(defTimerColor);
+
+                if (mLifeline5050Used) {
+                    mLifeline5050.setEnabled(false);
+                } else {
+                    mLifeline5050.setEnabled(true);
+                }
+
+                if (mLifelinePassoverUsed) {
+                    mLifelinePassover.setEnabled(false);
+                } else {
+                    mLifelinePassover.setEnabled(true);
+                }
 
                 //Poner símbolo de operación
 
@@ -741,6 +758,8 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
     private void incorrectAnswerOrTimeOut() {
         firstTime=false;
+        mAnswerWasCorrect=false;
+
         if (mScore-50>0) {
             mScore-=50;
             mAddedScoreText.setText("-50");
