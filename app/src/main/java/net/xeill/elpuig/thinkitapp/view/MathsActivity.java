@@ -304,6 +304,17 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     }
 
     @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if(mMusicPlayer !=null && mMusicPlayer.isPlaying()){
+            mMusicPlayer.stop();
+        }
+        if (mFastMusicPlayer != null && mFastMusicPlayer.isPlaying()) {
+            mFastMusicPlayer.stop();
+        }
+    }
+
+    @Override
     protected void onPause() {
         super.onPause();
 
@@ -955,14 +966,6 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         ViewCompat.setBackgroundTintList(mLifeline5050,ColorStateList.valueOf(Color.GRAY));
         mLifelinePassover.setEnabled(false);
         ViewCompat.setBackgroundTintList(mLifelinePassover,ColorStateList.valueOf(Color.GRAY));
-
-        if (mMusicPlayer != null && mMusicPlayer.isPlaying()) {
-            mMusicPlayer.stop();
-        }
-
-        if (mFastMusicPlayer != null && mFastMusicPlayer.isPlaying()) {
-            mFastMusicPlayer.stop();
-        }
 
         new Handler().postDelayed(new Runnable() {
             @Override
