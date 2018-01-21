@@ -15,9 +15,10 @@
     <string name="game_over">Game over</string>
     <string name="hint_enter_name">Introduce tu nombre</string>
     <string name="level">Nivel</string>
-    <string name="tutorial_yes">Yes</string>
+    <string name="tutorial_yes">Sí</string>
     <string name="tutorial_no">No</string>
     <string name="tutorial_msg">Parece que es la primera vez que juegas. ¿Quieres probar el tutorial?</string>
     <string name="dialog_timeout_on_pause">El tiempo se ha acabado mientras el juego estaba en pausa. Esto es una carrera, ¡el tiempo nunca para!</string>
     <string name="lastlife">¡Última vida!</string>
+    <string name="hint_lifelines">¡Recuerda que puedes usar comodines!</string>
 </resources>

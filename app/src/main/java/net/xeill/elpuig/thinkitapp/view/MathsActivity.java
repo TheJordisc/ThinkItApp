@@ -78,6 +78,8 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     TextView mLastLife;
     TextView mLevelUp;
 
+    TextView mLifelineHint;
+
     long mBonusTime=0;
     boolean mHasBonus=true;
     long mInitialMillis=0;
@@ -88,6 +90,8 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
     boolean mLifeline5050Used = false;
     boolean mLifelinePassoverUsed = false;
+
+    boolean mLifelineHintShown = false;
 
     ImageButton mLifeline5050;
     ImageButton mLifelinePassover;
@@ -170,6 +174,8 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         mAddedScoreText = findViewById(R.id.added_score);
         mAddedTimeText = findViewById(R.id.added_time);
         mTimer=findViewById(R.id.timer);
+
+        mLifelineHint = findViewById(R.id.hint_lifelines_text);
 
         mLevelText = findViewById(R.id.level);
         mLevelText.setText(getString(R.string.level) + " " + level);
@@ -617,6 +623,17 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                                 mCountdownPlayer.start();
                                 mCountdownPlayed = true;
                             }
+                        }
+
+                        if (millisUntilFinished / 1000 == 5 && !mLifelineHintShown) {
+                            mLifelineHintShown=true;
+                            mLifelineHint.setVisibility(View.VISIBLE);
+                            new Handler().postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    mLifelineHint.setVisibility(View.GONE);
+                                }
+                            },3000);
                         }
                     }
 
