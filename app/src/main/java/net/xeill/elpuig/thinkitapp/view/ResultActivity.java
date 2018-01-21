@@ -47,9 +47,7 @@ public class ResultActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if (name_edit.getText().length() == 0) {
-                    String s = "Introduce un nombre";
-                    Toast t = Toast.makeText(ResultActivity.this, s, Toast.LENGTH_LONG);
-                    t.show();
+                    name_edit.setError("Se requiere un nombre para guardar la puntuación");
                 } else{
                     Score score = new Score();
                     score.setUser("" + name_edit.getText());
