@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
 
         if (settings.getBoolean("isFirstRun",true)) {
             settings.edit().putBoolean("mute",false).apply();
+            settings.edit().putBoolean("isFirstRun",false).apply();
         }
 
         mSplashHandler = new Handler();
@@ -78,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
 
 
-                        if (settings.getBoolean("isFirstRun", true)) {
+                        if (settings.getBoolean("isFirstPlay", true)) {
                             new AlertDialog.Builder(MainActivity.this)
                                     .setMessage(R.string.tutorial_msg)
                                     .setPositiveButton(R.string.tutorial_yes, new DialogInterface.OnClickListener() {
@@ -105,7 +106,7 @@ public class MainActivity extends AppCompatActivity {
                                     })
                                     .create().show();
                             //TODO:DEBUG ONLY. UNCOMMENT ON RELEASE
-//                            settings.edit().putBoolean("firstRun",false).apply();
+                            settings.edit().putBoolean("isFirstPlay",false).apply();
                         } else {
                             musicPlayer.stop();
                             Intent playIntent = new Intent(MainActivity.this,MathsActivity.class);
@@ -119,7 +120,12 @@ public class MainActivity extends AppCompatActivity {
         });
 
         final FloatingActionButton volumeFAB = findViewById(R.id.volume_fab);
-        volumeFAB.setActivated(true);
+        if (settings.getBoolean("mute",true)) {
+            volumeFAB.setActivated(false);
+        } else {
+            volumeFAB.setActivated(true);
+        }
+
 
         volumeFAB.setOnClickListener(new View.OnClickListener() {
             @Override

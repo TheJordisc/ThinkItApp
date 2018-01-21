@@ -121,9 +121,8 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_maths);
 
         //TODO: Añadir créditos bensound.com en help/about
-        mMusicPlayer =MediaPlayer.create(this,R.raw.bensound_jazzyfrenchy);
+        mMusicPlayer = MediaPlayer.create(this,R.raw.bensound_jazzyfrenchy);
         mMusicPlayer.setLooping(true);
-        mMusicPlayer.start();
 
         mLifelinePlayer = MediaPlayer.create(MathsActivity.this,R.raw.lifeline);
         mLevelUpPlayer = MediaPlayer.create(MathsActivity.this,R.raw.levelup);
@@ -150,6 +149,8 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             mIncorrectPlayer.setVolume(1f,1f);
             mCorrectPlayer.setVolume(1f,1f);
         }
+
+        mMusicPlayer.start();
 
         bgVideo = findViewById(R.id.bg_video);
         bgVideo.setVideoURI(Uri.parse("android.resource://net.xeill.elpuig.thinkitapp/" + R.raw.bg_maths));
