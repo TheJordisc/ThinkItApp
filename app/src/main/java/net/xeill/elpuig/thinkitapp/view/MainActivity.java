@@ -37,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
         settings=getSharedPreferences("prefs", 0);
 
         if (settings.getBoolean("isFirstRun",true)) {
-            System.out.println("HOLAAAAAAAAAAAAAAAAAAAAAAA");;
             settings.edit().putBoolean("mute",false).apply();
         }
 
