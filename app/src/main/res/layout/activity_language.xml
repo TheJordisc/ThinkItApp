@@ -1,133 +1,144 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="8dp"
     tools:context="net.xeill.elpuig.thinkitapp.view.LanguageActivity">
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_home"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        android:clickable="true"
-        app:fabSize="mini"
-        android:layout_gravity="right"
-        app:backgroundTint="@android:color/holo_red_dark"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_close_white_24dp" />
-
-    <ImageView
+    <VideoView
+        android:id="@+id/bg_video"
         android:layout_width="match_parent"
-        android:layout_height="100dp"
-
-        app:srcCompat="@drawable/logo"
-        tools:ignore="ContentDescription" />
-
-    <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/GridLayout1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:columnCount="2"
-        android:rowCount="4"
-        android:padding="5dp"
-        android:layout_gravity="center"
-        android:orientation="horizontal" >
-
-        <ImageButton
-            android:id="@+id/catButton1"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:scaleType="fitXY"
-            android:adjustViewBounds="true"
-            android:background="?android:selectableItemBackground"
-            android:padding="10dp"
-            android:layout_column="0"
-            android:layout_row="0"
-            android:layout_gravity="start|top"
-            app:srcCompat="@drawable/catalonia_flag"
-            tools:ignore="ContentDescription" />
-        <TextView
-            android:id="@+id/catala"
-            android:layout_height="wrap_content"
+        android:layout_height="match_parent" />
+    <LinearLayout
+        android:orientation="vertical"
+        android:padding="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_home"
             android:layout_width="wrap_content"
-            android:layout_column="0"
-            android:layout_row="1"
-            android:layout_gravity="center"
-            android:text="@string/ca_flag" />
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="8dp"
+            android:clickable="true"
+            app:fabSize="mini"
+            android:layout_gravity="right"
+            app:backgroundTint="@android:color/holo_red_dark"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/ic_close_white_24dp" />
 
-        <ImageButton
-            android:id="@+id/esButton2"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:background="?android:selectableItemBackground"
-            android:scaleType="fitXY"
-            android:adjustViewBounds="true"
-            android:padding="10dp"
-            android:layout_column="1"
-            android:layout_row="0"
-            android:layout_gravity="start|top"
-            app:srcCompat="@drawable/spain_flag"
-            tools:ignore="ContentDescription" />
-        <TextView
-            android:id="@+id/espanol"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_column="1"
-            android:layout_row="1"
-            android:layout_gravity="center"
-            android:text="@string/es_flag" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
 
-        <ImageButton
-            android:id="@+id/itButton3"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:background="?android:selectableItemBackground"
-            android:scaleType="fitXY"
-            android:adjustViewBounds="true"
-            android:padding="10dp"
-            android:layout_column="0"
-            android:layout_row="2"
-            android:layout_gravity="start|top"
-            app:srcCompat="@drawable/italia_flag"
-            tools:ignore="ContentDescription" />
-        <TextView
-            android:id="@+id/italiano"
-            android:layout_height="wrap_content"
-            android:layout_width="wrap_content"
-            android:layout_column="0"
-            android:layout_row="3"
-            android:layout_gravity="center"
-            android:text="@string/it_flag" />
-
-        <ImageButton
-            android:id="@+id/ukButton4"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:background="?android:selectableItemBackground"
-            android:scaleType="fitXY"
-            android:adjustViewBounds="true"
-            android:padding="10dp"
-            android:layout_column="1"
-            android:layout_row="2"
-            android:layout_gravity="start|top"
-            app:srcCompat="@drawable/uk_flag"
+            app:srcCompat="@drawable/logo"
             tools:ignore="ContentDescription" />
 
-        <TextView
-            android:id="@+id/uk"
-            android:layout_height="wrap_content"
+        <GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/GridLayout1"
             android:layout_width="wrap_content"
-            android:layout_column="1"
-            android:layout_row="3"
+            android:layout_height="wrap_content"
+            android:columnCount="2"
+            android:rowCount="4"
+            android:padding="5dp"
             android:layout_gravity="center"
-            android:text="@string/uk_flag" />
-    </GridLayout>
-</LinearLayout>
+            android:orientation="horizontal" >
+
+            <ImageButton
+                android:id="@+id/catButton1"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                android:background="?android:selectableItemBackground"
+                android:padding="10dp"
+                android:layout_column="0"
+                android:layout_row="0"
+                android:layout_gravity="start|top"
+                app:srcCompat="@drawable/catalonia_flag"
+                tools:ignore="ContentDescription" />
+            <TextView
+                android:id="@+id/catala"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_column="0"
+                android:layout_row="1"
+                android:layout_gravity="center"
+                android:text="@string/ca_flag" />
+
+            <ImageButton
+                android:id="@+id/esButton2"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:background="?android:selectableItemBackground"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                android:padding="10dp"
+                android:layout_column="1"
+                android:layout_row="0"
+                android:layout_gravity="start|top"
+                app:srcCompat="@drawable/spain_flag"
+                tools:ignore="ContentDescription" />
+            <TextView
+                android:id="@+id/espanol"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_column="1"
+                android:layout_row="1"
+                android:layout_gravity="center"
+                android:text="@string/es_flag" />
+
+            <ImageButton
+                android:id="@+id/itButton3"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:background="?android:selectableItemBackground"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                android:padding="10dp"
+                android:layout_column="0"
+                android:layout_row="2"
+                android:layout_gravity="start|top"
+                app:srcCompat="@drawable/italia_flag"
+                tools:ignore="ContentDescription" />
+            <TextView
+                android:id="@+id/italiano"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_column="0"
+                android:layout_row="3"
+                android:layout_gravity="center"
+                android:text="@string/it_flag" />
+
+            <ImageButton
+                android:id="@+id/ukButton4"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:background="?android:selectableItemBackground"
+                android:scaleType="fitXY"
+                android:adjustViewBounds="true"
+                android:padding="10dp"
+                android:layout_column="1"
+                android:layout_row="2"
+                android:layout_gravity="start|top"
+                app:srcCompat="@drawable/uk_flag"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:id="@+id/uk"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:layout_column="1"
+                android:layout_row="3"
+                android:layout_gravity="center"
+                android:text="@string/uk_flag" />
+        </GridLayout>
+
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>

@@ -2,21 +2,36 @@ package net.xeill.elpuig.thinkitapp.view;
 
 import android.content.Intent;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.VideoView;
 
 import net.xeill.elpuig.thinkitapp.R;
 
 public class LanguageActivity extends AppCompatActivity {
     MediaPlayer playSoundPlayer;
+    VideoView bgVideo;
     //TODO: play sound + setLocale
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language);
+
+        bgVideo = findViewById(R.id.bg_video);
+        bgVideo.setVideoURI(Uri.parse("android.resource://net.xeill.elpuig.thinkitapp/" + R.raw.bg_language));
+        bgVideo.start();
+
+        bgVideo.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mp) {
+                mp.setLooping(true);
+            }
+        });
+
         playSoundPlayer = MediaPlayer.create(this,R.raw.play);
         playSoundPlayer.setVolume(1f,1f);
 
@@ -75,5 +90,21 @@ public class LanguageActivity extends AppCompatActivity {
         Intent mainIntent = new Intent(LanguageActivity.this,MainActivity.class);
         startActivity(mainIntent);
         LanguageActivity.this.finish();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if(bgVideo!=null && bgVideo.isPlaying()){
+            bgVideo.stopPlayback();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(bgVideo!=null && !bgVideo.isPlaying()){
+            bgVideo.start();
+        }
     }
 }
