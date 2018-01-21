@@ -234,6 +234,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         mLifelinePassover.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mLifelinePassoverUsed=true;
                 view.setEnabled(false);
                 ViewCompat.setBackgroundTintList(view,ColorStateList.valueOf(Color.GRAY));
                 mLifelineHint.setVisibility(View.GONE);
@@ -241,10 +242,8 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                 mCountdownTimer.cancel();
 
                 //TODO: STOP COUNTDOWN ONPAUSE ONSTOP
-                if (mCountdownPlayer != null) {
+                if (mCountdownPlayer != null && mCountdownPlayer.isPlaying()) {
                     mCountdownPlayer.stop();
-                    mCountdownPlayer.release();
-                    mCountdownPlayer=null;
                 }
 
                 for (AppCompatButton b : answerButtons) {
@@ -258,6 +257,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         mLifeline5050.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mLifeline5050Used=true;
                 view.setEnabled(false);
                 ViewCompat.setBackgroundTintList(view,ColorStateList.valueOf(Color.GRAY));
                 mLifelinePlayer.start();
@@ -671,14 +671,17 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                     }
 
                     public void onFinish() {
+                        mLifeline5050.setEnabled(false);
+                        mLifelinePassover.setEnabled(false);
+                        for (AppCompatButton b : answerButtons) {
+                            b.setEnabled(false);
+                        }
                         mTimer.setText("00:00");
 
                         if (!mPaused) {
                             Toast.makeText(MathsActivity.this, "TIME UP!", Toast.LENGTH_SHORT).show();
 
-                            for (AppCompatButton b : answerButtons) {
-                                b.setEnabled(false);
-                            }
+
                             incorrectAnswerOrTimeOut();
                         } else {
                             mTimeoutOnPause = true;
