@@ -8,6 +8,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -35,12 +36,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         settings=getSharedPreferences("prefs", 0);
 
+        if (settings.getBoolean("isFirstRun",true)) {
+            System.out.println("HOLAAAAAAAAAAAAAAAAAAAAAAA");;
+            settings.edit().putBoolean("mute",false).apply();
+        }
+
         mSplashHandler = new Handler();
 
         musicPlayer = MediaPlayer.create(this,  R.raw.theme);
         musicPlayer.start();
         musicPlayer.setLooping(true); // Set looping
-        musicPlayer.setVolume(0.5f,0.5f);
+        playSoundPlayer = MediaPlayer.create(this,R.raw.play);
+
+        if(settings.getBoolean("mute",true)) {
+            setMute();
+        } else {
+            setUnmute();
+        }
 
         bgVideo = findViewById(R.id.bg_video);
         bgVideo.setVideoURI(Uri.parse("android.resource://net.xeill.elpuig.thinkitapp/" + R.raw.background));
@@ -53,8 +65,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        playSoundPlayer = MediaPlayer.create(this,R.raw.play);
-        playSoundPlayer.setVolume(1f,1f);
+
 
         final ImageView playButton = findViewById(R.id.play_button_image);
         playButton.setOnClickListener(new View.OnClickListener() {
@@ -87,6 +98,12 @@ public class MainActivity extends AppCompatActivity {
                                             finish();
                                         }
                                     })
+                                    .setOnDismissListener(new DialogInterface.OnDismissListener() {
+                                        @Override
+                                        public void onDismiss(DialogInterface dialogInterface) {
+                                            playButton.setActivated(false);
+                                        }
+                                    })
                                     .create().show();
                             //TODO:DEBUG ONLY. UNCOMMENT ON RELEASE
 //                            settings.edit().putBoolean("firstRun",false).apply();
@@ -110,10 +127,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if (volumeFAB.isActivated()) {
                     volumeFAB.setActivated(false);
-                    musicPlayer.setVolume(0,0);
+                    settings.edit().putBoolean("mute",true).apply();
+                    setMute();
                 } else {
                     volumeFAB.setActivated(true);
-                    musicPlayer.setVolume(0.5f,0.5f);
+                    settings.edit().putBoolean("mute",false).apply();
+                    setUnmute();
                 }
 
             }
@@ -166,6 +185,16 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(scoreIntent);
             }
         });
+    }
+
+    private void setUnmute() {
+        musicPlayer.setVolume(0.5f,0.5f);
+        playSoundPlayer.setVolume(1f,1f);
+    }
+
+    private void setMute() {
+        musicPlayer.setVolume(0f,0f);
+        playSoundPlayer.setVolume(0f,0f);
     }
 
     @Override

@@ -5,6 +5,7 @@ import android.animation.AnimatorSet;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
@@ -33,14 +34,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MathsActivity extends AppCompatActivity implements View.OnClickListener {
-    MediaPlayer musicPlayer;
+    SharedPreferences settings;
+    MediaPlayer mMusicPlayer;
     MediaPlayer mCountdownPlayer;
+    MediaPlayer mLifelinePlayer;
+    MediaPlayer mLevelUpPlayer;
+    MediaPlayer mLastLifePlayer;
+    MediaPlayer mIncorrectPlayer;
+    MediaPlayer mCorrectPlayer;
     VideoView bgVideo;
 
-    int correctAnswers=0;
+    int mCorrectAnswers =0;
     List<AppCompatButton> answerButtons;
     int mEnabledButtons=4;
-    int correctButtonIndex;
+    int mCorrectButtonIndex;
     boolean firstTime = true;
 
     ColorStateList defColor = ColorStateList.valueOf(Color.GRAY);
@@ -114,10 +121,35 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         setContentView(R.layout.activity_maths);
 
         //TODO: Añadir créditos bensound.com en help/about
-        musicPlayer=MediaPlayer.create(this,R.raw.bensound_jazzyfrenchy);
-        musicPlayer.setLooping(true);
-        musicPlayer.setVolume(0.7f,0.7f);
-        musicPlayer.start();
+        mMusicPlayer =MediaPlayer.create(this,R.raw.bensound_jazzyfrenchy);
+        mMusicPlayer.setLooping(true);
+        mMusicPlayer.start();
+
+        mLifelinePlayer = MediaPlayer.create(MathsActivity.this,R.raw.lifeline);
+        mLevelUpPlayer = MediaPlayer.create(MathsActivity.this,R.raw.levelup);
+        mCountdownPlayer = MediaPlayer.create(MathsActivity.this,R.raw.countdown);
+        mLastLifePlayer = MediaPlayer.create(MathsActivity.this,R.raw.lastlife);
+        mIncorrectPlayer = MediaPlayer.create(MathsActivity.this,R.raw.incorrect);
+        mCorrectPlayer = MediaPlayer.create(MathsActivity.this,R.raw.correct);
+
+        settings=getSharedPreferences("prefs", 0);
+        if (settings.getBoolean("mute",true)) {
+            mMusicPlayer.setVolume(0f,0f);
+            mLifelinePlayer.setVolume(0f,0f);
+            mLevelUpPlayer.setVolume(0f,0f);
+            mCountdownPlayer.setVolume(0f,0f);
+            mLastLifePlayer.setVolume(0f,0f);
+            mIncorrectPlayer.setVolume(0f,0f);
+            mCorrectPlayer.setVolume(0f,0f);
+        } else {
+            mMusicPlayer.setVolume(0.7f,0.7f);
+            mLifelinePlayer.setVolume(1f,1f);
+            mLevelUpPlayer.setVolume(1f,1f);
+            mCountdownPlayer.setVolume(1f,1f);
+            mLastLifePlayer.setVolume(1f,1f);
+            mIncorrectPlayer.setVolume(1f,1f);
+            mCorrectPlayer.setVolume(1f,1f);
+        }
 
         bgVideo = findViewById(R.id.bg_video);
         bgVideo.setVideoURI(Uri.parse("android.resource://net.xeill.elpuig.thinkitapp/" + R.raw.bg_maths));
@@ -228,8 +260,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             public void onClick(View view) {
                 view.setEnabled(false);
                 ViewCompat.setBackgroundTintList(view,ColorStateList.valueOf(Color.GRAY));
-                MediaPlayer lifelinePlayer = MediaPlayer.create(MathsActivity.this,R.raw.lifeline);
-                lifelinePlayer.start();
+                mLifelinePlayer.start();
 
                 mLifelineHint.setVisibility(View.GONE);
 
@@ -247,7 +278,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                                 break;
                             }
                         }
-                    } while (hiddenButtonIndex == correctButtonIndex || alreadyHidden);
+                    } while (hiddenButtonIndex == mCorrectButtonIndex || alreadyHidden);
 
 
                     toHide.add(hiddenButtonIndex);
@@ -265,8 +296,8 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     protected void onPause() {
         super.onPause();
 
-        if(musicPlayer!=null && musicPlayer.isPlaying()){
-            musicPlayer.pause();
+        if(mMusicPlayer !=null && mMusicPlayer.isPlaying()){
+            mMusicPlayer.pause();
         }
 
         if(bgVideo!=null && bgVideo.isPlaying()){
@@ -285,8 +316,8 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     protected void onResume() {
         super.onResume();
 
-        if(musicPlayer!=null && !musicPlayer.isPlaying()){
-            musicPlayer.start();
+        if(mMusicPlayer !=null && !mMusicPlayer.isPlaying()){
+            mMusicPlayer.start();
         }
 
         if(bgVideo!=null && !bgVideo.isPlaying()){
@@ -326,7 +357,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         mLifelinePassover.setEnabled(false);
 
         //ACIERTA
-        if (answerButtons.indexOf(view) == correctButtonIndex) {
+        if (answerButtons.indexOf(view) == mCorrectButtonIndex) {
             correctAnswer();
         } else { //FALLA
             ViewCompat.setBackgroundTintList(view,ColorStateList.valueOf(Color.RED));
@@ -360,7 +391,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             op2 = calculateOperation();
         }
 
-        if (correctAnswers%10==0 && !isFirstAnswer && mAnswerWasCorrect) {
+        if (mCorrectAnswers %10==0 && !isFirstAnswer && mAnswerWasCorrect) {
             level++;
             delay=2000L;
 
@@ -372,7 +403,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
             mLevelUp.setVisibility(View.VISIBLE);
             mLevelUp.setText(getString(R.string.level) + " " + level);
-            MediaPlayer.create(MathsActivity.this,R.raw.levelup).start();
+            mLevelUpPlayer.start();
         }
 
         new Handler().postDelayed(new Runnable() {
@@ -521,22 +552,22 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                         maxButtons=8;
                 }
 
-                correctButtonIndex = (int) (Math.random() * maxButtons);
+                mCorrectButtonIndex = (int) (Math.random() * maxButtons);
 
                 switch (op1.getHiddenField()) {
                     case 0:
-                        answerButtons.get(correctButtonIndex).setText(op1.getOp1() + "");
+                        answerButtons.get(mCorrectButtonIndex).setText(op1.getOp1() + "");
                         break;
                     case 1:
-                        answerButtons.get(correctButtonIndex).setText(op1.getOp2() + "");
+                        answerButtons.get(mCorrectButtonIndex).setText(op1.getOp2() + "");
                         break;
                     case 2:
-                        answerButtons.get(correctButtonIndex).setText(op1.getRes() + "");
+                        answerButtons.get(mCorrectButtonIndex).setText(op1.getRes() + "");
                         break;
                 }
 
                 //TODO: REMOVE ON RELEASE. FOR DEBUG ONLY
-                //ViewCompat.setBackgroundTintList(answerButtons.get(correctButtonIndex),ColorStateList.valueOf(Color.GREEN));
+                //ViewCompat.setBackgroundTintList(answerButtons.get(mCorrectButtonIndex),ColorStateList.valueOf(Color.GREEN));
 
                 for (int i = 0; i < answerButtons.size(); i++) {
                     if (answerButtons.get(i).getText()=="") {
@@ -581,7 +612,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                                     break;
                                 }
                             }
-                        } while (found || option.equals(answerButtons.get(correctButtonIndex).getText().toString()));
+                        } while (found || option.equals(answerButtons.get(mCorrectButtonIndex).getText().toString()));
 
                         answerButtons.get(i).setText(option);
                     }
@@ -622,7 +653,6 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
                             //Sonido countdown
                             if (!mCountdownPlayed && !mPaused) {
-                                mCountdownPlayer = MediaPlayer.create(MathsActivity.this,R.raw.countdown);
                                 mCountdownPlayer.start();
                                 mCountdownPlayed = true;
                             }
@@ -791,9 +821,9 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
         mScoreText.setText(mScore+"");
 
-        ViewCompat.setBackgroundTintList(answerButtons.get(correctButtonIndex),ColorStateList.valueOf(Color.GREEN));
+        ViewCompat.setBackgroundTintList(answerButtons.get(mCorrectButtonIndex),ColorStateList.valueOf(Color.GREEN));
 
-        MediaPlayer.create(MathsActivity.this,R.raw.incorrect).start();
+        mIncorrectPlayer.start();
 
         mLives--;
         //Quitar vida
@@ -808,7 +838,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                         findViewById(R.id.life2).setVisibility(View.GONE);
 
                         mLastLife.setVisibility(View.VISIBLE);
-                        MediaPlayer.create(MathsActivity.this,R.raw.lastlife).start();
+                        mLastLifePlayer.start();
 
                         break;
                     case 0:
@@ -845,7 +875,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
     private void correctAnswer() {
         isFirstAnswer=false;
-        correctAnswers++;
+        mCorrectAnswers++;
         mAnswerWasCorrect=true;
 
         mScore+=100;
@@ -863,13 +893,13 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             mBonusTime=0;
         }
 
-        answerButtons.get(correctButtonIndex).setOnClickListener(null);
+        answerButtons.get(mCorrectButtonIndex).setOnClickListener(null);
         firstTime=false;
 
         //Triquiñuelas para API <21
-        ViewCompat.setBackgroundTintList(answerButtons.get(correctButtonIndex),ColorStateList.valueOf(Color.GREEN));
+        ViewCompat.setBackgroundTintList(answerButtons.get(mCorrectButtonIndex),ColorStateList.valueOf(Color.GREEN));
 
-        MediaPlayer.create(MathsActivity.this,R.raw.correct).start();
+        mCorrectPlayer.start();
 
         AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(MathsActivity.this,R.animator.op2_movement);
         LinearLayout op2Layout = findViewById(R.id.op2_layout);
