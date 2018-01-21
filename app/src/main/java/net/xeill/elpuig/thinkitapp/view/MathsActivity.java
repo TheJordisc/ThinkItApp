@@ -204,6 +204,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             public void onClick(View view) {
                 view.setEnabled(false);
                 ViewCompat.setBackgroundTintList(view,ColorStateList.valueOf(Color.GRAY));
+                mLifelineHint.setVisibility(View.GONE);
 
                 mCountdownTimer.cancel();
 
@@ -229,6 +230,8 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                 ViewCompat.setBackgroundTintList(view,ColorStateList.valueOf(Color.GRAY));
                 MediaPlayer lifelinePlayer = MediaPlayer.create(MathsActivity.this,R.raw.lifeline);
                 lifelinePlayer.start();
+
+                mLifelineHint.setVisibility(View.GONE);
 
                 List<Integer> toHide = new ArrayList<>();
                 for (int i = 0; i < mEnabledButtons/2; i++) {
@@ -625,7 +628,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                             }
                         }
 
-                        if (millisUntilFinished / 1000 == 5 && !mLifelineHintShown) {
+                        if (millisUntilFinished < mInitialMillis - 5000 && !mLifelineHintShown) {
                             mLifelineHintShown=true;
                             mLifelineHint.setVisibility(View.VISIBLE);
                             new Handler().postDelayed(new Runnable() {
@@ -633,7 +636,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                                 public void run() {
                                     mLifelineHint.setVisibility(View.GONE);
                                 }
-                            },3000);
+                            },5000);
                         }
                     }
 
@@ -646,7 +649,6 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                             for (AppCompatButton b : answerButtons) {
                                 b.setEnabled(false);
                             }
-
                             incorrectAnswerOrTimeOut();
                         } else {
                             mTimeoutOnPause = true;
@@ -888,6 +890,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void gameOver() {
+        mLifelineHint.setVisibility(View.GONE);
         mLifeline5050.setEnabled(false);
         ViewCompat.setBackgroundTintList(mLifeline5050,ColorStateList.valueOf(Color.GRAY));
         mLifelinePassover.setEnabled(false);
