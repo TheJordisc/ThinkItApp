@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,7 +17,7 @@ import net.xeill.elpuig.thinkitapp.model.Score;
 
 public class ResultActivity extends AppCompatActivity {
     int mScore;
-    TextView mScoreTextView;
+    TextView mScoreTextView,countTextView;
     EditText name_edit;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +31,7 @@ public class ResultActivity extends AppCompatActivity {
         mScoreTextView.setText(mScore + "");
 
         name_edit = findViewById(R.id.name_edit);
+        countTextView = findViewById(R.id.counter);
 
         final FloatingActionButton homeFAB = findViewById(R.id.fab_home);
 
@@ -70,5 +73,24 @@ public class ResultActivity extends AppCompatActivity {
                 finish();
             }
         });
-    }
+
+        name_edit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count)
+            {
+            }
+
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int aft){
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s)
+            {
+                // this will show characters remaining
+                countTextView.setText((20 - s.toString().length()) + "/20");
+            }
+    });
+}
 }

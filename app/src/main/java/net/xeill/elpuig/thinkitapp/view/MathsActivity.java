@@ -206,7 +206,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         mAddedScoreText = findViewById(R.id.added_score);
         mAddedTimeText = findViewById(R.id.added_time);
         mTimer=findViewById(R.id.timer);
-
+        //TODO: si no hay comodines que se puedan utilizar no mostrar
         mLifelineHint = findViewById(R.id.hint_lifelines_text);
 
         mLevelText = findViewById(R.id.level);
