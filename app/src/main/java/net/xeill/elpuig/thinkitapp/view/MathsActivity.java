@@ -14,6 +14,7 @@ import android.net.Uri;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,6 +31,7 @@ import android.widget.VideoView;
 import net.xeill.elpuig.thinkitapp.model.Operation;
 import net.xeill.elpuig.thinkitapp.R;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -113,6 +115,8 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
     boolean mPaused;
     boolean mTimeoutOnPause = false;
+    Drawable defQuestionBackground;
+    MediaPlayer mFastMusicPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,7 +126,9 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
         //TODO: Añadir créditos bensound.com en help/about
         mMusicPlayer = MediaPlayer.create(this,R.raw.bensound_jazzyfrenchy);
+        mFastMusicPlayer = MediaPlayer.create(this,R.raw.theme1_fast);
         mMusicPlayer.setLooping(true);
+        mFastMusicPlayer.setLooping(true);
 
         mLifelinePlayer = MediaPlayer.create(MathsActivity.this,R.raw.lifeline);
         mLevelUpPlayer = MediaPlayer.create(MathsActivity.this,R.raw.levelup);
@@ -134,6 +140,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         settings=getSharedPreferences("prefs", 0);
         if (settings.getBoolean("mute",true)) {
             mMusicPlayer.setVolume(0f,0f);
+            mFastMusicPlayer.setVolume(0f,0f);
             mLifelinePlayer.setVolume(0f,0f);
             mLevelUpPlayer.setVolume(0f,0f);
             mCountdownPlayer.setVolume(0f,0f);
@@ -142,6 +149,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             mCorrectPlayer.setVolume(0f,0f);
         } else {
             mMusicPlayer.setVolume(0.7f,0.7f);
+            mFastMusicPlayer.setVolume(0.7f,0.7f);
             mLifelinePlayer.setVolume(1f,1f);
             mLevelUpPlayer.setVolume(1f,1f);
             mCountdownPlayer.setVolume(1f,1f);
@@ -196,7 +204,6 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         answerButtons.add((AppCompatButton) findViewById(R.id.answer7));
         answerButtons.add((AppCompatButton) findViewById(R.id.answer8));
 
-        defButtonColor = ViewCompat.getBackgroundTintList(answerButtons.get(0));
 
         for (AppCompatButton b : answerButtons) {
             b.setVisibility(View.GONE);
@@ -226,6 +233,9 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
         op1OpType = findViewById(R.id.oper1_opType);
         op2OpType = findViewById(R.id.oper2_opType);
+
+        defButtonColor = ViewCompat.getBackgroundTintList(answerButtons.get(0));
+        defQuestionBackground = op1Op1TV.getBackground();
 
         loadOperation();
 
@@ -346,8 +356,6 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         //TODO: STOP COUNTDOWN ONPAUSE ONSTOP
         if (mCountdownPlayer != null) {
             mCountdownPlayer.stop();
-            mCountdownPlayer.release();
-            mCountdownPlayer=null;
         }
 
         for (AppCompatButton b : answerButtons) {
@@ -436,44 +444,54 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                         op1Op1TV.setText("?");
                         op1Op1TV.setTextSize(60);
                         op1Op1TV.setTextColor(Color.RED);
+                        op1Op1TV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.question_box));
+
 
                         op1Op2TV.setText(op1.getOp2()+"");
                         op1Op2TV.setTextColor(defColor);
                         op1Op2TV.setTextSize(defOp1Size);
+                        op1Op2TV.setBackground(defQuestionBackground);
 
                         op1ResTV.setText(op1.getRes()+"");
                         op1ResTV.setTextColor(defColor);
                         op1ResTV.setTextSize(defOp1Size);
+                        op1ResTV.setBackground(defQuestionBackground);
                         break;
                     case 1:
                         op1Op1TV.setText(op1.getOp1()+"");
                         op1Op1TV.setTextColor(defColor);
                         op1Op1TV.setTextSize(defOp1Size);
+                        op1Op1TV.setBackground(defQuestionBackground);
 
 
                         op1Op2TV.setText("?");
                         op1Op2TV.setTextSize(60);
                         op1Op2TV.setTextColor(Color.RED);
+                        op1Op2TV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.question_box));
 
                         op1ResTV.setText(op1.getRes()+"");
                         op1ResTV.setTextColor(defColor);
                         op1ResTV.setTextSize(defOp1Size);
+                        op1ResTV.setBackground(defQuestionBackground);
 
                         break;
                     case 2:
                         op1Op1TV.setText(op1.getOp1()+"");
                         op1Op1TV.setTextColor(defColor);
                         op1Op1TV.setTextSize(defOp1Size);
+                        op1Op1TV.setBackground(defQuestionBackground);
 
 
                         op1Op2TV.setText(op1.getOp2()+"");
                         op1Op2TV.setTextColor(defColor);
                         op1Op2TV.setTextSize(defOp1Size);
+                        op1Op2TV.setBackground(defQuestionBackground);
 
 
                         op1ResTV.setText("?");
                         op1ResTV.setTextSize(60);
                         op1ResTV.setTextColor(Color.RED);
+                        op1ResTV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.question_box));
                         break;
                 }
 
@@ -842,7 +860,15 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                         findViewById(R.id.life2).setVisibility(View.GONE);
 
                         mLastLife.setVisibility(View.VISIBLE);
+                        mMusicPlayer.stop();
                         mLastLifePlayer.start();
+
+                        mLastLifePlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                            @Override
+                            public void onCompletion(MediaPlayer mediaPlayer) {
+                                mFastMusicPlayer.start();
+                            }
+                        });
 
                         break;
                     case 0:
@@ -929,6 +955,14 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         ViewCompat.setBackgroundTintList(mLifeline5050,ColorStateList.valueOf(Color.GRAY));
         mLifelinePassover.setEnabled(false);
         ViewCompat.setBackgroundTintList(mLifelinePassover,ColorStateList.valueOf(Color.GRAY));
+
+        if (mMusicPlayer != null && mMusicPlayer.isPlaying()) {
+            mMusicPlayer.stop();
+        }
+
+        if (mFastMusicPlayer != null && mFastMusicPlayer.isPlaying()) {
+            mFastMusicPlayer.stop();
+        }
 
         new Handler().postDelayed(new Runnable() {
             @Override
