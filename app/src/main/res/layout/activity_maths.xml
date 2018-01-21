@@ -386,11 +386,10 @@
 
         <TextView
             android:id="@+id/hint_lifelines_text"
-            android:layout_width="326dp"
+            android:layout_width="261dp"
             android:layout_height="49dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="12dp"
-            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/bubble_hint"
             android:gravity="center_vertical"
@@ -401,10 +400,9 @@
             android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
             app:layout_constraintEnd_toStartOf="@+id/lifeline_drawer"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/op2_layout"
-            app:layout_constraintVertical_bias="0.879" />
+            app:layout_constraintVertical_bias="0.879"
+            tools:visibility="visible" />
 
     </android.support.constraint.ConstraintLayout>
 
