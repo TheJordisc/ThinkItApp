@@ -89,7 +89,7 @@ public class ResultActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s)
             {
                 // this will show characters remaining
-                countTextView.setText((20 - s.toString().length()) + "/20");
+                countTextView.setText((20 - s.toString().length()) + "/20 caracteres restantes");
             }
     });
 }

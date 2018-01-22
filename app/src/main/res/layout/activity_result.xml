@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_height="match_parent"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context="net.xeill.elpuig.thinkitapp.view.ResultActivity">
-<android.support.constraint.ConstraintLayout
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_home"
         android:layout_width="wrap_content"
@@ -16,7 +15,6 @@
         android:layout_marginEnd="8dp"
         android:layout_marginTop="8dp"
         android:clickable="true"
-
         app:backgroundTint="@android:color/holo_red_dark"
         app:fabSize="mini"
         app:layout_constraintEnd_toEndOf="parent"
@@ -77,11 +75,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/name_edit"
+        android:textSize="12sp"
         tools:text="389473432" />
     <EditText
         android:id="@+id/name_edit"
@@ -111,7 +108,7 @@
         android:layout_marginTop="416dp"
         android:clickable="true"
         app:backgroundTint="@android:color/holo_green_light"
-        app:fabSize="mini"
+        app:fabSize="normal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/restart"
@@ -127,10 +124,9 @@
         android:layout_marginTop="416dp"
         android:clickable="true"
         app:backgroundTint="@color/colorPrimary"
-        app:fabSize="mini"
+        app:fabSize="normal"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/ic_refresh_white_24dp" />
-
+</ScrollView>
 </android.support.constraint.ConstraintLayout>
-    </ScrollView>
