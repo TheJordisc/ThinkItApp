@@ -11,13 +11,13 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
@@ -28,10 +28,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
 
-import net.xeill.elpuig.thinkitapp.model.Operation;
 import net.xeill.elpuig.thinkitapp.R;
+import net.xeill.elpuig.thinkitapp.model.Operation;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -455,7 +454,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                         op1Op1TV.setText("?");
                         op1Op1TV.setTextSize(60);
                         op1Op1TV.setTextColor(Color.RED);
-                        op1Op1TV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.question_box));
+                        op1Op1TV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.square_back_question));
 
 
                         op1Op2TV.setText(op1.getOp2()+"");
@@ -478,7 +477,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                         op1Op2TV.setText("?");
                         op1Op2TV.setTextSize(60);
                         op1Op2TV.setTextColor(Color.RED);
-                        op1Op2TV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.question_box));
+                        op1Op2TV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.square_back_question));
 
                         op1ResTV.setText(op1.getRes()+"");
                         op1ResTV.setTextColor(defColor);
@@ -502,7 +501,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                         op1ResTV.setText("?");
                         op1ResTV.setTextSize(60);
                         op1ResTV.setTextColor(Color.RED);
-                        op1ResTV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.question_box));
+                        op1ResTV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.square_back_question));
                         break;
                 }
 

@@ -1,9 +1,8 @@
 package net.xeill.elpuig.thinkitapp.model;
 
-import java.util.ArrayList;
-import java.util.List;
+import android.support.annotation.NonNull;
 
-public class Score {
+public class Score implements Comparable<Score> {
     private String user;
     private int score;
     private int level;
@@ -48,5 +47,17 @@ public class Score {
 
     public void setCorrectAnswers(int correctAnswers) {
         this.correctAnswers = correctAnswers;
+    }
+
+
+    @Override
+    public int compareTo(@NonNull Score score) {
+        if (this.score < score.score) {
+            return 1;
+        } else if (this.score > score.score) {
+            return -1;
+        } else {
+            return 0;
+        }
     }
 }
