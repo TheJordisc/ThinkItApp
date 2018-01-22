@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 
 import net.xeill.elpuig.thinkitapp.R;
 import net.xeill.elpuig.thinkitapp.model.Score;
@@ -30,6 +31,7 @@ public class ScoreActivity extends AppCompatActivity {
         RecyclerView recyclerView = findViewById(R.id.score_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
+        ImageView trophy = findViewById(R.id.trophy);
 
         recyclerView.setAdapter(scoreRecyclerAdapter);
 
@@ -45,5 +47,6 @@ public class ScoreActivity extends AppCompatActivity {
         });
 
         Collections.sort(scoreList);
+ 
     }
 }

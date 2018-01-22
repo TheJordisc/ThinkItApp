@@ -1,6 +1,9 @@
 package net.xeill.elpuig.thinkitapp.model;
 
 import android.support.annotation.NonNull;
+import android.widget.ImageView;
+
+import net.xeill.elpuig.thinkitapp.R;
 
 public class Score implements Comparable<Score> {
     private String user;
@@ -8,6 +11,7 @@ public class Score implements Comparable<Score> {
     private int level;
     private int correctAnswers;
     private int mistakes;
+
 
     public String getUser() {
         return user;

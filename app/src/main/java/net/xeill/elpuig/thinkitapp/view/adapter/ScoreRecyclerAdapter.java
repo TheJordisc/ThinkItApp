@@ -1,9 +1,13 @@
 package net.xeill.elpuig.thinkitapp.view.adapter;
 
+import android.content.res.ColorStateList;
+import android.graphics.Color;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import net.xeill.elpuig.thinkitapp.R;
@@ -32,6 +36,20 @@ public class ScoreRecyclerAdapter extends RecyclerView.Adapter<ScoreRecyclerAdap
         holder.name.setText(scoreList.get(position).getUser());
         holder.score.setText(scoreList.get(position).getScore() + "");
 
+        switch (position) {
+            case 0 :
+                holder.trophy.setVisibility(View.VISIBLE);
+                ViewCompat.setBackgroundTintList(holder.trophy, ColorStateList.valueOf(Color.YELLOW));
+                break;
+            case 1:
+                holder.trophy.setVisibility(View.VISIBLE);
+                ViewCompat.setBackgroundTintList(holder.trophy, ColorStateList.valueOf(Color.GRAY));
+                break;
+            case 2:
+                holder.trophy.setVisibility(View.VISIBLE);
+                ViewCompat.setBackgroundTintList(holder.trophy, ColorStateList.valueOf(Color.parseColor("#FF0000")));
+                break;
+        }
     }
 
     @Override
@@ -41,15 +59,17 @@ public class ScoreRecyclerAdapter extends RecyclerView.Adapter<ScoreRecyclerAdap
 
     public static class ScoreViewHolder extends RecyclerView.ViewHolder {
 
-            private TextView position;
-           private TextView name;
-           private TextView score;
+        private TextView position;
+        private TextView name;
+        private TextView score;
+        private ImageView trophy;
 
-            ScoreViewHolder(View itemView) {
-                super(itemView);
-                position = itemView.findViewById(R.id.pos);
-                name = itemView.findViewById(R.id.score_name);
-                score = itemView.findViewById(R.id.final_score);
-            }
+        ScoreViewHolder(View itemView) {
+            super(itemView);
+            position = itemView.findViewById(R.id.pos);
+            name = itemView.findViewById(R.id.score_name);
+            score = itemView.findViewById(R.id.final_score);
+            trophy = itemView.findViewById(R.id.trophy);
+        }
     }
 }
