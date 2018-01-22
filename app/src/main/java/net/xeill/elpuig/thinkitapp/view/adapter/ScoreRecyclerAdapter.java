@@ -39,15 +39,15 @@ public class ScoreRecyclerAdapter extends RecyclerView.Adapter<ScoreRecyclerAdap
         switch (position) {
             case 0 :
                 holder.trophy.setVisibility(View.VISIBLE);
-                ViewCompat.setBackgroundTintList(holder.trophy, ColorStateList.valueOf(Color.YELLOW));
+                ViewCompat.setBackgroundTintList(holder.trophy, ColorStateList.valueOf(Color.parseColor("#FFD700")));
                 break;
             case 1:
                 holder.trophy.setVisibility(View.VISIBLE);
-                ViewCompat.setBackgroundTintList(holder.trophy, ColorStateList.valueOf(Color.GRAY));
+                ViewCompat.setBackgroundTintList(holder.trophy, ColorStateList.valueOf(Color.parseColor("#C0C0C0")));
                 break;
             case 2:
                 holder.trophy.setVisibility(View.VISIBLE);
-                ViewCompat.setBackgroundTintList(holder.trophy, ColorStateList.valueOf(Color.parseColor("#FF0000")));
+                ViewCompat.setBackgroundTintList(holder.trophy, ColorStateList.valueOf(Color.parseColor("#CD7f32")));
                 break;
         }
     }
