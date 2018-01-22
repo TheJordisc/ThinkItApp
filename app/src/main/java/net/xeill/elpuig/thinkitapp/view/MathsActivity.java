@@ -85,6 +85,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     TextView mLevelText;
     TextView mLastLife;
     TextView mLevelUp;
+    TextView mGameOver;
 
     TextView mLifelineHint;
 
@@ -221,6 +222,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
         mLastLife = findViewById(R.id.last_life);
         mLevelUp = findViewById(R.id.level_up);
+        mGameOver = findViewById(R.id.game_over);
 
         op1Op1TV = findViewById(R.id.oper1_op1);
         op1Op2TV = findViewById(R.id.oper1_op2);
@@ -960,6 +962,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void gameOver() {
+        mGameOver.setVisibility(View.VISIBLE);
         mLifelineHint.setVisibility(View.GONE);
         mLifeline5050.setEnabled(false);
         ViewCompat.setBackgroundTintList(mLifeline5050,ColorStateList.valueOf(Color.GRAY));
@@ -972,11 +975,12 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                 //Necesario ante intent??
 //                mAddedTimeText.setVisibility(View.GONE);
 //                mAddedScoreText.setVisibility(View.GONE);
+                mGameOver.setVisibility(View.GONE);
                 Intent resultIntent = new Intent(MathsActivity.this, ResultActivity.class);
                 resultIntent.putExtra("score",mScore);
                 startActivity(resultIntent);
                 MathsActivity.this.finish();
             }
-        }, 1500L);
+        }, 2000L);
     }
 }

@@ -76,6 +76,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textColor="@android:color/black"
                 android:background="@drawable/square_back"
                 android:fontFamily="@font/bubblegum_sans"
                 android:gravity="center_vertical"
@@ -97,6 +98,7 @@
 
             <TextView
                 android:id="@+id/oper1_op2"
+                android:textColor="@android:color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -122,6 +124,7 @@
                 android:id="@+id/oper1_res"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:textColor="@android:color/black"
                 android:layout_weight="1"
                 android:background="@drawable/square_back"
                 android:fontFamily="@font/bubblegum_sans"
@@ -155,6 +158,7 @@
                 android:fontFamily="@font/bubblegum_sans"
                 android:gravity="center_vertical"
                 android:textAlignment="center"
+                android:textColor="@android:color/black"
                 android:textSize="24sp"
                 tools:text="100" />
 
@@ -180,6 +184,7 @@
                 android:gravity="center_vertical"
                 android:textAlignment="center"
                 android:textSize="24sp"
+                android:textColor="@android:color/black"
                 tools:text="100" />
 
             <TextView
@@ -198,6 +203,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textColor="@android:color/black"
                 android:background="@drawable/square_back"
                 android:fontFamily="@font/bubblegum_sans"
                 android:gravity="center_vertical"
@@ -388,17 +394,17 @@
 
         <TextView
             android:id="@+id/hint_lifelines_text"
-            android:layout_width="wrap_content"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
-            android:layout_marginEnd="12dp"
+            android:layout_marginEnd="8dp"
             android:layout_marginTop="8dp"
             android:background="@drawable/bubble_hint"
             android:gravity="center_vertical"
-            android:paddingStart="10dp"
-            android:paddingTop="10dp"
             android:paddingBottom="10dp"
             android:paddingEnd="32dp"
+            android:paddingStart="10dp"
+            android:paddingTop="10dp"
             android:text="@string/hint_lifelines"
             android:textColor="@android:color/white"
             android:textSize="14sp"
@@ -406,7 +412,7 @@
             app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
             app:layout_constraintEnd_toStartOf="@+id/lifeline_drawer"
             app:layout_constraintTop_toBottomOf="@+id/op2_layout"
-            app:layout_constraintVertical_bias="0.879"
+            app:layout_constraintVertical_bias="0.455"
             tools:visibility="visible" />
 
     </android.support.constraint.ConstraintLayout>
@@ -547,7 +553,7 @@
         android:layout_marginEnd="0dp"
         android:layout_marginStart="0dp"
         android:layout_marginTop="8dp"
-        android:background="@android:color/holo_red_dark"
+        android:background="@android:color/holo_orange_dark"
         android:fontFamily="@font/boogaloo"
         android:gravity="center"
         android:paddingBottom="5dp"
@@ -568,6 +574,36 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.382"
         tools:text="LAST LIFE!"
+        tools:visibility="visible" />
+
+    <TextView
+        android:id="@+id/game_over"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="0dp"
+        android:layout_marginStart="0dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/holo_red_dark"
+        android:fontFamily="@font/boogaloo"
+        android:gravity="center"
+        android:paddingBottom="5dp"
+        android:paddingTop="5dp"
+        android:shadowColor="#000000"
+        android:shadowDx="2"
+        android:shadowDy="2"
+        android:shadowRadius="1"
+        android:text="@string/game_over"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textSize="60sp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.382"
         tools:visibility="gone" />
 
     <TextView
