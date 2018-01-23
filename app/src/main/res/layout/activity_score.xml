@@ -50,14 +50,14 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Posición"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:layout_marginStart="5dp"
                 android:textStyle="bold"
                 android:textAlignment="textStart" />
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="3"
+                android:layout_weight="3.5"
                 android:layout_height="wrap_content"
                 android:text="Nombre"
                 android:textStyle="bold"
@@ -65,7 +65,7 @@
 
             <TextView
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:layout_height="wrap_content"
                 android:text="Puntuación"
                 android:layout_marginEnd="5dp"
