@@ -1,6 +1,7 @@
 package net.xeill.elpuig.thinkitapp.view;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
@@ -15,11 +16,14 @@ import net.xeill.elpuig.thinkitapp.R;
 public class LanguageActivity extends AppCompatActivity {
     MediaPlayer playSoundPlayer;
     VideoView bgVideo;
+    SharedPreferences settings;
+
     //TODO: play sound + setLocale
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language);
+        settings=getSharedPreferences("prefs", 0);
 
         bgVideo = findViewById(R.id.bg_video);
         bgVideo.setVideoURI(Uri.parse("android.resource://net.xeill.elpuig.thinkitapp/" + R.raw.bg_language));
@@ -33,8 +37,13 @@ public class LanguageActivity extends AppCompatActivity {
         });
 
         playSoundPlayer = MediaPlayer.create(this,R.raw.play);
-        playSoundPlayer.setVolume(1f,1f);
 
+        if(settings.getBoolean("mute",true)) {
+            setMute();
+        } else {
+            setUnmute();
+        }
+        
         final FloatingActionButton homeFAB = findViewById(R.id.fab_home);
 
         homeFAB.setOnClickListener(new View.OnClickListener() {
@@ -106,5 +115,13 @@ public class LanguageActivity extends AppCompatActivity {
         if(bgVideo!=null && !bgVideo.isPlaying()){
             bgVideo.start();
         }
+    }
+
+    private void setUnmute() {
+        playSoundPlayer.setVolume(1f,1f);
+    }
+
+    private void setMute() {
+        playSoundPlayer.setVolume(0f,0f);
     }
 }

@@ -851,9 +851,11 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             mAddedScoreText.setText("-50");
             mAddedScoreText.setVisibility(View.VISIBLE);
         } else {
-            mAddedScoreText.setText("-" + mScore);
-            mAddedScoreText.setVisibility(View.VISIBLE);
-            mScore=0;
+            if (mScore!=0) {
+                mAddedScoreText.setText("-" + mScore);
+                mAddedScoreText.setVisibility(View.VISIBLE);
+                mScore=0;
+            }
         }
 
         mScoreText.setText(mScore+"");
