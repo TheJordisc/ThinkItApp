@@ -1,13 +1,14 @@
 package net.xeill.elpuig.thinkitapp.view;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
 
 import net.xeill.elpuig.thinkitapp.R;
 import net.xeill.elpuig.thinkitapp.model.Score;
@@ -18,20 +19,30 @@ import java.util.Collections;
 import java.util.List;
 
 public class ScoreActivity extends AppCompatActivity {
-    int i, j;
     static List<Score> scoreList = new ArrayList<>();
     static ScoreRecyclerAdapter scoreRecyclerAdapter = new ScoreRecyclerAdapter(scoreList);
+    MediaPlayer musicPlayer;
+    SharedPreferences settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
+        settings=getSharedPreferences("prefs", 0);
 
+        musicPlayer = MediaPlayer.create(this, R.raw.bensound_summer);
+
+        if(settings.getBoolean("mute",true)) {
+            setMute();
+        } else {
+            setUnmute();
+        }
+
+        musicPlayer.start();
+        musicPlayer.setLooping(true); // Set looping
 
         RecyclerView recyclerView = findViewById(R.id.score_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        ImageView trophy = findViewById(R.id.trophy);
 
         recyclerView.setAdapter(scoreRecyclerAdapter);
 
@@ -47,6 +58,37 @@ public class ScoreActivity extends AppCompatActivity {
         });
 
         Collections.sort(scoreList);
- 
+    }
+
+    private void setUnmute() {
+        musicPlayer.setVolume(0.7f,0.7f);
+    }
+
+    private void setMute() {
+        musicPlayer.setVolume(0f,0f);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if(musicPlayer!=null && musicPlayer.isPlaying()){
+            musicPlayer.pause();
+        }
+
+//        if(bgVideo!=null && bgVideo.isPlaying()){
+//            bgVideo.pause();
+//        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(musicPlayer!=null && !musicPlayer.isPlaying()){
+            musicPlayer.start();
+        }
+
+//        if(bgVideo!=null && !bgVideo.isPlaying()){
+//            bgVideo.start();
+//        }
     }
 }

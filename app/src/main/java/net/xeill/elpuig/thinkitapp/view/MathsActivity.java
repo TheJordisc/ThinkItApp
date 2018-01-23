@@ -689,7 +689,8 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                             }
                         }
 
-                        if (millisUntilFinished < mInitialMillis - 5000 && !mLifelineHintShown) {
+                        //Hint comodines
+                        if ((millisUntilFinished < mInitialMillis - 5000 && !mLifelineHintShown) && (!mLifeline5050Used && !mLifelinePassoverUsed)) {
                             mLifelineHintShown=true;
                             mLifelineHint.setVisibility(View.VISIBLE);
                             new Handler().postDelayed(new Runnable() {

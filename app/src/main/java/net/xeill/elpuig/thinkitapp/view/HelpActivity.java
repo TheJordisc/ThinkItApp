@@ -1,6 +1,8 @@
 package net.xeill.elpuig.thinkitapp.view;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -22,11 +24,26 @@ public class HelpActivity extends AppCompatActivity {
     ExpandableListView expListView;
     List<String> listDataHeader;
     HashMap<String, List<String>> listDataChild;
+    MediaPlayer musicPlayer;
+    SharedPreferences settings;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
+
+        settings=getSharedPreferences("prefs", 0);
+
+        musicPlayer = MediaPlayer.create(this, R.raw.bensound_thelounge);
+
+        if(settings.getBoolean("mute",true)) {
+            setMute();
+        } else {
+            setUnmute();
+        }
+
+        musicPlayer.start();
+        musicPlayer.setLooping(true); // Set looping
 
         final FloatingActionButton homeFAB = findViewById(R.id.fab_home);
 
@@ -85,4 +102,37 @@ public class HelpActivity extends AppCompatActivity {
         listDataChild.put(listDataHeader.get(0), creditos);
         listDataChild.put(listDataHeader.get(1), menuHelp);
     }
+
+    private void setUnmute() {
+        musicPlayer.setVolume(1f,1f);
+    }
+
+    private void setMute() {
+        musicPlayer.setVolume(0f,0f);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if(musicPlayer!=null && musicPlayer.isPlaying()){
+            musicPlayer.pause();
+        }
+
+//        if(bgVideo!=null && bgVideo.isPlaying()){
+//            bgVideo.pause();
+//        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if(musicPlayer!=null && !musicPlayer.isPlaying()){
+            musicPlayer.start();
+        }
+
+//        if(bgVideo!=null && !bgVideo.isPlaying()){
+//            bgVideo.start();
+//        }
+    }
+
 }

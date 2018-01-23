@@ -193,7 +193,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setUnmute() {
-        musicPlayer.setVolume(0.5f,0.5f);
+        musicPlayer.setVolume(0.7f,0.7f);
         playSoundPlayer.setVolume(1f,1f);
     }
 
