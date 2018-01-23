@@ -1,17 +1,16 @@
 package net.xeill.elpuig.thinkitapp.model;
 
 import android.support.annotation.NonNull;
-import android.widget.ImageView;
 
-import net.xeill.elpuig.thinkitapp.R;
+import java.io.Serializable;
 
-public class Score implements Comparable<Score> {
+public class Score implements Comparable<Score>, Serializable {
     private String user;
     private int score;
     private int level;
     private int correctAnswers;
     private int mistakes;
-
+    private int UUID;
 
     public String getUser() {
         return user;
@@ -64,4 +63,7 @@ public class Score implements Comparable<Score> {
             return 0;
         }
     }
+
+    //UUID idOne = UUID.randomUUID();
+
 }

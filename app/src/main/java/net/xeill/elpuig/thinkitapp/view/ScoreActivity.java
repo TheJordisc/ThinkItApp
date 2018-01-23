@@ -41,11 +41,14 @@ public class ScoreActivity extends AppCompatActivity {
         musicPlayer.start();
         musicPlayer.setLooping(true); // Set looping
 
+
+
         RecyclerView recyclerView = findViewById(R.id.score_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         recyclerView.setAdapter(scoreRecyclerAdapter);
 
+        Collections.sort(scoreList);
 
         final FloatingActionButton homeFAB = findViewById(R.id.fab_home);
         homeFAB.setOnClickListener(new View.OnClickListener() {
@@ -56,8 +59,6 @@ public class ScoreActivity extends AppCompatActivity {
                 ScoreActivity.this.finish();
             }
         });
-
-        Collections.sort(scoreList);
     }
 
     private void setUnmute() {
