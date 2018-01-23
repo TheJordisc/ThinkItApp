@@ -10,14 +10,16 @@
 
 
     <android.support.constraint.ConstraintLayout
-        android:animateLayoutChanges="true"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:animateLayoutChanges="true"
         android:padding="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0">
 
         <VideoView
             android:id="@+id/bg_video"
@@ -61,27 +63,26 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="52dp"
+            android:layout_marginTop="36dp"
             android:orientation="horizontal"
             android:paddingLeft="16dp"
             android:paddingRight="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.492"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/timer">
+            app:layout_constraintTop_toTopOf="@+id/added_time">
 
             <TextView
                 android:id="@+id/oper1_op1"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:textColor="@android:color/black"
                 android:background="@drawable/square_back"
                 android:fontFamily="@font/bubblegum_sans"
                 android:gravity="center_vertical"
+                android:paddingEnd="16dp"
+                android:paddingStart="16dp"
                 android:textAlignment="center"
+                android:textColor="@android:color/black"
                 android:textSize="40sp"
                 tools:text="2" />
 
@@ -89,11 +90,11 @@
                 android:id="@+id/oper1_opType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/bubblegum_sans"
                 android:gravity="center_vertical"
+                android:paddingEnd="8dp"
+                android:paddingStart="8dp"
                 android:textAlignment="center"
                 android:textColor="@android:color/holo_red_dark"
                 android:textSize="60sp"
@@ -101,27 +102,27 @@
 
             <TextView
                 android:id="@+id/oper1_op2"
-                android:textColor="@android:color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
                 android:layout_weight="1"
                 android:background="@drawable/square_back"
                 android:fontFamily="@font/bubblegum_sans"
                 android:gravity="center_vertical"
+                android:paddingEnd="16dp"
+                android:paddingStart="16dp"
                 android:textAlignment="center"
+                android:textColor="@android:color/black"
                 android:textSize="40sp"
-                tools:text="100" />
+                tools:text="1" />
 
             <TextView
                 android:id="@+id/oper1_equals"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
                 android:fontFamily="@font/bubblegum_sans"
+                android:paddingEnd="8dp"
+                android:paddingStart="8dp"
                 android:text="="
                 android:textAlignment="center"
                 android:textColor="@android:color/holo_red_dark"
@@ -131,27 +132,27 @@
                 android:id="@+id/oper1_res"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:textColor="@android:color/black"
-                android:paddingStart="16dp"
-                android:paddingEnd="16dp"
                 android:layout_weight="1"
                 android:background="@drawable/square_back"
                 android:fontFamily="@font/bubblegum_sans"
                 android:gravity="center_vertical"
+                android:paddingEnd="16dp"
+                android:paddingStart="16dp"
                 android:textAlignment="center"
+                android:textColor="@android:color/black"
                 android:textSize="40sp"
-                tools:text="1000" />
+                tools:text="10" />
 
         </LinearLayout>
 
         <LinearLayout
-            android:alpha="0.5"
             android:id="@+id/op2_layout"
-            android:layout_width="217dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
+            android:alpha="0.5"
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.503"
@@ -163,12 +164,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
                 android:background="@drawable/square_back"
                 android:fontFamily="@font/bubblegum_sans"
                 android:gravity="center_vertical"
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
-                android:textSize="24sp"
+                android:textSize="20sp"
                 tools:text="100" />
 
             <TextView
@@ -176,11 +179,13 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:paddingStart="2dp"
+                android:paddingEnd="2dp"
                 android:fontFamily="@font/bubblegum_sans"
                 android:gravity="center_vertical"
                 android:textAlignment="center"
                 android:textColor="@android:color/holo_red_dark"
-                android:textSize="40sp"
+                android:textSize="30sp"
                 tools:text="+" />
 
             <TextView
@@ -191,9 +196,11 @@
                 android:background="@drawable/square_back"
                 android:fontFamily="@font/bubblegum_sans"
                 android:gravity="center_vertical"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
                 android:textAlignment="center"
-                android:textSize="24sp"
                 android:textColor="@android:color/black"
+                android:textSize="20sp"
                 tools:text="100" />
 
             <TextView
@@ -203,21 +210,25 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/bubblegum_sans"
                 android:text="="
+                android:paddingStart="2dp"
+                android:paddingEnd="2dp"
                 android:textAlignment="center"
                 android:textColor="@android:color/holo_red_dark"
-                android:textSize="40sp" />
+                android:textSize="30sp" />
 
             <TextView
                 android:id="@+id/oper2_res"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:textColor="@android:color/black"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
                 android:background="@drawable/square_back"
                 android:fontFamily="@font/bubblegum_sans"
                 android:gravity="center_vertical"
                 android:textAlignment="center"
-                android:textSize="24sp"
+                android:textColor="@android:color/black"
+                android:textSize="20sp"
                 tools:text="100" />
 
         </LinearLayout>
@@ -247,7 +258,7 @@
                 android:layout_weight="1"
                 android:fontFamily="@font/bubblegum_sans"
                 android:textSize="30sp"
-                tools:text="1000" />
+                tools:text="100" />
 
             <android.support.v7.widget.AppCompatButton
                 android:id="@+id/answer3"
@@ -328,11 +339,11 @@
         </LinearLayout>
 
         <TextView
-            android:alpha="0.5"
             android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="16dp"
+            android:alpha="0.5"
             android:fontFamily="@font/bubblegum_sans"
             android:text="@string/next"
             android:textAllCaps="true"
@@ -383,7 +394,6 @@
                 android:layout_height="50dp"
                 android:scaleType="centerCrop"
                 android:src="@drawable/ic_skip_next_white_48dp" />
-
         </LinearLayout>
 
         <TextView
@@ -405,9 +415,8 @@
             android:id="@+id/hint_lifelines_text"
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginBottom="12dp"
+            android:layout_marginEnd="4dp"
             android:background="@drawable/bubble_hint"
             android:gravity="center_vertical"
             android:paddingBottom="10dp"
@@ -420,9 +429,32 @@
             android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@+id/linearLayout3"
             app:layout_constraintEnd_toStartOf="@+id/lifeline_drawer"
-            app:layout_constraintTop_toBottomOf="@+id/op2_layout"
-            app:layout_constraintVertical_bias="0.455"
-            tools:visibility="visible" />
+            tools:visibility="gone" />
+
+        <ImageView
+            android:id="@+id/lifeline_passover_x"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="1dp"
+            android:layout_marginTop="51dp"
+            android:tint="@android:color/holo_red_dark"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/lifeline_drawer"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/lifeline_drawer"
+            app:layout_constraintTop_toTopOf="@+id/lifeline_drawer"
+            app:srcCompat="@drawable/ic_close_white_48dp" />
+
+        <ImageView
+            android:id="@+id/lifeline_50_50_x"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tint="@android:color/holo_red_dark"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="@+id/lifeline_drawer"
+            app:layout_constraintStart_toStartOf="@+id/lifeline_drawer"
+            app:layout_constraintTop_toTopOf="@+id/lifeline_drawer"
+            app:srcCompat="@drawable/ic_close_white_48dp" />
 
     </android.support.constraint.ConstraintLayout>
 
@@ -574,7 +606,7 @@
         android:text="@string/lastlife"
         android:textAllCaps="true"
         android:textColor="@android:color/white"
-        android:textSize="60sp"
+        android:textSize="50sp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -582,7 +614,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.382"
-        tools:text="LAST LIFE!"
+        tools:text="¡ÚLTIMA VIDA!"
         tools:visibility="visible" />
 
     <TextView
