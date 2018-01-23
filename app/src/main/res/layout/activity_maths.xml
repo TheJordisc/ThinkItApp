@@ -31,8 +31,7 @@
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="60dp"
-            android:background="@android:color/holo_green_dark"
-            android:elevation="2dp"
+            android:background="@drawable/square_back_timer_green"
             android:padding="8dp"
             android:textColor="@android:color/white"
             android:textSize="24sp"
@@ -58,7 +57,7 @@
 
         <LinearLayout
             android:id="@+id/op1_layout"
-            android:layout_width="332dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
@@ -73,6 +72,8 @@
 
             <TextView
                 android:id="@+id/oper1_op1"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
@@ -82,12 +83,14 @@
                 android:gravity="center_vertical"
                 android:textAlignment="center"
                 android:textSize="40sp"
-                tools:text="100" />
+                tools:text="2" />
 
             <TextView
                 android:id="@+id/oper1_opType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/bubblegum_sans"
                 android:gravity="center_vertical"
@@ -101,6 +104,8 @@
                 android:textColor="@android:color/black"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
                 android:layout_weight="1"
                 android:background="@drawable/square_back"
                 android:fontFamily="@font/bubblegum_sans"
@@ -114,6 +119,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp"
                 android:fontFamily="@font/bubblegum_sans"
                 android:text="="
                 android:textAlignment="center"
@@ -125,13 +132,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:textColor="@android:color/black"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
                 android:layout_weight="1"
                 android:background="@drawable/square_back"
                 android:fontFamily="@font/bubblegum_sans"
                 android:gravity="center_vertical"
                 android:textAlignment="center"
                 android:textSize="40sp"
-                tools:text="100" />
+                tools:text="1000" />
 
         </LinearLayout>
 

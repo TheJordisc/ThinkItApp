@@ -115,7 +115,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
     boolean mPaused;
     boolean mTimeoutOnPause = false;
-    Drawable defQuestionBackground;
+//    Drawable defQuestionBackground;
     MediaPlayer mFastMusicPlayer;
 
     @Override
@@ -236,7 +236,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         op2OpType = findViewById(R.id.oper2_opType);
 
         defButtonColor = ViewCompat.getBackgroundTintList(answerButtons.get(0));
-        defQuestionBackground = op1Op1TV.getBackground();
+//        defQuestionBackground = op1Op1TV.getBackground();
 
         loadOperation();
 
@@ -399,6 +399,8 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             ViewCompat.setBackgroundTintList(b,defButtonColor);
         }
 
+        mTimer.setBackground(ContextCompat.getDrawable(getApplicationContext(),R.drawable.square_back_timer_green));
+
         if (firstTime) {
             defTimerColor=mTimer.getBackground();
             defColor = op1Op1TV.getTextColors();
@@ -462,18 +464,18 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                         op1Op2TV.setText(op1.getOp2()+"");
                         op1Op2TV.setTextColor(defColor);
                         op1Op2TV.setTextSize(defOp1Size);
-                        op1Op2TV.setBackground(defQuestionBackground);
+                        op1Op2TV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.square_back));
 
                         op1ResTV.setText(op1.getRes()+"");
                         op1ResTV.setTextColor(defColor);
                         op1ResTV.setTextSize(defOp1Size);
-                        op1ResTV.setBackground(defQuestionBackground);
+                        op1ResTV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.square_back));
                         break;
                     case 1:
                         op1Op1TV.setText(op1.getOp1()+"");
                         op1Op1TV.setTextColor(defColor);
                         op1Op1TV.setTextSize(defOp1Size);
-                        op1Op1TV.setBackground(defQuestionBackground);
+                        op1Op1TV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.square_back));
 
 
                         op1Op2TV.setText("?");
@@ -484,20 +486,20 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                         op1ResTV.setText(op1.getRes()+"");
                         op1ResTV.setTextColor(defColor);
                         op1ResTV.setTextSize(defOp1Size);
-                        op1ResTV.setBackground(defQuestionBackground);
+                        op1ResTV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.square_back));
 
                         break;
                     case 2:
                         op1Op1TV.setText(op1.getOp1()+"");
                         op1Op1TV.setTextColor(defColor);
                         op1Op1TV.setTextSize(defOp1Size);
-                        op1Op1TV.setBackground(defQuestionBackground);
+                        op1Op1TV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.square_back));
 
 
                         op1Op2TV.setText(op1.getOp2()+"");
                         op1Op2TV.setTextColor(defColor);
                         op1Op2TV.setTextSize(defOp1Size);
-                        op1Op2TV.setBackground(defQuestionBackground);
+                        op1Op2TV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.square_back));
 
 
                         op1ResTV.setText("?");
@@ -679,8 +681,8 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                             mHasBonus=false;
                         }
 
-                        if (millisUntilFinished / 1000 == 4 && mTimer.getCurrentTextColor() != Color.RED) {
-                            mTimer.setBackgroundColor(Color.RED);
+                        if (millisUntilFinished / 1000 == 4 && mTimer.getBackground() != ContextCompat.getDrawable(getApplicationContext(),R.drawable.square_back_timer_red)) {
+                            mTimer.setBackground(ContextCompat.getDrawable(getApplicationContext(),R.drawable.square_back_timer_red));
 
                             //Sonido countdown
                             if (!mCountdownPlayed && !mPaused) {
