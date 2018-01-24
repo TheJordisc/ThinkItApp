@@ -36,7 +36,6 @@
             android:screenOrientation="portrait" />
         <activity android:name=".view.ResultActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".view.MathsTutorialActivity" />
     </application>
 
 </manifest>
