@@ -1,24 +1,25 @@
 package net.xeill.elpuig.thinkitapp.view;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import net.xeill.elpuig.thinkitapp.R;
 import net.xeill.elpuig.thinkitapp.model.Score;
+
+import java.util.Collections;
 
 public class ResultActivity extends AppCompatActivity {
     int mScore;
     TextView mScoreTextView,countTextView;
     EditText name_edit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,8 +57,9 @@ public class ResultActivity extends AppCompatActivity {
                     score.setUser("" + name_edit.getText());
                     score.setScore(mScore);
                     ScoreActivity.scoreList.add(score);
-                    //ordenar
+                    Collections.sort(ScoreActivity.scoreList);
                     ScoreActivity.scoreRecyclerAdapter.notifyDataSetChanged();
+
                     Intent scoreIntent = new Intent(ResultActivity.this,ScoreActivity.class);
                     startActivity(scoreIntent);
                 }

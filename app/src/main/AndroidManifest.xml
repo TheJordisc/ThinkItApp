@@ -21,6 +21,10 @@
         <activity
             android:name=".view.MathsActivity"
             android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".view.MathsTutorialActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".view.LanguageActivity"
             android:screenOrientation="portrait" />

@@ -23,6 +23,7 @@ import android.support.v7.widget.AppCompatTextView;
 import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -104,6 +105,8 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
     ImageButton mLifeline5050;
     ImageButton mLifelinePassover;
+    ImageView mLifeline5050Cross;
+    ImageView mLifelinePassoverCross;
 
     //TODO: FOR DEBUG ONLY
     //int level=5;
@@ -243,10 +246,15 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         //COMODINES
         mLifelinePassover=findViewById(R.id.lifeline_passover);
         mLifeline5050=findViewById(R.id.lifeline_50_50);
+        mLifeline5050Cross=findViewById(R.id.lifeline_50_50_x);
+        mLifelinePassoverCross=findViewById(R.id.lifeline_passover_x);
+
         mLifelinePassover.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mLifelinePassoverUsed=true;
+                mLifelinePassoverCross.setVisibility(View.VISIBLE);
+
                 view.setEnabled(false);
                 ViewCompat.setBackgroundTintList(view,ColorStateList.valueOf(Color.GRAY));
                 mLifelineHint.setVisibility(View.GONE);
@@ -270,6 +278,8 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void onClick(View view) {
                 mLifeline5050Used=true;
+                mLifeline5050Cross.setVisibility(View.VISIBLE);
+
                 view.setEnabled(false);
                 ViewCompat.setBackgroundTintList(view,ColorStateList.valueOf(Color.GRAY));
                 mLifelinePlayer.start();

@@ -4,7 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
-
+    <TextView
+        android:id="@+id/noScoreSaved"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:text="No existen puntuaciones todavía"/>
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -47,25 +54,28 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
             <TextView
+                android:id="@+id/positionColumn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:text="Posición"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:layout_marginStart="5dp"
                 android:textStyle="bold"
                 android:textAlignment="textStart" />
 
             <TextView
+                android:id="@+id/nameColumn"
                 android:layout_width="0dp"
-                android:layout_weight="3"
+                android:layout_weight="3.5"
                 android:layout_height="wrap_content"
                 android:text="Nombre"
                 android:textStyle="bold"
                 android:textAlignment="center" />
 
             <TextView
+                android:id="@+id/scoreColumn"
                 android:layout_width="0dp"
-                android:layout_weight="1"
+                android:layout_weight="2"
                 android:layout_height="wrap_content"
                 android:text="Puntuación"
                 android:layout_marginEnd="5dp"
