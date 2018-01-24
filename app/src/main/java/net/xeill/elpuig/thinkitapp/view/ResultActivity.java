@@ -1,6 +1,7 @@
 package net.xeill.elpuig.thinkitapp.view;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -17,6 +18,7 @@ public class ResultActivity extends AppCompatActivity {
     int mScore;
     TextView mScoreTextView,countTextView;
     EditText name_edit;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,6 +57,7 @@ public class ResultActivity extends AppCompatActivity {
                     score.setScore(mScore);
                     ScoreActivity.scoreList.add(score);
                     ScoreActivity.scoreRecyclerAdapter.notifyDataSetChanged();
+
                     Intent scoreIntent = new Intent(ResultActivity.this,ScoreActivity.class);
                     startActivity(scoreIntent);
                 }
