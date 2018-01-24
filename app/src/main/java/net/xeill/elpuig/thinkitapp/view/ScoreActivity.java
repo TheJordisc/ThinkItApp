@@ -10,7 +10,6 @@ import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import net.xeill.elpuig.thinkitapp.R;
@@ -18,7 +17,6 @@ import net.xeill.elpuig.thinkitapp.model.Score;
 import net.xeill.elpuig.thinkitapp.view.adapter.ScoreRecyclerAdapter;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 public class ScoreActivity extends AppCompatActivity {
@@ -54,13 +52,12 @@ public class ScoreActivity extends AppCompatActivity {
         table = findViewById(R.id.cardView);
         noScoreSaved = findViewById(R.id.noScoreSaved);
 
-        if (scoreRecyclerAdapter.getItemCount() == 0){
+        if (scoreList.isEmpty()){
             table.setVisibility(View.GONE);
             noScoreSaved.setVisibility(View.VISIBLE);
         }else{
             noScoreSaved.setVisibility(View.GONE);
             table.setVisibility(View.VISIBLE);
-            Collections.sort(scoreList);
         }
 
 

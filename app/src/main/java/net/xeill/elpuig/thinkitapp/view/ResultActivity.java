@@ -1,7 +1,6 @@
 package net.xeill.elpuig.thinkitapp.view;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -13,6 +12,8 @@ import android.widget.TextView;
 
 import net.xeill.elpuig.thinkitapp.R;
 import net.xeill.elpuig.thinkitapp.model.Score;
+
+import java.util.Collections;
 
 public class ResultActivity extends AppCompatActivity {
     int mScore;
@@ -56,6 +57,7 @@ public class ResultActivity extends AppCompatActivity {
                     score.setUser("" + name_edit.getText());
                     score.setScore(mScore);
                     ScoreActivity.scoreList.add(score);
+                    Collections.sort(ScoreActivity.scoreList);
                     ScoreActivity.scoreRecyclerAdapter.notifyDataSetChanged();
 
                     Intent scoreIntent = new Intent(ResultActivity.this,ScoreActivity.class);
