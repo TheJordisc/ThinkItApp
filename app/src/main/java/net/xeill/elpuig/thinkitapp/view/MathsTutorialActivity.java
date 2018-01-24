@@ -1,30 +1,24 @@
 package net.xeill.elpuig.thinkitapp.view;
 
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.MotionEvent;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
-import com.github.amlcurran.showcaseview.OnShowcaseEventListener;
 import com.github.amlcurran.showcaseview.ShowcaseView;
-import com.github.amlcurran.showcaseview.targets.ActionViewTarget;
 import com.github.amlcurran.showcaseview.targets.ViewTarget;
 
 import net.xeill.elpuig.thinkitapp.R;
 
-public class MathsTutorialActivity extends AppCompatActivity implements View.OnClickListener,
-        OnShowcaseEventListener, AdapterView.OnItemClickListener {
+public class MathsTutorialActivity extends AppCompatActivity {
+    ShowcaseView sv;
+    int clickCount=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maths);
-
-//        LinearLayout op1 = findViewById(R.id.op1_layout);
 
         RelativeLayout.LayoutParams lps = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         lps.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
@@ -32,46 +26,38 @@ public class MathsTutorialActivity extends AppCompatActivity implements View.OnC
         int margin = ((Number) (getResources().getDisplayMetrics().density * 12)).intValue();
         lps.setMargins(margin, margin, margin, margin);
 
-        ViewTarget target = new ViewTarget(R.id.op1_layout, this);
-        ShowcaseView sv = new ShowcaseView.Builder(this)
-                .withMaterialShowcase()
-                .setTarget(target)
-                .setContentTitle("Hola")
-                .setContentText("hola")
-                //.setStyle(R.style.CustomShowcaseTheme2)
-                .setShowcaseEventListener(this)
-                //.replaceEndButton(R.layout.view_custom_button)
+        sv = new ShowcaseView.Builder(this)
+                .withNewStyleShowcase()
                 .build();
         sv.setButtonPosition(lps);
-    }
 
-    @Override
-    public void onClick(View view) {
+        sv.overrideButtonClick(new View.OnClickListener() {
 
-    }
-
-    @Override
-    public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-    }
-
-    @Override
-    public void onShowcaseViewHide(ShowcaseView showcaseView) {
-
-    }
-
-    @Override
-    public void onShowcaseViewDidHide(ShowcaseView showcaseView) {
-
-    }
-
-    @Override
-    public void onShowcaseViewShow(ShowcaseView showcaseView) {
-
-    }
-
-    @Override
-    public void onShowcaseViewTouchBlocked(MotionEvent motionEvent) {
-
+            @Override
+            public void onClick(View view) {
+                clickCount++;
+                switch (clickCount) {
+                    case 1:
+                        sv.setTarget(new ViewTarget(R.id.op1_layout, MathsTutorialActivity.this));
+                        sv.setContentTitle("Operación principal");
+                        sv.setContentText("Esta es la operación que debes completar");
+                        sv.setShowcaseX(300);
+                        sv.setButtonText("next");
+                        break;
+                    case 2:
+                        sv.setTarget(new ViewTarget(R.id.op2_layout, MathsTutorialActivity.this));
+                        sv.setContentTitle("Siguiente operación");
+                        sv.setContentText("¡Prepárate para la siguiente operación echándole un vistazo rápido!");
+                        sv.setButtonText("next");
+                        break;
+                    case 3:
+                        sv.setTarget(new ViewTarget(R.id.keyboard_line1, MathsTutorialActivity.this));
+                        sv.setContentTitle("Respuestas posibles");
+                        sv.setContentText("Observa las respuestas posibles, piensa bien y pulsa en la que creas correcta");
+                        sv.setButtonText("next");
+                        break;
+                }
+            }
+        });
     }
 }

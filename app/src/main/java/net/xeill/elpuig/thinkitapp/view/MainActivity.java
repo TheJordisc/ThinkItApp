@@ -79,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
                     public void run() {
 
 
-                        if (settings.getBoolean("isFirstPlay", true)) {
+//                        if (settings.getBoolean("isFirstPlay", true)) {
                             new AlertDialog.Builder(MainActivity.this)
                                     .setMessage(R.string.tutorial_msg)
                                     .setPositiveButton(R.string.tutorial_yes, new DialogInterface.OnClickListener() {
@@ -107,12 +107,12 @@ public class MainActivity extends AppCompatActivity {
                                     .create().show();
                             //TODO:DEBUG ONLY. UNCOMMENT ON RELEASE
                             settings.edit().putBoolean("isFirstPlay",false).apply();
-                        } else {
-                            musicPlayer.stop();
-                            Intent playIntent = new Intent(MainActivity.this,MathsActivity.class);
-                            startActivity(playIntent);
-                            finish();
-                        }
+//                        } else {
+//                            musicPlayer.stop();
+//                            Intent playIntent = new Intent(MainActivity.this,MathsActivity.class);
+//                            startActivity(playIntent);
+//                            finish();
+//                        }
 
                     }
                 }, 1000L);
