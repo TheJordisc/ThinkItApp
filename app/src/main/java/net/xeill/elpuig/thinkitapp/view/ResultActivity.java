@@ -1,7 +1,10 @@
 package net.xeill.elpuig.thinkitapp.view;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.text.Editable;
@@ -12,18 +15,21 @@ import android.widget.TextView;
 
 import net.xeill.elpuig.thinkitapp.R;
 import net.xeill.elpuig.thinkitapp.model.Score;
-
-import java.util.Collections;
+import net.xeill.elpuig.thinkitapp.viewmodel.ScoreViewModel;
 
 public class ResultActivity extends AppCompatActivity {
     int mScore;
     TextView mScoreTextView,countTextView;
     EditText name_edit;
 
+    ScoreViewModel scoreViewModel;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
+
+        scoreViewModel = ViewModelProviders.of(this).get(ScoreViewModel.class);
 
         mScore = getIntent().getIntExtra("score", 0);
 
@@ -56,12 +62,19 @@ public class ResultActivity extends AppCompatActivity {
                     Score score = new Score();
                     score.setUser("" + name_edit.getText());
                     score.setScore(mScore);
-                    ScoreActivity.scoreList.add(score);
-                    Collections.sort(ScoreActivity.scoreList);
-                    ScoreActivity.scoreRecyclerAdapter.notifyDataSetChanged();
 
-                    Intent scoreIntent = new Intent(ResultActivity.this,ScoreActivity.class);
-                    startActivity(scoreIntent);
+//                    Collections.sort(ScoreActivity.scoreList);
+
+                    scoreViewModel.insertScore(score).observe(ResultActivity.this, new Observer<Long>() {
+                        @Override
+                        public void onChanged(@Nullable Long aLong) {
+                            //scoreRecyclerAdapter.notifyDataSetChanged();
+                            Intent scoreIntent = new Intent(ResultActivity.this,ScoreActivity.class);
+                            scoreIntent.putExtra("scoreId",aLong);
+                            startActivity(scoreIntent);
+
+                        }
+                    });
                 }
             }
         });

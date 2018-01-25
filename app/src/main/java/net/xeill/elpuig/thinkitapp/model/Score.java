@@ -1,16 +1,21 @@
 package net.xeill.elpuig.thinkitapp.model;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.PrimaryKey;
 import android.support.annotation.NonNull;
 
 import java.io.Serializable;
 
+@Entity
 public class Score implements Comparable<Score>, Serializable {
+    @PrimaryKey (autoGenerate = true)
+    long id;
+
     private String user;
     private int score;
     private int level;
     private int correctAnswers;
     private int mistakes;
-    private int UUID;
 
     public String getUser() {
         return user;

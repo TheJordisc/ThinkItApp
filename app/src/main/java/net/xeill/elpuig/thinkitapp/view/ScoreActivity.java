@@ -20,12 +20,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ScoreActivity extends AppCompatActivity {
-    static List<Score> scoreList = new ArrayList<>();
-    static ScoreRecyclerAdapter scoreRecyclerAdapter = new ScoreRecyclerAdapter(scoreList);
+    List<Score> scoreList = new ArrayList<>();
+    ScoreRecyclerAdapter scoreRecyclerAdapter = new ScoreRecyclerAdapter(scoreList);
     MediaPlayer musicPlayer;
     SharedPreferences settings;
     TextView noScoreSaved;
     CardView table;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,8 +43,6 @@ public class ScoreActivity extends AppCompatActivity {
 
         musicPlayer.start();
         musicPlayer.setLooping(true); // Set looping
-
-
 
         RecyclerView recyclerView = findViewById(R.id.score_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
