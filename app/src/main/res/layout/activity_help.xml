@@ -78,6 +78,7 @@
     </GridLayout>
 
     <ExpandableListView
+        android:animateLayoutChanges="true"
         android:id="@+id/lvExp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
