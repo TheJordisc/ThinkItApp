@@ -4,8 +4,8 @@
     <string name="cd_button">Play button</string>
     <string name="cd_logo">Logo</string>
     <string name="next">Next!</string>
-    <string name="home_sure">If you exit, all progress will be lost.</string>
-    <string name="home_resume">Resume game</string>
+    <string name="gameover_sure">Do you want to stop game and force \'Game Over\'?</string>
+    <string name="gameover_resume">Resume game</string>
     <string name="no_lives">No lives!</string>
     <string name="score">Score</string>
     <string name="exit_menu">Go to main manu</string>

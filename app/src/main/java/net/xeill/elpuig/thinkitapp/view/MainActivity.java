@@ -8,7 +8,6 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -19,9 +18,6 @@ import android.widget.VideoView;
 import net.xeill.elpuig.thinkitapp.R;
 
 public class MainActivity extends AppCompatActivity {
-
-
-    //TODO: Silenciar TODA la aplicacion, no solo la main
     MediaPlayer musicPlayer;
     MediaPlayer playSoundPlayer;
     VideoView bgVideo;

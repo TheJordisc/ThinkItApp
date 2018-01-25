@@ -176,18 +176,17 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
         final FloatingActionButton stopFAB = findViewById(R.id.fab_stop);
 
-        //TODO: CHANGE STRINGS
         stopFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 new AlertDialog.Builder(MathsActivity.this)
-                        .setMessage(R.string.home_sure)
-                        .setPositiveButton(R.string.exit_menu, new DialogInterface.OnClickListener() {
+                        .setMessage(R.string.gameover_sure)
+                        .setPositiveButton(R.string.exit_yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 gameOver();
                             }
                         })
-                        .setNegativeButton(R.string.home_resume, new DialogInterface.OnClickListener() {
+                        .setNegativeButton(R.string.gameover_resume, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 // NOTHING
                             }
@@ -216,7 +215,6 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         mAddedScoreText = findViewById(R.id.added_score);
         mAddedTimeText = findViewById(R.id.added_time);
         mTimer=findViewById(R.id.timer);
-        //TODO: si no hay comodines que se puedan utilizar no mostrar
         mLifelineHint = findViewById(R.id.hint_lifelines_text);
 
         mLevelText = findViewById(R.id.level);
@@ -260,7 +258,6 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
                 mCountdownTimer.cancel();
 
-                //TODO: STOP COUNTDOWN ONPAUSE ONSTOP
                 if (mCountdownPlayer != null && mCountdownPlayer.isPlaying()) {
                     mCountdownPlayer.stop();
                 }
@@ -356,7 +353,6 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             bgVideo.start();
         }
 
-        //TODO: Recuperar estado de countdown, inciar como tal (como?)
         mPaused=false;
         if (mTimeoutOnPause) {
             new AlertDialog.Builder(MathsActivity.this)
@@ -374,7 +370,6 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(final View view) {
         mCountdownTimer.cancel();
 
-        //TODO: STOP COUNTDOWN ONPAUSE ONSTOP
         if (mCountdownPlayer != null) {
             mCountdownPlayer.stop();
         }
@@ -616,7 +611,6 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                         int answerRange=0;
                         int answer = 0;
 
-                        //TODO: Siguen saliendo repetidos
                         switch (op1.getHiddenField()) {
                             case 0:
                                 answer=op1.getOp1();
@@ -969,7 +963,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                 for (AppCompatButton b : answerButtons) {
                     b.setEnabled(true);
                 }
-                //TODO: CHANGE ON RELEASE. FOR DEBUG ONLY
+
                 loadOperation();
             }
         }, 1500L);
