@@ -3,6 +3,7 @@ package net.xeill.elpuig.thinkitapp.view.adapter;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.support.v4.view.ViewCompat;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,9 +19,11 @@ import java.util.List;
 public class ScoreRecyclerAdapter extends RecyclerView.Adapter<ScoreRecyclerAdapter.ScoreViewHolder>{
 
     List<Score> scoreList;
+    Long scoreId;
 
-    public ScoreRecyclerAdapter(List<Score> scoreList){
+    public ScoreRecyclerAdapter(List<Score> scoreList, Long scoreId){
         this.scoreList = scoreList;
+        this.scoreId = scoreId;
     }
 
     @Override
@@ -50,6 +53,13 @@ public class ScoreRecyclerAdapter extends RecyclerView.Adapter<ScoreRecyclerAdap
                 ViewCompat.setBackgroundTintList(holder.trophy, ColorStateList.valueOf(Color.parseColor("#CD7f32")));
                 break;
         }
+
+        System.out.println("HOLAAA ADAPTER: " + scoreId);
+        System.out.println("HOLAAA ADAPTER 2: " + scoreList.get(position).getId());
+
+        if (scoreId==scoreList.get(position).getId()) {
+            holder.cv.setCardBackgroundColor(Color.parseColor("#e6ffff"));
+        }
     }
 
     @Override
@@ -58,11 +68,11 @@ public class ScoreRecyclerAdapter extends RecyclerView.Adapter<ScoreRecyclerAdap
     }
 
     public static class ScoreViewHolder extends RecyclerView.ViewHolder {
-
         private TextView position;
         private TextView name;
         private TextView score;
         private ImageView trophy;
+        private CardView cv;
 
         ScoreViewHolder(View itemView) {
             super(itemView);
@@ -70,6 +80,7 @@ public class ScoreRecyclerAdapter extends RecyclerView.Adapter<ScoreRecyclerAdap
             name = itemView.findViewById(R.id.score_name);
             score = itemView.findViewById(R.id.final_score);
             trophy = itemView.findViewById(R.id.trophy);
+            cv = itemView.findViewById(R.id.cv);
         }
     }
 }

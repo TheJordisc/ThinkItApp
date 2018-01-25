@@ -57,6 +57,13 @@ public class Score implements Comparable<Score>, Serializable {
         this.correctAnswers = correctAnswers;
     }
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     @Override
     public int compareTo(@NonNull Score score) {

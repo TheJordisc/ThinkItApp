@@ -1,9 +1,12 @@
 package net.xeill.elpuig.thinkitapp.view;
 
+import android.arch.lifecycle.Observer;
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.CardView;
@@ -15,23 +18,35 @@ import android.widget.TextView;
 import net.xeill.elpuig.thinkitapp.R;
 import net.xeill.elpuig.thinkitapp.model.Score;
 import net.xeill.elpuig.thinkitapp.view.adapter.ScoreRecyclerAdapter;
+import net.xeill.elpuig.thinkitapp.viewmodel.ScoreViewModel;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class ScoreActivity extends AppCompatActivity {
     List<Score> scoreList = new ArrayList<>();
-    ScoreRecyclerAdapter scoreRecyclerAdapter = new ScoreRecyclerAdapter(scoreList);
+    ScoreRecyclerAdapter scoreRecyclerAdapter;
     MediaPlayer musicPlayer;
     SharedPreferences settings;
     TextView noScoreSaved;
+    ScoreViewModel scoreViewModel;
     CardView table;
 
+    //@android:color/holo_orange_light
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_score);
         settings=getSharedPreferences("prefs", 0);
+        scoreViewModel = ViewModelProviders.of(this).get(ScoreViewModel.class);
+
+        Long scoreId = getIntent().getLongExtra("scoreId",0);
+        System.out.println("HOLAAAA SCORE : "  + scoreId);
+        scoreRecyclerAdapter = new ScoreRecyclerAdapter(scoreList,scoreId);
+
+        table = findViewById(R.id.cardView);
+        noScoreSaved = findViewById(R.id.noScoreSaved);
 
         musicPlayer = MediaPlayer.create(this, R.raw.bensound_summer);
 
@@ -44,20 +59,27 @@ public class ScoreActivity extends AppCompatActivity {
         musicPlayer.start();
         musicPlayer.setLooping(true); // Set looping
 
+        scoreViewModel.getScores().observe(ScoreActivity.this, new Observer<List<Score>>() {
+            @Override
+            public void onChanged(@Nullable List<Score> scores) {
+                scoreList.addAll(scores);
+                Collections.sort(scoreList);
+                scoreRecyclerAdapter.notifyDataSetChanged();
+
+                if (scoreList.isEmpty()){
+                    table.setVisibility(View.GONE);
+                    noScoreSaved.setVisibility(View.VISIBLE);
+                }else{
+                    noScoreSaved.setVisibility(View.GONE);
+                    table.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
         RecyclerView recyclerView = findViewById(R.id.score_list);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         recyclerView.setAdapter(scoreRecyclerAdapter);
-        table = findViewById(R.id.cardView);
-        noScoreSaved = findViewById(R.id.noScoreSaved);
-
-        if (scoreList.isEmpty()){
-            table.setVisibility(View.GONE);
-            noScoreSaved.setVisibility(View.VISIBLE);
-        }else{
-            noScoreSaved.setVisibility(View.GONE);
-            table.setVisibility(View.VISIBLE);
-        }
 
 
         final FloatingActionButton homeFAB = findViewById(R.id.fab_home);

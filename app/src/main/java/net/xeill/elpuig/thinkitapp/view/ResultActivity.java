@@ -63,12 +63,11 @@ public class ResultActivity extends AppCompatActivity {
                     score.setUser("" + name_edit.getText());
                     score.setScore(mScore);
 
-//                    Collections.sort(ScoreActivity.scoreList);
-
                     scoreViewModel.insertScore(score).observe(ResultActivity.this, new Observer<Long>() {
                         @Override
                         public void onChanged(@Nullable Long aLong) {
                             //scoreRecyclerAdapter.notifyDataSetChanged();
+
                             Intent scoreIntent = new Intent(ResultActivity.this,ScoreActivity.class);
                             scoreIntent.putExtra("scoreId",aLong);
                             startActivity(scoreIntent);
