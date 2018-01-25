@@ -44,7 +44,7 @@ public class LanguageActivity extends AppCompatActivity {
             setUnmute();
         }
         
-        final FloatingActionButton homeFAB = findViewById(R.id.fab_home);
+        final FloatingActionButton homeFAB = findViewById(R.id.fab_stop);
 
         homeFAB.setOnClickListener(new View.OnClickListener() {
             @Override

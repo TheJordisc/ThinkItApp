@@ -496,7 +496,7 @@
             android:textSize="25sp"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/fab_home"
+            app:layout_constraintEnd_toStartOf="@+id/fab_stop"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="NO LIVES!" />
@@ -538,7 +538,7 @@
             app:srcCompat="@drawable/ic_favorite_white_36dp" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab_home"
+            android:id="@+id/fab_stop"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
@@ -551,7 +551,9 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_home_white_36dp" />
+            app:srcCompat="@drawable/ic_stop"
+            android:backgroundTint="@android:color/holo_red_dark"
+            android:focusable="true" />
 
         <TextView
             android:id="@+id/score_title"
@@ -562,7 +564,7 @@
             android:text="@string/score"
             android:textAllCaps="true"
             android:textColor="@android:color/background_light"
-            android:textSize="10sp"
+            android:textSize="12sp"
             app:layout_constraintBottom_toTopOf="@+id/score"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"

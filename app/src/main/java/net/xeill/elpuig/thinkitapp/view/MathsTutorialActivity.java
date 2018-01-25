@@ -27,7 +27,7 @@ public class MathsTutorialActivity extends AppCompatActivity {
         lps.setMargins(margin, margin, margin, margin);
 
         sv = new ShowcaseView.Builder(this)
-                .withNewStyleShowcase()
+                .withMaterialShowcase()
                 .build();
         sv.setButtonPosition(lps);
 

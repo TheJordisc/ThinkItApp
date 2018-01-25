@@ -13,11 +13,11 @@
     </style>
 
     <style name="MainMenuFAB" parent="Widget.Design.FloatingActionButton">
-        <item name="backgroundTint">@android:color/holo_blue_dark</item>
+        <item name="backgroundTint">@color/colorPrimary</item>
     </style>
 
     <style name="lifelineButton" parent="Base.TextAppearance.AppCompat.Button">
-        <item name="backgroundTint">@android:color/holo_blue_dark</item>
+        <item name="backgroundTint">@color/colorPrimary</item>
     </style>
 
 </resources>

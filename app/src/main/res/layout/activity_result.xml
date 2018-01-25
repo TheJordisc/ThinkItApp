@@ -11,7 +11,7 @@
         android:layout_height="match_parent">
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab_home"
+            android:id="@+id/fab_stop"
             android:visibility="gone"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -45,7 +45,7 @@ public class HelpActivity extends AppCompatActivity {
         musicPlayer.start();
         musicPlayer.setLooping(true); // Set looping
 
-        final FloatingActionButton homeFAB = findViewById(R.id.fab_home);
+        final FloatingActionButton homeFAB = findViewById(R.id.fab_stop);
 
         homeFAB.setOnClickListener(new View.OnClickListener() {
             @Override

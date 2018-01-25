@@ -174,18 +174,17 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             }
         });
 
-        final FloatingActionButton homeFAB = findViewById(R.id.fab_home);
+        final FloatingActionButton stopFAB = findViewById(R.id.fab_stop);
 
-        homeFAB.setOnClickListener(new View.OnClickListener() {
+        //TODO: CHANGE STRINGS
+        stopFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 new AlertDialog.Builder(MathsActivity.this)
                         .setMessage(R.string.home_sure)
                         .setPositiveButton(R.string.exit_menu, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                Intent homeIntent = new Intent(MathsActivity.this,MainActivity.class);
-                                startActivity(homeIntent);
-                                MathsActivity.this.finish();
+                                gameOver();
                             }
                         })
                         .setNegativeButton(R.string.home_resume, new DialogInterface.OnClickListener() {
@@ -977,6 +976,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void gameOver() {
+        mCountdownTimer.cancel();
         mGameOver.setVisibility(View.VISIBLE);
         mLifelineHint.setVisibility(View.GONE);
         mLifeline5050.setEnabled(false);

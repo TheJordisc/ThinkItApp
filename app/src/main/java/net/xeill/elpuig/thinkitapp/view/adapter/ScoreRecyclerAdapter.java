@@ -1,7 +1,7 @@
 package net.xeill.elpuig.thinkitapp.view.adapter;
 
+import android.content.Context;
 import android.content.res.ColorStateList;
-import android.graphics.Color;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
@@ -20,10 +20,12 @@ public class ScoreRecyclerAdapter extends RecyclerView.Adapter<ScoreRecyclerAdap
 
     List<Score> scoreList;
     Long scoreId;
+    Context context;
 
-    public ScoreRecyclerAdapter(List<Score> scoreList, Long scoreId){
+    public ScoreRecyclerAdapter(List<Score> scoreList, Long scoreId, Context context){
         this.scoreList = scoreList;
         this.scoreId = scoreId;
+        this.context = context;
     }
 
     @Override
@@ -42,23 +44,20 @@ public class ScoreRecyclerAdapter extends RecyclerView.Adapter<ScoreRecyclerAdap
         switch (position) {
             case 0 :
                 holder.trophy.setVisibility(View.VISIBLE);
-                ViewCompat.setBackgroundTintList(holder.trophy, ColorStateList.valueOf(Color.parseColor("#FFD700")));
+                ViewCompat.setBackgroundTintList(holder.trophy, ColorStateList.valueOf(context.getResources().getColor(R.color.color_trophy_gold)));
                 break;
             case 1:
                 holder.trophy.setVisibility(View.VISIBLE);
-                ViewCompat.setBackgroundTintList(holder.trophy, ColorStateList.valueOf(Color.parseColor("#C0C0C0")));
+                ViewCompat.setBackgroundTintList(holder.trophy, ColorStateList.valueOf(context.getResources().getColor(R.color.color_trophy_silver)));
                 break;
             case 2:
                 holder.trophy.setVisibility(View.VISIBLE);
-                ViewCompat.setBackgroundTintList(holder.trophy, ColorStateList.valueOf(Color.parseColor("#CD7f32")));
+                ViewCompat.setBackgroundTintList(holder.trophy, ColorStateList.valueOf(context.getResources().getColor(R.color.color_trophy_bronze)));
                 break;
         }
 
-        System.out.println("HOLAAA ADAPTER: " + scoreId);
-        System.out.println("HOLAAA ADAPTER 2: " + scoreList.get(position).getId());
-
         if (scoreId==scoreList.get(position).getId()) {
-            holder.cv.setCardBackgroundColor(Color.parseColor("#e6ffff"));
+            holder.cv.setCardBackgroundColor(context.getResources().getColor(R.color.color_score_highlight));
         }
     }
 

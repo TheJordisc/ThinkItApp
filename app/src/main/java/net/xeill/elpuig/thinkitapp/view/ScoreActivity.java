@@ -42,8 +42,7 @@ public class ScoreActivity extends AppCompatActivity {
         scoreViewModel = ViewModelProviders.of(this).get(ScoreViewModel.class);
 
         Long scoreId = getIntent().getLongExtra("scoreId",0);
-        System.out.println("HOLAAAA SCORE : "  + scoreId);
-        scoreRecyclerAdapter = new ScoreRecyclerAdapter(scoreList,scoreId);
+        scoreRecyclerAdapter = new ScoreRecyclerAdapter(scoreList,scoreId,getApplicationContext());
 
         table = findViewById(R.id.cardView);
         noScoreSaved = findViewById(R.id.noScoreSaved);
@@ -82,7 +81,7 @@ public class ScoreActivity extends AppCompatActivity {
         recyclerView.setAdapter(scoreRecyclerAdapter);
 
 
-        final FloatingActionButton homeFAB = findViewById(R.id.fab_home);
+        final FloatingActionButton homeFAB = findViewById(R.id.fab_stop);
         homeFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
