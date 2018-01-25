@@ -90,7 +90,8 @@ public class HelpActivity extends AppCompatActivity {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<String>>();
 
-        listDataHeader.add("¿Cómo jugar?");
+        listDataHeader.add("Objetivo del juego");
+        listDataHeader.add("Controles del juego");
         listDataHeader.add("Pantalla principal");
         listDataHeader.add("Ranking de puntuaciones");
         listDataHeader.add("Cambiar idioma");
@@ -98,6 +99,9 @@ public class HelpActivity extends AppCompatActivity {
 
         List<String> gameHelp = new ArrayList<String>();
         gameHelp.add("El objetivo del juego consiste en...");
+
+        List<String> controllerHelp = new ArrayList<String>();
+        controllerHelp.add("Para lograr el objetivo del juego debes...");
 
         List<String> menuHelp = new ArrayList<String>();
         menuHelp.add("Iconos del menú principal:");
@@ -112,10 +116,11 @@ public class HelpActivity extends AppCompatActivity {
         soundHelp.add("Si queremos silenciar la aplicación...");
 
         listDataChild.put(listDataHeader.get(0), gameHelp);
-        listDataChild.put(listDataHeader.get(1), menuHelp);
-        listDataChild.put(listDataHeader.get(2), rankingHelp);
-        listDataChild.put(listDataHeader.get(3), languageHelp);
-        listDataChild.put(listDataHeader.get(4), soundHelp);
+        listDataChild.put(listDataHeader.get(1), controllerHelp);
+        listDataChild.put(listDataHeader.get(2), menuHelp);
+        listDataChild.put(listDataHeader.get(3), rankingHelp);
+        listDataChild.put(listDataHeader.get(4), languageHelp);
+        listDataChild.put(listDataHeader.get(5), soundHelp);
     }
 
     private void setUnmute() {
