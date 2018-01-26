@@ -326,6 +326,10 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             mMusicPlayer.pause();
         }
 
+        if (mFastMusicPlayer != null && mFastMusicPlayer.isPlaying()) {
+            mFastMusicPlayer.pause();
+        }
+
         if(bgVideo!=null && bgVideo.isPlaying()){
             bgVideo.stopPlayback();
         }
@@ -344,6 +348,10 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
         if(mMusicPlayer !=null && !mMusicPlayer.isPlaying()){
             mMusicPlayer.start();
+        }
+
+        if (mFastMusicPlayer != null && !mFastMusicPlayer.isPlaying() && mLives == 1) {
+            mFastMusicPlayer.start();
         }
 
         if(bgVideo!=null && !bgVideo.isPlaying()){
@@ -882,7 +890,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                 break;
         }
 
-        ViewCompat.setBackgroundTintList(answerButtons.get(mCorrectButtonIndex),ColorStateList.valueOf(getResources().getColor(R.color.color_red_incorrect)));
+        ViewCompat.setBackgroundTintList(answerButtons.get(mCorrectButtonIndex),ColorStateList.valueOf(getResources().getColor(R.color.color_green_correct)));
 
         mIncorrectPlayer.start();
 
