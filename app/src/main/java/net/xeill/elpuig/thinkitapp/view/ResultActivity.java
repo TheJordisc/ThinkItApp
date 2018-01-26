@@ -3,6 +3,7 @@ package net.xeill.elpuig.thinkitapp.view;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
@@ -24,6 +25,8 @@ public class ResultActivity extends AppCompatActivity {
 
     ScoreViewModel scoreViewModel;
 
+    MediaPlayer mResultPlayer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +35,10 @@ public class ResultActivity extends AppCompatActivity {
         scoreViewModel = ViewModelProviders.of(this).get(ScoreViewModel.class);
 
         mScore = getIntent().getIntExtra("score", 0);
+
+        mResultPlayer = MediaPlayer.create(ResultActivity.this,R.raw.bensound_jazzcomedy);
+        mResultPlayer.setLooping(true);
+        mResultPlayer.start();
 
         mScoreTextView = findViewById(R.id.score);
 
@@ -105,6 +112,24 @@ public class ResultActivity extends AppCompatActivity {
                 // this will show characters remaining
                 countTextView.setText((20 - s.toString().length()) + "/20 caracteres restantes");
             }
-    });
-}
+        });
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        if(mResultPlayer !=null && mResultPlayer.isPlaying()){
+            mResultPlayer.pause();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        if(mResultPlayer !=null && !mResultPlayer.isPlaying()){
+            mResultPlayer.start();
+        }
+    }
 }

@@ -41,6 +41,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     MediaPlayer mLastLifePlayer;
     MediaPlayer mIncorrectPlayer;
     MediaPlayer mCorrectPlayer;
+    MediaPlayer mGameOverPlayer;
     VideoView bgVideo;
 
     int mCorrectAnswers =0;
@@ -136,6 +137,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         mLastLifePlayer = MediaPlayer.create(MathsActivity.this,R.raw.lastlife);
         mIncorrectPlayer = MediaPlayer.create(MathsActivity.this,R.raw.incorrect);
         mCorrectPlayer = MediaPlayer.create(MathsActivity.this,R.raw.correct);
+        mGameOverPlayer = MediaPlayer.create(MathsActivity.this,R.raw.game_over);
 
         settings=getSharedPreferences("prefs", 0);
         if (settings.getBoolean("mute",true)) {
@@ -1026,6 +1028,16 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         ViewCompat.setBackgroundTintList(mLifeline5050,ColorStateList.valueOf(Color.GRAY));
         mLifelinePassover.setEnabled(false);
         ViewCompat.setBackgroundTintList(mLifelinePassover,ColorStateList.valueOf(Color.GRAY));
+
+        if (mMusicPlayer.isPlaying()) {
+            mMusicPlayer.stop();
+        }
+
+        if (mFastMusicPlayer.isPlaying()) {
+            mFastMusicPlayer.stop();
+        }
+
+        mGameOverPlayer.start();
 
         new Handler().postDelayed(new Runnable() {
             @Override
