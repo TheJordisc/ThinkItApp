@@ -14,7 +14,7 @@
     <string name="developersinfo">Developed by:\n-Jordi Solà\n-Alejandro Berdún</string>
     <string name="switchinfo">App developed for Erasmus Switch Project</string>
     <string name="gameover_sure">Do you want to stop game and force \'Game Over\'?</string>
-    <string name="gameover_resume">Resume game</string>
+    <string name="gameover_resume">Resume</string>
     <string name="no_lives">No lives!</string>
     <string name="score">Score</string>
     <string name="exit_menu">Go to main manu</string>
@@ -28,4 +28,6 @@
     <string name="dialog_timeout_on_pause">Time ran out while the game was paused. This is a race, so time won\'t stop not even then!</string>
     <string name="lastlife">Last life!</string>
     <string name="hint_lifelines">Remember you can use lifelines!</string>
+    <string name="app_language_name">Language</string>
+    <string name="gameover_over">Game over</string>
 </resources>

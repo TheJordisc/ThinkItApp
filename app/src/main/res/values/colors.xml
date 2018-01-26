@@ -2,10 +2,14 @@
 <resources>
     <color name="colorPrimary">#0d47a1</color>
     <color name="colorPrimaryDark">#1a237e</color>
-    <color name="colorAccent">#ff4081</color>
+    <color name="colorAccent">#40c4ff</color>
     <color name="custom_showcase_bg">#b9002153</color>
     <color name="color_trophy_gold">#FFD700</color>
     <color name="color_trophy_silver">#C0C0C0</color>
     <color name="color_trophy_bronze">#CD7f32</color>
     <color name="color_score_highlight">#e1f5fe</color>
+    <color name="color_green_correct">#64dd17</color>
+    <color name="color_blue_normal">#40c4ff</color>
+    <color name="color_red_incorrect">#d50000</color>
+    <color name="color_question">#ff9800</color>
 </resources>

@@ -1,7 +1,5 @@
 package net.xeill.elpuig.thinkitapp.view;
 
-import android.animation.AnimatorInflater;
-import android.animation.AnimatorSet;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -24,7 +22,6 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.VideoView;
@@ -181,7 +178,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             public void onClick(View view) {
                 new AlertDialog.Builder(MathsActivity.this)
                         .setMessage(R.string.gameover_sure)
-                        .setPositiveButton(R.string.exit_yes, new DialogInterface.OnClickListener() {
+                        .setPositiveButton(R.string.gameover_over, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 gameOver();
                             }
@@ -366,6 +363,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
+    //AL RESPONDER
     @Override
     public void onClick(final View view) {
         mCountdownTimer.cancel();
@@ -385,7 +383,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         if (answerButtons.indexOf(view) == mCorrectButtonIndex) {
             correctAnswer();
         } else { //FALLA
-            ViewCompat.setBackgroundTintList(view,ColorStateList.valueOf(Color.RED));
+            ViewCompat.setBackgroundTintList(view,ColorStateList.valueOf(getResources().getColor(R.color.color_red_incorrect)));
             view.setOnClickListener(null);
 
             mHasBonus=false;
@@ -461,54 +459,54 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                     case 0:
                         op1Op1TV.setText("?");
                         op1Op1TV.setTextSize(60);
-                        op1Op1TV.setTextColor(Color.RED);
+                        op1Op1TV.setTextColor(getResources().getColor(R.color.color_question));
                         op1Op1TV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.square_back_question));
 
 
                         op1Op2TV.setText(op1.getOp2()+"");
                         op1Op2TV.setTextColor(defColor);
                         op1Op2TV.setTextSize(defOp1Size);
-                        op1Op2TV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.square_back));
+                        op1Op2TV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.square_back_normal));
 
                         op1ResTV.setText(op1.getRes()+"");
                         op1ResTV.setTextColor(defColor);
                         op1ResTV.setTextSize(defOp1Size);
-                        op1ResTV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.square_back));
+                        op1ResTV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.square_back_normal));
                         break;
                     case 1:
                         op1Op1TV.setText(op1.getOp1()+"");
                         op1Op1TV.setTextColor(defColor);
                         op1Op1TV.setTextSize(defOp1Size);
-                        op1Op1TV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.square_back));
+                        op1Op1TV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.square_back_normal));
 
 
                         op1Op2TV.setText("?");
                         op1Op2TV.setTextSize(60);
-                        op1Op2TV.setTextColor(Color.RED);
+                        op1Op2TV.setTextColor(getResources().getColor(R.color.color_question));
                         op1Op2TV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.square_back_question));
 
                         op1ResTV.setText(op1.getRes()+"");
                         op1ResTV.setTextColor(defColor);
                         op1ResTV.setTextSize(defOp1Size);
-                        op1ResTV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.square_back));
+                        op1ResTV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.square_back_normal));
 
                         break;
                     case 2:
                         op1Op1TV.setText(op1.getOp1()+"");
                         op1Op1TV.setTextColor(defColor);
                         op1Op1TV.setTextSize(defOp1Size);
-                        op1Op1TV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.square_back));
+                        op1Op1TV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.square_back_normal));
 
 
                         op1Op2TV.setText(op1.getOp2()+"");
                         op1Op2TV.setTextColor(defColor);
                         op1Op2TV.setTextSize(defOp1Size);
-                        op1Op2TV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.square_back));
+                        op1Op2TV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.square_back_normal));
 
 
                         op1ResTV.setText("?");
                         op1ResTV.setTextSize(60);
-                        op1ResTV.setTextColor(Color.RED);
+                        op1ResTV.setTextColor(getResources().getColor(R.color.color_question));
                         op1ResTV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.square_back_question));
                         break;
                 }
@@ -517,7 +515,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                     case 0:
                         op2Op1TV.setText("?");
                         op2Op1TV.setTextSize(40);
-                        op2Op1TV.setTextColor(Color.RED);
+                        op2Op1TV.setTextColor(getResources().getColor(R.color.color_question));
 
                         op2Op2TV.setText(op2.getOp2()+"");
                         op2Op2TV.setTextColor(defColor);
@@ -534,7 +532,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
                         op2Op2TV.setText("?");
                         op2Op2TV.setTextSize(40);
-                        op2Op2TV.setTextColor(Color.RED);
+                        op2Op2TV.setTextColor(getResources().getColor(R.color.color_question));
 
                         op2ResTV.setText(op2.getRes()+"");
                         op2ResTV.setTextColor(defColor);
@@ -554,7 +552,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
                         op2ResTV.setText("?");
                         op2ResTV.setTextSize(40);
-                        op2ResTV.setTextColor(Color.RED);
+                        op2ResTV.setTextColor(getResources().getColor(R.color.color_question));
                         break;
                 }
 
@@ -863,7 +861,28 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
         mScoreText.setText(mScore+"");
 
-        ViewCompat.setBackgroundTintList(answerButtons.get(mCorrectButtonIndex),ColorStateList.valueOf(Color.GREEN));
+        switch (op1.getHiddenField()) {
+            case 0:
+                op1Op1TV.setTextColor(getResources().getColor(R.color.color_red_incorrect));
+                ViewCompat.setBackground(op1Op1TV,getResources().getDrawable(R.drawable.square_back_incorrect));
+                op1Op1TV.setTextSize(defOp1Size);
+                op1Op1TV.setText(op1.getOp1() + "");
+                break;
+            case 1:
+                op1Op2TV.setTextColor(getResources().getColor(R.color.color_red_incorrect));
+                ViewCompat.setBackground(op1Op2TV,getResources().getDrawable(R.drawable.square_back_incorrect));
+                op1Op2TV.setTextSize(defOp1Size);
+                op1Op2TV.setText(op1.getOp2() + "");
+                break;
+            case 2:
+                op1ResTV.setTextColor(getResources().getColor(R.color.color_red_incorrect));
+                ViewCompat.setBackground(op1ResTV,getResources().getDrawable(R.drawable.square_back_incorrect));
+                op1ResTV.setTextSize(defOp1Size);
+                op1ResTV.setText(op1.getRes() + "");
+                break;
+        }
+
+        ViewCompat.setBackgroundTintList(answerButtons.get(mCorrectButtonIndex),ColorStateList.valueOf(getResources().getColor(R.color.color_red_incorrect)));
 
         mIncorrectPlayer.start();
 
@@ -946,15 +965,37 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         answerButtons.get(mCorrectButtonIndex).setOnClickListener(null);
         firstTime=false;
 
+        switch (op1.getHiddenField()) {
+            case 0:
+                op1Op1TV.setTextColor(getResources().getColor(R.color.color_green_correct));
+                op1Op1TV.setTextSize(defOp1Size);
+                op1Op1TV.setText(op1.getOp1() + "");
+                ViewCompat.setBackground(op1Op1TV,getResources().getDrawable(R.drawable.square_back_correct));
+                break;
+            case 1:
+                op1Op2TV.setTextColor(getResources().getColor(R.color.color_green_correct));
+                op1Op2TV.setTextSize(defOp1Size);
+                op1Op2TV.setText(op1.getOp2() + "");
+                ViewCompat.setBackground(op1Op2TV,getResources().getDrawable(R.drawable.square_back_correct));
+                break;
+            case 2:
+                op1ResTV.setTextColor(getResources().getColor(R.color.color_green_correct));
+                op1ResTV.setTextSize(defOp1Size);
+                op1ResTV.setText(op1.getRes() + "");
+                ViewCompat.setBackground(op1ResTV,getResources().getDrawable(R.drawable.square_back_correct));
+                break;
+        }
+
         //Triquiñuelas para API <21
-        ViewCompat.setBackgroundTintList(answerButtons.get(mCorrectButtonIndex),ColorStateList.valueOf(Color.GREEN));
+        ViewCompat.setBackgroundTintList(answerButtons.get(mCorrectButtonIndex),ColorStateList.valueOf(getResources().getColor(R.color.color_green_correct)));
 
         mCorrectPlayer.start();
 
-        AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(MathsActivity.this,R.animator.op2_movement);
-        LinearLayout op2Layout = findViewById(R.id.op2_layout);
-        set.setTarget(op2Layout);
-        set.start();
+        //TODO: THIS WAS FOR ANIMATIONS
+//        AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(MathsActivity.this,R.animator.op2_movement);
+//        LinearLayout op2Layout = findViewById(R.id.op2_layout);
+//        set.setTarget(op2Layout);
+//        set.start();
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

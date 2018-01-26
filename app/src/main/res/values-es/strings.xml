@@ -8,7 +8,7 @@
     <string name="exit_yes">Sí</string>
     <string name="exit_back">Volver</string>
     <string name="gameover_sure">¿Quieres parar el juego y forzar un \'Game Over\'?</string>
-    <string name="gameover_resume">Reanudar juego</string>
+    <string name="gameover_resume">Reanudar</string>
     <string name="no_lives">¡Sin vidas!</string>
     <string name="score">Puntuación</string>
     <string name="exit_menu">Ir al menú principal</string>
@@ -21,4 +21,6 @@
     <string name="dialog_timeout_on_pause">El tiempo se ha acabado mientras el juego estaba en pausa. Esto es una carrera, ¡el tiempo nunca para!</string>
     <string name="lastlife">¡Última vida!</string>
     <string name="hint_lifelines">¡Recuerda que puedes usar comodines!</string>
+    <string name="app_language_name">Language</string>
+    <string name="gameover_over">Game over</string>
 </resources>

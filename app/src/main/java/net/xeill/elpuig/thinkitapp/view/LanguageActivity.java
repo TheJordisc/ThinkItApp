@@ -6,7 +6,9 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.VideoView;
@@ -23,6 +25,14 @@ public class LanguageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language);
+
+        Toolbar myToolbar = findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+        ActionBar ab = getSupportActionBar();
+        // Enable the Up button
+        ab.setDisplayHomeAsUpEnabled(true);
+        ab.setTitle(R.string.app_language_name);
+
         settings=getSharedPreferences("prefs", 0);
 
         bgVideo = findViewById(R.id.bg_video);
@@ -43,17 +53,6 @@ public class LanguageActivity extends AppCompatActivity {
         } else {
             setUnmute();
         }
-        
-        final FloatingActionButton homeFAB = findViewById(R.id.fab_stop);
-
-        homeFAB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent homeIntent = new Intent(LanguageActivity.this,MainActivity.class);
-                startActivity(homeIntent);
-                LanguageActivity.this.finish();
-            }
-        });
 
         final ImageButton cat_flag = findViewById(R.id.catButton1);
         cat_flag.setOnClickListener(new View.OnClickListener() {

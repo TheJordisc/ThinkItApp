@@ -145,7 +145,6 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent languageIntent = new Intent(MainActivity.this,LanguageActivity.class);
                 startActivity(languageIntent);
-                MainActivity.this.finish();
             }
         });
 
