@@ -31,7 +31,6 @@ public class HelpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
-
         settings=getSharedPreferences("prefs", 0);
 
         musicPlayer = MediaPlayer.create(this, R.raw.bensound_thelounge);
@@ -56,7 +55,7 @@ public class HelpActivity extends AppCompatActivity {
             }
         });
 
-        final ImageButton logoButton = findViewById(R.id.logoButton);
+        /*final ImageButton logoButton = findViewById(R.id.logoButton);
         logoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,7 +75,7 @@ public class HelpActivity extends AppCompatActivity {
             }
         });
 
-
+*/
         expListView = (ExpandableListView) findViewById(R.id.lvExp);
 
         prepareListData();
@@ -84,43 +83,48 @@ public class HelpActivity extends AppCompatActivity {
         listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
 
         expListView.setAdapter(listAdapter);
+        expListView.expandGroup(0);
     }
 
     private void prepareListData() {
         listDataHeader = new ArrayList<String>();
         listDataChild = new HashMap<String, List<String>>();
 
+
+        listDataHeader.add("Creditos");
         listDataHeader.add("Objetivo del juego");
         listDataHeader.add("Controles del juego");
         listDataHeader.add("Pantalla principal");
         listDataHeader.add("Ranking de puntuaciones");
         listDataHeader.add("Cambiar idioma");
-        listDataHeader.add("Desactivar o activar el sonido");
+
+
+        List<String> credits = new ArrayList<String>();
+        credits.add("");
 
         List<String> gameHelp = new ArrayList<String>();
-        gameHelp.add("El objetivo del juego consiste en...");
+        gameHelp.add("");
 
         List<String> controllerHelp = new ArrayList<String>();
-        controllerHelp.add("Para lograr el objetivo del juego debes...");
+        controllerHelp.add("");
 
         List<String> menuHelp = new ArrayList<String>();
-        menuHelp.add("Iconos del menú principal:");
+        menuHelp.add("");
 
         List<String> rankingHelp = new ArrayList<String>();
-        rankingHelp.add("Si guardamos la puntuación al finalizar la partida...");
+        rankingHelp.add("");
 
         List<String> languageHelp = new ArrayList<String>();
-        languageHelp.add("Para selecionar un idioma pulsamos sobre la bandera...");
+        languageHelp.add("");
 
-        List<String> soundHelp = new ArrayList<String>();
-        soundHelp.add("Si queremos silenciar la aplicación...");
+        listDataChild.put(listDataHeader.get(0), credits);
+        listDataChild.put(listDataHeader.get(1), gameHelp);
+        listDataChild.put(listDataHeader.get(2), controllerHelp);
+        listDataChild.put(listDataHeader.get(3), menuHelp);
+        listDataChild.put(listDataHeader.get(4), rankingHelp);
+        listDataChild.put(listDataHeader.get(5), languageHelp);
 
-        listDataChild.put(listDataHeader.get(0), gameHelp);
-        listDataChild.put(listDataHeader.get(1), controllerHelp);
-        listDataChild.put(listDataHeader.get(2), menuHelp);
-        listDataChild.put(listDataHeader.get(3), rankingHelp);
-        listDataChild.put(listDataHeader.get(4), languageHelp);
-        listDataChild.put(listDataHeader.get(5), soundHelp);
+
     }
 
     private void setUnmute() {

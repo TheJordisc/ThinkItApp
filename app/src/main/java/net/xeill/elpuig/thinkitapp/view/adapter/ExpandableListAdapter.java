@@ -40,7 +40,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
     @Override
     public View getChildView(int element, final int childPosition,
                              boolean isLastChild, View convertView, ViewGroup parent) {
-        final String childText = (String) getChild(element, childPosition);
 
         switch (element){
             case 0:
@@ -78,11 +77,6 @@ public class ExpandableListAdapter extends BaseExpandableListAdapter {
                         .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 convertView = infalInflater.inflate(R.layout.list_item, null);
         }
-
-        TextView txtListChild = (TextView) convertView
-                .findViewById(R.id.lblListItem);
-
-        txtListChild.setText(childText);
         return convertView;
     }
 
