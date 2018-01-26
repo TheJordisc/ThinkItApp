@@ -11,7 +11,7 @@
     <string name="it_flag" translatable="false">Italiano</string>
     <string name="uk_flag" translatable="false">English</string>
     <string name="next">Next!</string>
-    <string name="developersinfo">Developed by two students of Puig Castellar:\n-Jordi Solà\n-Alejandro Berdún</string>
+    <string name="developersinfo">Developed by:\n-Jordi Solà\n-Alejandro Berdún</string>
     <string name="switchinfo">App developed for Erasmus Switch Project</string>
     <string name="gameover_sure">Do you want to stop game and force \'Game Over\'?</string>
     <string name="gameover_resume">Resume game</string>
