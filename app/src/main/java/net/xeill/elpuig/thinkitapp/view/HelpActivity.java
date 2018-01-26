@@ -26,6 +26,7 @@ public class HelpActivity extends AppCompatActivity {
     HashMap<String, List<String>> listDataChild;
     MediaPlayer musicPlayer;
     SharedPreferences settings;
+    private int lastPosition = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,7 +84,19 @@ public class HelpActivity extends AppCompatActivity {
         listAdapter = new ExpandableListAdapter(this, listDataHeader, listDataChild);
 
         expListView.setAdapter(listAdapter);
-        expListView.expandGroup(0);
+
+       expListView.expandGroup(0);
+        expListView.setOnGroupExpandListener(new ExpandableListView.OnGroupExpandListener() {
+
+            @Override
+            public void onGroupExpand(int groupPosition) {
+                if (lastPosition != -1
+                        && groupPosition != lastPosition) {
+                    expListView.collapseGroup(lastPosition);
+                }
+                lastPosition = groupPosition;
+            }
+        });
     }
 
     private void prepareListData() {
