@@ -16,7 +16,7 @@
         app:popupTheme="@style/ThemeOverlay.AppCompat.Dark">
 
         <android.support.v7.widget.AppCompatTextView
-            android:drawableStart="@drawable/crown"
+            android:drawableStart="@drawable/ic_crown_white_36dp"
             android:drawablePadding="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

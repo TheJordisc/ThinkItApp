@@ -7,29 +7,6 @@
     android:orientation="vertical"
     tools:context="net.xeill.elpuig.thinkitapp.view.LanguageActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:id="@+id/my_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/colorPrimary"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark">
-
-        <android.support.v7.widget.AppCompatTextView
-            android:drawableStart="@drawable/ic_language_white_36dp"
-            android:drawablePadding="8dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/app_language_title"
-            android:layout_gravity="center"
-            android:fontFamily="@font/boogaloo"
-            android:textSize="30sp"
-            android:textAllCaps="true"
-            android:textColor="@android:color/white"
-            android:id="@+id/toolbar_title" />
-    </android.support.v7.widget.Toolbar>
-
     <VideoView
         android:id="@+id/bg_video"
         android:layout_width="match_parent"
@@ -159,5 +136,28 @@
             android:layout_row="3"
             android:text="@string/uk_flag" />
     </GridLayout>
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:drawableStart="@drawable/ic_language_white_36dp"
+            android:drawablePadding="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_language_title"
+            android:layout_gravity="center"
+            android:fontFamily="@font/boogaloo"
+            android:textSize="30sp"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:id="@+id/toolbar_title" />
+    </android.support.v7.widget.Toolbar>
 
 </android.support.constraint.ConstraintLayout>
