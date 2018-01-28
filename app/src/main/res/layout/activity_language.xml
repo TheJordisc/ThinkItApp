@@ -16,8 +16,8 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:popupTheme="@style/ThemeOverlay.AppCompat.Dark">
 
-        <android.support.v7.widget.AppCompatTextView
-            android:drawableStart="@drawable/web"
+        <net.xeill.elpuig.thinkitapp.view.CustomTextView
+            app:drawableLeftCompat="@drawable/web"
             android:drawablePadding="8dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
