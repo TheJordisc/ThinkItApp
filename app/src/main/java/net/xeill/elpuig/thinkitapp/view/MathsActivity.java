@@ -85,8 +85,11 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     TextView mLastLife;
     TextView mLevelUp;
     TextView mGameOver;
+    TextView mTimeOut;
 
     TextView mLifelineHint;
+
+    FloatingActionButton mStopFAB;
 
     long mBonusTime=0;
     boolean mHasBonus=true;
@@ -149,6 +152,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             mLastLifePlayer.setVolume(0f,0f);
             mIncorrectPlayer.setVolume(0f,0f);
             mCorrectPlayer.setVolume(0f,0f);
+            mGameOverPlayer.setVolume(0f,0f);
         } else {
             mMusicPlayer.setVolume(0.7f,0.7f);
             mFastMusicPlayer.setVolume(0.7f,0.7f);
@@ -158,6 +162,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             mLastLifePlayer.setVolume(1f,1f);
             mIncorrectPlayer.setVolume(1f,1f);
             mCorrectPlayer.setVolume(1f,1f);
+            mGameOverPlayer.setVolume(1f,1f);
         }
 
         mMusicPlayer.start();
@@ -173,9 +178,9 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             }
         });
 
-        final FloatingActionButton stopFAB = findViewById(R.id.fab_stop);
+        mStopFAB = findViewById(R.id.fab_stop);
 
-        stopFAB.setOnClickListener(new View.OnClickListener() {
+        mStopFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 new AlertDialog.Builder(MathsActivity.this)
@@ -222,6 +227,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         mLastLife = findViewById(R.id.last_life);
         mLevelUp = findViewById(R.id.level_up);
         mGameOver = findViewById(R.id.game_over);
+        mTimeOut = findViewById(R.id.time_out);
 
         op1Op1TV = findViewById(R.id.oper1_op1);
         op1Op2TV = findViewById(R.id.oper1_op2);
@@ -363,6 +369,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         mPaused=false;
         if (mTimeoutOnPause) {
             new AlertDialog.Builder(MathsActivity.this)
+                    .setTitle(R.string.timeout)
                     .setMessage(R.string.dialog_timeout_on_pause)
                     .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
@@ -724,8 +731,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                         mTimer.setText("00:00");
 
                         if (!mPaused) {
-                            Toast.makeText(MathsActivity.this, "TIME UP!", Toast.LENGTH_SHORT).show();
-
+                            mTimeOut.setVisibility(View.VISIBLE);
 
                             incorrectAnswerOrTimeOut();
                         } else {
@@ -939,6 +945,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
+                    mTimeOut.setVisibility(View.GONE);
                     mLastLife.setVisibility(View.GONE);
                     mAddedScoreText.setVisibility(View.GONE);
                     for (AppCompatButton b : answerButtons) {
@@ -1028,6 +1035,12 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         ViewCompat.setBackgroundTintList(mLifeline5050,ColorStateList.valueOf(Color.GRAY));
         mLifelinePassover.setEnabled(false);
         ViewCompat.setBackgroundTintList(mLifelinePassover,ColorStateList.valueOf(Color.GRAY));
+
+        mStopFAB.setEnabled(false);
+
+        for (AppCompatButton b : answerButtons) {
+            b.setEnabled(false);
+        }
 
         if (mMusicPlayer.isPlaying()) {
             mMusicPlayer.stop();

@@ -17,6 +17,7 @@ import net.xeill.elpuig.thinkitapp.R;
 
 public class LanguageActivity extends AppCompatActivity {
     MediaPlayer playSoundPlayer;
+    MediaPlayer musicPlayer;
     VideoView bgVideo;
     SharedPreferences settings;
 
@@ -29,9 +30,8 @@ public class LanguageActivity extends AppCompatActivity {
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
         ActionBar ab = getSupportActionBar();
-        // Enable the Up button
         ab.setDisplayHomeAsUpEnabled(true);
-        ab.setTitle(R.string.app_language_name);
+        ab.setDisplayShowTitleEnabled(false);
 
         settings=getSharedPreferences("prefs", 0);
 
@@ -46,6 +46,8 @@ public class LanguageActivity extends AppCompatActivity {
             }
         });
 
+
+        musicPlayer = MediaPlayer.create(this, R.raw.bensound_summer);
         playSoundPlayer = MediaPlayer.create(this,R.raw.play);
 
         if(settings.getBoolean("mute",true)) {
@@ -53,6 +55,8 @@ public class LanguageActivity extends AppCompatActivity {
         } else {
             setUnmute();
         }
+
+        musicPlayer.start();
 
         final ImageButton cat_flag = findViewById(R.id.catButton1);
         cat_flag.setOnClickListener(new View.OnClickListener() {
@@ -106,6 +110,10 @@ public class LanguageActivity extends AppCompatActivity {
         if(bgVideo!=null && bgVideo.isPlaying()){
             bgVideo.stopPlayback();
         }
+
+        if(musicPlayer!=null && musicPlayer.isPlaying()){
+            musicPlayer.pause();
+        }
     }
 
     @Override
@@ -114,13 +122,19 @@ public class LanguageActivity extends AppCompatActivity {
         if(bgVideo!=null && !bgVideo.isPlaying()){
             bgVideo.start();
         }
+
+        if(musicPlayer!=null && !musicPlayer.isPlaying()){
+            musicPlayer.start();
+        }
     }
 
     private void setUnmute() {
+        musicPlayer.setVolume(1f,1f);
         playSoundPlayer.setVolume(1f,1f);
     }
 
     private void setMute() {
-        playSoundPlayer.setVolume(0f,0f);
+        musicPlayer.setVolume(0f,0f);
+        playSoundPlayer.setVolume(1f,1f);
     }
 }

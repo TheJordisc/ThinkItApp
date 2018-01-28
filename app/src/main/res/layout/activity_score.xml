@@ -2,12 +2,35 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:padding="8dp"
+
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/my_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:drawableStart="@drawable/crown"
+            android:drawablePadding="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_score_title"
+            android:layout_gravity="center"
+            android:fontFamily="@font/boogaloo"
+            android:textSize="30sp"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:id="@+id/toolbar_title" />
+    </android.support.v7.widget.Toolbar>
+
     <TextView
-        android:id="@+id/noScoreSaved"
+        android:id="@+id/no_score_saved"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -23,42 +46,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView"
+    <android.support.v7.widget.CardView
+        android:id="@+id/score_columns"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_crown_black_48dp" />
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab_stop"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_marginEnd="8dp"
-        android:layout_marginTop="8dp"
-        android:clickable="true"
-        app:backgroundTint="@android:color/holo_red_dark"
-        app:fabSize="mini"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_close_white_24dp" />
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/cardView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
         android:layout_marginTop="80dp"
-        app:cardUseCompatPadding="true"
         app:cardCornerRadius="2dp"
         app:cardElevation="2dp"
-        android:layout_marginBottom="2dp"
+        app:cardUseCompatPadding="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -67,36 +65,41 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:padding="5dp"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:padding="5dp">
+
             <TextView
                 android:id="@+id/positionColumn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:text="Posición"
-                android:layout_weight="2"
                 android:layout_marginStart="5dp"
-                android:textStyle="bold"
-                android:textAlignment="textStart" />
+                android:layout_weight="2"
+                android:text="Posición"
+                android:textAlignment="textStart"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/nameColumn"
                 android:layout_width="0dp"
-                android:layout_weight="3.5"
                 android:layout_height="wrap_content"
+                android:layout_weight="3.5"
                 android:text="Nombre"
-                android:textStyle="bold"
-                android:textAlignment="textStart" />
+                android:textAlignment="textStart"
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/scoreColumn"
                 android:layout_width="0dp"
-                android:layout_weight="2"
                 android:layout_height="wrap_content"
-                android:text="Puntuación"
                 android:layout_marginEnd="5dp"
-                android:textStyle="bold"
-                android:textAlignment="textEnd" />
+                android:layout_weight="2"
+                android:text="Puntuación"
+                android:textAlignment="textEnd"
+                android:textStyle="bold" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7" />
         </LinearLayout>
 
     </android.support.v7.widget.CardView>
@@ -105,10 +108,24 @@
         android:id="@+id/score_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:scrollbars="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+        app:layout_constraintTop_toBottomOf="@+id/score_columns" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_clear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:clickable="true"
+        app:fabSize="normal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_close_white_24dp" />
 
 </android.support.constraint.ConstraintLayout>

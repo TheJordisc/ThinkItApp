@@ -12,4 +12,5 @@
     <color name="color_blue_normal">#40c4ff</color>
     <color name="color_red_incorrect">#d50000</color>
     <color name="color_question">#ff9800</color>
+    <color name="color_grey_disabled">#9e9e9e</color>
 </resources>

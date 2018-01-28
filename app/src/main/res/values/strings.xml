@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">Think It App</string>
-    <string name="hello">Hello World!</string>
     <string name="cd_button">Play button</string>
     <string name="cd_logo" translatable="false">Logo</string>
     <string name="exit_sure">Are you sure do you want to exit?</string>
@@ -11,7 +10,7 @@
     <string name="it_flag" translatable="false">Italiano</string>
     <string name="uk_flag" translatable="false">English</string>
     <string name="next">Next!</string>
-    <string name="developersinfo">Developed by: Jordi Solà, Alejandro Berdún</string>
+    <string name="developersinfo">Developed by Jordi Solà and Alejandro Berdún</string>
     <string name="switchinfo">App developed for Erasmus Switch Project</string>
     <string name="gameover_sure">Do you want to stop game and force \'Game Over\'?</string>
     <string name="gameover_resume">Resume</string>
@@ -28,6 +27,12 @@
     <string name="dialog_timeout_on_pause">Time ran out while the game was paused. This is a race, so time won\'t stop not even then!</string>
     <string name="lastlife">Last life!</string>
     <string name="hint_lifelines">Remember you can use lifelines!</string>
-    <string name="app_language_name">Language</string>
+    <string name="app_language_title">Language</string>
     <string name="gameover_over">Game over</string>
+    <string name="timeout">Time out!</string>
+    <string name="app_score_title">Ranking</string>
+    <string name="app_help_title">Help</string>
+    <string name="dialog_clear_scores">Do you want to clear the score list?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
 </resources>

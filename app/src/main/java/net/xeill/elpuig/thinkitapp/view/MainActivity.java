@@ -4,11 +4,13 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     MediaController mediaController;
     Handler mSplashHandler;
     SharedPreferences settings;
+    FloatingActionButton volumeFAB;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +46,20 @@ public class MainActivity extends AppCompatActivity {
         musicPlayer.start();
         musicPlayer.setLooping(true); // Set looping
         playSoundPlayer = MediaPlayer.create(this,R.raw.play);
+
+        volumeFAB = findViewById(R.id.volume_fab);
+
+        volumeFAB.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (volumeFAB.isActivated()) {
+                    setMute();
+                } else {
+                    setUnmute();
+                }
+
+            }
+        });
 
         if(settings.getBoolean("mute",true)) {
             setMute();
@@ -115,29 +132,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        final FloatingActionButton volumeFAB = findViewById(R.id.volume_fab);
-        if (settings.getBoolean("mute",true)) {
-            volumeFAB.setActivated(false);
-        } else {
-            volumeFAB.setActivated(true);
-        }
 
-
-        volumeFAB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (volumeFAB.isActivated()) {
-                    volumeFAB.setActivated(false);
-                    settings.edit().putBoolean("mute",true).apply();
-                    setMute();
-                } else {
-                    volumeFAB.setActivated(true);
-                    settings.edit().putBoolean("mute",false).apply();
-                    setUnmute();
-                }
-
-            }
-        });
 
         FloatingActionButton languageFAB = findViewById(R.id.language_fab);
         languageFAB.setOnClickListener(new View.OnClickListener() {
@@ -190,11 +185,19 @@ public class MainActivity extends AppCompatActivity {
     private void setUnmute() {
         musicPlayer.setVolume(0.7f,0.7f);
         playSoundPlayer.setVolume(1f,1f);
+
+        volumeFAB.setActivated(true);
+        ViewCompat.setBackgroundTintList(volumeFAB, ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary)));
+        settings.edit().putBoolean("mute",false).apply();
     }
 
     private void setMute() {
         musicPlayer.setVolume(0f,0f);
         playSoundPlayer.setVolume(0f,0f);
+
+        volumeFAB.setActivated(false);
+        ViewCompat.setBackgroundTintList(volumeFAB, ColorStateList.valueOf(getResources().getColor(R.color.color_grey_disabled)));
+        settings.edit().putBoolean("mute",true).apply();
     }
 
     @Override

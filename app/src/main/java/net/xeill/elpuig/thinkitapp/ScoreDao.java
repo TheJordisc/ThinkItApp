@@ -2,6 +2,7 @@ package net.xeill.elpuig.thinkitapp;
 
 import android.arch.lifecycle.LiveData;
 import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 
@@ -21,4 +22,10 @@ public interface ScoreDao {
 
     @Insert(onConflict = 1)
     public long insertScore(Score score);
+
+    @Delete
+    public void deleteScore(Score score);
+
+    @Delete
+    public void deleteAllScores(List<Score> scoreList);
 }

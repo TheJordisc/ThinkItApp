@@ -5,8 +5,10 @@ import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.ImageButton;
@@ -32,6 +34,13 @@ public class HelpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
+
+        Toolbar myToolbar = findViewById(R.id.my_toolbar);
+        setSupportActionBar(myToolbar);
+        ActionBar ab = getSupportActionBar();
+        ab.setDisplayHomeAsUpEnabled(true);
+        ab.setDisplayShowTitleEnabled(false);
+
         settings=getSharedPreferences("prefs", 0);
 
         musicPlayer = MediaPlayer.create(this, R.raw.bensound_thelounge);
@@ -44,17 +53,6 @@ public class HelpActivity extends AppCompatActivity {
 
         musicPlayer.start();
         musicPlayer.setLooping(true); // Set looping
-
-        final FloatingActionButton homeFAB = findViewById(R.id.fab_stop);
-
-        homeFAB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent homeIntent = new Intent(HelpActivity.this,MainActivity.class);
-                startActivity(homeIntent);
-                HelpActivity.this.finish();
-            }
-        });
 
         /*final ImageButton logoButton = findViewById(R.id.logoButton);
         logoButton.setOnClickListener(new View.OnClickListener() {

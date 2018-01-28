@@ -14,7 +14,21 @@
         android:background="@color/colorPrimary"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"/>
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:drawableStart="@drawable/web"
+            android:drawablePadding="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/app_language_title"
+            android:layout_gravity="center"
+            android:fontFamily="@font/boogaloo"
+            android:textSize="30sp"
+            android:textAllCaps="true"
+            android:textColor="@android:color/white"
+            android:id="@+id/toolbar_title" />
+    </android.support.v7.widget.Toolbar>
 
     <VideoView
         android:id="@+id/bg_video"

@@ -3,6 +3,7 @@ package net.xeill.elpuig.thinkitapp.view;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -19,6 +20,7 @@ import net.xeill.elpuig.thinkitapp.model.Score;
 import net.xeill.elpuig.thinkitapp.viewmodel.ScoreViewModel;
 
 public class ResultActivity extends AppCompatActivity {
+    SharedPreferences settings;
     int mScore;
     TextView mScoreTextView,countTextView;
     EditText name_edit;
@@ -32,13 +34,24 @@ public class ResultActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
+        mResultPlayer = MediaPlayer.create(ResultActivity.this,R.raw.bensound_jazzcomedy);
+        mResultPlayer.setLooping(true);
+
+        settings=getSharedPreferences("prefs", 0);
+        if (settings.getBoolean("mute",true)) {
+            mResultPlayer.setVolume(0f,0f);
+        } else {
+            mResultPlayer.setVolume(1f,1f);
+        }
+
+        mResultPlayer.start();
+
         scoreViewModel = ViewModelProviders.of(this).get(ScoreViewModel.class);
 
         mScore = getIntent().getIntExtra("score", 0);
 
-        mResultPlayer = MediaPlayer.create(ResultActivity.this,R.raw.bensound_jazzcomedy);
-        mResultPlayer.setLooping(true);
-        mResultPlayer.start();
+
+
 
         mScoreTextView = findViewById(R.id.score);
 

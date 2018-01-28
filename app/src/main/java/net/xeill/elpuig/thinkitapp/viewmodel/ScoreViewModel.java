@@ -44,4 +44,24 @@ public class ScoreViewModel extends AndroidViewModel {
         return id;
     }
 
+    public void deleteScore(final Score score){
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                scoreDao.deleteScore(score);
+                return null;
+            }
+        }.execute();
+    }
+
+    public void deleteAllScores(final List<Score> scoreList){
+        new AsyncTask<Void, Void, Void>() {
+            @Override
+            protected Void doInBackground(Void... voids) {
+                scoreDao.deleteAllScores(scoreList);
+                return null;
+            }
+        }.execute();
+    }
+
 }
