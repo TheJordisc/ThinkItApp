@@ -42,4 +42,11 @@
     <string name="puntuaci_n">Puntuación</string>
     <string name="we_are_students_of_puig_castellar">We are students of Puig Castellar</string>
     <string name="template_for_help_items_developing">Template for help items, developing...</string>
+
+    <string name="help_credits">Creditos</string>
+    <string name="help_menu">Menú principal</string>
+    <string name="help_goals">Objetivo del juego</string>
+    <string name="help_bonus">Ayudas y bonificaciones</string>
+    <string name="help_ranking">Ranking de puntuaciones</string>
+    <string name="help_language">Cambiar idioma</string>
 </resources>
