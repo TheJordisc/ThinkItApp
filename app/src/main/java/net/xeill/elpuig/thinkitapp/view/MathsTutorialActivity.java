@@ -5,6 +5,8 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatButton;
+import android.support.v7.widget.AppCompatTextView;
 import android.view.Gravity;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -13,13 +15,15 @@ import android.widget.VideoView;
 
 import net.xeill.elpuig.thinkitapp.R;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import me.toptas.fancyshowcase.FancyShowCaseQueue;
 import me.toptas.fancyshowcase.FancyShowCaseView;
 import me.toptas.fancyshowcase.OnCompleteListener;
 
 public class MathsTutorialActivity extends AppCompatActivity {
-    //    ShowcaseView sv;
-    //    int clickCount=0;
+
     VideoView bgVideo;
 
     LinearLayout keyboard;
@@ -40,6 +44,10 @@ public class MathsTutorialActivity extends AppCompatActivity {
 
     TextView mScoreText;
     TextView mLevelText;
+
+    AppCompatTextView mTimer;
+
+    List<AppCompatButton> buttons = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +84,18 @@ public class MathsTutorialActivity extends AppCompatActivity {
         mScoreText = findViewById(R.id.score);
         mLevelText = findViewById(R.id.level);
 
+        mTimer=findViewById(R.id.timer);
+
+
+        buttons.add((AppCompatButton) findViewById(R.id.answer1));
+        buttons.add((AppCompatButton) findViewById(R.id.answer2));
+        buttons.add((AppCompatButton) findViewById(R.id.answer3));
+        buttons.add((AppCompatButton) findViewById(R.id.answer4));
+        buttons.add((AppCompatButton) findViewById(R.id.answer5));
+        buttons.add((AppCompatButton) findViewById(R.id.answer6));
+        buttons.add((AppCompatButton) findViewById(R.id.answer7));
+        buttons.add((AppCompatButton) findViewById(R.id.answer8));
+
 
         op1Op1TV.setText("10");
         op1OpType.setText("+");
@@ -92,74 +112,59 @@ public class MathsTutorialActivity extends AppCompatActivity {
         mScoreText.setText("0");
         mLevelText.setText(getString(R.string.level) + " 1");
 
+        mTimer.setText("00:10");
 
-//        RelativeLayout.LayoutParams lps = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//        lps.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
-//        lps.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
-//        int margin = ((Number) (getResources().getDisplayMetrics().density * 12)).intValue();
-//        lps.setMargins(margin, margin, margin, margin);
-//
-//        sv = new ShowcaseView.Builder(this)
-//                .withMaterialShowcase()
-//                .build();
-//        sv.setButtonPosition(lps);
-//
-//        sv.overrideButtonClick(new View.OnClickListener() {
-//
-//            @Override
-//            public void onClick(View view) {
-//                clickCount++;
-//                switch (clickCount) {
-//                    case 1:
-//                        sv.setTarget(new ViewTarget(R.id.op1_layout, MathsTutorialActivity.this));
-//                        sv.setContentTitle("Operación principal");
-//                        sv.setContentText("Esta es la operación que debes completar");
-//                        sv.setShowcaseX(300);
-//                        sv.setButtonText("next");
-//                        break;
-//                    case 2:
-//                        sv.setTarget(new ViewTarget(R.id.op2_layout, MathsTutorialActivity.this));
-//                        sv.setContentTitle("Siguiente operación");
-//                        sv.setContentText("¡Prepárate para la siguiente operación echándole un vistazo rápido!");
-//                        sv.setButtonText("next");
-//                        break;
-//                    case 3:
-//                        sv.setTarget(new ViewTarget(R.id.keyboard_line1, MathsTutorialActivity.this));
-//                        sv.setContentTitle("Respuestas posibles");
-//                        sv.setContentText("Observa las respuestas posibles, piensa bien y pulsa en la que creas correcta");
-//                        sv.setButtonText("next");
-//                        break;
-//                }
-//            }
-//        });
-
-
-
+        buttons.get(0).setText("1");
+        buttons.get(1).setText("8");
+        buttons.get(2).setText("2");
+        buttons.get(3).setText("10");
+        buttons.get(4).setText("4");
+        buttons.get(5).setText("6");
+        buttons.get(6).setText("11");
+        buttons.get(7).setText("3");
 
 
         final FancyShowCaseView fancyShowCaseView1 = new FancyShowCaseView.Builder(this)
-                .title("Esta es la operación principal.\nEl objetivo del juego es completar la operación seleccionando el número que falta.")
-                .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
+                .title("Esta es la operación principal.\nEl objetivo del juego es completar la operación con el número que falta.")
+                .titleStyle(R.style.tutorial_title_style,Gravity.BOTTOM | Gravity.CENTER)
                 .focusOn(op1)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
                 .build();
 
         final FancyShowCaseView fancyShowCaseView2 = new FancyShowCaseView.Builder(this)
-                .title("Esta es la operación secundaria")
-                .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
+                .title("Esta es la siguiente operación.\n Cuando contestes la actual, esta será el objetivo. ¡Échale un vistazo para ganar unos segundos!")
+                .titleStyle(R.style.tutorial_title_style,Gravity.BOTTOM | Gravity.CENTER)
+                .backgroundColor(getResources().getColor(R.color.color_showcase))
                 .focusOn(op2)
                 .build();
 
         final FancyShowCaseView fancyShowCaseView3 = new FancyShowCaseView.Builder(this)
-                .title("Third Queue Item")
+                .title("Aquí están los botones con las posibles respuestas. ¡Piensa bien antes de elegir una!")
                 .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
+                .backgroundColor(getResources().getColor(R.color.color_showcase))
                 .focusOn(keyboard)
+                .build();
+
+        final FancyShowCaseView fancyShowCaseView4 = new FancyShowCaseView.Builder(this)
+                .title("No tardes mucho en pensar, porque hay un cronómetro en tu contra. ¡Vigila el tiempo!")
+                .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
+                .backgroundColor(getResources().getColor(R.color.color_showcase))
+                .focusOn(mTimer)
+                .build();
+
+        final FancyShowCaseView fancyShowCaseView5 = new FancyShowCaseView.Builder(this)
+                .title("Según tu respuesta, subirá o bajará la puntuación. Si aciertas, sumarás puntos. Si fallas, restarás. Y si aciertas rápido, obtendrás una bonificación")
+                .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
+                .backgroundColor(getResources().getColor(R.color.color_showcase))
+                .focusOn(mScoreText)
                 .build();
 
         FancyShowCaseQueue mQueue = new FancyShowCaseQueue()
                 .add(fancyShowCaseView1)
                 .add(fancyShowCaseView2)
-                .add(fancyShowCaseView3);
+                .add(fancyShowCaseView3)
+                .add(fancyShowCaseView4)
+                .add(fancyShowCaseView5);
 
         mQueue.show();
 
