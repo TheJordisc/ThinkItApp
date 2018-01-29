@@ -196,6 +196,8 @@ public class MainActivity extends AppCompatActivity {
         playSoundPlayer.setVolume(0f,0f);
 
         volumeFAB.setActivated(false);
+        //TODO: NO VA EN 4.4
+//        ViewCompat.setBackground(volumeFAB,getResources().getDrawable(R.drawable.fab_volume));
         ViewCompat.setBackgroundTintList(volumeFAB, ColorStateList.valueOf(getResources().getColor(R.color.color_grey_disabled)));
         settings.edit().putBoolean("mute",true).apply();
     }
