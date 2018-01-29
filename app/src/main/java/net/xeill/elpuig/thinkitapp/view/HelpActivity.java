@@ -1,17 +1,12 @@
 package net.xeill.elpuig.thinkitapp.view;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
-import android.net.Uri;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.widget.ExpandableListView;
-import android.widget.ImageButton;
 
 import net.xeill.elpuig.thinkitapp.view.adapter.ExpandableListAdapter;
 import net.xeill.elpuig.thinkitapp.R;
@@ -102,25 +97,24 @@ public class HelpActivity extends AppCompatActivity {
         listDataChild = new HashMap<String, List<String>>();
 
 
-        listDataHeader.add("Creditos");
-        listDataHeader.add("Objetivo del juego");
-        listDataHeader.add("Controles del juego");
-        listDataHeader.add("Pantalla principal");
-        listDataHeader.add("Ranking de puntuaciones");
-        listDataHeader.add("Cambiar idioma");
+        listDataHeader.add(getString(R.string.help_credits));
+        listDataHeader.add(getString(R.string.help_menu));
+        listDataHeader.add(getString(R.string.help_goals));
+        listDataHeader.add(getString(R.string.help_bonus));
+        listDataHeader.add(getString(R.string.help_ranking));
+        listDataHeader.add(getString(R.string.help_language));
 
-
-        List<String> credits = new ArrayList<String>();
-        credits.add("");
-
-        List<String> gameHelp = new ArrayList<String>();
-        gameHelp.add("");
-
-        List<String> controllerHelp = new ArrayList<String>();
-        controllerHelp.add("");
+        List<String> creditsHelp = new ArrayList<String>();
+        creditsHelp.add("");
 
         List<String> menuHelp = new ArrayList<String>();
         menuHelp.add("");
+
+        List<String> goalsHelp = new ArrayList<String>();
+        goalsHelp.add("");
+
+        List<String> bonusHelp = new ArrayList<String>();
+        bonusHelp.add("");
 
         List<String> rankingHelp = new ArrayList<String>();
         rankingHelp.add("");
@@ -128,12 +122,13 @@ public class HelpActivity extends AppCompatActivity {
         List<String> languageHelp = new ArrayList<String>();
         languageHelp.add("");
 
-        listDataChild.put(listDataHeader.get(0), credits);
-        listDataChild.put(listDataHeader.get(1), gameHelp);
-        listDataChild.put(listDataHeader.get(2), controllerHelp);
-        listDataChild.put(listDataHeader.get(3), menuHelp);
+        listDataChild.put(listDataHeader.get(0), creditsHelp);
+        listDataChild.put(listDataHeader.get(1), menuHelp);
+        listDataChild.put(listDataHeader.get(2), goalsHelp);
+        listDataChild.put(listDataHeader.get(3), bonusHelp);
         listDataChild.put(listDataHeader.get(4), rankingHelp);
         listDataChild.put(listDataHeader.get(5), languageHelp);
+
 
 
     }

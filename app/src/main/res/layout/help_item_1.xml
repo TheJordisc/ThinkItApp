@@ -1,24 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="10dp"
     android:fillViewport="false">
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="55dip"
         android:orientation="vertical">
 
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/score_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:clickable="false"
+            app:backgroundTint="@color/colorPrimaryDark"
+            app:fabSize="mini"
+            app:layout_constraintBottom_toBottomOf="@+id/lblListItem"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/lblListItem"
+            app:layout_constraintVertical_bias="0.0"
+            app:srcCompat="@drawable/ic_format_list_numbered_white_24dp" />
+
         <TextView
             android:id="@+id/lblListItem"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="17sp"
-            android:paddingTop="5dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
             android:paddingBottom="5dp"
-            android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft" />
+            android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
+            android:paddingTop="5dp"
+            android:text="Pulsa éste boton para ver el ranking de puntuaciones"
+            android:textAlignment="textEnd"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.75"
+            app:layout_constraintStart_toEndOf="@+id/score_fab"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    </LinearLayout>
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/close_fab"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:clickable="false"
+            app:backgroundTint="@android:color/holo_red_dark"
+            app:fabSize="mini"
+            app:layout_constraintBottom_toBottomOf="@id/s"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/s"
+            app:srcCompat="@drawable/ic_close_white_24dp" />
+
+        <TextView
+            android:id="@+id/s"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="116dp"
+            android:paddingBottom="5dp"
+            android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
+            android:paddingTop="5dp"
+            android:text="Pulsa éste boton para salir del juego"
+            android:textAlignment="textEnd"
+            android:textSize="17sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <ImageView
+            android:id="@+id/play_button_image"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:contentDescription="@string/cd_button"
+            app:srcCompat="@drawable/play_button_state"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="187dp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="21dp"
+            android:text="Pulsa para jugar"
+            android:textAlignment="textEnd"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:layout_editor_absoluteY="197dp" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/language_fab"
+            style="@style/MainMenuFAB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            app:srcCompat="@drawable/ic_language_white_24dp"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="251dp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            android:text="Cambiar idioma"
+            android:textAlignment="textEnd"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:layout_editor_absoluteY="250dp" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/help_fab"
+            style="@style/MainMenuFAB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="true"
+            android:focusable="true"
+            app:srcCompat="@drawable/ic_help_outline_white_24dp"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="318dp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Mostrar ésta pantalla"
+            android:textAlignment="textEnd"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:layout_editor_absoluteY="318dp" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/volume_fab"
+            style="@style/MainMenuFAB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            app:srcCompat="@drawable/volume_fab_state"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="374dp" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Activar o no el sonido"
+            android:textAlignment="textEnd"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:layout_editor_absoluteY="374dp" />
+
+
+
+    </android.support.constraint.ConstraintLayout>
 </ScrollView>
