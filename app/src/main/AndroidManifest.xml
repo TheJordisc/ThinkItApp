@@ -57,6 +57,7 @@
                 android:value="net.xeill.elpuig.thinkitapp.view.MainActivity" />
         </activity>
         <activity android:name=".view.ResultActivity"
+            android:windowSoftInputMode="stateHidden"
             android:screenOrientation="portrait"/>
     </application>
 
