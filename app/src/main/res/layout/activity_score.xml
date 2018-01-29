@@ -38,7 +38,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:gravity="center"
-        android:text="No existen puntuaciones todavía"
+        android:text="@string/no_existen_puntuaciones_todav_a"
         android:textAlignment="center"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -74,7 +74,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="5dp"
                 android:layout_weight="2"
-                android:text="Posición"
+                android:text="@string/posici_n"
                 android:textAlignment="textStart"
                 android:textStyle="bold" />
 
@@ -83,7 +83,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3.5"
-                android:text="Nombre"
+                android:text="@string/nombre"
                 android:textAlignment="textStart"
                 android:textStyle="bold" />
 
@@ -93,7 +93,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="5dp"
                 android:layout_weight="2"
-                android:text="Puntuación"
+                android:text="@string/puntuaci_n"
                 android:textAlignment="textEnd"
                 android:textStyle="bold" />
             <TextView

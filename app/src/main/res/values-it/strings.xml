@@ -22,4 +22,11 @@
     <string name="dialog_clear_scores">Do you want to clear the score list?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="guardar_puntuaci_n">¿Guardar puntuación?</string>
+    <string name="no_existen_puntuaciones_todav_a">No existen puntuaciones todavía</string>
+    <string name="posici_n">Posición</string>
+    <string name="nombre">Nombre</string>
+    <string name="puntuaci_n">Puntuación</string>
+    <string name="we_are_students_of_puig_castellar">We are students of Puig Castellar</string>
+    <string name="template_for_help_items_developing">Template for help items, developing...</string>
 </resources>

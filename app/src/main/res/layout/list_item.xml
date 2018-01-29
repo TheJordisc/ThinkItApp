@@ -11,7 +11,7 @@
     android:orientation="vertical">
 
     <TextView
-        android:text="Template for help items, developing..."
+        android:text="@string/template_for_help_items_developing"
         android:id="@+id/lblListItem"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
