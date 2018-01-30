@@ -6,4 +6,15 @@
     android:layout_height="match_parent"
     tools:context="net.xeill.elpuig.thinkitapp.view.MathsTutorialActivity">
 
+    <Button
+        android:id="@+id/button_next_tutorial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:textColor="@android:color/white"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="@string/next_tutorial"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 </android.support.constraint.ConstraintLayout>

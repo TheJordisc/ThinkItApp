@@ -49,4 +49,5 @@
     <string name="help_bonus">Ayudas y bonificaciones</string>
     <string name="help_ranking">Ranking de puntuaciones</string>
     <string name="help_language">Cambiar idioma</string>
+    <string name="next_tutorial">Next</string>
 </resources>
