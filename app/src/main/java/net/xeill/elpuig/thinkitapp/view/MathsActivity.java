@@ -530,45 +530,54 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                 switch (op2.getHiddenField()) {
                     case 0:
                         op2Op1TV.setText("?");
-                        op2Op1TV.setTextSize(40);
+                        op2Op1TV.setTextSize(30);
                         op2Op1TV.setTextColor(getResources().getColor(R.color.color_question));
+                        op2Op1TV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.square_back_question));
 
                         op2Op2TV.setText(op2.getOp2()+"");
                         op2Op2TV.setTextColor(defColor);
                         op2Op2TV.setTextSize(defOp2Size);
+                        op2Op2TV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.square_back_normal));
 
                         op2ResTV.setText(op2.getRes()+"");
                         op2ResTV.setTextColor(defColor);
                         op2ResTV.setTextSize(defOp2Size);
+                        op2ResTV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.square_back_normal));
                         break;
                     case 1:
                         op2Op1TV.setText(op2.getOp1()+"");
                         op2Op1TV.setTextColor(defColor);
                         op2Op1TV.setTextSize(defOp2Size);
+                        op2Op1TV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.square_back_normal));
 
                         op2Op2TV.setText("?");
-                        op2Op2TV.setTextSize(40);
+                        op2Op2TV.setTextSize(30);
                         op2Op2TV.setTextColor(getResources().getColor(R.color.color_question));
+                        op2Op2TV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.square_back_question));
 
                         op2ResTV.setText(op2.getRes()+"");
                         op2ResTV.setTextColor(defColor);
                         op2ResTV.setTextSize(defOp2Size);
+                        op2ResTV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.square_back_normal));
 
                         break;
                     case 2:
                         op2Op1TV.setText(op2.getOp1()+"");
                         op2Op1TV.setTextColor(defColor);
                         op2Op1TV.setTextSize(defOp2Size);
+                        op2Op1TV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.square_back_normal));
 
 
                         op2Op2TV.setText(op2.getOp2()+"");
                         op2Op2TV.setTextColor(defColor);
                         op2Op2TV.setTextSize(defOp2Size);
+                        op2Op2TV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.square_back_normal));
 
 
                         op2ResTV.setText("?");
-                        op2ResTV.setTextSize(40);
+                        op2ResTV.setTextSize(30);
                         op2ResTV.setTextColor(getResources().getColor(R.color.color_question));
+                        op2ResTV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.square_back_question));
                         break;
                 }
 

@@ -147,7 +147,7 @@
         <LinearLayout
             android:id="@+id/op2_layout"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="43dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
@@ -163,29 +163,29 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
                 android:background="@drawable/square_back_normal"
                 android:fontFamily="@font/bubblegum_sans"
                 android:gravity="center_vertical"
+                android:paddingEnd="8dp"
+                android:paddingStart="8dp"
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="20sp"
-                tools:text="100" />
+                tools:text="1" />
 
             <TextView
                 android:id="@+id/oper2_opType"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_weight="1"
-                android:paddingStart="2dp"
-                android:paddingEnd="2dp"
                 android:fontFamily="@font/bubblegum_sans"
-                android:gravity="center_vertical"
+                android:paddingEnd="2dp"
+                android:paddingStart="2dp"
+                android:text="-"
                 android:textAlignment="center"
                 android:textColor="@android:color/holo_red_dark"
-                android:textSize="30sp"
-                tools:text="+" />
+                android:textSize="30sp" />
 
             <TextView
                 android:id="@+id/oper2_op2"
@@ -195,22 +195,23 @@
                 android:background="@drawable/square_back_normal"
                 android:fontFamily="@font/bubblegum_sans"
                 android:gravity="center_vertical"
-                android:paddingStart="8dp"
                 android:paddingEnd="8dp"
+                android:paddingStart="8dp"
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="20sp"
-                tools:text="100" />
+                tools:text="2" />
 
             <TextView
                 android:id="@+id/oper2_equals"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
                 android:layout_weight="1"
                 android:fontFamily="@font/bubblegum_sans"
-                android:text="="
-                android:paddingStart="2dp"
                 android:paddingEnd="2dp"
+                android:paddingStart="2dp"
+                android:text="="
                 android:textAlignment="center"
                 android:textColor="@android:color/holo_red_dark"
                 android:textSize="30sp" />
@@ -220,15 +221,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:paddingStart="8dp"
-                android:paddingEnd="8dp"
                 android:background="@drawable/square_back_normal"
                 android:fontFamily="@font/bubblegum_sans"
                 android:gravity="center_vertical"
+                android:paddingEnd="8dp"
+                android:paddingStart="8dp"
                 android:textAlignment="center"
                 android:textColor="@android:color/black"
                 android:textSize="20sp"
-                tools:text="100" />
+                tools:text="\?"
+                tools:textSize="30sp" />
 
         </LinearLayout>
 
@@ -474,6 +476,7 @@
             android:elevation="4dp"
             android:textColor="@android:color/white"
             android:textSize="24sp"
+            android:text="1500"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -481,24 +484,25 @@
             tools:text="9955325" />
 
         <TextView
-            android:id="@+id/no_lives"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/lives_fake_container"
+            android:layout_width="130dp"
+            android:layout_height="60dp"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/bubblegum_sans"
-            android:text="@string/no_lives"
+            android:text=" "
             android:textAllCaps="true"
             android:textColor="@android:color/holo_red_light"
             android:textSize="25sp"
             android:visibility="gone"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/fab_stop"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="NO LIVES!" />
+            tools:text=" " />
 
         <ImageView
             android:id="@+id/life1"
@@ -616,7 +620,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.382"
         tools:text="¡ÚLTIMA VIDA!"
-        tools:visibility="visible" />
+        tools:visibility="gone" />
 
     <TextView
         android:id="@+id/game_over"
@@ -707,6 +711,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.087"
         tools:visibility="gone" />
+
+
 
     <!--<Button-->
         <!--android:visibility="gone"-->
