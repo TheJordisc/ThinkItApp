@@ -24,6 +24,7 @@
                 android:layout_weight="0"
                 android:clickable="true"
                 app:fabSize="mini"
+                android:layout_gravity="center"
                 android:scaleType="center"
                 app:srcCompat="@drawable/play_button_help"/>
 
@@ -54,6 +55,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
+                android:layout_gravity="center"
                 android:clickable="true"
                 app:backgroundTint="@color/colorPrimaryDark"
                 app:fabSize="mini"
@@ -83,6 +85,7 @@
             <android.support.design.widget.FloatingActionButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_weight="0"
                 android:clickable="true"
                 style="@style/MainMenuFAB"
@@ -113,6 +116,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
+                android:layout_gravity="center"
                 style="@style/MainMenuFAB"
                 android:clickable="true"
                 app:fabSize="mini"
@@ -139,14 +143,14 @@
             android:orientation="horizontal">
 
             <android.support.design.widget.FloatingActionButton
-
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0"
                 style="@style/MainMenuFAB"
+                android:layout_gravity="center"
                 android:clickable="true"
                 app:fabSize="mini"
-                app:srcCompat="@drawable/volume_fab_state"/>
+                app:srcCompat="@drawable/ic_volume_up_white_24dp"/>
 
             <TextView
                 android:layout_width="0dp"
@@ -171,6 +175,7 @@
             <android.support.design.widget.FloatingActionButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_weight="0"
                 android:clickable="true"
                 app:backgroundTint="@android:color/holo_red_dark"
