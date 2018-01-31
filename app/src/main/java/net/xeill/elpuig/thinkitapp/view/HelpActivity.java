@@ -1,11 +1,14 @@
 package net.xeill.elpuig.thinkitapp.view;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ExpandableListView;
 
 import net.xeill.elpuig.thinkitapp.view.adapter.ExpandableListAdapter;
@@ -30,6 +33,7 @@ public class HelpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
 
+        Button tutorialButton = findViewById(R.id.button_repeat_tutorial);
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
         ActionBar ab = getSupportActionBar();
@@ -48,6 +52,16 @@ public class HelpActivity extends AppCompatActivity {
 
         musicPlayer.start();
         musicPlayer.setLooping(true); // Set looping
+
+        tutorialButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent playIntent = new Intent(HelpActivity.this, MathsTutorialActivity.class);
+                startActivity(playIntent);
+                finish();
+            }
+        });
+
 
         /*final ImageButton logoButton = findViewById(R.id.logoButton);
         logoButton.setOnClickListener(new View.OnClickListener() {
