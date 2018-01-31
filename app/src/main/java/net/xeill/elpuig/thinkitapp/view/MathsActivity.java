@@ -127,6 +127,15 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         requestWindowFeature(Window.FEATURE_NO_TITLE);
         setContentView(R.layout.activity_maths);
 
+        //TODO: VERY IMPORTANT!!!
+//        videoview.setOnPreparedListener(new OnPreparedListener() {
+//
+//            public void onPrepared(MediaPlayer mp) {
+//                videoview.start();
+//            }
+//        });
+
+
         //TODO: Añadir créditos bensound.com en help/about
         mMusicPlayer = MediaPlayer.create(this,R.raw.bensound_jazzyfrenchy);
         mFastMusicPlayer = MediaPlayer.create(this,R.raw.theme1_fast);

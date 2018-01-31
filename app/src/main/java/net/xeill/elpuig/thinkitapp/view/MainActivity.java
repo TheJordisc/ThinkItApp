@@ -43,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
         mSplashHandler = new Handler();
 
         musicPlayer = MediaPlayer.create(this,  R.raw.theme);
-        musicPlayer.start();
         musicPlayer.setLooping(true); // Set looping
         playSoundPlayer = MediaPlayer.create(this,R.raw.play);
 
@@ -66,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
         } else {
             setUnmute();
         }
+
+        musicPlayer.start();
 
         bgVideo = findViewById(R.id.bg_video);
         bgVideo.setVideoURI(Uri.parse("android.resource://net.xeill.elpuig.thinkitapp/" + R.raw.background));
