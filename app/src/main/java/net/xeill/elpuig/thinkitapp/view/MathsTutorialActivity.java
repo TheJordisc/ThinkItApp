@@ -17,6 +17,7 @@ import android.support.v7.widget.AppCompatImageButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.Gravity;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -195,14 +196,6 @@ public class MathsTutorialActivity extends AppCompatActivity {
         buttons.get(5).setText("6");
         buttons.get(6).setText("11");
         buttons.get(7).setText("3");
-
-//        FancyShowCaseView fancyShowCaseView = new FancyShowCaseView.Builder(this)
-//                .title("¡Bienvenidos a Think It App!\n\nEste es un juego basado en sencillas operaciones matemáticas que deberás completar.")
-//                .titleStyle(R.style.tutorial_title_style,Gravity.CENTER)
-//                .backgroundColor(getResources().getColor(R.color.color_showcase))
-//                .focusOn(op1)
-//                .build();
-//        fancyShowCaseView.show();
 
         final FancyShowCaseView fancyShowCaseViewWelcome = new FancyShowCaseView.Builder(this)
                 .title("¡Bienvenidos a Think It App!\n\nEste es un juego basado en sencillas operaciones matemáticas que deberás completar.")
