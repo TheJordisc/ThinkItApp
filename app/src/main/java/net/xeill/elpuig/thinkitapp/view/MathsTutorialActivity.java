@@ -17,6 +17,8 @@ import android.support.v7.widget.AppCompatImageButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.Gravity;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.view.animation.ScaleAnimation;
 import android.widget.Button;
@@ -197,16 +199,21 @@ public class MathsTutorialActivity extends AppCompatActivity {
         buttons.get(6).setText("11");
         buttons.get(7).setText("3");
 
+        Animation animation = new AlphaAnimation(0.0f,1.0f);
+        animation.setDuration(250);
+
         final FancyShowCaseView fancyShowCaseViewWelcome = new FancyShowCaseView.Builder(this)
                 .title("¡Bienvenidos a Think It App!\n\nEste es un juego basado en sencillas operaciones matemáticas que deberás completar.")
                 .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
+                .enterAnimation(animation)
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewWelcome2 = new FancyShowCaseView.Builder(this)
                 .title("Piensa en el juego como si fuera una carrera, no hay pausas. Si dejas la app en segundo plano, ¡el tiempo sigue corriendo!")
                 .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
+                .enterAnimation(animation)
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewMainOperation = new FancyShowCaseView.Builder(this)
@@ -214,6 +221,7 @@ public class MathsTutorialActivity extends AppCompatActivity {
                 .titleStyle(R.style.tutorial_title_style,Gravity.BOTTOM | Gravity.CENTER)
                 .focusOn(op1)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
+                .enterAnimation(animation)
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewNextOperation = new FancyShowCaseView.Builder(this)
@@ -221,6 +229,7 @@ public class MathsTutorialActivity extends AppCompatActivity {
                 .titleStyle(R.style.tutorial_title_style,Gravity.BOTTOM | Gravity.CENTER)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
                 .focusOn(op2)
+                .enterAnimation(animation)
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewAnswers = new FancyShowCaseView.Builder(this)
@@ -228,6 +237,7 @@ public class MathsTutorialActivity extends AppCompatActivity {
                 .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
                 .focusOn(keyboard)
+                .enterAnimation(animation)
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewTimer = new FancyShowCaseView.Builder(this)
@@ -235,6 +245,7 @@ public class MathsTutorialActivity extends AppCompatActivity {
                 .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
                 .focusOn(mTimer)
+                .enterAnimation(animation)
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewScore = new FancyShowCaseView.Builder(this)
@@ -242,6 +253,7 @@ public class MathsTutorialActivity extends AppCompatActivity {
                 .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
                 .focusOn(mScoreText)
+                .enterAnimation(animation)
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewScore2 = new FancyShowCaseView.Builder(this)
@@ -249,6 +261,7 @@ public class MathsTutorialActivity extends AppCompatActivity {
                 .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
                 .focusOn(mScoreText)
+                .enterAnimation(animation)
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewLives = new FancyShowCaseView.Builder(this)
@@ -256,6 +269,7 @@ public class MathsTutorialActivity extends AppCompatActivity {
                 .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
                 .focusOn(mLivesContainer)
+                .enterAnimation(animation)
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewLevels = new FancyShowCaseView.Builder(this)
@@ -263,6 +277,7 @@ public class MathsTutorialActivity extends AppCompatActivity {
                 .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
                 .focusOn(mLevelText)
+                .enterAnimation(animation)
                 .build();
 
         mQueue = new FancyShowCaseQueue()
@@ -284,12 +299,14 @@ public class MathsTutorialActivity extends AppCompatActivity {
                 .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
                 .focusOn(keyboard)
+                .enterAnimation(animation)
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewPress = new FancyShowCaseView.Builder(this)
                 .title("¡Pruébalo! Pulsa en la respuesta correcta.\n(Pista: es 2)")
                 .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
+                .enterAnimation(animation)
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewComplete = new FancyShowCaseView.Builder(this)
@@ -297,6 +314,7 @@ public class MathsTutorialActivity extends AppCompatActivity {
                 .titleStyle(R.style.tutorial_title_style,Gravity.BOTTOM | Gravity.CENTER)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
                 .focusOn(op1)
+                .enterAnimation(animation)
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewComplete2 = new FancyShowCaseView.Builder(this)
@@ -304,6 +322,7 @@ public class MathsTutorialActivity extends AppCompatActivity {
                 .titleStyle(R.style.tutorial_title_style,Gravity.BOTTOM | Gravity.CENTER)
                 .focusOn(op2)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
+                .enterAnimation(animation)
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewBonus1 = new FancyShowCaseView.Builder(this)
@@ -311,6 +330,7 @@ public class MathsTutorialActivity extends AppCompatActivity {
                 .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
                 .focusOn(bonusTime)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
+                .enterAnimation(animation)
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewBonus2 = new FancyShowCaseView.Builder(this)
@@ -318,6 +338,7 @@ public class MathsTutorialActivity extends AppCompatActivity {
                 .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
                 .focusOn(bonusScore)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
+                .enterAnimation(animation)
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewLifeLines = new FancyShowCaseView.Builder(this)
@@ -325,6 +346,7 @@ public class MathsTutorialActivity extends AppCompatActivity {
                 .titleStyle(R.style.tutorial_title_style,Gravity.BOTTOM | Gravity.CENTER)
                 .focusOn(lifelineDrawer)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
+                .enterAnimation(animation)
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewLifeLines2 = new FancyShowCaseView.Builder(this)
@@ -332,12 +354,14 @@ public class MathsTutorialActivity extends AppCompatActivity {
                 .titleStyle(R.style.tutorial_title_style,Gravity.BOTTOM | Gravity.CENTER)
                 .focusOn(lifelineDrawer)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
+                .enterAnimation(animation)
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewLifeLines3 = new FancyShowCaseView.Builder(this)
                 .title("¡Prueba a usar el comodín del 50%!")
                 .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
+                .enterAnimation(animation)
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewLifeLines4 = new FancyShowCaseView.Builder(this)
@@ -345,6 +369,7 @@ public class MathsTutorialActivity extends AppCompatActivity {
                 .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
                 .focusOn(keyboard)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
+                .enterAnimation(animation)
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewGameOver = new FancyShowCaseView.Builder(this)
@@ -352,18 +377,21 @@ public class MathsTutorialActivity extends AppCompatActivity {
                 .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
                 .focusOn(stopFAB)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
+                .enterAnimation(animation)
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewGameOver2 = new FancyShowCaseView.Builder(this)
                 .title("Muchas gracias por tu atención. Ahora pulsa el botón de Stop, ¡y diviértete!")
                 .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
+                .enterAnimation(animation)
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewEnd = new FancyShowCaseView.Builder(this)
                 .title("¡Aquí empieza!")
                 .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
+                .enterAnimation(animation)
                 .build();
 
         mQueue.setCompleteListener(new OnCompleteListener() {
