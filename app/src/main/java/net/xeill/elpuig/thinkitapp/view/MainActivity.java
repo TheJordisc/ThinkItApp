@@ -14,7 +14,6 @@ import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.MediaController;
 import android.widget.VideoView;
 
 import net.xeill.elpuig.thinkitapp.R;
@@ -23,8 +22,6 @@ public class MainActivity extends AppCompatActivity {
     MediaPlayer musicPlayer;
     MediaPlayer playSoundPlayer;
     VideoView bgVideo;
-    MediaController.MediaPlayerControl videoPlayer;
-    MediaController mediaController;
     Handler mSplashHandler;
     SharedPreferences settings;
     FloatingActionButton volumeFAB;
@@ -43,7 +40,6 @@ public class MainActivity extends AppCompatActivity {
         mSplashHandler = new Handler();
 
         musicPlayer = MediaPlayer.create(this,  R.raw.theme);
-        musicPlayer.setLooping(true); // Set looping
         playSoundPlayer = MediaPlayer.create(this,R.raw.play);
 
         volumeFAB = findViewById(R.id.volume_fab);
@@ -66,16 +62,22 @@ public class MainActivity extends AppCompatActivity {
             setUnmute();
         }
 
-        musicPlayer.start();
+        musicPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mediaPlayer) {
+                mediaPlayer.setLooping(true);
+                mediaPlayer.start();
+            }
+        });
 
         bgVideo = findViewById(R.id.bg_video);
         bgVideo.setVideoURI(Uri.parse("android.resource://net.xeill.elpuig.thinkitapp/" + R.raw.background));
-        bgVideo.start();
 
         bgVideo.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
                 mp.setLooping(true);
+                mp.start();
             }
         });
 

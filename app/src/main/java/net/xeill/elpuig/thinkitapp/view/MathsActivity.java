@@ -139,8 +139,6 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         //TODO: Añadir créditos bensound.com en help/about
         mMusicPlayer = MediaPlayer.create(this,R.raw.bensound_jazzyfrenchy);
         mFastMusicPlayer = MediaPlayer.create(this,R.raw.theme1_fast);
-        mMusicPlayer.setLooping(true);
-        mFastMusicPlayer.setLooping(true);
 
         mLifelinePlayer = MediaPlayer.create(MathsActivity.this,R.raw.lifeline);
         mLevelUpPlayer = MediaPlayer.create(MathsActivity.this,R.raw.levelup);
@@ -173,11 +171,22 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             mGameOverPlayer.setVolume(1f,1f);
         }
 
-        mMusicPlayer.start();
+        mMusicPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mediaPlayer) {
+                mediaPlayer.setLooping(true);
+                mediaPlayer.start();
+            }
+        });
 
         bgVideo = findViewById(R.id.bg_video);
         bgVideo.setVideoURI(Uri.parse("android.resource://net.xeill.elpuig.thinkitapp/" + R.raw.bg_maths));
-        bgVideo.start();
+        bgVideo.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mediaPlayer) {
+                mediaPlayer.start();
+            }
+        });
 
         bgVideo.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
@@ -938,7 +947,15 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                         mLastLifePlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                             @Override
                             public void onCompletion(MediaPlayer mediaPlayer) {
-                                mFastMusicPlayer.start();
+                                //TODO: No se escucha
+                                mFastMusicPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                                    @Override
+                                    public void onPrepared(MediaPlayer mediaPlayer) {
+                                        mediaPlayer.setLooping(true);
+                                        mediaPlayer.start();
+                                    }
+                                });
+
                             }
                         });
 

@@ -22,10 +22,6 @@
 
     <style name="tutorial_title_style" parent="@android:style/Widget.TextView">
         <item name="android:textSize">20sp</item>
-        <item name="android:shadowDx">0</item>
-        <item name="android:shadowDy">0</item>
-        <item name="android:shadowColor">#000000</item>
-        <item name="android:shadowRadius">40</item>
         <item name="android:textColor">#ffffff</item>
         <item name="android:textStyle">bold</item>
         <item name="android:fontFamily">sans-serif</item>

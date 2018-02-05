@@ -17,6 +17,7 @@ import android.support.v7.widget.AppCompatImageButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.view.Gravity;
 import android.view.View;
+import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -105,12 +106,12 @@ public class MathsTutorialActivity extends AppCompatActivity {
 
         bgVideo = findViewById(R.id.bg_video);
         bgVideo.setVideoURI(Uri.parse("android.resource://net.xeill.elpuig.thinkitapp/" + R.raw.bg_maths));
-        bgVideo.start();
 
         bgVideo.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mp) {
                 mp.setLooping(true);
+                mp.start();
             }
         });
 
@@ -194,6 +195,14 @@ public class MathsTutorialActivity extends AppCompatActivity {
         buttons.get(5).setText("6");
         buttons.get(6).setText("11");
         buttons.get(7).setText("3");
+
+//        FancyShowCaseView fancyShowCaseView = new FancyShowCaseView.Builder(this)
+//                .title("¡Bienvenidos a Think It App!\n\nEste es un juego basado en sencillas operaciones matemáticas que deberás completar.")
+//                .titleStyle(R.style.tutorial_title_style,Gravity.CENTER)
+//                .backgroundColor(getResources().getColor(R.color.color_showcase))
+//                .focusOn(op1)
+//                .build();
+//        fancyShowCaseView.show();
 
         final FancyShowCaseView fancyShowCaseViewWelcome = new FancyShowCaseView.Builder(this)
                 .title("¡Bienvenidos a Think It App!\n\nEste es un juego basado en sencillas operaciones matemáticas que deberás completar.")
@@ -320,14 +329,14 @@ public class MathsTutorialActivity extends AppCompatActivity {
 
         final FancyShowCaseView fancyShowCaseViewLifeLines = new FancyShowCaseView.Builder(this)
                 .title("En caso de duda, tienes dos comodines: el comodín del 50% y el comodín de omitir operación.")
-                .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
+                .titleStyle(R.style.tutorial_title_style,Gravity.BOTTOM | Gravity.CENTER)
                 .focusOn(lifelineDrawer)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewLifeLines2 = new FancyShowCaseView.Builder(this)
                 .title("El comodín del 50% elimina la mitad de las opciones y el comodín de omitir operación pasa a la siguiente operación como si se hubiera acertado.")
-                .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
+                .titleStyle(R.style.tutorial_title_style,Gravity.BOTTOM | Gravity.CENTER)
                 .focusOn(lifelineDrawer)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
                 .build();
