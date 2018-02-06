@@ -19,10 +19,8 @@
             android:orientation="horizontal">
             <TextView
                 android:id="@+id/lblListItem"
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="9"
-                android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
                 android:paddingTop="5dp"
                 android:text="ThinkitApp es un juego de matemáticas que mejorará tu cálculo mental. El objetivo del juego es conseguir la máxima puntuación posible"
                 android:textAlignment="textStart"
@@ -36,10 +34,9 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="9"
-                android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
+
                 android:paddingTop="5dp"
                 android:text="Para lograrlo, contesta correctamente todas las operaciones que puedas"
                 android:textAlignment="textStart"
@@ -53,10 +50,8 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="9"
-                android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
                 android:paddingTop="5dp"
                 android:text="La dificultad aumenta progresivamente, las operaciones se generan de forma aleatoria"
                 android:textAlignment="textStart"
@@ -70,10 +65,8 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="9"
-                android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
                 android:paddingTop="5dp"
                 android:text="Cada respuesta incorrecta restará una vida y restará 50 puntos a la puntuación total"
                 android:textAlignment="textStart"
@@ -87,10 +80,8 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="9"
-                android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
                 android:paddingTop="5dp"
                 android:text="Si el tiempo finaliza, perderás una vida"
                 android:textAlignment="textStart"
@@ -104,10 +95,9 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="9"
-                android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
+
                 android:paddingTop="5dp"
                 android:text="Consulta las bonificaciones para lograr una puntuación mas alta más abajo, en la sección ayudas y bonificaciones."
                 android:textAlignment="textStart"

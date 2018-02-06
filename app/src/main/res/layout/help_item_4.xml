@@ -10,55 +10,35 @@
         android:layout_width="match_parent"
         android:layout_height="55dip"
         android:orientation="vertical">
-
         <TextView
             android:id="@+id/lblListItem"
-            android:layout_width="fill_parent"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="17sp"
-            android:text="Debes jugar y guardar al menos una puntuación para ver la lista de puntuaciones"
-            android:textAlignment="textEnd"
             android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft" />
-
+            android:text="El ranking ordena de forma descendente las puntuaciones guardadas, indicando en primera posición la puntuación más alta"
+            />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_weight="9"
-                android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
                 android:paddingTop="5dp"
-                android:text="El ranking ordena de forma descendente las puntuaciones guardadas, indicando en primera posición la puntuación más alta"
-                android:textAlignment="textEnd"
-                android:textSize="17sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.75"
-                app:layout_constraintStart_toEndOf="@+id/score_fab"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:text="Puedes eliminar una puntuación pulsando la papelera"
+                />
+
         </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
             <TextView
-                android:layout_width="0dp"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_weight="9"
-                android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
                 android:paddingTop="5dp"
-                android:text=""
-                android:textAlignment="textEnd"
-                android:textSize="17sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.75"
-                app:layout_constraintStart_toEndOf="@+id/score_fab"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:text="Elimina todas las puntuaciones al pulsar éste botón"
+                />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

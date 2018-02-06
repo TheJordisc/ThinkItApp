@@ -8,17 +8,22 @@
     android:fillViewport="false">
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="55dip"
+        android:layout_height="match_parent"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/lblListItem"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:textSize="17sp"
             android:paddingTop="5dp"
-            android:paddingBottom="5dp"
-            android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft" />
+            android:text="Puedes cambiar el idioma del juego tocando la bandera correspondiente al idioma deseado"
+            />
+
+        <ImageView
+            app:srcCompat="@drawable/language_screenshoot"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
 
     </LinearLayout>
 </ScrollView>
