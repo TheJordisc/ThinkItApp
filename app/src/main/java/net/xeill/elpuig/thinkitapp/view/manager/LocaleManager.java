@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
+import android.util.DisplayMetrics;
 
 import java.util.Locale;
 
@@ -12,34 +13,14 @@ import java.util.Locale;
  */
 
 public class LocaleManager {
-
-    public static void setLocale(Context c) {
-        setNewLocale(c, getLanguage(c));
-    }
-
-    public static void setNewLocale(Context c, String language) {
-        persistLanguage(c, language);
-        updateResources(c, language);
-    }
-
-    public static String getLanguage(Context c) {
-        SharedPreferences preferences = c.getSharedPreferences("prefs", 0);
-        return preferences.getString("language","en");
-    }
-
-    private static void persistLanguage(Context c, String language) {
-        SharedPreferences preferences = c.getSharedPreferences("prefs", 0);
-        preferences.edit().putString("language",language).apply();
-    }
-
-    private static Context updateResources(Context context, String language) {
-        Locale locale = new Locale(language);
-        Locale.setDefault(locale);
-
+    public static void setLocale(Context context, String lang) {
+        Locale myLocale = new Locale(lang);
         Resources res = context.getResources();
-        Configuration config = new Configuration(res.getConfiguration());
-        config.setLocale(locale);
-        context = context.createConfigurationContext(config);
-        return context;
+        DisplayMetrics dm = res.getDisplayMetrics();
+        Configuration conf = res.getConfiguration();
+        conf.locale = myLocale;
+        res.updateConfiguration(conf, dm);
+        SharedPreferences preferences = context.getSharedPreferences("prefs", 0);
+        preferences.edit().putString("language",lang).apply();
     }
 }

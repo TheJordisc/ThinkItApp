@@ -3,17 +3,16 @@ package net.xeill.elpuig.thinkitapp.view;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ExpandableListView;
 
-import net.xeill.elpuig.thinkitapp.view.adapter.ExpandableListAdapter;
 import net.xeill.elpuig.thinkitapp.R;
-import net.xeill.elpuig.thinkitapp.view.manager.LocaleManager;
+import net.xeill.elpuig.thinkitapp.view.adapter.ExpandableListAdapter;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -33,8 +32,6 @@ public class HelpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
-
-        LocaleManager.setLocale(this);
 
         Button tutorialButton = findViewById(R.id.button_repeat_tutorial);
         Toolbar myToolbar = findViewById(R.id.my_toolbar);

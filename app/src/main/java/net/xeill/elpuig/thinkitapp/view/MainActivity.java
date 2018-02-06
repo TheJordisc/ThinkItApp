@@ -32,9 +32,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        LocaleManager.setLocale(this);
-
         settings=getSharedPreferences("prefs", 0);
+
+        String lang = settings.getString("language","en");
+        LocaleManager.setLocale(this,lang);
 
         if (settings.getBoolean("isFirstRun",true)) {
             settings.edit().putBoolean("mute",false).apply();
@@ -107,7 +108,6 @@ public class MainActivity extends AppCompatActivity {
                                             musicPlayer.stop();
                                             Intent playIntent = new Intent(MainActivity.this,MathsTutorialActivity.class);
                                             startActivity(playIntent);
-                                            finish();
                                         }
                                     })
                                     .setNegativeButton(R.string.tutorial_no, new DialogInterface.OnClickListener() {
@@ -115,7 +115,6 @@ public class MainActivity extends AppCompatActivity {
                                             musicPlayer.stop();
                                             Intent playIntent = new Intent(MainActivity.this,MathsActivity.class);
                                             startActivity(playIntent);
-                                            finish();
                                         }
                                     })
                                     .setOnDismissListener(new DialogInterface.OnDismissListener() {
@@ -167,7 +166,7 @@ public class MainActivity extends AppCompatActivity {
                         .setMessage(R.string.exit_sure)
                         .setPositiveButton(R.string.exit_yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
-                                MainActivity.this.finish();
+//                                MainActivity.this.finish();
                                 System.exit(0);
                             }
                         })

@@ -1,6 +1,5 @@
 package net.xeill.elpuig.thinkitapp.view;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -26,8 +25,6 @@ public class LanguageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language);
-
-        LocaleManager.setLocale(this);
 
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
@@ -64,7 +61,8 @@ public class LanguageActivity extends AppCompatActivity {
         cat_flag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LocaleManager.setNewLocale(getApplicationContext(),"ca");
+//                LocaleManager.setNewLocale(getApplicationContext(),"ca");
+                LocaleManager.setLocale(LanguageActivity.this,"ca");
                 menuIntent();
             }
         });
@@ -73,7 +71,8 @@ public class LanguageActivity extends AppCompatActivity {
         es_flag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LocaleManager.setNewLocale(getApplicationContext(),"es");
+//                LocaleManager.setNewLocale(getApplicationContext(),"es");
+                LocaleManager.setLocale(LanguageActivity.this,"es");
                 menuIntent();
             }
         });
@@ -82,7 +81,8 @@ public class LanguageActivity extends AppCompatActivity {
         it_flag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LocaleManager.setNewLocale(getApplicationContext(),"it");
+//                LocaleManager.setNewLocale(getApplicationContext(),"it");
+                LocaleManager.setLocale(LanguageActivity.this,"it");
                 menuIntent();
             }
         });
@@ -91,24 +91,23 @@ public class LanguageActivity extends AppCompatActivity {
         uk_flag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                LocaleManager.setNewLocale(getApplicationContext(),"en");
+//                LocaleManager.setNewLocale(getApplicationContext(),"en");
+                LocaleManager.setLocale(LanguageActivity.this,"en");
                 menuIntent();
             }
         });
     }
     public void menuIntent(){
-        Intent menuIntent = new Intent(LanguageActivity.this,MainActivity.class);
         playSoundPlayer.start();
-        startActivity(menuIntent);
         LanguageActivity.this.finish();
     }
 
-    @Override
-    public void onBackPressed() {
-        Intent mainIntent = new Intent(LanguageActivity.this,MainActivity.class);
-        startActivity(mainIntent);
-        LanguageActivity.this.finish();
-    }
+//    @Override
+//    public void onBackPressed() {
+//        Intent mainIntent = new Intent(LanguageActivity.this,MainActivity.class);
+//        startActivity(mainIntent);
+//        LanguageActivity.this.finish();
+//    }
 
     @Override
     protected void onPause() {
