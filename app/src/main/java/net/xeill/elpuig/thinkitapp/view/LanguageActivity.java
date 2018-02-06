@@ -5,7 +5,6 @@ import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -14,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.VideoView;
 
 import net.xeill.elpuig.thinkitapp.R;
+import net.xeill.elpuig.thinkitapp.view.manager.LocaleManager;
 
 public class LanguageActivity extends AppCompatActivity {
     MediaPlayer playSoundPlayer;
@@ -26,6 +26,8 @@ public class LanguageActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_language);
+
+        LocaleManager.setLocale(this);
 
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
@@ -62,6 +64,7 @@ public class LanguageActivity extends AppCompatActivity {
         cat_flag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                LocaleManager.setNewLocale(getApplicationContext(),"ca");
                 menuIntent();
             }
         });
@@ -70,6 +73,7 @@ public class LanguageActivity extends AppCompatActivity {
         es_flag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                LocaleManager.setNewLocale(getApplicationContext(),"es");
                 menuIntent();
             }
         });
@@ -78,6 +82,7 @@ public class LanguageActivity extends AppCompatActivity {
         it_flag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                LocaleManager.setNewLocale(getApplicationContext(),"it");
                 menuIntent();
             }
         });
@@ -86,6 +91,7 @@ public class LanguageActivity extends AppCompatActivity {
         uk_flag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                LocaleManager.setNewLocale(getApplicationContext(),"en");
                 menuIntent();
             }
         });

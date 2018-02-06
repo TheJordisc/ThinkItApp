@@ -27,7 +27,7 @@
     <string name="developersinfo">Desarrollado por Jordi Solà y Alejandro Berdún</string>
     <string name="switchinfo">App desarrollada para el Proyecto Switch de Erasmus</string>
     <string name="app_score_title">Ranking</string>
-    <string name="app_help_title">Help</string>
+    <string name="app_help_title">Ayuda</string>
     <string name="dialog_clear_scores">Do you want to clear the score list?</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
