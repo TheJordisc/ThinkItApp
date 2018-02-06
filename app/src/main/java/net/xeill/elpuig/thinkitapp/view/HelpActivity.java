@@ -13,6 +13,7 @@ import android.widget.ExpandableListView;
 
 import net.xeill.elpuig.thinkitapp.view.adapter.ExpandableListAdapter;
 import net.xeill.elpuig.thinkitapp.R;
+import net.xeill.elpuig.thinkitapp.view.manager.LocaleManager;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -32,6 +33,8 @@ public class HelpActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
+
+        LocaleManager.setLocale(this);
 
         Button tutorialButton = findViewById(R.id.button_repeat_tutorial);
         Toolbar myToolbar = findViewById(R.id.my_toolbar);

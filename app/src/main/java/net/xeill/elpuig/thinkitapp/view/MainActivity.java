@@ -17,6 +17,7 @@ import android.widget.ImageView;
 import android.widget.VideoView;
 
 import net.xeill.elpuig.thinkitapp.R;
+import net.xeill.elpuig.thinkitapp.view.manager.LocaleManager;
 
 public class MainActivity extends AppCompatActivity {
     MediaPlayer musicPlayer;
@@ -30,6 +31,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        LocaleManager.setLocale(this);
+
         settings=getSharedPreferences("prefs", 0);
 
         if (settings.getBoolean("isFirstRun",true)) {
