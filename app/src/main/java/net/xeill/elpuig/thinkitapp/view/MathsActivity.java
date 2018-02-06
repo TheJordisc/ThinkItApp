@@ -1095,6 +1095,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                 mGameOver.setVisibility(View.GONE);
                 Intent resultIntent = new Intent(MathsActivity.this, ResultActivity.class);
                 resultIntent.putExtra("score",mScore);
+                MathsActivity.this.finish();
                 startActivity(resultIntent);
                 MathsActivity.this.finish();
             }

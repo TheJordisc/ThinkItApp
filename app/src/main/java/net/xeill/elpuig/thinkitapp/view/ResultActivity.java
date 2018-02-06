@@ -145,4 +145,9 @@ public class ResultActivity extends AppCompatActivity {
             mResultPlayer.start();
         }
     }
+
+    @Override
+    public void onBackPressed() {
+        //TODO: Diálogo, quieres salir sin guardar!
+    }
 }

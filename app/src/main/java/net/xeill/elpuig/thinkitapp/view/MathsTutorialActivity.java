@@ -19,8 +19,6 @@ import android.view.Gravity;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.view.animation.ScaleAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -455,9 +453,30 @@ public class MathsTutorialActivity extends AppCompatActivity {
                                                 op2OpType.setText("x");
                                                 op2Op2TV.setText("2");
                                                 op2ResTV.setText("?");
+
                                                 //TODO: Poner estilo pregunta y estilos normales
                                                 //rellenar teclado de nuevo
                                                 //quitar verde de opcion y de operacion
+                                                op1ResTV.setTextSize(60);
+                                                op1ResTV.setTextColor(getResources().getColor(R.color.color_question));
+                                                op1ResTV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.square_back_question));
+
+                                                op1Op2TV.setTextColor(getResources().getColor(R.color.color_black));
+                                                op1Op2TV.setTextSize(40f);
+                                                op1Op2TV.setBackground(ContextCompat.getDrawable(getApplicationContext(), R.drawable.square_back_normal));
+
+                                                buttons.get(0).setText("8");
+                                                buttons.get(1).setText("1");
+                                                buttons.get(2).setText("9");
+                                                buttons.get(3).setText("11");
+                                                buttons.get(4).setText("4");
+                                                buttons.get(5).setText("6");
+
+                                                ViewCompat.setBackgroundTintList(buttons.get(2),ViewCompat.getBackgroundTintList(buttons.get(0)));
+
+                                                for (Button button: buttons) {
+                                                    button.setEnabled(true);
+                                                }
 
                                                 mQueue4 = new FancyShowCaseQueue()
                                                         .add(fancyShowCaseViewLifeLines)
@@ -481,7 +500,9 @@ public class MathsTutorialActivity extends AppCompatActivity {
                                                                               ViewCompat.setBackgroundTintList(view,ColorStateList.valueOf(Color.GRAY));
                                                                               mLifelinePlayer.start();
 
-                                                                              //TODO:quitar opciones teclado
+                                                                              buttons.get(0).setText("");
+                                                                              buttons.get(2).setText("");
+                                                                              buttons.get(5).setText("");
 
                                                                               mQueue5 = new FancyShowCaseQueue()
                                                                                       .add(fancyShowCaseViewLifeLines4)
