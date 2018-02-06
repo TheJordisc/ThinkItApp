@@ -35,7 +35,7 @@
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:contentDescription="@string/cd_button"
-        app:layout_constraintBottom_toTopOf="@+id/help_fab"
+        app:layout_constraintBottom_toTopOf="@+id/score_fab"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logo_image"
@@ -43,65 +43,65 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/volume_fab"
+        style="@style/MainMenuFAB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="16dp"
         android:clickable="true"
+        android:focusable="true"
         app:backgroundTint="@color/colorPrimary"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        style="@style/MainMenuFAB"
-        app:srcCompat="@drawable/volume_fab_state"
-        android:focusable="true" />
+        app:srcCompat="@drawable/volume_fab_state" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/language_fab"
+        style="@style/MainMenuFAB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        style="@style/MainMenuFAB"
         android:layout_marginStart="16dp"
         android:clickable="true"
+        android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/ic_language_white_24dp"
-        android:focusable="true" />
+        app:srcCompat="@drawable/ic_language_white_24dp" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/help_fab"
+        android:id="@+id/score_fab"
+        style="@style/MainMenuFAB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
-        style="@style/MainMenuFAB"
         android:clickable="true"
+        android:focusable="true"
         app:layout_constraintBottom_toBottomOf="@+id/bg_video"
         app:layout_constraintEnd_toStartOf="@+id/volume_fab"
         app:layout_constraintStart_toEndOf="@+id/language_fab"
-        app:srcCompat="@drawable/ic_help_outline_white_24dp"
-        android:focusable="true" />
+        app:srcCompat="@drawable/ic_format_list_numbered_white_24dp" />
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/score_fab"
+        android:id="@+id/help_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:clickable="true"
         app:backgroundTint="@color/colorPrimaryDark"
         app:fabSize="mini"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_format_list_numbered_white_24dp" />
+        app:srcCompat="@drawable/ic_help_outline_white_24dp" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/close_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="8dp"
         android:clickable="true"
         app:backgroundTint="@android:color/holo_red_dark"
         app:fabSize="mini"
