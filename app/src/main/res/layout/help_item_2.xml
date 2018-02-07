@@ -22,7 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
-                android:text="ThinkitApp es un juego de matemáticas que mejorará tu cálculo mental.\nEl objetivo del juego es conseguir la máxima puntuación posible.\nPara lograrlo, contesta correctamente todas las operaciones que puedas"
+                android:text="ThinkitApp es un juego de matemáticas que mejorará tu cálculo mental. El objetivo del juego es conseguir la máxima puntuación posible. Para lograrlo, contesta correctamente todas las operaciones que puedas."
                 android:textAlignment="textStart"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.75"
@@ -76,14 +76,16 @@
                 app:layout_constraintStart_toEndOf="@+id/score_fab"
                 app:layout_constraintTop_toTopOf="parent" />
         </LinearLayout>
+
         <ImageView
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
             android:padding="5dp"
             android:scaleType="fitXY"
-            android:adjustViewBounds="true"
-            android:layout_gravity="center"
-            app:srcCompat="@drawable/incorrect_answer"/>
+            app:srcCompat="@drawable/incorrect_answer" />
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -92,7 +94,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
-                android:text="Si el tiempo finaliza, perderás una vida. No tener vidas finalizará la partida"
+                android:text="Si el tiempo finaliza, perderás una vida. La partida finaliza al perder tu última vida"
                 android:textAlignment="textStart"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.75"
@@ -100,7 +102,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </LinearLayout>
         <ImageView
-            android:layout_width="match_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:padding="5dp"
             android:scaleType="fitXY"
@@ -115,7 +117,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
-                android:text="Consulta las bonificaciones para lograr una puntuación mas alta, en la sección ayudas y bonificaciones."
+                android:text="Consulta las bonificaciones para lograr una puntuación mas alta, en la sección ayudas y bonificaciones"
                 android:textAlignment="textStart"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.75"
