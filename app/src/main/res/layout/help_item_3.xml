@@ -37,9 +37,8 @@
         </LinearLayout>
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             android:padding="5dp"
-            android:scaleType="fitXY"
             android:adjustViewBounds="true"
             android:layout_gravity="center"
             app:srcCompat="@drawable/comodin1"/>
@@ -56,9 +55,8 @@
         </LinearLayout>
         <ImageView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="200dp"
             android:padding="5dp"
-            android:scaleType="fitXY"
             android:adjustViewBounds="true"
             android:layout_gravity="center"
             app:srcCompat="@drawable/comodin2"/>
@@ -77,7 +75,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="5dp"
-            android:scaleType="fitXY"
+
             android:adjustViewBounds="true"
             android:layout_gravity="center"
             app:srcCompat="@drawable/next"/>
