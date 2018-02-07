@@ -16,7 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="5dp"
-            android:text="Puedes cambiar el idioma del juego tocando la bandera correspondiente al idioma deseado"
+            android:text="@string/help_language_description"
             />
 
         <ImageView

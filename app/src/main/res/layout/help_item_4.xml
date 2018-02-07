@@ -15,7 +15,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="5dp"
-            android:text="El ranking ordena de forma descendente las puntuaciones guardadas, indicando en primera posición la puntuación más alta"
+            android:text="@string/help_ranking_description"
             />
         <LinearLayout
             android:layout_width="match_parent"
@@ -25,7 +25,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
-                android:text="Puedes eliminar una puntuación pulsando la papelera"
+                android:text="@string/help_ranking_remove"
                 />
 
         </LinearLayout>
@@ -37,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
-                android:text="Elimina todas las puntuaciones al pulsar éste botón"
+                android:text="@string/help_ranking_removeall"
                 />
         </LinearLayout>
     </LinearLayout>

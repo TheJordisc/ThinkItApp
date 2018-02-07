@@ -47,4 +47,25 @@
     <string name="help_language">Cambiar idioma</string>
     <string name="next_tutorial">Next</string>
     <string name="dialog_result_exit_withoutsave">¿Salir sin guardar la puntuación?</string>
+    <string name="help_play_button">Pulsa éste boton para jugar</string>
+    <string name="help_ranking_button">Pulsa éste boton para ver el ranking de puntuaciones</string>
+    <string name="help_language_button">Pulsa éste boton para ver los idiomas disponibles para la aplicación</string>
+    <string name="help_help_button">Pulsa éste boton para ver la ayuda</string>
+    <string name="help_sound_button">Desactiva o activa el sonido</string>
+    <string name="help_exit_button">Pulsa éste botón para cerrar la aplicación</string>
+    <string name="help_game_description">ThinkitApp es un juego de matemáticas que mejorará tu cálculo mental. El objetivo del juego es conseguir la máxima puntuación posible. Para lograrlo, contesta correctamente todas las operaciones que puedas.</string>
+    <string name="help_difficult_description">La dificultad aumenta progresivamente</string>
+    <string name="help_end_game_description">Si el tiempo finaliza, perderás una vida. La partida finaliza al perder tu última vida</string>
+    <string name="help_next_section_bonus">Consulta las bonificaciones para lograr una puntuación mas alta, en la sección ayudas y bonificaciones</string>
+    <string name="help_lifeline_50_description">Éste comodin reduce a la mitad las respuestas posibles. Utilizable sólo 1 vez en cada partida</string>
+    <string name="help_lifeline_next_description">Éste otro comodin permite pasar a la siguiente operación. Utilizable sólo 1 vez en cada partida</string>
+    <string name="help_next_operation_description">Puedes ver la operación siguiente debajo de la operación a responder</string>
+    <string name="help_title">Ayudas</string>
+    <string name="help_title_bonus">Bonificaciones</string>
+    <string name="help_question_score_description">Cada respuesta correcta añade 100 a la puntuación total</string>
+    <string name="help_bonus_time_score_description">Acertar una operación en menos de 10 segundos, sumará más puntos y obtendrás más tiempo</string>
+    <string name="help_ranking_description">El ranking ordena de forma descendente las puntuaciones guardadas, indicando en primera posición la puntuación más alta</string>
+    <string name="help_ranking_remove">Puedes eliminar una puntuación pulsando la papelera</string>
+    <string name="help_ranking_removeall">Elimina todas las puntuaciones al pulsar éste botón</string>
+    <string name="help_language_description">Puedes cambiar el idioma del juego tocando la bandera correspondiente al idioma deseado</string>
 </resources>

@@ -20,7 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="5dp"
-            android:text="Ayudas"
+            android:text="@string/help_title"
             android:textAlignment="center"
             android:textStyle="bold"/>
         </LinearLayout>
@@ -33,7 +33,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end"
                 android:paddingTop="5dp"
-                android:text="Éste comodin reduce a la mitad las respuestas posibles. Utilizable sólo 1 vez en cada partida" />
+                android:text="@string/help_lifeline_50_description" />
         </LinearLayout>
         <ImageView
             android:layout_width="match_parent"
@@ -51,7 +51,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
-                android:text="Éste otro comodin permite pasar a la siguiente operación. Utilizable sólo 1 vez en cada partida"
+                android:text="@string/help_lifeline_next_description"
               />
         </LinearLayout>
         <ImageView
@@ -70,7 +70,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
-                android:text="Puedes ver la operación siguiente debajo de la operación a responder"
+                android:text="@string/help_next_operation_description"
                 />
         </LinearLayout>
         <ImageView
@@ -90,7 +90,7 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
                 android:textAlignment="center"
-                android:text="Bonificaciones"
+                android:text="@string/help_title_bonus"
                 android:textStyle="bold"
                 />
 
@@ -103,7 +103,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
-                android:text="Cada respuesta correcta añade 100 a la puntuación total"
+                android:text="@string/help_question_score_description"
                 />
         </LinearLayout>
         <ImageView
@@ -122,7 +122,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="5dp"
-                android:text="Acertar una operación en menos de 10 segundos, sumará más puntos y obtendrás más tiempo"
+                android:text="@string/help_bonus_time_score_description"
                 />
         </LinearLayout>
         <LinearLayout
