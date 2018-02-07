@@ -1,7 +1,9 @@
 package net.xeill.elpuig.thinkitapp.view;
 
+import android.app.AlertDialog;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
@@ -148,6 +150,19 @@ public class ResultActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        //TODO: Diálogo, quieres salir sin guardar!
+        new AlertDialog.Builder(ResultActivity.this)
+                //.setMessage(R.string.tutorial_msg)
+                .setMessage(R.string.dialog_result_exit_withoutsave)
+                .setPositiveButton(R.string.tutorial_yes, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+                        Intent playIntent = new Intent(ResultActivity.this,MainActivity.class);
+                        startActivity(playIntent);
+                    }
+                })
+                .setNegativeButton(R.string.tutorial_no, new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                    }
+                }).create().show();
     }
 }
