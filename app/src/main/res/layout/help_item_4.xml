@@ -17,6 +17,13 @@
             android:paddingTop="5dp"
             android:text="@string/help_ranking_description"
             />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:adjustViewBounds="true"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/scores_preview"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -29,15 +36,36 @@
                 />
 
         </LinearLayout>
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="5dp"
+            android:adjustViewBounds="true"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/score_preview"/>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="horizontal">
-            <TextView
-                android:layout_width="match_parent"
+
+            <android.support.design.widget.FloatingActionButton
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:clickable="true"
+                app:fabSize="mini"
+                android:layout_gravity="center"
+                android:scaleType="center"
+                app:srcCompat="@drawable/ic_clear_all_white_24dp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_weight="9"
                 android:paddingTop="5dp"
                 android:text="@string/help_ranking_removeall"
+                android:textAlignment="textEnd"
                 />
         </LinearLayout>
     </LinearLayout>
