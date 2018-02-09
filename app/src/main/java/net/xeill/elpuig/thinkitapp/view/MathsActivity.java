@@ -79,6 +79,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
     TextView mScoreText;
     TextView mAddedScoreText;
+    TextView mAddedScoreTextByTime;
     TextView mAddedTimeText;
     TextView mLevelText;
     TextView mLastLife;
@@ -120,6 +121,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     boolean mTimeoutOnPause = false;
 //    Drawable defQuestionBackground;
     MediaPlayer mFastMusicPlayer;
+    private int correctAnswerScore = 100;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -234,6 +236,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         mScoreText = findViewById(R.id.score);
         mScoreText.setText(mScore+"");
         mAddedScoreText = findViewById(R.id.added_score);
+        mAddedScoreTextByTime = findViewById(R.id.added_score_from_time);
         mAddedTimeText = findViewById(R.id.added_time);
         mTimer=findViewById(R.id.timer);
         mLifelineHint = findViewById(R.id.hint_lifelines_text);
@@ -1002,8 +1005,10 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         mScore+= (mMillisLeft/1000)*10+10;
         mScoreText.setText(mScore+"");
 
-        mAddedScoreText.setText("+100\n" + " +" + ((mMillisLeft/1000)*10+10));
+        mAddedScoreText.setText("+" + correctAnswerScore);
+        mAddedScoreTextByTime.setText("+" + ((mMillisLeft/1000)*10+10));
         mAddedScoreText.setVisibility(View.VISIBLE);
+        mAddedScoreTextByTime.setVisibility(View.VISIBLE);
 
         if (mHasBonus) {
             mBonusTime=10000-(mInitialMillis-mMillisLeft);
@@ -1051,6 +1056,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             @Override
             public void run() {
                 mAddedScoreText.setVisibility(View.GONE);
+                mAddedScoreTextByTime.setVisibility(View.GONE);
                 mAddedTimeText.setVisibility(View.GONE);
                 for (AppCompatButton b : answerButtons) {
                     b.setEnabled(true);
@@ -1095,7 +1101,6 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                 mGameOver.setVisibility(View.GONE);
                 Intent resultIntent = new Intent(MathsActivity.this, ResultActivity.class);
                 resultIntent.putExtra("score",mScore);
-                MathsActivity.this.finish();
                 startActivity(resultIntent);
                 MathsActivity.this.finish();
             }
