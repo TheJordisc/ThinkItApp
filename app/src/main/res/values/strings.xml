@@ -78,4 +78,5 @@
     <string name="help_game_description3">sdfssdffsd</string>
     <string name="help_bonus_introduction">sdsdsdsd</string>
     <string name="help_ranking_description">Cuando se acaba la partida, tienes la posibilidad de introducir tu nombre y guardar la puntuación. Al guardar, se mostrará inmediatamente el ránking de puntuaciones, con tu entrada resaltada. Esta sección es accesible también desde el menú principal.</string>
+    <string name="help_attributions">Música del juego: \"Jazzy Frenchy\" - Bensound.com</string>
 </resources>

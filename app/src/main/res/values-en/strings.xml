@@ -65,4 +65,5 @@
     <string name="help_game_description3">sdfssdffsd</string>
     <string name="help_bonus_introduction">sdsdsdsd</string>
     <string name="help_ranking_description">Cuando se acaba la partida, tienes la posibilidad de introducir tu nombre y guardar la puntuación. Esta se guardará en un ranking, accesible desde el menú principal.</string>
+    <string name="help_attributions">ddddd</string>
 </resources>

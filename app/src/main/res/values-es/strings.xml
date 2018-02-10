@@ -67,11 +67,15 @@
     <string name="help_ranking_description2">El ranking ordena de forma descendente las puntuaciones guardadas, indicando en primera posición la puntuación más alta.</string>
     <string name="help_ranking_remove">Puedes eliminar una puntuación pulsando el botón con la papelera, en la entrada correspondiente.</string>
     <string name="help_ranking_removeall">Elimina todas las puntuaciones pulsando este botón.</string>
-    <string name="help_language_description">Puedes cambiar el idioma del juego tocando la bandera correspondiente al idioma deseado.</string>
+    <string name="help_language_description">Puedes cambiar el idioma del juego desde la sección correspondiente en el menú principal. En ella, pulsa la bandera correspondiente al idioma deseado.</string>
     <string name="help_game_description2">El objetivo del juego es conseguir la máxima puntuación posible. Para lograrlo, completa correctamente todas las operaciones que puedas. Deberás introducir el valor que falta, señalado con un interrogante (\"?\").</string>
     <string name="help_game_description3">Para completar la operación, tienes que pulsar en la cifra adecuada en el teclado de opciones situado en la parte inferior.</string>
     <string name="help_incorrect_answer_description">Cada respuesta incorrecta restará una vida y sustraerá 50 puntos a la puntuación total.</string>
     <string name="help_bonus_introduction">Aparte de las vidas, el juego cuenta con una serie de ayudas y bonificaciones que te permitirán durar más en el juego y conseguir mejores puntuaciones.</string>
     <string name="help_ranking_description">Cuando se acaba la partida, tienes la posibilidad de introducir tu nombre y guardar la puntuación. Al guardar, se mostrará inmediatamente el ránking de puntuaciones, con tu entrada resaltada. Esta sección es accesible también desde el menú principal.</string>
     <string name="attribution">Atribuciones</string>
+    <string name="help_attributions">Música del juego: \"Jazzy Frenchy\" - Bensound.com
+    \n\nMúsica de \'Ayuda\': \"The Lounge\" - Bensound.com
+    \n\nMúsica de \'Idioma\' y \'Ranking\': \"Summer\" - Bensound.com
+    \n\nMúsica de \'Game Over\': \"Jazz Comedy\" - Bensound.com</string>
 </resources>
