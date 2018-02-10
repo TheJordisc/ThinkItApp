@@ -47,15 +47,15 @@
     <string name="help_language">Cambiar idioma</string>
     <string name="next_tutorial">Next</string>
     <string name="dialog_result_exit_withoutsave">¿Salir sin guardar la puntuación?</string>
-    <string name="help_play_button">Pulsa éste boton para jugar</string>
-    <string name="help_ranking_button">Pulsa éste boton para ver el ranking de puntuaciones</string>
-    <string name="help_language_button">Pulsa éste boton para ver los idiomas disponibles para la aplicación</string>
-    <string name="help_help_button">Pulsa éste boton para ver la ayuda</string>
+    <string name="help_play_button">Pulsa este boton para jugar</string>
+    <string name="help_ranking_button">Pulsa este boton para ver el ranking de puntuaciones</string>
+    <string name="help_language_button">Pulsa este boton para cambiar el idioma la aplicación</string>
+    <string name="help_help_button">Pulsa este boton para consultar la ayuda</string>
     <string name="help_sound_button">Desactiva o activa el sonido</string>
-    <string name="help_exit_button">Pulsa éste botón para cerrar la aplicación</string>
-    <string name="help_game_description">ThinkitApp es un juego de matemáticas que mejorará tu cálculo mental. El objetivo del juego es conseguir la máxima puntuación posible. Para lograrlo, contesta correctamente todas las operaciones que puedas.</string>
-    <string name="help_difficult_description">La dificultad aumenta progresivamente</string>
-    <string name="help_end_game_description">Si el tiempo finaliza, perderás una vida. La partida finaliza al perder tu última vida</string>
+    <string name="help_exit_button">Pulsa este botón para cerrar la aplicación</string>
+    <string name="help_game_description">ThinkitApp es un juego de matemáticas basado en sencillas operaciones matemáticas, que fomenta la capacidad de cálculo mental.</string>
+    <string name="help_difficult_description">La dificultad aumenta progresivamente. Por ejemplo, las operaciones serán más complicadas y el número de opciones irá aumentando hasta un máximo de 8.</string>
+    <string name="help_end_game_description">Si el tiempo finaliza, perderás una vida. La partida finaliza al perder tu última vida.</string>
     <string name="help_next_section_bonus">Consulta las bonificaciones para lograr una puntuación mas alta, en la sección ayudas y bonificaciones</string>
     <string name="help_lifeline_50_description">Éste comodin reduce a la mitad las respuestas posibles. Utilizable sólo 1 vez en cada partida</string>
     <string name="help_lifeline_next_description">Éste otro comodin permite pasar a la siguiente operación. Utilizable sólo 1 vez en cada partida</string>
@@ -67,5 +67,8 @@
     <string name="help_ranking_description">El ranking ordena de forma descendente las puntuaciones guardadas, indicando en primera posición la puntuación más alta</string>
     <string name="help_ranking_remove">Puedes eliminar una puntuación pulsando la papelera</string>
     <string name="help_ranking_removeall">Elimina todas las puntuaciones al pulsar éste botón</string>
-    <string name="help_language_description">Puedes cambiar el idioma del juego tocando la bandera correspondiente al idioma deseado</string>
+    <string name="help_language_description">Puedes cambiar el idioma del juego tocando la bandera correspondiente al idioma deseado.</string>
+    <string name="help_game_description2">El objetivo del juego es conseguir la máxima puntuación posible. Para lograrlo, completa correctamente todas las operaciones que puedas. Deberás introducir el valor que falta, señalado con un interrogante (\"?\").</string>
+    <string name="help_game_description3">Para completar la operación, tienes que pulsar en la cifra adecuada en el teclado de opciones situado en la parte inferior.</string>
+    <string name="help_incorrect_answer_description">Cada respuesta incorrecta restará una vida y sustraerá 50 puntos a la puntuación total.</string>
 </resources>

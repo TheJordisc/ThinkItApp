@@ -102,6 +102,7 @@ public class HelpActivity extends AppCompatActivity {
                     expListView.collapseGroup(lastPosition);
                 }
                 lastPosition = groupPosition;
+                expListView.smoothScrollToPosition(groupPosition);
             }
         });
     }

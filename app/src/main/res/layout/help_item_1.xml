@@ -5,17 +5,19 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="10dp"
+    android:padding="8dp"
     android:fillViewport="false">
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="5dp"
+        android:clipChildren="false"
         android:orientation="vertical">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:clipChildren="false"
+            android:layout_margin="8dp"
             android:orientation="horizontal">
 
             <android.support.design.widget.FloatingActionButton
@@ -44,9 +46,9 @@
                 app:layout_constraintStart_toEndOf="@+id/score_fab"
                 app:layout_constraintTop_toTopOf="parent" />
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
+            android:layout_margin="8dp"
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
@@ -57,7 +59,7 @@
                 android:layout_weight="0"
                 android:layout_gravity="center"
                 android:clickable="true"
-                app:backgroundTint="@color/colorPrimaryDark"
+                style="@style/MainMenuFAB"
                 app:fabSize="mini"
                 app:srcCompat="@drawable/ic_format_list_numbered_white_24dp"/>
 
@@ -76,10 +78,10 @@
                 app:layout_constraintStart_toEndOf="@+id/score_fab"
                 app:layout_constraintTop_toTopOf="parent" />
         </LinearLayout>
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="8dp"
             android:orientation="horizontal">
 
             <android.support.design.widget.FloatingActionButton
@@ -110,36 +112,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
-
-            <android.support.design.widget.FloatingActionButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="0"
-                android:layout_gravity="center"
-                style="@style/MainMenuFAB"
-                android:clickable="true"
-                app:fabSize="mini"
-                app:srcCompat="@drawable/ic_help_outline_white_24dp"/>
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_weight="9"
-                android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
-                android:paddingTop="5dp"
-                android:text="@string/help_help_button"
-                android:textAlignment="textEnd"
-                android:textSize="17sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.75"
-                app:layout_constraintStart_toEndOf="@+id/score_fab"
-                app:layout_constraintTop_toTopOf="parent" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_margin="8dp"
             android:orientation="horizontal">
 
             <android.support.design.widget.FloatingActionButton
@@ -170,6 +143,38 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:orientation="horizontal">
+
+            <android.support.design.widget.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="0"
+                android:layout_gravity="center"
+                app:backgroundTint="@color/colorPrimaryDark"
+                android:clickable="true"
+                app:fabSize="mini"
+                app:srcCompat="@drawable/ic_help_outline_white_24dp"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_weight="9"
+                android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
+                android:paddingTop="5dp"
+                android:text="@string/help_help_button"
+                android:textAlignment="textEnd"
+                android:textSize="17sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.75"
+                app:layout_constraintStart_toEndOf="@+id/score_fab"
+                app:layout_constraintTop_toTopOf="parent" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
             android:orientation="horizontal">
 
             <android.support.design.widget.FloatingActionButton
