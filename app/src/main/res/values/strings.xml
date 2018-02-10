@@ -82,4 +82,27 @@
     <string name="result_characters">caracteres restantes</string>
     <string name="result_name_required">Se requiere un nombre para guardar la puntuación</string>
     <string name="repeat_tutorial">Repetir tutorial</string>
+    <string name="tutorial_welcome1">¡Bienvenidos a Think It App!\\n\\nEste es un juego basado en sencillas operaciones matemáticas que deberás completar.</string>
+    <string name="tutorial_welcome2">Piensa en el juego como si fuera una carrera, no hay pausas. Si dejas la app en segundo plano, ¡el tiempo sigue corriendo!</string>
+    <string name="tutorial_main_operation">Esta es la operación principal.\\nEl juego trata de completar la operación con el número que falta.</string>
+    <string name="tutorial_next_operation">Esta es la siguiente operación.\\n Cuando completes la actual, esta será el objetivo. ¡Échale un vistazo para ganar unos segundos!</string>
+    <string name="tutorial_answers">Aquí están los botones con las posibles opciones. ¡Piensa bien antes de elegir una!</string>
+    <string name="tutorial_timer">No tardes mucho en pensar, porque hay un cronómetro en tu contra. ¡Vigila el tiempo!</string>
+    <string name="tutorial_score">Según tu respuesta, subirá o bajará la puntuación. Si aciertas, sumarás puntos. Si fallas, restarás. Y si aciertas rápido, obtendrás una bonificación.</string>
+    <string name="tutorial_score2">El objetivo final del juego es obtener la máxima puntuación en el ranking. ¡Intenta llegar lo más lejos posible!</string>
+    <string name="lives">Cada vez que falles una operación, perderás una vida. Tienes 3 vidas, así que cuídalas bien.</string>
+    <string name="tutorial_levels">Por cada 10 preguntas correctas, subirás de nivel. El juego es infinito, y a mayor nivel, operaciones más difíciles.</string>
+    <string name="hardness">Además, al subir de nivel, las respuestas posibles irán aumentando hasta un máximo de 8.</string>
+    <string name="tutorial_try_answer">¡Pruébalo! Pulsa en la respuesta correcta.\\n(Pista: es 2)</string>
+    <string name="tutorial_complete_operation1">¡Correcto! La operación se ha completado. Ahora tendrás un escaso segundo antes de que aparezca la siguiente operación.</string>
+    <string name="tutorial_complete_operation2">¡Aprovecha para echarle un vistazo antes de que el cronómetro se reanude!</string>
+    <string name="tutorial_bonus1">Cuando aciertas rápido, se suma un tiempo extra de bonificación, acumulable hasta 59 segundos.</string>
+    <string name="tutorial_bonus2">También se han sumado 100 puntos por acertar y una puntuación extra por acertar rápido.</string>
+    <string name="tutorial_lifelines1">En caso de duda, tienes dos comodines: el comodín del 50% y el comodín de omitir operación.</string>
+    <string name="tutorial_lifelines2">El comodín del 50% elimina la mitad de las opciones y el comodín de omitir operación pasa a la siguiente operación como si se hubiera acertado.</string>
+    <string name="tutorial_lifelines3">¡Prueba a usar el comodín del 50%!</string>
+    <string name="tutorial_lifelines4">Mucho más fácil, ¿no?</string>
+    <string name="tutorial_gameover">Por último, si quieres rendirte puedes pulsar el botón de parar. NO es una pausa, esto desencadenará inmediatamente un \'Game Over\'.</string>
+    <string name="tutorial_gameover2">Muchas gracias por tu atención. Ahora pulsa el botón de Stop, ¡y diviértete!</string>
+    <string name="tutorial_end">¡Aquí empieza!</string>
 </resources>

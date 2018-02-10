@@ -201,21 +201,21 @@ public class MathsTutorialActivity extends AppCompatActivity {
         animation.setDuration(250);
 
         final FancyShowCaseView fancyShowCaseViewWelcome = new FancyShowCaseView.Builder(this)
-                .title("¡Bienvenidos a Think It App!\n\nEste es un juego basado en sencillas operaciones matemáticas que deberás completar.")
+                .title(getResources().getString(R.string.tutorial_welcome1))
                 .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
                 .enterAnimation(animation)
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewWelcome2 = new FancyShowCaseView.Builder(this)
-                .title("Piensa en el juego como si fuera una carrera, no hay pausas. Si dejas la app en segundo plano, ¡el tiempo sigue corriendo!")
+                .title(getResources().getString(R.string.tutorial_welcome2))
                 .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
                 .enterAnimation(animation)
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewMainOperation = new FancyShowCaseView.Builder(this)
-                .title("Esta es la operación principal.\nEl juego trata de completar la operación con el número que falta.")
+                .title(getResources().getString(R.string.tutorial_main_operation))
                 .titleStyle(R.style.tutorial_title_style,Gravity.BOTTOM | Gravity.CENTER)
                 .focusOn(op1)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
@@ -223,7 +223,7 @@ public class MathsTutorialActivity extends AppCompatActivity {
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewNextOperation = new FancyShowCaseView.Builder(this)
-                .title("Esta es la siguiente operación.\n Cuando completes la actual, esta será el objetivo. ¡Échale un vistazo para ganar unos segundos!")
+                .title(getResources().getString(R.string.tutorial_next_operation))
                 .titleStyle(R.style.tutorial_title_style,Gravity.BOTTOM | Gravity.CENTER)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
                 .focusOn(op2)
@@ -231,7 +231,7 @@ public class MathsTutorialActivity extends AppCompatActivity {
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewAnswers = new FancyShowCaseView.Builder(this)
-                .title("Aquí están los botones con las posibles opciones. ¡Piensa bien antes de elegir una!")
+                .title(getResources().getString(R.string.tutorial_answers))
                 .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
                 .focusOn(keyboard)
@@ -239,7 +239,7 @@ public class MathsTutorialActivity extends AppCompatActivity {
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewTimer = new FancyShowCaseView.Builder(this)
-                .title("No tardes mucho en pensar, porque hay un cronómetro en tu contra. ¡Vigila el tiempo!")
+                .title(getResources().getString(R.string.tutorial_timer))
                 .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
                 .focusOn(mTimer)
@@ -247,7 +247,7 @@ public class MathsTutorialActivity extends AppCompatActivity {
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewScore = new FancyShowCaseView.Builder(this)
-                .title("Según tu respuesta, subirá o bajará la puntuación. Si aciertas, sumarás puntos. Si fallas, restarás. Y si aciertas rápido, obtendrás una bonificación.")
+                .title(getResources().getString(R.string.tutorial_score))
                 .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
                 .focusOn(mScoreText)
@@ -255,7 +255,7 @@ public class MathsTutorialActivity extends AppCompatActivity {
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewScore2 = new FancyShowCaseView.Builder(this)
-                .title("El objetivo final del juego es obtener la máxima puntuación en el ranking. ¡Intenta llegar lo más lejos posible!")
+                .title(getResources().getString(R.string.tutorial_score2))
                 .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
                 .focusOn(mScoreText)
@@ -263,7 +263,7 @@ public class MathsTutorialActivity extends AppCompatActivity {
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewLives = new FancyShowCaseView.Builder(this)
-                .title("Cada vez que falles una operación, perderás una vida. Tienes 3 vidas, así que cuídalas bien.")
+                .title(getResources().getString(R.string.lives))
                 .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
                 .focusOn(mLivesContainer)
@@ -271,7 +271,7 @@ public class MathsTutorialActivity extends AppCompatActivity {
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewLevels = new FancyShowCaseView.Builder(this)
-                .title("Por cada 10 preguntas correctas, subirás de nivel. El juego es infinito, y a mayor nivel, operaciones más difíciles.")
+                .title(getResources().getString(R.string.tutorial_levels))
                 .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
                 .focusOn(mLevelText)
@@ -293,7 +293,7 @@ public class MathsTutorialActivity extends AppCompatActivity {
         mQueue.show();
 
         final FancyShowCaseView fancyShowCaseViewHardness = new FancyShowCaseView.Builder(this)
-                .title("Además, al subir de nivel, las respuestas posibles irán aumentando hasta un máximo de 8.")
+                .title(getResources().getString(R.string.hardness))
                 .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
                 .focusOn(keyboard)
@@ -301,14 +301,14 @@ public class MathsTutorialActivity extends AppCompatActivity {
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewPress = new FancyShowCaseView.Builder(this)
-                .title("¡Pruébalo! Pulsa en la respuesta correcta.\n(Pista: es 2)")
+                .title(getResources().getString(R.string.tutorial_try_answer))
                 .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
                 .enterAnimation(animation)
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewComplete = new FancyShowCaseView.Builder(this)
-                .title("¡Correcto! La operación se ha completado. Ahora tendrás un escaso segundo antes de que aparezca la siguiente operación.")
+                .title(getResources().getString(R.string.tutorial_complete_operation1))
                 .titleStyle(R.style.tutorial_title_style,Gravity.BOTTOM | Gravity.CENTER)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
                 .focusOn(op1)
@@ -316,7 +316,7 @@ public class MathsTutorialActivity extends AppCompatActivity {
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewComplete2 = new FancyShowCaseView.Builder(this)
-                .title("¡Aprovecha para echarle un vistazo antes de que el cronómetro se reanude!")
+                .title(getResources().getString(R.string.tutorial_complete_operation2))
                 .titleStyle(R.style.tutorial_title_style,Gravity.BOTTOM | Gravity.CENTER)
                 .focusOn(op2)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
@@ -324,7 +324,7 @@ public class MathsTutorialActivity extends AppCompatActivity {
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewBonus1 = new FancyShowCaseView.Builder(this)
-                .title("Cuando aciertas rápido, se suma un tiempo extra de bonificación, acumulable hasta 59 segundos.")
+                .title(getResources().getString(R.string.tutorial_bonus1))
                 .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
                 .focusOn(bonusTime)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
@@ -332,7 +332,7 @@ public class MathsTutorialActivity extends AppCompatActivity {
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewBonus2 = new FancyShowCaseView.Builder(this)
-                .title("También se han sumado 100 puntos por acertar y una puntuación extra por acertar rápido.")
+                .title(getResources().getString(R.string.tutorial_bonus2))
                 .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
                 .focusOn(bonusScore)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
@@ -340,7 +340,7 @@ public class MathsTutorialActivity extends AppCompatActivity {
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewLifeLines = new FancyShowCaseView.Builder(this)
-                .title("En caso de duda, tienes dos comodines: el comodín del 50% y el comodín de omitir operación.")
+                .title(getResources().getString(R.string.tutorial_lifelines1))
                 .titleStyle(R.style.tutorial_title_style,Gravity.BOTTOM | Gravity.CENTER)
                 .focusOn(lifelineDrawer)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
@@ -348,7 +348,7 @@ public class MathsTutorialActivity extends AppCompatActivity {
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewLifeLines2 = new FancyShowCaseView.Builder(this)
-                .title("El comodín del 50% elimina la mitad de las opciones y el comodín de omitir operación pasa a la siguiente operación como si se hubiera acertado.")
+                .title(getResources().getString(R.string.tutorial_lifelines2))
                 .titleStyle(R.style.tutorial_title_style,Gravity.BOTTOM | Gravity.CENTER)
                 .focusOn(lifelineDrawer)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
@@ -356,14 +356,14 @@ public class MathsTutorialActivity extends AppCompatActivity {
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewLifeLines3 = new FancyShowCaseView.Builder(this)
-                .title("¡Prueba a usar el comodín del 50%!")
+                .title(getResources().getString(R.string.tutorial_lifelines3))
                 .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
                 .enterAnimation(animation)
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewLifeLines4 = new FancyShowCaseView.Builder(this)
-                .title("Mucho más fácil, ¿no?")
+                .title(getResources().getString(R.string.tutorial_lifelines4))
                 .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
                 .focusOn(keyboard)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
@@ -371,7 +371,7 @@ public class MathsTutorialActivity extends AppCompatActivity {
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewGameOver = new FancyShowCaseView.Builder(this)
-                .title("Por último, si quieres rendirte puedes pulsar el botón de parar. NO es una pausa, esto desencadenará inmediatamente un 'Game Over'.")
+                .title(getResources().getString(R.string.tutorial_gameover))
                 .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
                 .focusOn(stopFAB)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
@@ -379,14 +379,14 @@ public class MathsTutorialActivity extends AppCompatActivity {
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewGameOver2 = new FancyShowCaseView.Builder(this)
-                .title("Muchas gracias por tu atención. Ahora pulsa el botón de Stop, ¡y diviértete!")
+                .title(getResources().getString(R.string.tutorial_gameover2))
                 .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
                 .enterAnimation(animation)
                 .build();
 
         final FancyShowCaseView fancyShowCaseViewEnd = new FancyShowCaseView.Builder(this)
-                .title("¡Aquí empieza!")
+                .title(getResources().getString(R.string.tutorial_end))
                 .titleStyle(R.style.tutorial_title_style,Gravity.CENTER | Gravity.CENTER)
                 .backgroundColor(getResources().getColor(R.color.color_showcase))
                 .enterAnimation(animation)
