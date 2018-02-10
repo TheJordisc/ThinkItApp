@@ -48,6 +48,16 @@
             android:layout_height="match_parent"
             android:orientation="horizontal">
 
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_weight="9"
+                android:paddingTop="5dp"
+                android:text="@string/help_ranking_removeall"
+                android:textAlignment="textStart" />
+
+
             <android.support.design.widget.FloatingActionButton
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -57,16 +67,6 @@
                 android:layout_gravity="center"
                 android:scaleType="center"
                 app:srcCompat="@drawable/ic_clear_all_white_24dp"/>
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:layout_weight="9"
-                android:paddingTop="5dp"
-                android:text="@string/help_ranking_removeall"
-                android:textAlignment="textEnd"
-                />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>
