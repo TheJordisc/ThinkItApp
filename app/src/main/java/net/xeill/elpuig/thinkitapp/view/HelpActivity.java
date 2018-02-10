@@ -117,6 +117,7 @@ public class HelpActivity extends AppCompatActivity {
         listDataHeader.add(getString(R.string.help_bonus));
         listDataHeader.add(getString(R.string.help_ranking));
         listDataHeader.add(getString(R.string.help_language));
+        listDataHeader.add(getString(R.string.attribution));
 
         List<String> creditsHelp = new ArrayList<String>();
         creditsHelp.add("");
@@ -136,14 +137,16 @@ public class HelpActivity extends AppCompatActivity {
         List<String> languageHelp = new ArrayList<String>();
         languageHelp.add("");
 
+        List<String> attribution = new ArrayList<String>();
+        attribution.add("");
+
         listDataChild.put(listDataHeader.get(0), creditsHelp);
         listDataChild.put(listDataHeader.get(1), menuHelp);
         listDataChild.put(listDataHeader.get(2), goalsHelp);
         listDataChild.put(listDataHeader.get(3), bonusHelp);
         listDataChild.put(listDataHeader.get(4), rankingHelp);
         listDataChild.put(listDataHeader.get(5), languageHelp);
-
-
+        listDataChild.put(listDataHeader.get(6), attribution);
 
     }
 
