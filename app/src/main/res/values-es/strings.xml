@@ -57,12 +57,12 @@
     <string name="help_difficult_description">La dificultad aumenta progresivamente. Por ejemplo, las operaciones serán más complicadas y el número de opciones irá aumentando hasta un máximo de 8.</string>
     <string name="help_end_game_description">Si el tiempo finaliza, perderás una vida. La partida finaliza al perder tu última vida.</string>
     <string name="help_next_section_bonus">Consulta las bonificaciones para lograr una puntuación mas alta, en la sección ayudas y bonificaciones</string>
-    <string name="help_lifeline_50_description">Éste comodin reduce a la mitad las respuestas posibles. Utilizable sólo 1 vez en cada partida</string>
-    <string name="help_lifeline_next_description">Éste otro comodin permite pasar a la siguiente operación. Utilizable sólo 1 vez en cada partida</string>
-    <string name="help_next_operation_description">Puedes ver la operación siguiente debajo de la operación a responder</string>
+    <string name="help_bonus_lifeline_50_description">Por un lado, están los comodines: el comodín del 50% y el comodín de omitir operación. Son de un solo uso, así que piénsatelo antes de gastarlos. El comodín del 50% reduce a la mitad las respuestas posibles:</string>
+    <string name="help_bonus_lifeline_next_description">El comodín de omitir operación permite pasar a la siguiente operación de forma que la actual conste como correcta, obteniendo todas las bonificaciones que obtendrías al responder correctamente:</string>
+    <string name="help_bonus_next_operation_description">Otra ayuda es el vistazo rápido a la siguiente operación. Puedes verla justo debajo de la operación a responder, para pensar en ella incluso antes de responderla.</string>
     <string name="help_title">Ayudas</string>
-    <string name="help_title_bonus">Bonificaciones</string>
-    <string name="help_question_score_description">Cada respuesta correcta añade 100 a la puntuación total</string>
+    <string name="help_bonus_title_bonus">Bonificaciones</string>
+    <string name="help_bonus_question_score_description">Cada respuesta correcta añade 100 puntos extra a la puntuación total.</string>
     <string name="help_bonus_time_score_description">Acertar una operación en menos de 10 segundos, sumará más puntos y obtendrás más tiempo</string>
     <string name="help_ranking_description">El ranking ordena de forma descendente las puntuaciones guardadas, indicando en primera posición la puntuación más alta</string>
     <string name="help_ranking_remove">Puedes eliminar una puntuación pulsando la papelera</string>
@@ -71,4 +71,5 @@
     <string name="help_game_description2">El objetivo del juego es conseguir la máxima puntuación posible. Para lograrlo, completa correctamente todas las operaciones que puedas. Deberás introducir el valor que falta, señalado con un interrogante (\"?\").</string>
     <string name="help_game_description3">Para completar la operación, tienes que pulsar en la cifra adecuada en el teclado de opciones situado en la parte inferior.</string>
     <string name="help_incorrect_answer_description">Cada respuesta incorrecta restará una vida y sustraerá 50 puntos a la puntuación total.</string>
+    <string name="help_bonus_introduction">Aparte de las vidas, el juego cuenta con una serie de ayudas y bonificaciones que te permitirán durar más en el juego y conseguir mejores puntuaciones.</string>
 </resources>

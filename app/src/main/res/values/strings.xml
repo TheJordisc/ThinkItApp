@@ -62,12 +62,12 @@
     <string name="help_incorrect_answer_description">Cada respuesta incorrecta restará una vida y restará 50 puntos a la puntuación total</string>
     <string name="help_end_game_description">Si el tiempo finaliza, perderás una vida. La partida finaliza al perder tu última vida</string>
     <string name="help_next_section_bonus">Consulta las bonificaciones para lograr una puntuación mas alta, en la sección ayudas y bonificaciones</string>
-    <string name="help_lifeline_50_description">Éste comodin reduce a la mitad las respuestas posibles. Utilizable sólo 1 vez en cada partida</string>
-    <string name="help_lifeline_next_description">Éste otro comodin permite pasar a la siguiente operación. Utilizable sólo 1 vez en cada partida</string>
-    <string name="help_next_operation_description">Puedes ver la operación siguiente debajo de la operación a responder</string>
+    <string name="help_bonus_lifeline_50_description">Éste comodin reduce a la mitad las respuestas posibles. Utilizable sólo 1 vez en cada partida</string>
+    <string name="help_bonus_lifeline_next_description">Éste otro comodin permite pasar a la siguiente operación. Utilizable sólo 1 vez en cada partida</string>
+    <string name="help_bonus_next_operation_description">Puedes ver la operación siguiente debajo de la operación a responder</string>
     <string name="help_title">Ayudas</string>
-    <string name="help_title_bonus">Bonificaciones</string>
-    <string name="help_question_score_description">Cada respuesta correcta añade 100 a la puntuación total</string>
+    <string name="help_bonus_title_bonus">Bonificaciones</string>
+    <string name="help_bonus_question_score_description">Cada respuesta correcta añade 100 a la puntuación total</string>
     <string name="help_bonus_time_score_description">Acertar una operación en menos de 10 segundos, sumará más puntos y obtendrás más tiempo</string>
     <string name="help_ranking_description">El ranking ordena de forma descendente las puntuaciones guardadas, indicando en primera posición la puntuación más alta</string>
     <string name="help_ranking_remove">Puedes eliminar una puntuación pulsando la papelera</string>
@@ -76,4 +76,5 @@
     <string name="attribution">Atribuciones</string>
     <string name="help_game_description2">El objetivo del juego es conseguir la máxima puntuación posible. Para lograrlo, completa correctamente todas las operaciones que puedas.</string>
     <string name="help_game_description3">sdfssdffsd</string>
+    <string name="help_bonus_introduction">sdsdsdsd</string>
 </resources>
