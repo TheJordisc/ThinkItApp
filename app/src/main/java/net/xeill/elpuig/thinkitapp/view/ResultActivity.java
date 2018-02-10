@@ -25,14 +25,17 @@ public class ResultActivity extends AppCompatActivity {
     SharedPreferences settings;
     int mScore;
     TextView mScoreTextView,countTextView;
-    EditText name_edit;
+    EditText nameEdit;
+    FloatingActionButton restartFAB, exitFAB,saveFAB;
 
     ScoreViewModel scoreViewModel;
 
     MediaPlayer mResultPlayer;
+    private int nameMaxLenght = 20;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_result);
 
@@ -52,37 +55,32 @@ public class ResultActivity extends AppCompatActivity {
 
         mScore = getIntent().getIntExtra("score", 0);
 
-
-
-
         mScoreTextView = findViewById(R.id.score);
 
         mScoreTextView.setText(mScore + "");
 
-        name_edit = findViewById(R.id.name_edit);
+        nameEdit = findViewById(R.id.name_edit);
         countTextView = findViewById(R.id.counter);
-        countTextView.setText("20/20 caracteres restantes" );
-        final FloatingActionButton homeFAB = findViewById(R.id.fab_stop);
+        countTextView.setText(nameMaxLenght + "/" + nameMaxLenght + " " + getResources().getString(R.string.result_characters));
+        exitFAB = findViewById(R.id.fab_exit);
 
-        homeFAB.setOnClickListener(new View.OnClickListener() {
+        exitFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent homeIntent = new Intent(ResultActivity.this, MainActivity.class);
-                startActivity(homeIntent);
-                ResultActivity.this.finish();
+                confirmExit();
             }
         });
 
-        final FloatingActionButton saveScore = findViewById(R.id.save_score);
+        saveFAB = findViewById(R.id.fab_save);
 
-        saveScore.setOnClickListener(new View.OnClickListener() {
+        saveFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (name_edit.getText().length() == 0) {
-                    name_edit.setError("Se requiere un nombre para guardar la puntuación");
+                if (nameEdit.getText().toString().trim().equals("")) {
+                    nameEdit.setError(getResources().getText(R.string.result_name_required));
                 } else{
                     Score score = new Score();
-                    score.setUser("" + name_edit.getText());
+                    score.setUser("" + nameEdit.getText());
                     score.setScore(mScore);
 
                     scoreViewModel.insertScore(score).observe(ResultActivity.this, new Observer<Long>() {
@@ -100,17 +98,15 @@ public class ResultActivity extends AppCompatActivity {
             }
         });
 
-        final FloatingActionButton restartButton = findViewById(R.id.restart);
-        restartButton.setOnClickListener(new View.OnClickListener() {
+        restartFAB = findViewById(R.id.fab_restart);
+        restartFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent playIntent = new Intent(ResultActivity.this, MathsActivity.class);
-                startActivity(playIntent);
-                finish();
+                confirmExit();
             }
         });
 
-        name_edit.addTextChangedListener(new TextWatcher() {
+        nameEdit.addTextChangedListener(new TextWatcher() {
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count)
             {
@@ -125,7 +121,7 @@ public class ResultActivity extends AppCompatActivity {
             public void afterTextChanged(Editable s)
             {
                 // this will show characters remaining
-                countTextView.setText((20 - s.toString().length()) + "/20 caracteres restantes");
+                countTextView.setText((nameMaxLenght - s.toString().length()) + "/" + nameMaxLenght + " " + getResources().getString(R.string.result_characters));
             }
         });
     }
@@ -150,18 +146,23 @@ public class ResultActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
+        confirmExit();
+    }
+
+    void confirmExit() {
         new AlertDialog.Builder(ResultActivity.this)
                 //.setMessage(R.string.tutorial_msg)
                 .setMessage(R.string.dialog_result_exit_withoutsave)
-                .setPositiveButton(R.string.tutorial_yes, new DialogInterface.OnClickListener() {
+                .setPositiveButton(R.string.dialog_yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        Intent playIntent = new Intent(ResultActivity.this,MainActivity.class);
-                        startActivity(playIntent);
+                        Intent exitIntent = new Intent(ResultActivity.this,MainActivity.class);
+                        startActivity(exitIntent);
+                        ResultActivity.this.finish();
                     }
                 })
-                .setNegativeButton(R.string.tutorial_no, new DialogInterface.OnClickListener() {
+                .setNegativeButton(R.string.dialog_no, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-
+                        //NOTHING
                     }
                 }).create().show();
     }

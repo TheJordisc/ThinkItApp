@@ -21,8 +21,8 @@
     <string name="final_score">Final score</string>
     <string name="hint_enter_name">Enter your name</string>
     <string name="level">Level</string>
-    <string name="tutorial_yes">Yes</string>
-    <string name="tutorial_no">No</string>
+    <string name="dialog_yes">Yes</string>
+    <string name="dialog_no">No</string>
     <string name="tutorial_msg">It seems like it\'s the first time you play. Do you want to try a tutorial?</string>
     <string name="dialog_timeout_on_pause">Time ran out while the game was paused. This is a race, so time won\'t stop not even then!</string>
     <string name="lastlife">Last life!</string>
@@ -79,4 +79,6 @@
     <string name="help_bonus_introduction">sdsdsdsd</string>
     <string name="help_ranking_description">Cuando se acaba la partida, tienes la posibilidad de introducir tu nombre y guardar la puntuación. Al guardar, se mostrará inmediatamente el ránking de puntuaciones, con tu entrada resaltada. Esta sección es accesible también desde el menú principal.</string>
     <string name="help_attributions">Música del juego: \"Jazzy Frenchy\" - Bensound.com</string>
+    <string name="result_characters">caracteres restantes</string>
+    <string name="result_name_required">Se requiere un nombre para guardar la puntuación</string>
 </resources>

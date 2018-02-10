@@ -10,24 +10,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab_stop"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:layout_marginBottom="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="424dp"
-            android:clickable="true"
-
-            app:backgroundTint="@color/color_red_incorrect"
-            app:fabSize="normal"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
-            app:srcCompat="@drawable/ic_close_white_24dp" />
-
         <TextView
             android:id="@+id/game_over"
             android:layout_width="match_parent"
@@ -45,12 +27,10 @@
             android:textAllCaps="true"
             android:textColor="@android:color/white"
             android:textSize="60sp"
-            app:layout_constraintBottom_toTopOf="@+id/final_score"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.0"
             tools:visibility="visible" />
 
         <TextView
@@ -59,28 +39,25 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
             android:gravity="center|top"
             android:text="@string/final_score"
             android:textSize="30sp"
-            app:layout_constraintBottom_toTopOf="@+id/score"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/game_over" />
 
         <TextView
             android:id="@+id/score"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="200dp"
             android:textSize="45sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@+id/name_edit"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.647"
+            app:layout_constraintTop_toBottomOf="@+id/final_score"
             tools:text="389473432" />
 
         <TextView
@@ -88,77 +65,94 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:layout_marginTop="8dp"
             android:textSize="12sp"
+            app:layout_constraintBottom_toTopOf="@+id/name_edit"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/score"
             tools:text="389473432" />
 
         <EditText
             android:id="@+id/name_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="320dp"
+            android:layout_marginTop="52dp"
             android:hint="@string/hint_enter_name"
+            android:imeOptions="actionDone"
             android:lines="1"
             android:maxLength="20"
             android:maxLines="1"
             android:singleLine="true"
             android:textAlignment="center"
+            app:layout_constraintBottom_toTopOf="@+id/textView2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toBottomOf="@+id/score" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/save_score"
+            android:id="@+id/fab_exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginBottom="8dp"
+            android:clickable="true"
+            app:backgroundTint="@color/color_red_incorrect"
+            app:fabSize="normal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/fab_save"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/fab_restart"
+            app:srcCompat="@drawable/ic_close_white_24dp" />
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_save"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginTop="416dp"
+            android:layout_marginStart="8dp"
             android:clickable="true"
             app:backgroundTint="@android:color/holo_green_light"
             app:fabSize="normal"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.416"
+            app:layout_constraintStart_toEndOf="@+id/fab_exit"
             app:srcCompat="@drawable/ic_done_white_24dp" />
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/restart"
+            android:id="@+id/fab_restart"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
             android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="416dp"
             android:clickable="true"
             app:backgroundTint="@color/colorPrimary"
             app:fabSize="normal"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/save_score"
-            app:layout_constraintStart_toEndOf="@+id/fab_stop"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="1.0"
+            app:layout_constraintEnd_toStartOf="@+id/fab_exit"
+            app:layout_constraintHorizontal_bias="0.583"
+            app:layout_constraintStart_toStartOf="parent"
             app:srcCompat="@drawable/ic_refresh_white_24dp" />
 
         <TextView
+            android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
             android:layout_marginEnd="8dp"
             android:layout_marginStart="8dp"
-            android:layout_marginTop="388dp"
             android:text="@string/guardar_puntuaci_n"
             android:textSize="20dp"
             android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/fab_exit"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent" />
     </android.support.constraint.ConstraintLayout>
 </ScrollView>

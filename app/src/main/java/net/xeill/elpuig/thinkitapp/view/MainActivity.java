@@ -103,14 +103,14 @@ public class MainActivity extends AppCompatActivity {
 //                        if (settings.getBoolean("isFirstPlay", true)) {
                             new AlertDialog.Builder(MainActivity.this)
                                     .setMessage(R.string.tutorial_msg)
-                                    .setPositiveButton(R.string.tutorial_yes, new DialogInterface.OnClickListener() {
+                                    .setPositiveButton(R.string.dialog_yes, new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int id) {
                                             musicPlayer.stop();
                                             Intent playIntent = new Intent(MainActivity.this,MathsTutorialActivity.class);
                                             startActivity(playIntent);
                                         }
                                     })
-                                    .setNegativeButton(R.string.tutorial_no, new DialogInterface.OnClickListener() {
+                                    .setNegativeButton(R.string.dialog_no, new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int id) {
                                             musicPlayer.stop();
                                             Intent playIntent = new Intent(MainActivity.this,MathsActivity.class);

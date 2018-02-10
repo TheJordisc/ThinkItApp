@@ -14,8 +14,8 @@
     <string name="game_over">Game over</string>
     <string name="hint_enter_name">Introduce tu nombre</string>
     <string name="level">Nivel</string>
-    <string name="tutorial_yes">Sí</string>
-    <string name="tutorial_no">No</string>
+    <string name="dialog_yes">Sí</string>
+    <string name="dialog_no">No</string>
     <string name="tutorial_msg">Parece que es la primera vez que juegas. ¿Quieres probar el tutorial?</string>
     <string name="dialog_timeout_on_pause">El tiempo se ha acabado mientras el juego estaba en pausa. Esto es una carrera, ¡el tiempo nunca para!</string>
     <string name="lastlife">¡Última vida!</string>
@@ -78,4 +78,6 @@
     \n\nMúsica de \'Ayuda\': \"The Lounge\" - Bensound.com
     \n\nMúsica de \'Idioma\' y \'Ranking\': \"Summer\" - Bensound.com
     \n\nMúsica de \'Game Over\': \"Jazz Comedy\" - Bensound.com</string>
+    <string name="result_characters">caracteres restantes</string>
+    <string name="result_name_required">Se requiere un nombre para guardar la puntuación</string>
 </resources>
