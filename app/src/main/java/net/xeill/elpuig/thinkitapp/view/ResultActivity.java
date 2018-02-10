@@ -67,7 +67,7 @@ public class ResultActivity extends AppCompatActivity {
         exitFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                confirmExit();
+                confirmExit(0);
             }
         });
 
@@ -102,7 +102,7 @@ public class ResultActivity extends AppCompatActivity {
         restartFAB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                confirmExit();
+                confirmExit(1);
             }
         });
 
@@ -146,17 +146,26 @@ public class ResultActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        confirmExit();
+        confirmExit(0);
     }
 
-    void confirmExit() {
+    void confirmExit(final int mode) {
         new AlertDialog.Builder(ResultActivity.this)
                 //.setMessage(R.string.tutorial_msg)
                 .setMessage(R.string.dialog_result_exit_withoutsave)
                 .setPositiveButton(R.string.dialog_yes, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int id) {
-                        Intent exitIntent = new Intent(ResultActivity.this,MainActivity.class);
-                        startActivity(exitIntent);
+                        Intent intent = null;
+
+                        if (mode==0) {
+                            intent=new Intent(ResultActivity.this,MainActivity.class);
+                        }
+
+                        if (mode==1) {
+                            intent=new Intent(ResultActivity.this,MathsActivity.class);
+                        }
+
+                        startActivity(intent);
                         ResultActivity.this.finish();
                     }
                 })

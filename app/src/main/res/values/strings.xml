@@ -81,4 +81,5 @@
     <string name="help_attributions">Música del juego: \"Jazzy Frenchy\" - Bensound.com</string>
     <string name="result_characters">caracteres restantes</string>
     <string name="result_name_required">Se requiere un nombre para guardar la puntuación</string>
+    <string name="repeat_tutorial">Repetir tutorial</string>
 </resources>

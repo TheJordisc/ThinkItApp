@@ -84,7 +84,7 @@ public class HelpActivity extends AppCompatActivity {
         });
 
 */
-        expListView = (ExpandableListView) findViewById(R.id.lvExp);
+        expListView = findViewById(R.id.lvExp);
 
         prepareListData();
 
@@ -108,8 +108,8 @@ public class HelpActivity extends AppCompatActivity {
     }
 
     private void prepareListData() {
-        listDataHeader = new ArrayList<String>();
-        listDataChild = new HashMap<String, List<String>>();
+        listDataHeader = new ArrayList<>();
+        listDataChild = new HashMap<>();
 
 
         listDataHeader.add(getString(R.string.help_credits));
@@ -120,25 +120,25 @@ public class HelpActivity extends AppCompatActivity {
         listDataHeader.add(getString(R.string.help_language));
         listDataHeader.add(getString(R.string.attribution));
 
-        List<String> creditsHelp = new ArrayList<String>();
+        List<String> creditsHelp = new ArrayList<>();
         creditsHelp.add("");
 
-        List<String> menuHelp = new ArrayList<String>();
+        List<String> menuHelp = new ArrayList<>();
         menuHelp.add("");
 
-        List<String> goalsHelp = new ArrayList<String>();
+        List<String> goalsHelp = new ArrayList<>();
         goalsHelp.add("");
 
-        List<String> bonusHelp = new ArrayList<String>();
+        List<String> bonusHelp = new ArrayList<>();
         bonusHelp.add("");
 
-        List<String> rankingHelp = new ArrayList<String>();
+        List<String> rankingHelp = new ArrayList<>();
         rankingHelp.add("");
 
-        List<String> languageHelp = new ArrayList<String>();
+        List<String> languageHelp = new ArrayList<>();
         languageHelp.add("");
 
-        List<String> attribution = new ArrayList<String>();
+        List<String> attribution = new ArrayList<>();
         attribution.add("");
 
         listDataChild.put(listDataHeader.get(0), creditsHelp);

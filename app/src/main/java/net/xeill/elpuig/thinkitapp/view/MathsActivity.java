@@ -778,7 +778,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     }
 
     public Operation calculateOperation() {
-        Operation op1 = new Operation();;
+        Operation op1 = new Operation();
         int op1Range=1, op2Range=1, newOp2=1;
 
         do {

@@ -35,7 +35,7 @@
         android:orientation="horizontal">
         <Button
             android:id="@+id/button_repeat_tutorial"
-            android:text="Repetir tutorial"
+            android:text="@string/repeat_tutorial"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             style="@style/blueColorButton"

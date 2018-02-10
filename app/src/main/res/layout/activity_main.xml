@@ -94,7 +94,8 @@
         app:fabSize="mini"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_help_outline_white_24dp" />
+        app:srcCompat="@drawable/ic_help_outline_white_24dp"
+        android:focusable="true" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/close_fab"
@@ -107,6 +108,7 @@
         app:fabSize="mini"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_close_white_24dp" />
+        app:srcCompat="@drawable/ic_close_white_24dp"
+        android:focusable="true" />
 
 </android.support.constraint.ConstraintLayout>

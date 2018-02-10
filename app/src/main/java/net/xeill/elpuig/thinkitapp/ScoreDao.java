@@ -21,11 +21,11 @@ public interface ScoreDao {
     LiveData<List<Score>> getScores();
 
     @Insert(onConflict = 1)
-    public long insertScore(Score score);
+    long insertScore(Score score);
 
     @Delete
-    public void deleteScore(Score score);
+    void deleteScore(Score score);
 
     @Delete
-    public void deleteAllScores(List<Score> scoreList);
+    void deleteAllScores(List<Score> scoreList);
 }

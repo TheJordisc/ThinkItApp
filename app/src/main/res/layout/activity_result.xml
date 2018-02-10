@@ -104,7 +104,8 @@
             app:layout_constraintEnd_toStartOf="@+id/fab_save"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/fab_restart"
-            app:srcCompat="@drawable/ic_close_white_24dp" />
+            app:srcCompat="@drawable/ic_close_white_24dp"
+            android:focusable="true" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab_save"
@@ -121,7 +122,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.416"
             app:layout_constraintStart_toEndOf="@+id/fab_exit"
-            app:srcCompat="@drawable/ic_done_white_24dp" />
+            app:srcCompat="@drawable/ic_done_white_24dp"
+            android:focusable="true" />
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab_restart"
@@ -138,7 +140,8 @@
             app:layout_constraintEnd_toStartOf="@+id/fab_exit"
             app:layout_constraintHorizontal_bias="0.583"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/ic_refresh_white_24dp" />
+            app:srcCompat="@drawable/ic_refresh_white_24dp"
+            android:focusable="true" />
 
         <TextView
             android:id="@+id/textView2"
