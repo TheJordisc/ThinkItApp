@@ -4,18 +4,27 @@
     android:layout_height="fill_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
-    android:padding="10dp"
+    android:padding="16dp"
     android:fillViewport="false">
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="55dip"
+        android:layout_height="wrap_content"
+        android:clipChildren="false"
         android:orientation="vertical">
         <TextView
             android:id="@+id/lblListItem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="5dp"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
             android:text="@string/help_ranking_description"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:text="@string/help_ranking_description2"
             />
         <ImageView
             android:layout_width="match_parent"
@@ -24,18 +33,15 @@
             android:adjustViewBounds="true"
             android:layout_gravity="center"
             app:srcCompat="@drawable/scores_preview"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="5dp"
-                android:text="@string/help_ranking_remove"
-                />
 
-        </LinearLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:paddingBottom="4dp"
+            android:text="@string/help_ranking_remove"
+            />
+
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,14 +52,19 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="8dp"
+            android:clipChildren="false"
             android:orientation="horizontal">
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_gravity="end"
+                android:layout_gravity="start"
                 android:layout_weight="9"
-                android:paddingTop="5dp"
+                android:paddingTop="4dp"
+                android:paddingBottom="4dp"
                 android:text="@string/help_ranking_removeall"
                 android:textAlignment="textStart" />
 
@@ -66,7 +77,8 @@
                 app:fabSize="mini"
                 android:layout_gravity="center"
                 android:scaleType="center"
-                app:srcCompat="@drawable/ic_clear_all_white_24dp"/>
+                app:srcCompat="@drawable/ic_clear_all_white_24dp"
+                android:focusable="true" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

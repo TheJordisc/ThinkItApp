@@ -69,7 +69,7 @@
     <string name="help_bonus_title_bonus">Bonificaciones</string>
     <string name="help_bonus_question_score_description">Cada respuesta correcta añade 100 a la puntuación total</string>
     <string name="help_bonus_time_score_description">Acertar una operación en menos de 10 segundos, sumará más puntos y obtendrás más tiempo</string>
-    <string name="help_ranking_description">El ranking ordena de forma descendente las puntuaciones guardadas, indicando en primera posición la puntuación más alta</string>
+    <string name="help_ranking_description2">El ranking ordena de forma descendente las puntuaciones guardadas, indicando en primera posición la puntuación más alta</string>
     <string name="help_ranking_remove">Puedes eliminar una puntuación pulsando la papelera</string>
     <string name="help_ranking_removeall">Elimina todas las puntuaciones al pulsar éste botón</string>
     <string name="help_language_description">Puedes cambiar el idioma del juego tocando la bandera correspondiente al idioma deseado</string>
@@ -77,4 +77,5 @@
     <string name="help_game_description2">El objetivo del juego es conseguir la máxima puntuación posible. Para lograrlo, completa correctamente todas las operaciones que puedas.</string>
     <string name="help_game_description3">sdfssdffsd</string>
     <string name="help_bonus_introduction">sdsdsdsd</string>
+    <string name="help_ranking_description">Cuando se acaba la partida, tienes la posibilidad de introducir tu nombre y guardar la puntuación. Al guardar, se mostrará inmediatamente el ránking de puntuaciones, con tu entrada resaltada. Esta sección es accesible también desde el menú principal.</string>
 </resources>
