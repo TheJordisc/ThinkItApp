@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 import android.widget.VideoView;
 
 import net.xeill.elpuig.thinkitapp.R;
@@ -63,7 +64,7 @@ public class LanguageActivity extends AppCompatActivity {
             public void onClick(View view) {
 //                LocaleManager.setNewLocale(getApplicationContext(),"ca");
                 LocaleManager.setLocale(LanguageActivity.this,"ca");
-                menuIntent();
+                menuIntent(getResources().getString(R.string.ca_flag));
             }
         });
 
@@ -73,7 +74,7 @@ public class LanguageActivity extends AppCompatActivity {
             public void onClick(View view) {
 //                LocaleManager.setNewLocale(getApplicationContext(),"es");
                 LocaleManager.setLocale(LanguageActivity.this,"es");
-                menuIntent();
+                menuIntent(getResources().getString(R.string.es_flag));
             }
         });
 
@@ -83,7 +84,7 @@ public class LanguageActivity extends AppCompatActivity {
             public void onClick(View view) {
 //                LocaleManager.setNewLocale(getApplicationContext(),"it");
                 LocaleManager.setLocale(LanguageActivity.this,"it");
-                menuIntent();
+                menuIntent(getResources().getString(R.string.it_flag));
             }
         });
 
@@ -93,11 +94,13 @@ public class LanguageActivity extends AppCompatActivity {
             public void onClick(View view) {
 //                LocaleManager.setNewLocale(getApplicationContext(),"en");
                 LocaleManager.setLocale(LanguageActivity.this,"en");
-                menuIntent();
+                menuIntent(getResources().getString(R.string.uk_flag));
             }
         });
     }
-    public void menuIntent(){
+    public void menuIntent(String language){
+        //TODO: Convertir a resource después de importar strings traducidos
+        Toast.makeText(this,"Language changed to: " + language, Toast.LENGTH_SHORT).show();
         playSoundPlayer.start();
         LanguageActivity.this.finish();
     }

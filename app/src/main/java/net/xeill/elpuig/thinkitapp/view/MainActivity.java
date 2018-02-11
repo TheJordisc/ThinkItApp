@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
         mSplashHandler = new Handler();
 
-        musicPlayer = MediaPlayer.create(this,  R.raw.theme);
+        musicPlayer = MediaPlayer.create(this,  R.raw.modern_theme_nicolai_heidlas);
         playSoundPlayer = MediaPlayer.create(this,R.raw.play);
 
         volumeFAB = findViewById(R.id.volume_fab);
@@ -189,7 +189,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setUnmute() {
-        musicPlayer.setVolume(0.7f,0.7f);
+        //TODO: Controlar volumen across the activities
+        musicPlayer.setVolume(0.8f,0.8f);
         playSoundPlayer.setVolume(1f,1f);
 
         volumeFAB.setActivated(true);

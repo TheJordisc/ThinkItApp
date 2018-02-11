@@ -8,6 +8,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
+import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
@@ -33,6 +34,7 @@ import java.util.List;
 import me.toptas.fancyshowcase.FancyShowCaseQueue;
 import me.toptas.fancyshowcase.FancyShowCaseView;
 import me.toptas.fancyshowcase.OnCompleteListener;
+import me.toptas.fancyshowcase.OnViewInflateListener;
 
 public class MathsTutorialActivity extends AppCompatActivity {
     //TODO: Indicadores cuando se espera acción de usuario
@@ -289,7 +291,6 @@ public class MathsTutorialActivity extends AppCompatActivity {
                 .add(fancyShowCaseViewScore2)
                 .add(fancyShowCaseViewLives)
                 .add(fancyShowCaseViewLevels);
-
         mQueue.show();
 
         final FancyShowCaseView fancyShowCaseViewHardness = new FancyShowCaseView.Builder(this)
