@@ -165,6 +165,7 @@ public class ResultActivity extends AppCompatActivity {
                         if (mode==1) {
                             intent=new Intent(ResultActivity.this,MathsActivity.class);
                             startActivity(intent);
+                            finish();
                         }
 
 //                        startActivity(intent);

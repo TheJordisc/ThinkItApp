@@ -41,6 +41,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     MediaPlayer mIncorrectPlayer;
     MediaPlayer mCorrectPlayer;
     MediaPlayer mGameOverPlayer;
+    MediaPlayer mInitialCountdownPlayer;
     VideoView bgVideo;
 
     int mCorrectAnswers =0;
@@ -81,6 +82,8 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     TextView mAddedScoreText;
     TextView mAddedScoreTextByTime;
     TextView mAddedTimeText;
+
+    ImageView mInitialCountdownImage;
     TextView mLevelText;
     TextView mLastLife;
     TextView mLevelUp;
@@ -103,6 +106,8 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     boolean mLifelinePassoverUsed = false;
 
     boolean mLifelineHintShown = false;
+
+    boolean gameStarted = false;
 
     ImageButton mLifeline5050;
     ImageButton mLifelinePassover;
@@ -149,6 +154,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         mIncorrectPlayer = MediaPlayer.create(MathsActivity.this,R.raw.incorrect);
         mCorrectPlayer = MediaPlayer.create(MathsActivity.this,R.raw.correct);
         mGameOverPlayer = MediaPlayer.create(MathsActivity.this,R.raw.game_over);
+        mInitialCountdownPlayer = MediaPlayer.create(MathsActivity.this,R.raw.initial_countdown_sound);
 
         settings=getSharedPreferences("prefs", 0);
         if (settings.getBoolean("mute",true)) {
@@ -161,6 +167,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             mIncorrectPlayer.setVolume(0f,0f);
             mCorrectPlayer.setVolume(0f,0f);
             mGameOverPlayer.setVolume(0f,0f);
+            mInitialCountdownPlayer.setVolume(0f,0f);
         } else {
             mMusicPlayer.setVolume(0.7f,0.7f);
             mFastMusicPlayer.setVolume(1.0f,1.0f);
@@ -171,13 +178,13 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             mIncorrectPlayer.setVolume(1f,1f);
             mCorrectPlayer.setVolume(1f,1f);
             mGameOverPlayer.setVolume(1f,1f);
+            mInitialCountdownPlayer.setVolume(0.7f,0.7f);
         }
 
         mMusicPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mediaPlayer) {
                 mediaPlayer.setLooping(true);
-                mediaPlayer.start();
             }
         });
 
@@ -186,37 +193,12 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         bgVideo.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override
             public void onPrepared(MediaPlayer mediaPlayer) {
+                mediaPlayer.setLooping(true);
                 mediaPlayer.start();
             }
         });
 
-        bgVideo.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mp) {
-                mp.setLooping(true);
-            }
-        });
-
         mStopFAB = findViewById(R.id.fab_stop);
-
-        mStopFAB.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                new AlertDialog.Builder(MathsActivity.this)
-                        .setMessage(R.string.gameover_sure)
-                        .setPositiveButton(R.string.gameover_over, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                gameOver();
-                            }
-                        })
-                        .setNegativeButton(R.string.gameover_resume, new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                // NOTHING
-                            }
-                        })
-                        .create().show();
-            }
-        });
 
         answerButtons = new ArrayList<>();
         answerButtons.add((AppCompatButton) findViewById(R.id.answer1));
@@ -263,76 +245,134 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         defButtonColor = ViewCompat.getBackgroundTintList(answerButtons.get(0));
 //        defQuestionBackground = op1Op1TV.getBackground();
 
-        loadOperation();
-
         //COMODINES
         mLifelinePassover=findViewById(R.id.lifeline_passover);
         mLifeline5050=findViewById(R.id.lifeline_50_50);
         mLifeline5050Cross=findViewById(R.id.lifeline_50_50_x);
         mLifelinePassoverCross=findViewById(R.id.lifeline_passover_x);
 
-        mLifelinePassover.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mLifelinePassoverUsed=true;
-                mLifelinePassoverCross.setVisibility(View.VISIBLE);
 
-                view.setEnabled(false);
-                ViewCompat.setBackgroundTintList(view,ColorStateList.valueOf(Color.GRAY));
-                mLifelineHint.setVisibility(View.GONE);
+        mInitialCountdownImage=findViewById(R.id.initial_countdown);
 
-                mCountdownTimer.cancel();
+        //COUNTDOWN
+        mInitialCountdownImage.setVisibility(View.VISIBLE);
 
-                if (mCountdownPlayer != null && mCountdownPlayer.isPlaying()) {
-                    mCountdownPlayer.stop();
-                }
+        mInitialCountdownPlayer.start();
 
-                for (AppCompatButton b : answerButtons) {
-                    b.setEnabled(false);
-                }
+        new Handler().postDelayed(new Runnable() {
+                                      @Override
+                                      public void run() {
+                                          mInitialCountdownImage.setImageDrawable(getResources().getDrawable(R.drawable.countdown_2));
 
-                correctAnswer();
-            }
-        });
+                                          new Handler().postDelayed(new Runnable() {
+                                              @Override
+                                              public void run() {
+                                                  mInitialCountdownImage.setImageDrawable(getResources().getDrawable(R.drawable.countdown_1));
 
-        mLifeline5050.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mLifeline5050Used=true;
-                mLifeline5050Cross.setVisibility(View.VISIBLE);
+                                                  new Handler().postDelayed(new Runnable() {
+                                                      @Override
+                                                      public void run() {
+                                                          //COMIENZA EL JUEGO
+                                                          gameStarted=true;
+                                                          mInitialCountdownImage.setVisibility(View.GONE);
+                                                          mMusicPlayer.start();
 
-                view.setEnabled(false);
-                ViewCompat.setBackgroundTintList(view,ColorStateList.valueOf(Color.GRAY));
-                mLifelinePlayer.start();
+                                                          loadOperation();
 
-                mLifelineHint.setVisibility(View.GONE);
-
-                List<Integer> toHide = new ArrayList<>();
-                for (int i = 0; i < mEnabledButtons/2; i++) {
-                    int hiddenButtonIndex;
-                    boolean alreadyHidden;
-
-                    do {
-                        hiddenButtonIndex = ((int)(Math.random() * (((mEnabledButtons-1) - 0) + 1)) + 0);
-                        alreadyHidden = false;
-                        for (Integer j : toHide) {
-                            if (j == hiddenButtonIndex) {
-                                alreadyHidden=true;
-                                break;
-                            }
-                        }
-                    } while (hiddenButtonIndex == mCorrectButtonIndex || alreadyHidden);
+                                                          mStopFAB.setOnClickListener(new View.OnClickListener() {
+                                                              @Override
+                                                              public void onClick(View view) {
+                                                                  new AlertDialog.Builder(MathsActivity.this)
+                                                                          .setMessage(R.string.gameover_sure)
+                                                                          .setPositiveButton(R.string.gameover_over, new DialogInterface.OnClickListener() {
+                                                                              public void onClick(DialogInterface dialog, int id) {
+                                                                                  gameOver();
+                                                                              }
+                                                                          })
+                                                                          .setNegativeButton(R.string.gameover_resume, new DialogInterface.OnClickListener() {
+                                                                              public void onClick(DialogInterface dialog, int id) {
+                                                                                  // NOTHING
+                                                                              }
+                                                                          })
+                                                                          .create().show();
+                                                              }
+                                                          });
 
 
-                    toHide.add(hiddenButtonIndex);
-                }
 
-                for (int i : toHide) {
-                    answerButtons.get(i).setText("");
-                    answerButtons.get(i).setEnabled(false);
-                }
-            }
-        });
+                                                          mLifelinePassover.setOnClickListener(new View.OnClickListener() {
+                                                              @Override
+                                                              public void onClick(View view) {
+                                                                  mLifelinePassoverUsed=true;
+                                                                  mLifelinePassoverCross.setVisibility(View.VISIBLE);
+
+                                                                  view.setEnabled(false);
+                                                                  ViewCompat.setBackgroundTintList(view,ColorStateList.valueOf(Color.GRAY));
+                                                                  mLifelineHint.setVisibility(View.GONE);
+
+                                                                  mCountdownTimer.cancel();
+
+                                                                  if (mCountdownPlayer != null && mCountdownPlayer.isPlaying()) {
+                                                                      mCountdownPlayer.stop();
+                                                                  }
+
+                                                                  for (AppCompatButton b : answerButtons) {
+                                                                      b.setEnabled(false);
+                                                                  }
+
+                                                                  correctAnswer();
+                                                              }
+                                                          });
+
+                                                          mLifeline5050.setOnClickListener(new View.OnClickListener() {
+                                                              @Override
+                                                              public void onClick(View view) {
+                                                                  mLifeline5050Used=true;
+                                                                  mLifeline5050Cross.setVisibility(View.VISIBLE);
+
+                                                                  view.setEnabled(false);
+                                                                  ViewCompat.setBackgroundTintList(view,ColorStateList.valueOf(Color.GRAY));
+                                                                  mLifelinePlayer.start();
+
+                                                                  mLifelineHint.setVisibility(View.GONE);
+
+                                                                  List<Integer> toHide = new ArrayList<>();
+                                                                  for (int i = 0; i < mEnabledButtons/2; i++) {
+                                                                      int hiddenButtonIndex;
+                                                                      boolean alreadyHidden;
+
+                                                                      do {
+                                                                          hiddenButtonIndex = ((int)(Math.random() * (((mEnabledButtons-1) - 0) + 1)) + 0);
+                                                                          alreadyHidden = false;
+                                                                          for (Integer j : toHide) {
+                                                                              if (j == hiddenButtonIndex) {
+                                                                                  alreadyHidden=true;
+                                                                                  break;
+                                                                              }
+                                                                          }
+                                                                      } while (hiddenButtonIndex == mCorrectButtonIndex || alreadyHidden);
+
+
+                                                                      toHide.add(hiddenButtonIndex);
+                                                                  }
+
+                                                                  for (int i : toHide) {
+                                                                      answerButtons.get(i).setText("");
+                                                                      answerButtons.get(i).setEnabled(false);
+                                                                  }
+                                                              }
+                                                          });
+
+                                                      }
+                                                  },1000);
+                                              }
+                                          },1000);
+                                      }
+                                  },1000);
+
+
+
+
     }
 
     @Override
@@ -374,7 +414,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     protected void onResume() {
         super.onResume();
 
-        if(mMusicPlayer !=null && !mMusicPlayer.isPlaying()){
+        if(mMusicPlayer !=null && !mMusicPlayer.isPlaying() && gameStarted){
             mMusicPlayer.start();
         }
 
@@ -1082,6 +1122,10 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
         if (mFastMusicPlayer.isPlaying()) {
             mFastMusicPlayer.stop();
+        }
+
+        if (mCountdownPlayer.isPlaying()) {
+            mCountdownPlayer.stop();
         }
 
         mGameOverPlayer.start();
