@@ -76,7 +76,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         bgVideo = findViewById(R.id.bg_video);
-        bgVideo.setVideoURI(Uri.parse("android.resource://net.xeill.elpuig.thinkitapp/" + R.raw.background));
+        bgVideo.setVideoURI(Uri.parse("android.resource://net.xeill.elpuig.thinkitapp/" + R.raw.background2));
 
         bgVideo.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
             @Override

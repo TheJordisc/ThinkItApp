@@ -78,7 +78,7 @@
         android:layout_marginStart="8dp"
         android:clickable="true"
         android:focusable="true"
-        app:layout_constraintBottom_toBottomOf="@+id/bg_video"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/volume_fab"
         app:layout_constraintStart_toEndOf="@+id/language_fab"
         app:srcCompat="@drawable/ic_format_list_numbered_white_24dp" />

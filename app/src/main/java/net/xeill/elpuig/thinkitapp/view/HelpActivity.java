@@ -33,6 +33,9 @@ public class HelpActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_help);
 
+        //TODO: Añadir atribución nuevo tema principal
+        //TODO: Atribución video: "Floating Bokeh Particles Blue" - Videvo
+
         Button tutorialButton = findViewById(R.id.button_repeat_tutorial);
         Toolbar myToolbar = findViewById(R.id.my_toolbar);
         setSupportActionBar(myToolbar);
