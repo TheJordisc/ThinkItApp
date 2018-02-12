@@ -158,15 +158,17 @@ public class ResultActivity extends AppCompatActivity {
                         Intent intent = null;
 
                         if (mode==0) {
-                            intent=new Intent(ResultActivity.this,MainActivity.class);
+//                            intent=new Intent(ResultActivity.this,MainActivity.class);
+                            finish();
                         }
 
                         if (mode==1) {
                             intent=new Intent(ResultActivity.this,MathsActivity.class);
+                            startActivity(intent);
                         }
 
-                        startActivity(intent);
-                        ResultActivity.this.finish();
+//                        startActivity(intent);
+//                        ResultActivity.this.finish();
                     }
                 })
                 .setNegativeButton(R.string.dialog_no, new DialogInterface.OnClickListener() {
