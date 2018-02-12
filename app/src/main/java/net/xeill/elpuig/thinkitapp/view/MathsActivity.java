@@ -140,7 +140,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
         //TODO: Añadir créditos bensound.com en help/about
         mMusicPlayer = MediaPlayer.create(this,R.raw.bensound_jazzyfrenchy);
-        mFastMusicPlayer = MediaPlayer.create(this,R.raw.theme1_fast);
+        mFastMusicPlayer = MediaPlayer.create(this,R.raw.paint_it_nicolai_heidlas);
 
         mLifelinePlayer = MediaPlayer.create(MathsActivity.this,R.raw.lifeline);
         mLevelUpPlayer = MediaPlayer.create(MathsActivity.this,R.raw.levelup);
@@ -163,7 +163,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             mGameOverPlayer.setVolume(0f,0f);
         } else {
             mMusicPlayer.setVolume(0.7f,0.7f);
-            mFastMusicPlayer.setVolume(0.7f,0.7f);
+            mFastMusicPlayer.setVolume(1.0f,1.0f);
             mLifelinePlayer.setVolume(1f,1f);
             mLevelUpPlayer.setVolume(1f,1f);
             mCountdownPlayer.setVolume(1f,1f);
@@ -950,17 +950,11 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                         mLastLifePlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                             @Override
                             public void onCompletion(MediaPlayer mediaPlayer) {
-                                //TODO: No se escucha
-                                mFastMusicPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                                    @Override
-                                    public void onPrepared(MediaPlayer mediaPlayer) {
-                                        mediaPlayer.setLooping(true);
-                                        mediaPlayer.start();
-                                    }
-                                });
-
+                                mFastMusicPlayer.start();
                             }
                         });
+
+
 
                         break;
                     case 0:
