@@ -105,12 +105,10 @@ public class LanguageActivity extends AppCompatActivity {
         LanguageActivity.this.finish();
     }
 
-//    @Override
-//    public void onBackPressed() {
-//        Intent mainIntent = new Intent(LanguageActivity.this,MainActivity.class);
-//        startActivity(mainIntent);
-//        LanguageActivity.this.finish();
-//    }
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
 
     @Override
     protected void onPause() {

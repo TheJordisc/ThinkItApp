@@ -163,4 +163,9 @@ public class ScoreActivity extends AppCompatActivity {
 //            bgVideo.start();
 //        }
     }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
 }

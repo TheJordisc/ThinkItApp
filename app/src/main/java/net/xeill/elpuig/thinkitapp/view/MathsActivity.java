@@ -170,7 +170,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             mInitialCountdownPlayer.setVolume(0f,0f);
         } else {
             mMusicPlayer.setVolume(0.7f,0.7f);
-            mFastMusicPlayer.setVolume(1.0f,1.0f);
+            mFastMusicPlayer.setVolume(0.8f,0.8f);
             mLifelinePlayer.setVolume(1f,1f);
             mLevelUpPlayer.setVolume(1f,1f);
             mCountdownPlayer.setVolume(1f,1f);
