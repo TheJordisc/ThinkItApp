@@ -5,13 +5,16 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
+import android.graphics.drawable.Drawable;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.graphics.drawable.DrawableCompat;
 import android.support.v4.view.ViewCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.content.res.AppCompatResources;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.VideoView;
@@ -194,7 +197,9 @@ public class MainActivity extends AppCompatActivity {
         playSoundPlayer.setVolume(1f,1f);
 
         volumeFAB.setActivated(true);
-        ViewCompat.setBackgroundTintList(volumeFAB, ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary)));
+//        ViewCompat.setBackgroundTintList(volumeFAB, ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary)));
+        volumeFAB.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary)));
+
         settings.edit().putBoolean("mute",false).apply();
     }
 
@@ -203,9 +208,10 @@ public class MainActivity extends AppCompatActivity {
         playSoundPlayer.setVolume(0f,0f);
 
         volumeFAB.setActivated(false);
-        //TODO: NO VA EN 4.4
 //        ViewCompat.setBackground(volumeFAB,getResources().getDrawable(R.drawable.fab_volume));
-        ViewCompat.setBackgroundTintList(volumeFAB, ColorStateList.valueOf(getResources().getColor(R.color.color_grey_disabled)));
+//        ViewCompat.setBackgroundTintList(volumeFAB, ColorStateList.valueOf(getResources().getColor(R.color.color_grey_disabled)));
+        volumeFAB.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.color_grey_disabled)));
+
         settings.edit().putBoolean("mute",true).apply();
     }
 
