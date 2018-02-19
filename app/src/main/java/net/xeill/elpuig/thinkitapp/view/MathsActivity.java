@@ -1144,4 +1144,9 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             }
         }, 2000L);
     }
+
+    @Override
+    public void onBackPressed() {
+        //nothing
+    }
 }
