@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -36,6 +37,7 @@ public class ScoreActivity extends AppCompatActivity {
     ScoreViewModel scoreViewModel;
     CardView tableColumns;
     FloatingActionButton clearFAB;
+    Intent intent;
 
     //@android:color/holo_orange_light
     @Override
@@ -167,5 +169,7 @@ public class ScoreActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         finish();
+        intent=new Intent(ScoreActivity.this,MainActivity.class);
+        startActivity(intent);
     }
 }

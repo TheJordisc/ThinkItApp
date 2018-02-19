@@ -166,6 +166,7 @@ public class MainActivity extends AppCompatActivity {
                         .setPositiveButton(R.string.exit_yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
 //                                MainActivity.this.finish();
+                                finishAffinity(); //this method finalize all activities
                                 System.exit(0);
                             }
                         })
