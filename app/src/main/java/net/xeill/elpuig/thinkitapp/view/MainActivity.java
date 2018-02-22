@@ -33,12 +33,15 @@ public class MainActivity extends AppCompatActivity {
 
         settings=getSharedPreferences("prefs", 0);
 
-        String lang = settings.getString("language","en");
-        LocaleManager.setLocale(this,lang);
-
         if (settings.getBoolean("isFirstRun",true)) {
             settings.edit().putBoolean("mute",false).apply();
             settings.edit().putBoolean("isFirstRun",false).apply();
+
+            Intent firstTime = new Intent(MainActivity.this, LanguageActivity.class);
+            startActivity(firstTime);
+        } else {
+            String lang = settings.getString("language","en");
+            LocaleManager.setLocale(this,lang);
         }
 
         mSplashHandler = new Handler();
