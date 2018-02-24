@@ -46,7 +46,6 @@ public class LanguageActivity extends AppCompatActivity {
             }
         });
 
-
         musicPlayer = MediaPlayer.create(this, R.raw.bensound_summer);
         playSoundPlayer = MediaPlayer.create(this,R.raw.play);
 
@@ -56,7 +55,11 @@ public class LanguageActivity extends AppCompatActivity {
             setUnmute();
         }
 
-        musicPlayer.start();
+        if (settings.getBoolean("isFirstRun",true)) {
+            ab.setDisplayHomeAsUpEnabled(false);
+        } else {
+            musicPlayer.start();
+        }
 
         final ImageButton cat_flag = findViewById(R.id.catButton1);
         cat_flag.setOnClickListener(new View.OnClickListener() {
@@ -100,14 +103,24 @@ public class LanguageActivity extends AppCompatActivity {
     }
     public void menuIntent(String language){
         //TODO: Convertir a resource después de importar strings traducidos
-        Toast.makeText(this,"Language changed to: " + language, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this,getResources().getString(R.string.language_change_toast) + language, Toast.LENGTH_SHORT).show();
+
+        if (settings.getBoolean("isFirstRun",true)) {
+            settings.edit().putBoolean("isFirstRun",false).apply();
+        }
+
         playSoundPlayer.start();
         LanguageActivity.this.finish();
     }
 
     @Override
     public void onBackPressed() {
-        finish();
+        if (settings.getBoolean("isFirstRun",true)) {
+            finishAffinity(); //this method finalize all activities
+            System.exit(0);
+        } else {
+            finish();
+        }
     }
 
     @Override
@@ -129,7 +142,7 @@ public class LanguageActivity extends AppCompatActivity {
             bgVideo.start();
         }
 
-        if(musicPlayer!=null && !musicPlayer.isPlaying()){
+        if(musicPlayer!=null && !musicPlayer.isPlaying() && settings.getBoolean("isFirstRun",false)){
             musicPlayer.start();
         }
     }

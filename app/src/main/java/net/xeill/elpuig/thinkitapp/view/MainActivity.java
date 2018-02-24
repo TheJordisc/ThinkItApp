@@ -35,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
 
         if (settings.getBoolean("isFirstRun",true)) {
             settings.edit().putBoolean("mute",false).apply();
-            settings.edit().putBoolean("isFirstRun",false).apply();
 
             Intent firstTime = new Intent(MainActivity.this, LanguageActivity.class);
             startActivity(firstTime);

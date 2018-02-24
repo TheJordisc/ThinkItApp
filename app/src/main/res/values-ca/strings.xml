@@ -17,7 +17,7 @@
     <string name="dialog_timeout_on_pause">Time ran out while the game was paused. This is a race, so time won\'t stop not even then!</string>
     <string name="lastlife">Last life!</string>
     <string name="hint_lifelines">Remember you can use lifelines!</string>
-    <string name="app_language_title">Language</string>
+    <string name="app_language_title">Llenguatge</string>
     <string name="timeout">Time out!</string>
     <string name="app_score_title">Ranking</string>
     <string name="app_help_title">Help</string>
@@ -92,4 +92,6 @@
     <string name="tutorial_gameover">Por último, si quieres rendirte puedes pulsar el botón de parar. NO es una pausa, esto desencadenará inmediatamente un \'Game Over\'.</string>
     <string name="tutorial_gameover2">Muchas gracias por tu atención. Ahora pulsa el botón de Stop, ¡y diviértete!</string>
     <string name="tutorial_end">¡Aquí empieza!</string>
+    <string name="ok" />
+    <string name="language_change_toast">"Llenguatge canviat a: "</string>
 </resources>

@@ -92,4 +92,6 @@
     <string name="tutorial_gameover">Por último, si quieres rendirte puedes pulsar el botón de parar. NO es una pausa, esto desencadenará inmediatamente un \'Game Over\'.</string>
     <string name="tutorial_gameover2">Muchas gracias por tu atención. Ahora pulsa el botón de Stop, ¡y diviértete!</string>
     <string name="tutorial_end">¡Aquí empieza!</string>
+    <string name="ok" />
+    <string name="language_change_toast">"Language changed to: "</string>
 </resources>
