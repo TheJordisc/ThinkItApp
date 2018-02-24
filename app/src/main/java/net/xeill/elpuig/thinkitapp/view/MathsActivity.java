@@ -431,7 +431,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             new AlertDialog.Builder(MathsActivity.this)
                     .setTitle(R.string.timeout)
                     .setMessage(R.string.dialog_timeout_on_pause)
-                    .setPositiveButton(R.string.ok, new DialogInterface.OnClickListener() {
+                    .setPositiveButton(R.string.dialog_yes, new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             incorrectAnswerOrTimeOut();
                         }
@@ -1147,6 +1147,20 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onBackPressed() {
-        //nothing
+        if (mCountdownTimer != null) {
+            new AlertDialog.Builder(MathsActivity.this)
+                    .setMessage(R.string.gameover_sure)
+                    .setPositiveButton(R.string.gameover_over, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            gameOver();
+                        }
+                    })
+                    .setNegativeButton(R.string.gameover_resume, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            // NOTHING
+                        }
+                    })
+                    .create().show();
+        }
     }
 }
