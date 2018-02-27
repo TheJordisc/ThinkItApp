@@ -63,10 +63,9 @@ public class ScoreActivity extends AppCompatActivity {
                         .setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int id) {
                                 scoreViewModel.deleteAllScores(scoreList);
-                                reloadList();
-                                tableColumns.setVisibility(View.GONE);
-                                noScoreSaved.setVisibility(View.VISIBLE);
-                                clearFAB.setVisibility(View.GONE);
+//                                tableColumns.setVisibility(View.GONE);
+//                                noScoreSaved.setVisibility(View.VISIBLE);
+//                                clearFAB.setVisibility(View.GONE);
                             }
                         })
                         .setNegativeButton(R.string.no, new DialogInterface.OnClickListener() {
@@ -100,6 +99,7 @@ public class ScoreActivity extends AppCompatActivity {
         scoreViewModel.getScores().observe(ScoreActivity.this, new Observer<List<Score>>() {
             @Override
             public void onChanged(@Nullable List<Score> scores) {
+                scoreList.clear();
                 scoreList.addAll(scores);
                 Collections.sort(scoreList);
                 scoreRecyclerAdapter.notifyDataSetChanged();
@@ -129,18 +129,19 @@ public class ScoreActivity extends AppCompatActivity {
         musicPlayer.setVolume(0f,0f);
     }
 
-    private void reloadList() {
-        scoreViewModel.getScores().observe(ScoreActivity.this, new Observer<List<Score>>() {
-            @Override
-            public void onChanged(@Nullable List<Score> result) {
-                if (result != null) {
-                    scoreList.clear();
-                    scoreList.addAll(result);
-                    scoreRecyclerAdapter.notifyDataSetChanged();
-                }
-            }
-        });
-    }
+//    private void reloadList() {
+//        scoreViewModel.getScores().observe(ScoreActivity.this, new Observer<List<Score>>() {
+//            @Override
+//            public void onChanged(@Nullable List<Score> result) {
+//                if (result != null) {
+//                    scoreList.clear();
+//                    scoreList.addAll(result);
+//                    Collections.sort(scoreList);
+//                    scoreRecyclerAdapter.notifyDataSetChanged();
+//                }
+//            }
+//        });
+//    }
 
     @Override
     protected void onPause() {

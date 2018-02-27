@@ -71,23 +71,23 @@ public class ScoreRecyclerAdapter extends RecyclerView.Adapter<ScoreRecyclerAdap
             @Override
             public void onClick(View view) {
                 scoreViewModel.deleteScore(scoreList.get(holder.getAdapterPosition()));
-                reloadList();
+//                reloadList();
             }
         });
     }
 
-    private void reloadList() {
-        scoreViewModel.getScores().observe((ScoreActivity)context, new Observer<List<Score>>() {
-            @Override
-            public void onChanged(@Nullable List<Score> result) {
-                if (result != null) {
-                    scoreList.clear();
-                    scoreList.addAll(result);
-                    ScoreRecyclerAdapter.this.notifyDataSetChanged();
-                }
-            }
-        });
-    }
+//    private void reloadList() {
+//        scoreViewModel.getScores().observe((ScoreActivity)context, new Observer<List<Score>>() {
+//            @Override
+//            public void onChanged(@Nullable List<Score> result) {
+//                if (result != null) {
+//                    scoreList.clear();
+//                    scoreList.addAll(result);
+//                    ScoreRecyclerAdapter.this.notifyDataSetChanged();
+//                }
+//            }
+//        });
+//    }
 
     @Override
     public int getItemCount() {
