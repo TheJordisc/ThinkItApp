@@ -5,8 +5,11 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
+import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -25,6 +28,9 @@ public class MainActivity extends AppCompatActivity {
     Handler mSplashHandler;
     SharedPreferences settings;
     FloatingActionButton volumeFAB;
+
+    private SoundPool soundPool;
+    private int soundIds[] = new int[2];
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,8 +51,18 @@ public class MainActivity extends AppCompatActivity {
 
         mSplashHandler = new Handler();
 
-        musicPlayer = MediaPlayer.create(this,  R.raw.modern_theme_nicolai_heidlas);
-        playSoundPlayer = MediaPlayer.create(this,R.raw.play);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            soundPool = new SoundPool.Builder()
+                    .build();
+        } else {
+            soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
+        }
+
+        soundIds[0] = soundPool.load(this, R.raw.modern_theme_nicolai_heidlas,1);
+        soundIds[1] = soundPool.load(this, R.raw.play,1);
+
+//        musicPlayer = MediaPlayer.create(this,  R.raw.modern_theme_nicolai_heidlas);
+//        playSoundPlayer = MediaPlayer.create(this,R.raw.play);
 
         volumeFAB = findViewById(R.id.volume_fab);
 
@@ -68,13 +84,16 @@ public class MainActivity extends AppCompatActivity {
             setUnmute();
         }
 
-        musicPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-            @Override
-            public void onPrepared(MediaPlayer mediaPlayer) {
-                mediaPlayer.setLooping(true);
-                mediaPlayer.start();
-            }
-        });
+//        musicPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+//            @Override
+//            public void onPrepared(MediaPlayer mediaPlayer) {
+//                mediaPlayer.setLooping(true);
+//                mediaPlayer.start();
+//            }
+//        });
+
+        soundPool.play(soundIds[0], 1, 1, 1, 0, 1);
+        soundPool.setLoop(soundIds[0],1);
 
         bgVideo = findViewById(R.id.bg_video);
         bgVideo.setVideoURI(Uri.parse("android.resource://net.xeill.elpuig.thinkitapp/" + R.raw.background2));
@@ -94,7 +113,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 playButton.setActivated(true);
-                playSoundPlayer.start();
+//                playSoundPlayer.start();
+                soundPool.play(soundIds[1], 1, 1, 1, 0, 1);
 
                 mSplashHandler.postDelayed(new Runnable() {
                     @Override
@@ -106,14 +126,14 @@ public class MainActivity extends AppCompatActivity {
                                     .setMessage(R.string.tutorial_msg)
                                     .setPositiveButton(R.string.dialog_yes, new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int id) {
-                                            musicPlayer.stop();
+                                            soundPool.stop(soundIds[0]);
                                             Intent playIntent = new Intent(MainActivity.this,MathsTutorialActivity.class);
                                             startActivity(playIntent);
                                         }
                                     })
                                     .setNegativeButton(R.string.dialog_no, new DialogInterface.OnClickListener() {
                                         public void onClick(DialogInterface dialog, int id) {
-                                            musicPlayer.stop();
+                                            soundPool.stop(soundIds[0]);
                                             Intent playIntent = new Intent(MainActivity.this,MathsActivity.class);
                                             startActivity(playIntent);
                                         }
@@ -192,8 +212,10 @@ public class MainActivity extends AppCompatActivity {
 
     private void setUnmute() {
         //TODO: Controlar volumen across the activities
-        musicPlayer.setVolume(0.8f,0.8f);
-        playSoundPlayer.setVolume(1f,1f);
+        soundPool.setVolume(soundIds[0],0.8f,0.8f);
+        soundPool.setVolume(soundIds[1],1f,1f);
+//        musicPlayer.setVolume(0.8f,0.8f);
+//        playSoundPlayer.setVolume(1f,1f);
 
         volumeFAB.setActivated(true);
 //        ViewCompat.setBackgroundTintList(volumeFAB, ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary)));
@@ -203,8 +225,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setMute() {
-        musicPlayer.setVolume(0f,0f);
-        playSoundPlayer.setVolume(0f,0f);
+
+        for (int i = 0; i < soundIds.length; i++) {
+            soundPool.setVolume(soundIds[i],0,0);
+        }
+//        musicPlayer.setVolume(0f,0f);
+//        playSoundPlayer.setVolume(0f,0f);
 
         volumeFAB.setActivated(false);
 //        ViewCompat.setBackground(volumeFAB,getResources().getDrawable(R.drawable.fab_volume));
@@ -217,9 +243,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        if(musicPlayer!=null && musicPlayer.isPlaying()){
-            musicPlayer.pause();
-        }
+//        if(musicPlayer!=null && musicPlayer.isPlaying()){
+//            musicPlayer.pause();
+//        }
 
         if(bgVideo!=null && bgVideo.isPlaying()){
             bgVideo.pause();
@@ -229,9 +255,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if(musicPlayer!=null && !musicPlayer.isPlaying()){
-            musicPlayer.start();
-        }
+//        if(musicPlayer!=null && !musicPlayer.isPlaying()){
+//            musicPlayer.start();
+//        }
 
         if(bgVideo!=null && !bgVideo.isPlaying()){
             bgVideo.start();

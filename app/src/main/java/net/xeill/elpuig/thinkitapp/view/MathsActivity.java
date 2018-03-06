@@ -476,13 +476,13 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     protected void onResume() {
         super.onResume();
 
-        if(mMusicPlayer !=null && !mMusicPlayer.isPlaying() && gameStarted){
-            mMusicPlayer.start();
-        }
-
-        if (mFastMusicPlayer != null && !mFastMusicPlayer.isPlaying() && mLives == 1) {
-            mFastMusicPlayer.start();
-        }
+//        if(mMusicPlayer !=null && !mMusicPlayer.isPlaying() && gameStarted){
+//            mMusicPlayer.start();
+//        }
+//
+//        if (mFastMusicPlayer != null && !mFastMusicPlayer.isPlaying() && mLives == 1) {
+//            mFastMusicPlayer.start();
+//        }
 
         if(bgVideo!=null && !bgVideo.isPlaying()){
             bgVideo.start();
