@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     private SoundPool soundPool;
     private int soundIds[] = new int[2];
 
+    private int volume = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,10 +54,10 @@ public class MainActivity extends AppCompatActivity {
         mSplashHandler = new Handler();
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            soundPool = new SoundPool.Builder()
+            soundPool = new SoundPool.Builder().setMaxStreams(5)
                     .build();
         } else {
-            soundPool = new SoundPool(2, AudioManager.STREAM_MUSIC, 0);
+            soundPool = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
         }
 
         soundIds[0] = soundPool.load(this, R.raw.modern_theme_nicolai_heidlas,1);
@@ -92,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-        soundPool.play(soundIds[0], 1, 1, 1, 1, 1);
+        soundPool.play(soundIds[0], volume, volume, 1, 1, 1);
 
         bgVideo = findViewById(R.id.bg_video);
         bgVideo.setVideoURI(Uri.parse("android.resource://net.xeill.elpuig.thinkitapp/" + R.raw.background2));
@@ -113,7 +115,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 playButton.setActivated(true);
 //                playSoundPlayer.start();
-                soundPool.play(soundIds[1], 1, 1, 1, 0, 1);
+                soundPool.play(soundIds[1], volume, volume, 1, 0, 1);
 
                 mSplashHandler.postDelayed(new Runnable() {
                     @Override
@@ -211,11 +213,12 @@ public class MainActivity extends AppCompatActivity {
 
     private void setUnmute() {
         //TODO: Controlar volumen across the activities
-        soundPool.setVolume(soundIds[0],0.8f,0.8f);
-        soundPool.setVolume(soundIds[1],1f,1f);
+//        soundPool.setVolume(soundIds[0],0.8f,0.8f);
+//        soundPool.setVolume(soundIds[1],1f,1f);
 //        musicPlayer.setVolume(0.8f,0.8f);
 //        playSoundPlayer.setVolume(1f,1f);
 
+        volume=1;
         volumeFAB.setActivated(true);
 //        ViewCompat.setBackgroundTintList(volumeFAB, ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary)));
         volumeFAB.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorPrimary)));
@@ -224,13 +227,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void setMute() {
-
-        for (int i = 0; i < soundIds.length; i++) {
-            soundPool.setVolume(soundIds[i],0,0);
-        }
-//        musicPlayer.setVolume(0f,0f);
-//        playSoundPlayer.setVolume(0f,0f);
-
+        volume=0;
         volumeFAB.setActivated(false);
 //        ViewCompat.setBackground(volumeFAB,getResources().getDrawable(R.drawable.fab_volume));
 //        ViewCompat.setBackgroundTintList(volumeFAB, ColorStateList.valueOf(getResources().getColor(R.color.color_grey_disabled)));
