@@ -92,8 +92,7 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-        soundPool.play(soundIds[0], 1, 1, 1, 0, 1);
-        soundPool.setLoop(soundIds[0],1);
+        soundPool.play(soundIds[0], 1, 1, 1, 1, 1);
 
         bgVideo = findViewById(R.id.bg_video);
         bgVideo.setVideoURI(Uri.parse("android.resource://net.xeill.elpuig.thinkitapp/" + R.raw.background2));
