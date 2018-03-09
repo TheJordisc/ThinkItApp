@@ -21,7 +21,7 @@ public class LanguageActivity extends AppCompatActivity {
     VideoView bgVideo;
     SharedPreferences settings;
 
-    //TODO: play sound + setLocale
+    //TODO: play volumeLevel + setLocale
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +47,14 @@ public class LanguageActivity extends AppCompatActivity {
         });
 
         musicPlayer = MediaPlayer.create(this, R.raw.bensound_summer);
+
+        musicPlayer.setOnErrorListener(new MediaPlayer.OnErrorListener() {
+            @Override
+            public boolean onError(MediaPlayer mediaPlayer, int i, int i1) {
+                Toast.makeText(LanguageActivity.this, "ERROR DEL MEDIAPLAYER LANGUAGE", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+        });
         playSoundPlayer = MediaPlayer.create(this,R.raw.play);
 
         if(settings.getBoolean("mute",true)) {
@@ -57,9 +65,9 @@ public class LanguageActivity extends AppCompatActivity {
 
         if (settings.getBoolean("isFirstRun",true)) {
             ab.setDisplayHomeAsUpEnabled(false);
-        } else {
-            musicPlayer.start();
         }
+
+        musicPlayer.start();
 
         final ImageButton cat_flag = findViewById(R.id.catButton1);
         cat_flag.setOnClickListener(new View.OnClickListener() {
@@ -148,7 +156,7 @@ public class LanguageActivity extends AppCompatActivity {
     }
 
     private void setUnmute() {
-        musicPlayer.setVolume(1f,1f);
+        musicPlayer.setVolume(0.7f,0.7f);
         playSoundPlayer.setVolume(1f,1f);
     }
 

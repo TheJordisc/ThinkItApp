@@ -518,7 +518,7 @@ public class MathsTutorialActivity extends AppCompatActivity {
                                                                                                                     @Override
                                                                                                                     public void onComplete() {
                                                                                                                         //TODO: stop listener
-                                                                                                                        //gameover sound, cartel
+                                                                                                                        //gameover volumeLevel, cartel
                                                                                                                         //2seg -> ultimo showcase
                                                                                                                         //on complete -> handler + Intent
                                                                                                                         stopFAB.setOnClickListener(new View.OnClickListener() {

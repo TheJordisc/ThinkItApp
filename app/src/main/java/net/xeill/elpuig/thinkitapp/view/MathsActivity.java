@@ -43,10 +43,10 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
     SoundPool soundPool;
     int soundIds[] = new int[11];
-    int sound=0;
+    int volumeLevel =0;
 
-//    MediaPlayer mMusicPlayer;
-//    MediaPlayer mCountdownPlayer;
+    MediaPlayer mMusicPlayer;
+    MediaPlayer mCountdownPlayer;
 //    MediaPlayer mLifelinePlayer;
 //    MediaPlayer mLevelUpPlayer;
     MediaPlayer mLastLifePlayer;
@@ -54,7 +54,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 //    MediaPlayer mCorrectPlayer;
 //    MediaPlayer mGameOverPlayer;
 //    MediaPlayer mInitialCountdownTick, mInitialCountdownEnd;
-//    MediaPlayer mFastMusicPlayer;
+    MediaPlayer mFastMusicPlayer;
     VideoView bgVideo;
 
     int mCorrectAnswers =0;
@@ -157,12 +157,12 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
 
         //TODO: Añadir créditos bensound.com en help/about
-//        mMusicPlayer = MediaPlayer.create(this,R.raw.bensound_jazzyfrenchy);
-//        mFastMusicPlayer = MediaPlayer.create(this,R.raw.paint_it_nicolai_heidlas);
+        mMusicPlayer = MediaPlayer.create(this,R.raw.bensound_jazzyfrenchy);
+        mFastMusicPlayer = MediaPlayer.create(this,R.raw.paint_it_nicolai_heidlas);
 //
 //        mLifelinePlayer = MediaPlayer.create(MathsActivity.this,R.raw.lifeline);
 //        mLevelUpPlayer = MediaPlayer.create(MathsActivity.this,R.raw.levelup);
-//        mCountdownPlayer = MediaPlayer.create(MathsActivity.this,R.raw.countdown);
+        mCountdownPlayer = MediaPlayer.create(MathsActivity.this,R.raw.countdown);
         mLastLifePlayer = MediaPlayer.create(MathsActivity.this,R.raw.lastlife);
 //        mIncorrectPlayer = MediaPlayer.create(MathsActivity.this,R.raw.incorrect);
 //        mCorrectPlayer = MediaPlayer.create(MathsActivity.this,R.raw.correct);
@@ -170,24 +170,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 //        mInitialCountdownTick = MediaPlayer.create(MathsActivity.this,R.raw.initial_countdown_tick);
 //        mInitialCountdownEnd = MediaPlayer.create(MathsActivity.this,R.raw.initial_countdown_end);
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            soundPool = new SoundPool.Builder().setMaxStreams(15)
-                    .build();
-        } else {
-            soundPool = new SoundPool(15, AudioManager.STREAM_MUSIC, 0);
-        }
-
-        soundIds[0] = soundPool.load(this, R.raw.initial_countdown_tick,1);
-        soundIds[1] = soundPool.load(this, R.raw.initial_countdown_end,1);
-        soundIds[2] = soundPool.load(this, R.raw.bensound_jazzyfrenchy,1);
-        soundIds[3] = soundPool.load(this, R.raw.paint_it_nicolai_heidlas,1);
-        soundIds[4] = soundPool.load(this, R.raw.lifeline,1);
-        soundIds[5] = soundPool.load(this, R.raw.levelup,1);
-        soundIds[6] = soundPool.load(this, R.raw.countdown,1);
-        soundIds[7] = soundPool.load(this, R.raw.lastlife,1);
-        soundIds[8] = soundPool.load(this, R.raw.incorrect,1);
-        soundIds[9] = soundPool.load(this, R.raw.correct,1);
-        soundIds[10] = soundPool.load(this, R.raw.game_over,1);
+        createSoundpool();
 
         setVolumeControlStream(AudioManager.STREAM_MUSIC);
 
@@ -196,25 +179,28 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 //            for (int i = 0; i < soundIds.length; i++) {
 //                soundPool.setVolume(soundIds[i],0,0);
 //            }
-            sound=0;
+            volumeLevel =0;
+            mMusicPlayer.setVolume(0,0);
+            mFastMusicPlayer.setVolume(0,0);
+            mCountdownPlayer.setVolume(0,0);
             mLastLifePlayer.setVolume(0,0);
         } else {
 //            for (int i = 0; i < soundIds.length; i++) {
 //                soundPool.setVolume(soundIds[i],1,1);
 //            }
-            sound=1;
+            volumeLevel =1;
+            mMusicPlayer.setVolume(1,1);
+            mFastMusicPlayer.setVolume(1,1);
+            mCountdownPlayer.setVolume(1,1);
             mLastLifePlayer.setVolume(1,1);
         }
 
-//        mMusicPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-//            @Override
-//            public void onPrepared(MediaPlayer mediaPlayer) {
-//                mediaPlayer.setLooping(true);
-//
-//                mMusicaPlayerLoaded = true;
-//                startGame();
-//            }
-//        });
+        mMusicPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+            @Override
+            public void onPrepared(MediaPlayer mediaPlayer) {
+                mediaPlayer.setLooping(true);
+            }
+        });
 
         bgVideo = findViewById(R.id.bg_video);
         bgVideo.setVideoURI(Uri.parse("android.resource://net.xeill.elpuig.thinkitapp/" + R.raw.bg_maths));
@@ -287,24 +273,24 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
         countDownHandler = new Handler();
 
-        soundPool.play(soundIds[0], 1, 1, 1, 0, 1);
+        soundPool.play(soundIds[0], volumeLevel, volumeLevel, 1, 0, 1);
 
         countDownHandler.postDelayed(new Runnable() {
             @Override
             public void run() {
-                soundPool.play(soundIds[0], 1, 1, 1, 0, 1);
+                soundPool.play(soundIds[0], volumeLevel, volumeLevel, 1, 0, 1);
                 mInitialCountdownImage.setImageDrawable(getResources().getDrawable(R.drawable.countdown_2));
 
                 countDownHandler.postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        soundPool.play(soundIds[0], 1, 1, 1, 0, 1);
+                        soundPool.play(soundIds[0], volumeLevel, volumeLevel, 1, 0, 1);
                         mInitialCountdownImage.setImageDrawable(getResources().getDrawable(R.drawable.countdown_1));
 
                         countDownHandler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
-                                soundPool.play(soundIds[1], 1, 1, 1, 0, 1);
+                                soundPool.play(soundIds[1], volumeLevel, volumeLevel, 1, 0, 1);
                                 startGame();
                             }
                         },1000);
@@ -337,12 +323,33 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 //        countDownTimer.start();
     }
 
+    private void createSoundpool() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            soundPool = new SoundPool.Builder().setMaxStreams(15)
+                    .build();
+        } else {
+            soundPool = new SoundPool(15, AudioManager.STREAM_MUSIC, 0);
+        }
+
+        soundIds[0] = soundPool.load(this, R.raw.initial_countdown_tick,1);
+        soundIds[1] = soundPool.load(this, R.raw.initial_countdown_end,1);
+        //Deleted music from soundpool
+        soundIds[4] = soundPool.load(this, R.raw.lifeline,1);
+        soundIds[5] = soundPool.load(this, R.raw.levelup,1);
+        //Deleted countdown from soundpool
+        soundIds[7] = soundPool.load(this, R.raw.lastlife,1);
+        soundIds[8] = soundPool.load(this, R.raw.incorrect,1);
+        soundIds[9] = soundPool.load(this, R.raw.correct,1);
+        soundIds[10] = soundPool.load(this, R.raw.game_over,1);
+    }
+
     void startGame(){
 
         //COMIENZA EL JUEGO
         gameStarted=true;
         mInitialCountdownImage.setVisibility(View.GONE);
-        soundPool.play(soundIds[2],sound,sound,1,1,1);
+//        soundPool.play(soundIds[2],volumeLevel,volumeLevel,1,1,1);
+        mMusicPlayer.start();
 
         loadOperation();
 
@@ -379,7 +386,8 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
                 mCountdownTimer.cancel();
 
-                soundPool.stop(soundIds[6]);
+//                soundPool.stop(soundIds[6]);
+                mCountdownPlayer.stop();
 
                 for (AppCompatButton b : answerButtons) {
                     b.setEnabled(false);
@@ -397,7 +405,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
                 view.setEnabled(false);
                 ViewCompat.setBackgroundTintList(view,ColorStateList.valueOf(Color.GRAY));
-                soundPool.play(soundIds[4],sound,sound,1,0,1);
+                soundPool.play(soundIds[4], volumeLevel, volumeLevel,1,0,1);
 
                 mLifelineHint.setVisibility(View.GONE);
 
@@ -453,13 +461,16 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             countDownHandler.removeCallbacksAndMessages(null);
         }
 
-//        if(mMusicPlayer !=null && mMusicPlayer.isPlaying()){
-//            mMusicPlayer.pause();
-//        }
-//
-//        if (mFastMusicPlayer != null && mFastMusicPlayer.isPlaying()) {
-//            mFastMusicPlayer.pause();
-//        }
+        if(mMusicPlayer !=null && mMusicPlayer.isPlaying()){
+            mMusicPlayer.pause();
+        }
+
+        if (mFastMusicPlayer != null && mFastMusicPlayer.isPlaying()) {
+            mFastMusicPlayer.pause();
+        }
+
+        soundPool.release();
+        soundPool=null;
 
         if(bgVideo!=null && bgVideo.isPlaying()){
             bgVideo.stopPlayback();
@@ -468,22 +479,24 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         //mCountdownTimer.cancel();
         mPaused=true;
 
-//        if (mCountdownPlayer != null && mCountdownPlayer.isPlaying()) {
-//            mCountdownPlayer.stop();
-//        }
+        if (mCountdownPlayer != null && mCountdownPlayer.isPlaying()) {
+            mCountdownPlayer.stop();
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
 
-//        if(mMusicPlayer !=null && !mMusicPlayer.isPlaying() && gameStarted){
-//            mMusicPlayer.start();
-//        }
-//
-//        if (mFastMusicPlayer != null && !mFastMusicPlayer.isPlaying() && mLives == 1) {
-//            mFastMusicPlayer.start();
-//        }
+        if(mMusicPlayer !=null && !mMusicPlayer.isPlaying() && gameStarted){
+            mMusicPlayer.start();
+        }
+
+        if (mFastMusicPlayer != null && !mFastMusicPlayer.isPlaying() && mLives == 1) {
+            mFastMusicPlayer.start();
+        }
+
+        createSoundpool();
 
         if(bgVideo!=null && !bgVideo.isPlaying()){
             bgVideo.start();
@@ -508,7 +521,8 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(final View view) {
         mCountdownTimer.cancel();
 
-        soundPool.stop(soundIds[6]);
+//        soundPool.stop(soundIds[6]);
+        mCountdownPlayer.stop();
 
         for (AppCompatButton b : answerButtons) {
             b.setEnabled(false);
@@ -566,7 +580,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
             mLevelUp.setVisibility(View.VISIBLE);
             mLevelUp.setText(getString(R.string.level) + " " + level);
-            soundPool.play(soundIds[5],sound,sound,1,0,1);
+            soundPool.play(soundIds[5], volumeLevel, volumeLevel,1,0,1);
         }
 
         new Handler().postDelayed(new Runnable() {
@@ -834,7 +848,8 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
                             //Sonido countdown
                             if (!mCountdownPlayed && !mPaused) {
-                                soundPool.play(soundIds[6],sound,sound,1,0,1);
+//                                soundPool.play(soundIds[6],volumeLevel,volumeLevel,1,0,1);
+                                mCountdownPlayer.start();
                                 mCountdownPlayed = true;
                             }
                         }
@@ -1030,7 +1045,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
 
         ViewCompat.setBackgroundTintList(answerButtons.get(mCorrectButtonIndex),ColorStateList.valueOf(getResources().getColor(R.color.color_green_correct)));
 
-        soundPool.play(soundIds[8],sound,sound,1,0,1);
+        soundPool.play(soundIds[8], volumeLevel, volumeLevel,1,0,1);
 
         mLives--;
         //Quitar vida
@@ -1045,15 +1060,16 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
                         findViewById(R.id.life2).setVisibility(View.GONE);
 
                         mLastLife.setVisibility(View.VISIBLE);
-                        soundPool.stop(soundIds[2]);
-//                        mMusicPlayer.stop();
+//                        soundPool.stop(soundIds[2]);
+                        mMusicPlayer.stop();
                         mLastLifePlayer.start();
 
                         mLastLifePlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
                             @Override
                             public void onCompletion(MediaPlayer mediaPlayer) {
-//                                mFastMusicPlayer.start();
-                                soundPool.play(soundIds[3],sound,sound,1,1,1);
+                                mFastMusicPlayer.start();
+                                mFastMusicPlayer.setLooping(true);
+//                                soundPool.play(soundIds[3],volumeLevel,volumeLevel,1,1,1);
                             }
                         });
 
@@ -1143,7 +1159,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         ViewCompat.setBackgroundTintList(answerButtons.get(mCorrectButtonIndex),ColorStateList.valueOf(getResources().getColor(R.color.color_green_correct)));
 
 //        mCorrectPlayer.start();
-        soundPool.play(soundIds[9],sound,sound,1,0,1);
+        soundPool.play(soundIds[9], volumeLevel, volumeLevel,1,0,1);
 
         //TODO: THIS WAS FOR ANIMATIONS
 //        AnimatorSet set = (AnimatorSet) AnimatorInflater.loadAnimator(MathsActivity.this,R.animator.op2_movement);
@@ -1180,26 +1196,30 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
             b.setEnabled(false);
         }
 
-//        if (mMusicPlayer.isPlaying()) {
-//            mMusicPlayer.stop();
-//        }
-//
-//        if (mFastMusicPlayer.isPlaying()) {
-//            mFastMusicPlayer.stop();
-//        }
-//
-//        if (mCountdownPlayer.isPlaying()) {
-//            mCountdownPlayer.stop();
-//        }
+        if (mMusicPlayer.isPlaying()) {
+            mMusicPlayer.stop();
+        }
+
+        if (mFastMusicPlayer.isPlaying()) {
+            mFastMusicPlayer.stop();
+        }
+
+        if (mCountdownPlayer.isPlaying()) {
+            mCountdownPlayer.stop();
+        }
 //
 //        mGameOverPlayer.start();
 
 
-        soundPool.stop(soundIds[2]);
-        soundPool.stop(soundIds[3]);
-        soundPool.stop(soundIds[6]);
+        mMusicPlayer.stop();
+        mFastMusicPlayer.stop();
+        mCountdownPlayer.stop();
 
-        soundPool.play(soundIds[10],sound,sound,1,0,1);
+//        soundPool.stop(soundIds[2]);
+//        soundPool.stop(soundIds[3]);
+//        soundPool.stop(soundIds[6]);
+
+        soundPool.play(soundIds[10], volumeLevel, volumeLevel,1,0,1);
 
         new Handler().postDelayed(new Runnable() {
             @Override
