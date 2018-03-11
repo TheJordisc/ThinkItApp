@@ -1124,7 +1124,7 @@ public class MathsActivity extends AppCompatActivity implements View.OnClickList
         mAddedScoreTextByTime.setVisibility(View.VISIBLE);
 
         if (mHasBonus) {
-            mBonusTime=10000-(mInitialMillis-mMillisLeft);
+            mBonusTime=(10000-(mInitialMillis-mMillisLeft))/2;
             mAddedTimeText.setText("+00:" + String.format("%02d",((int) mBonusTime/1000 +1)));
             mAddedTimeText.setVisibility(View.VISIBLE);
         } else {
