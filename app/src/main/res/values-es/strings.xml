@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Think It App</string>
+    <string name="app_name">ThinkItApp</string>
     <string name="cd_button">Botón de jugar</string>
     <string name="next">¡Siguiente!</string>
     <string name="exit_sure">¿Seguro que quieres salir?</string>
@@ -21,7 +21,6 @@
     <string name="lastlife">¡Última vida!</string>
     <string name="hint_lifelines">¡Recuerda que puedes usar comodines!</string>
     <string name="app_language_title">Idioma</string>
-    <string name="gameover_over">Game over</string>
     <string name="timeout">¡Tiempo!</string>
     <string name="final_score">Puntuación final</string>
     <string name="developersinfo">Desarrollado por Jordi Solà y Alejandro Berdún</string>
@@ -37,7 +36,6 @@
     <string name="nombre">Nombre</string>
     <string name="puntuaci_n">Puntuación</string>
     <string name="we_are_students_of_puig_castellar">Somos estudiantes del Puig Castellar</string>
-    <string name="template_for_help_items_developing">Template for help items, developing...</string>
 
     <string name="help_credits">Creditos</string>
     <string name="help_menu">Menú principal</string>
@@ -47,13 +45,13 @@
     <string name="help_language">Cambiar idioma</string>
     <string name="next_tutorial">Next</string>
     <string name="dialog_result_exit_withoutsave">¿Salir sin guardar la puntuación?</string>
-    <string name="help_play_button">Pulsa este boton para jugar</string>
-    <string name="help_ranking_button">Pulsa este boton para ver el ranking de puntuaciones</string>
-    <string name="help_language_button">Pulsa este boton para cambiar el idioma la aplicación</string>
-    <string name="help_help_button">Pulsa este boton para consultar la ayuda</string>
+    <string name="help_play_button">Pulsa este botón para jugar</string>
+    <string name="help_ranking_button">Pulsa este botón para ver el ranking de puntuaciones</string>
+    <string name="help_language_button">Pulsa este boton para cambiar el idioma de la aplicación</string>
+    <string name="help_help_button">Pulsa este botón para consultar la ayuda</string>
     <string name="help_sound_button">Desactiva o activa el sonido</string>
     <string name="help_exit_button">Pulsa este botón para cerrar la aplicación</string>
-    <string name="help_game_description">ThinkitApp es un juego de matemáticas basado en sencillas operaciones matemáticas, que fomenta la capacidad de cálculo mental.</string>
+    <string name="help_game_description">ThinkItApp es un juego de matemáticas basado en sencillas operaciones matemáticas, que fomenta la capacidad de cálculo mental.</string>
     <string name="help_difficult_description">La dificultad aumenta progresivamente. Por ejemplo, las operaciones serán más complicadas y el número de opciones irá aumentando hasta un máximo de 8.</string>
     <string name="help_end_game_description">Si el tiempo finaliza, perderás una vida. La partida finaliza al perder tu última vida.</string>
     <string name="help_next_section_bonus">Consulta las bonificaciones para lograr una puntuación mas alta, en la sección ayudas y bonificaciones</string>
@@ -65,26 +63,26 @@
     <string name="help_bonus_question_score_description">Cada respuesta correcta añade 100 puntos extra a la puntuación total.</string>
     <string name="help_bonus_time_score_description">Si aciertas una operación en menos de 10 segundos, sumará puntos extra y acumularás unos valiosos segundos extra en la cuenta atrás.</string>
     <string name="help_ranking_description2">El ranking ordena de forma descendente las puntuaciones guardadas, indicando en primera posición la puntuación más alta.</string>
-    <string name="help_ranking_remove">Puedes eliminar una puntuación pulsando el botón con la papelera, en la entrada correspondiente.</string>
+    <string name="help_ranking_remove">Puedes eliminar una puntuación pulsando el botón de la papelera, en la entrada correspondiente.</string>
     <string name="help_ranking_removeall">Elimina todas las puntuaciones pulsando este botón.</string>
     <string name="help_language_description">Puedes cambiar el idioma del juego desde la sección correspondiente en el menú principal. En ella, pulsa la bandera correspondiente al idioma deseado.</string>
     <string name="help_game_description2">El objetivo del juego es conseguir la máxima puntuación posible. Para lograrlo, completa correctamente todas las operaciones que puedas. Deberás introducir el valor que falta, señalado con un interrogante (\"?\").</string>
     <string name="help_game_description3">Para completar la operación, tienes que pulsar en la cifra adecuada en el teclado de opciones situado en la parte inferior.</string>
     <string name="help_incorrect_answer_description">Cada respuesta incorrecta restará una vida y sustraerá 50 puntos a la puntuación total.</string>
-    <string name="help_bonus_introduction">Aparte de las vidas, el juego cuenta con una serie de ayudas y bonificaciones que te permitirán durar más en el juego y conseguir mejores puntuaciones.</string>
+    <string name="help_bonus_introduction">Además de las vidas, el juego cuenta con una serie de ayudas y bonificaciones que te permitirán durar más en el juego y conseguir mejores puntuaciones.</string>
     <string name="help_ranking_description">Cuando se acaba la partida, tienes la posibilidad de introducir tu nombre y guardar la puntuación. Al guardar, se mostrará inmediatamente el ránking de puntuaciones, con tu entrada resaltada. Esta sección es accesible también desde el menú principal.</string>
     <string name="attribution">Atribuciones</string>
     <string name="help_attributions">Música del juego: \"Jazzy Frenchy\" - Bensound.com
-    \\n\\nMúsica de \'Ayuda\': \"The Lounge\" - Bensound.com
-    \\n\\nMúsica de \'Idioma\' y \'Ranking\': \"Summer\" - Bensound.com
-    \\n\\nMúsica de \'Game Over\': \"Jazz Comedy\" - Bensound.com</string>
+    \n\nMúsica de \'Ayuda\': \"The Lounge\" - Bensound.com
+    \n\nMúsica de \'Idioma\' y \'Ranking\': \"Summer\" - Bensound.com
+    \n\nMúsica de \'Game Over\': \"Jazz Comedy\" - Bensound.com</string>
     <string name="result_characters">caracteres restantes</string>
     <string name="result_name_required">Se requiere un nombre para guardar la puntuación</string>
     <string name="repeat_tutorial">Repetir tutorial</string>
-    <string name="tutorial_welcome1">¡Bienvenidos a Think It App!\\n\\nEste es un juego basado en sencillas operaciones matemáticas que deberás completar.</string>
+    <string name="tutorial_welcome1">¡Bienvenidos a ThinkItApp!\n\nEste es un juego basado en sencillas operaciones matemáticas que deberás completar.</string>
     <string name="tutorial_welcome2">Piensa en el juego como si fuera una carrera, no hay pausas. Si dejas la app en segundo plano, ¡el tiempo sigue corriendo!</string>
-    <string name="tutorial_main_operation">Esta es la operación principal.\\nEl juego trata de completar la operación con el número que falta.</string>
-    <string name="tutorial_next_operation">Esta es la siguiente operación.\\n Cuando completes la actual, esta será el objetivo. ¡Échale un vistazo para ganar unos segundos!</string>
+    <string name="tutorial_main_operation">Esta es la operación principal.\nEl juego trata de completar la operación con el número que falta.</string>
+    <string name="tutorial_next_operation">Esta es la siguiente operación.\n Cuando completes la actual, esta será el objetivo. ¡Échale un vistazo para ganar unos segundos!</string>
     <string name="tutorial_answers">Aquí están los botones con las posibles opciones. ¡Piensa bien antes de elegir una!</string>
     <string name="tutorial_timer">No tardes mucho en pensar, porque hay un cronómetro en tu contra. ¡Vigila el tiempo!</string>
     <string name="tutorial_score">Según tu respuesta, subirá o bajará la puntuación. Si aciertas, sumarás puntos. Si fallas, restarás. Y si aciertas rápido, obtendrás una bonificación.</string>
@@ -92,7 +90,7 @@
     <string name="lives">Cada vez que falles una operación, perderás una vida. Tienes 3 vidas, así que cuídalas bien.</string>
     <string name="tutorial_levels">Por cada 10 preguntas correctas, subirás de nivel. El juego es infinito, y a mayor nivel, operaciones más difíciles.</string>
     <string name="hardness">Además, al subir de nivel, las respuestas posibles irán aumentando hasta un máximo de 8.</string>
-    <string name="tutorial_try_answer">¡Pruébalo! Pulsa en la respuesta correcta.\\n(Pista: es 2)</string>
+    <string name="tutorial_try_answer">¡Pruébalo! Pulsa en la respuesta correcta.\n(Pista: es 2)</string>
     <string name="tutorial_complete_operation1">¡Correcto! La operación se ha completado. Ahora tendrás un escaso segundo antes de que aparezca la siguiente operación.</string>
     <string name="tutorial_complete_operation2">¡Aprovecha para echarle un vistazo antes de que el cronómetro se reanude!</string>
     <string name="tutorial_bonus1">Cuando aciertas rápido, se suma un tiempo extra de bonificación, acumulable hasta 59 segundos.</string>

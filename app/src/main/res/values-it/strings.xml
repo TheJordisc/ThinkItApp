@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Think It App</string>
+    <string name="app_name">ThinkItApp</string>
     <string name="gameover_sure">Do you want to stop game and force \'Game Over\'?</string>
     <string name="gameover_resume">Resume</string>
     <string name="no_lives">No lives!</string>
@@ -28,7 +28,6 @@
     <string name="nombre">Nombre</string>
     <string name="puntuaci_n">Puntuación</string>
     <string name="we_are_students_of_puig_castellar">We are students of Puig Castellar</string>
-    <string name="template_for_help_items_developing">Template for help items, developing...</string>
     <string name="help_credits">Creditos</string>
     <string name="help_menu">Menú principal</string>
     <string name="help_goals">Objetivo del juego</string>
@@ -90,5 +89,5 @@
     <string name="tutorial_gameover2">Muchas gracias por tu atención. Ahora pulsa el botón de Stop, ¡y diviértete!</string>
     <string name="tutorial_end">¡Aquí empieza!</string>
     <string name="ok" />
-    <string name="language_change_toast">Lingua modificata in: Italiano</string>
+    <string name="language_change_toast">"Lingua modificata in: "</string>
 </resources>

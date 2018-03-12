@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Think It App</string>
+    <string name="app_name">ThinkItApp</string>
     <string name="cd_button">Play button</string>
     <string name="cd_logo" translatable="false">Logo</string>
     <string name="exit_sure">Are you sure do you want to exit?</string>
@@ -28,7 +28,7 @@
     <string name="lastlife">Last life!</string>
     <string name="hint_lifelines">Remember you can use lifelines!</string>
     <string name="app_language_title">Language</string>
-    <string name="gameover_over">Game over</string>
+    <string name="gameover_over" translatable="false">Game over</string>
     <string name="timeout">Time out!</string>
     <string name="app_score_title">Ranking</string>
     <string name="app_help_title">Help</string>
@@ -41,9 +41,9 @@
     <string name="nombre">Nombre</string>
     <string name="puntuaci_n">Puntuación</string>
     <string name="we_are_students_of_puig_castellar">We are students of Puig Castellar</string>
-    <string name="template_for_help_items_developing">Template for help items, developing...</string>
+    <string name="template_for_help_items_developing" translatable="false">Template for help items, developing...</string>
 
-    <string name="help_credits">Creditos</string>
+    <string name="help_credits">Créditos</string>
     <string name="help_menu">Menú principal</string>
     <string name="help_goals">Objetivo del juego</string>
     <string name="help_bonus">Ayudas y bonificaciones</string>
