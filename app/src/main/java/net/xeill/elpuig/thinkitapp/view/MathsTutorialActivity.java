@@ -525,6 +525,7 @@ public class MathsTutorialActivity extends AppCompatActivity {
                                                                                                                             @Override
                                                                                                                             public void onClick(View view) {
                                                                                                                                 Intent playIntent = new Intent(MathsTutorialActivity.this,MathsActivity.class);
+                                                                                                                                finish();
                                                                                                                                 startActivity(playIntent);
                                                                                                                             }
                                                                                                                         });

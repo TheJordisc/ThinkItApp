@@ -105,7 +105,8 @@ public class MainActivity extends AppCompatActivity {
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                playButton.setActivated(false);
+                playButton.setActivated(true);
+                playButton.setEnabled(false);
 //                playSoundPlayer.start();
                 soundPool.play(soundIds[1], volume, volume, 1, 0, 1);
 
@@ -136,7 +137,9 @@ public class MainActivity extends AppCompatActivity {
                                     .setOnDismissListener(new DialogInterface.OnDismissListener() {
                                         @Override
                                         public void onDismiss(DialogInterface dialogInterface) {
-                                            playButton.setActivated(true);
+                                            playButton.setActivated(false);
+                                            playButton.setEnabled(true);
+
                                         }
                                     })
                                     .create().show();
