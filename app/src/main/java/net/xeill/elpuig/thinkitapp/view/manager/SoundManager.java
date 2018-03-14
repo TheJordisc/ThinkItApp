@@ -96,7 +96,7 @@ public class SoundManager {
     }
 
     private void dispatchOnLoadComplete(){
-        if (onLoadCompleteListener == null) {
+        if (this.onLoadCompleteListener == null) {
             return;
         }
 
@@ -106,7 +106,7 @@ public class SoundManager {
         }
 
         if(loaded) {
-            onLoadCompleteListener.onLoadComplete(SoundManager.this);
+            this.onLoadCompleteListener.onLoadComplete(SoundManager.this);
         }
     }
 
