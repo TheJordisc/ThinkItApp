@@ -22,8 +22,8 @@ import net.xeill.elpuig.thinkitapp.R;
 import net.xeill.elpuig.thinkitapp.view.manager.LocaleManager;
 
 public class MainActivity extends AppCompatActivity {
-    MediaPlayer musicPlayer;
     MediaPlayer playSoundPlayer;
+    MediaPlayer musicPlayer;
     VideoView bgVideo;
     Handler mSplashHandler;
     SharedPreferences settings;
@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
     private int soundIds[] = new int[2];
 
     private int volume = 0;
+
+    boolean musicPaused = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
             settings.edit().putBoolean("mute",false).apply();
 
             Intent firstTime = new Intent(MainActivity.this, LanguageActivity.class);
+            finish();
             startActivity(firstTime);
         } else {
             String lang = settings.getString("language","en");
@@ -65,10 +68,6 @@ public class MainActivity extends AppCompatActivity {
 //        soundIds[0] = soundPool.load(this, R.raw.modern_theme_nicolai_heidlas,1);
         soundIds[1] = soundPool.load(this, R.raw.play,1);
 
-        musicPlayer = MediaPlayer.create(this,  R.raw.modern_theme_nicolai_heidlas);
-        musicPlayer.setLooping(true);
-        musicPlayer.start();
-
 //        playSoundPlayer = MediaPlayer.create(this,R.raw.play);
 
         volumeFAB = findViewById(R.id.volume_fab);
@@ -84,12 +83,6 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
-
-        if(settings.getBoolean("mute",true)) {
-            setMute();
-        } else {
-            setUnmute();
-        }
 
 //        soundPool.play(soundIds[0], volume, volume, 1, 1, 1);
 
@@ -112,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
         playButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                playButton.setActivated(true);
+                playButton.setActivated(false);
 //                playSoundPlayer.start();
                 soundPool.play(soundIds[1], volume, volume, 1, 0, 1);
 
@@ -143,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
                                     .setOnDismissListener(new DialogInterface.OnDismissListener() {
                                         @Override
                                         public void onDismiss(DialogInterface dialogInterface) {
-                                            playButton.setActivated(false);
+                                            playButton.setActivated(true);
                                         }
                                     })
                                     .create().show();
@@ -241,24 +234,47 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
-        if(musicPlayer!=null && musicPlayer.isPlaying()){
+
+
+        if(!musicPaused){
             musicPlayer.pause();
         }
 
         if(bgVideo!=null && bgVideo.isPlaying()){
             bgVideo.pause();
         }
+
+        musicPaused = true;
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if(musicPlayer!=null && !musicPlayer.isPlaying()){
+
+
+        if(musicPaused){
             musicPlayer.start();
         }
 
         if(bgVideo!=null && !bgVideo.isPlaying()){
             bgVideo.start();
+        }
+
+        musicPaused = false;
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        musicPlayer = MediaPlayer.create(this,  R.raw.modern_theme_nicolai_heidlas);
+        musicPlayer.setLooping(true);
+        musicPlayer.start();
+
+        if(settings.getBoolean("mute",true)) {
+            setMute();
+        } else {
+            setUnmute();
         }
     }
 }

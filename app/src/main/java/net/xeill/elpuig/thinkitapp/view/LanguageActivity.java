@@ -1,5 +1,6 @@
 package net.xeill.elpuig.thinkitapp.view;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.net.Uri;
@@ -115,10 +116,15 @@ public class LanguageActivity extends AppCompatActivity {
 
         if (settings.getBoolean("isFirstRun",true)) {
             settings.edit().putBoolean("isFirstRun",false).apply();
+
+            finish();
+            Intent firstMain = new Intent(LanguageActivity.this,MainActivity.class);
+            startActivity(firstMain);
+        } else {
+            LanguageActivity.this.finish();
         }
 
         playSoundPlayer.start();
-        LanguageActivity.this.finish();
     }
 
     @Override
