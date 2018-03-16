@@ -1,14 +1,5 @@
 # ThinkItApp
-SWITCH Project
-
-ThinkItApp has been developed by Alejandro Berdún & Jordi Solà, students of Institut Puig Castellar, as a school work for the Switch Project.
-
-SWITCH is Erasmus KA2 VET project that ran from September 2015 until September 2018. The project involves 3 VET schools:
-
-- Halesowen college, UK.
-- ITE Tambosi-Battisti, Trento, Italy
-- Institut Puig Castellar, Santa Coloma de Gramenet, Barcelona, Spain
-
+ThinkItApp has been developed by Alejandro Berdún & Jordi Solà, students of Institut Puig Castellar.
 
 
 ======== COPYRIGHT NOTICE ========
